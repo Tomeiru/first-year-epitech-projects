@@ -1,0 +1,2 @@
+#! /bin/sh
+cat passwd | sed -n 'p;n'

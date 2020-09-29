@@ -1,2 +1,2 @@
 #! /bin/sh
-cut -d: -f 1 | grep -i ^$1 | wc -l
+cut -d: -f 5 | grep -i ^$1 | wc -l
