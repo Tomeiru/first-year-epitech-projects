@@ -1,2 +1,2 @@
 #! /bin/sh
-wc -l
+grep ncy -i |  wc -l
