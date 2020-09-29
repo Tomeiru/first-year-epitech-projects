@@ -1,2 +1,2 @@
 #! /bin/sh
-grep 'martin*' | wc -l
+cut -d: -f 1 | grep -c -i $2$

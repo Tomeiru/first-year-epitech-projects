@@ -1,2 +1,2 @@
 #! /bin/sh
-find -name '*.sh'
+find -type f -name '*.sh'
