@@ -1,5 +1,2 @@
 #! /bin/sh
-cat Day02/passwd | grep 'theo1\|steven1\|arnaud1\|pierre-jean' | sed -e '/theo1/wile e. coyote' | sed -e '/steven1/daffy duck' | sed -e '/arnaud1/porky pig' | sed -e '/pierre-jean/marvin the martian'
-
-
-
+cat Day02/passwd | grep 'theo1\|steven1\|arnaud1\|pierre-jean' | sed 's/theo1/wile e. coyote/gi' | sed 's/steven1/daffy duck/gi' | sed 's/arnaud1/porky pig/gi' | sed 's/pierre-jean/marvin the martian/gi'
