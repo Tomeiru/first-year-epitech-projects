@@ -7,20 +7,18 @@
 
 int     my_put_nbr(int nb)
 {
-    int div;
-    div = 1;
+    int den = 1;
+    
     if (nb < 0){
-        put_char('-');
-        nb*=-1;
+        my_putchar('-');
+        nb = nb * -1;
     }
-    while ((nb/div) >= 10){
-        div/=10;
-    }       
-    while ((nb/div) <= 10){
-        (nb/div % 10 + '0');
-    }     
-            
+    while ((nb/den) >= 10){
+        den*=10;
+    }
+    while (den > 0){
+        my_putchar((nb/den) % 10 + '0');
+        den /= 10;
+    }
     return(0);
-}   
-                        
-      
+}
