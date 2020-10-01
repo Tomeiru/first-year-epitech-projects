@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** my_print_comb2
 ** File description:
-** Write a function that displays, in ascending order, all the different combinations of two two-digit numbers.
+** my_print_comb2
 */
 
 int my_print_comb2(void)

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** my_isneg
 ** File description:
-** Function that displays either N if the interger passed as negative, P if positive or null
+** my_isneg
 */
 
 int my_isneg(int n)

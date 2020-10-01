@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2020
-** my_print_revalpha.c
+** my_print_revalpha
 ** File description:
-** Function displaying the lowercase alphabet in descending order
+** my_print_revalpha
 */
 
 int my_print_revalpha(void)

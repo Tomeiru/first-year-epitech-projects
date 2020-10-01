@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** my_print_alpha
 ** File description:
-** Function diplaying the lowercase alphabet in ascending order
+** my_print_alpha
 */
 
 int my_print_alpha(void)

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** my_print_comb
 ** File description:
-** Function that diplays, in ascending order, all the numbers composed by three different digits numbers  (only the smallest number composed bu those digits must be displayed
+** my_print_comb
 */
 
 int my_print_comb(void)

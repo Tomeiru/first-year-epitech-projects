@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** my_print_digits
 ** File description:
-** Function displaying all the digits in ascending order
+** my_print_digits
 */
 
 int my_print_digits(void)
