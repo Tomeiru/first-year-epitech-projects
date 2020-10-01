@@ -26,9 +26,8 @@ int my_print_comb(void)
             my_putchar(',');
             my_putchar(' ');
         }
-    }   
-    n++;           
+    }
+    n++;
     }
     return (0);
 }
-        
