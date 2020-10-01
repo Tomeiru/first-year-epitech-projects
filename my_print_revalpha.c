@@ -5,11 +5,10 @@
 ** Function displaying the lowercase alphabet in descending order
 */
 
-int     my_print_revalpha(void)
+int my_print_revalpha(void)
 {
     char c = 122;
-    while (c > 96)
-    {
+    while (c > 96) {
         my_putchar(c);
         c--;
     }

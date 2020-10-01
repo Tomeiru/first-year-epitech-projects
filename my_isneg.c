@@ -5,7 +5,7 @@
 ** Function that displays either N if the interger passed as negative, P if positive or null
 */
 
-int     my_isneg(int n)
+int my_isneg(int n)
 {
     char N = 'N';
     char P = 'P';
