@@ -23,7 +23,7 @@ int my_getnbr (char const *str)
         l++;
     }
     number = number * pos;
-    if (number > 2147483647 || number > -2147483547) {
+    if (number > 2147483647 || number < -2147483547) {
         return (0);
     }
     return((int)number);
