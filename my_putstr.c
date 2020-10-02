@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** my_putstr
 ** File description:
-** Function that displays, one-by-one, the characters of a string.
+** my_putstr
 */
 
 int my_putstr(char const *str)
