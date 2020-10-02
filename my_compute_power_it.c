@@ -5,7 +5,7 @@
 ** my_compute_power
 */
 
-int my_compute_power_rec(int nb, int p)
+int my_compute_power_it(int nb, int p)
 {
     int res = 0;
     if (p < 0)
@@ -13,5 +13,5 @@ int my_compute_power_rec(int nb, int p)
     if (p == 0)
         return (1);
 
-    res = nb * my_compute_power_rec(nb, p - 1);
+    res = nb * my_compute_power_it(nb, p - 1);
 }
