@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** my_swap
 ** File description:
-** Function that swaps the content of two integers
+** my_swap
 */
 
 void my_swap(int *a, int *b)
