@@ -12,5 +12,5 @@ int my_strlen(char const *str)
     while (str[l] != '\0'){
         l = l + 1;
     }
-    return(l);
+    return (l);
 }
