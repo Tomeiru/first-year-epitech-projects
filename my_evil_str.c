@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2020
 ** my_evil_str
 ** File description:
-** The function should return a pointer to the first character of the reversed string.
+** my_evil_str
 */
 
 void last_letter_swap(char *p, char *l)
