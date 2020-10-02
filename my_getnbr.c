@@ -16,7 +16,7 @@ int my_getnbr (char const *str)
             pos = pos * -1;
         }
         l++;
-    }        
+    }
     while (str[l] >= '0' && str[l] <= '9') {
         number = number * 10;
         number = number + str[l] - '0';
