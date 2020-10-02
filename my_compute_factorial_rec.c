@@ -5,7 +5,7 @@
 ** my_compute_factorial_it
 */
 
-int my_compute_factorial_it(int nb)
+int my_compute_factorial_rec(int nb)
 {
     int res = 0;
     if (nb < 0)
@@ -15,7 +15,7 @@ int my_compute_factorial_it(int nb)
     if (nb == 1)
         return (1);
 
-    res = nb * my_compute_factorial_it(nb - 1);
+    res = nb * my_compute_factorial_rec(nb - 1);
     
     return (res);
 }
