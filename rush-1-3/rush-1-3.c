@@ -4,6 +4,7 @@
 ** File description:
 **
 */
+
 void top_line(int l1)
 {
   int l1Max = l1;
@@ -17,6 +18,7 @@ void top_line(int l1)
   }
   my_putchar('\n');
 }
+
 void between_lines(int l2, int h)
 {
     h = h - 2;
@@ -37,6 +39,7 @@ void between_lines(int l2, int h)
         my_putchar('\n');
     }
 }
+
 void bot_line(int l1)
 {
   int l1Max = l1;
@@ -73,14 +76,14 @@ void exeption(int l1, int l2)
 					my_putchar('\n');}
 }
 
-void rush3(int x, int y)
+void rush(int x, int y)
 {
 		if(x > 2147483647 || y > 2147483647 || x < 1 || y < 1) {
 			write(2,"Invalid size\n", 13);
 			return;
 		}
     if (x == 1 && y == 1)
-    {
+		{
       my_putchar('B');
       my_putchar('\n');
     }else {
