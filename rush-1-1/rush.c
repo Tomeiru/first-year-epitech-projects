@@ -8,12 +8,12 @@
 void top_bot_line(int a)
 {
     int amax = a;
-    while (a != 0) {
-        if (a == amax || a == 1) {
+    while(a != 0) {
+        if(a == amax || a == 1) {
             my_putchar('o');
             a--;
         }
-        if (a < amax && a > 1){
+        if(a < amax && a > 1){
             my_putchar('-');
             a --;
         }
@@ -26,15 +26,15 @@ void between_lines(int b, int c)
     c = c - 2;
     int bmax = b;
 
-    while (c > 0) {
-        if (b == bmax)
+    while(c > 0) {
+        if(b == bmax)
             my_putchar('|');
-        while (b != 2 && b > 0) {
+        while(b != 2 && b > 0) {
             my_putchar(' ');
             b--;
         }
         b--;
-        if (b == 1)
+        if(b == 1)
             my_putchar('|');
         c--;
         b = bmax;
@@ -44,8 +44,12 @@ void between_lines(int b, int c)
 
 void rush(int x, int y)
 {
-    top_bot_line(x);
-    between_lines(x, y);
-    if (y >= 2)
-    top_bot_line(x);
+    if(x > 2147483647 || y > 2147483647 || x < 1 || y < 1) {
+        write(2,"Invalid size\n", 13);
+        return;
+    }
+     top_bot_line(x);
+     between_lines(x, y);
+     if(y >= 2)
+         top_bot_line(x);
 }
