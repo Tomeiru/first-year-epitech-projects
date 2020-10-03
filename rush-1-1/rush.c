@@ -49,9 +49,3 @@ void rush(int x, int y)
     if (y >= 2)
     top_bot_line(x);
 }
-
-int main (void)
-{
-    rush (4, 4);
-    return (0);
-}
