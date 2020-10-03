@@ -73,7 +73,8 @@ void exeption(int l1, int l2)
 						my_putchar('B');
 						--l1;
 					}
-					my_putchar('\n');}
+					my_putchar('\n');
+    }
 }
 
 void rush(int x, int y)
