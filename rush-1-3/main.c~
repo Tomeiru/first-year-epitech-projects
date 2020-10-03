@@ -1,0 +1,12 @@
+/*
+** EPITECH PROJECT, 2020
+** main
+** File description:
+** main
+*/
+
+int main (void)
+{
+    rush (5, 1);
+    return (0);
+}
