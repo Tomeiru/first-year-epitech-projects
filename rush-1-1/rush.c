@@ -49,8 +49,8 @@ void rush(int x, int y)
         write(2,"Invalid size\n", 13);
         return;
     }
-     top_bot_line(x);
-     between_lines(x, y);
-     if (y >= 2)
+    top_bot_line(x);
+    between_lines(x, y);
+    if (y >= 2)
          top_bot_line(x);
 }
