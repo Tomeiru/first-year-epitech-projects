@@ -37,7 +37,7 @@ void leaves(int layer)
 
     while (layer <= layermax){
         while (m < height) {
-            star(1 + 2 * i, layermax * 3  - i);
+            star(1 + 2 * i, layermax * 3 - i);
             i++;
             m++;
         }
@@ -57,7 +57,12 @@ void trunk(int htrunk)
 {
     int ltrunk = htrunk;
     int ltrunkmax;
-    
+    int a = 3;
+
+    while (a > 0) {
+        my_putchar(' ');
+        a--;
+    }
     if (htrunk % 2 == 0)
         ltrunk = (ltrunk + 1);
     ltrunkmax = ltrunk;
