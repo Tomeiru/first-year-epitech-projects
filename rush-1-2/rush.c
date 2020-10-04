@@ -35,7 +35,7 @@ void between_lines (int b, int c)
             b--;
         }
         b--;
-        if(b == 1)
+        if (b == 1)
             my_putchar('*');
         c--;
         b = bmax;
@@ -47,7 +47,7 @@ void bot_line(int d)
 {
     int dmax = d;
 
-    if(d == dmax) {
+    if (d == dmax) {
         my_putchar(92);
         d--;
     }
@@ -62,14 +62,14 @@ void bot_line(int d)
 
 void exception(int e, int f)
 {
-    if(e == 1 && f > 1)
-        while(f != 0) {
+    if (e == 1 && f > 1)
+        while (f != 0) {
             my_putchar('*');
             my_putchar('\n');
             f--;
         }
-    if(e > 1 && f == 1) {
-        while(e != 0) {
+    if (e > 1 && f == 1) {
+        while (e != 0) {
             my_putchar('*');
             e--;
         }
@@ -79,17 +79,17 @@ void exception(int e, int f)
 
 void rush(int x, int y)
 {
-    if(x > 2147483647 || y > 2147483647 || x < 1 || y < 1) {
+    if (x > 2147483647 || y > 2147483647 || x < 1 || y < 1) {
         write(2, "Invalid size\n", 13);
         return;
     }
-    if(x == 1 && y == 1) {
+    if (x == 1 && y == 1) {
         my_putchar('*');
         my_putchar('\n');
     }
-    if((x == 1 && y > 1) || ( x > 1 && y == 1))
+    if ((x == 1 && y > 1) || ( x > 1 && y == 1))
         exception(x, y);
-    if(x > 1 && y > 1) {
+    if (x > 1 && y > 1) {
         top_line(x);
         between_lines(x,y);
         if (y >=  2)
