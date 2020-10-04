@@ -5,9 +5,14 @@
 ** my_compute_power
 */
 
-int my_compute_power_rec(int nb, int p)
+int my_compute_power_rec(long nb, long p)
 {
     int res = 0;
+
+    if (p > 2147483647 || nb > 2147483647)
+        return (0);
+    if (p < -2147483647 || nb < -2147483647)
+        return (0);
     if (p < 0)
         return (0);
     if (p == 0)
