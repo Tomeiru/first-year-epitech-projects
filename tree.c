@@ -5,6 +5,27 @@
 ** tree
 */
 
+int taille(int size)
+{
+    int width = -4;
+    int hauteur = 0;
+    int switcha = 3;
+    int sus = 0;
+
+    for (int q = 0; q <= size; q++) {
+        hauteur = 3 + q;
+        switcha--;
+        if (switcha == 0) {
+            sus = sus - 2;
+            switcha = 2;
+        }
+        width = width - 2 + sus;
+        width = width + (hauteur * 2);
+        }
+    printf("%i\n", width);
+return (width);
+}
+
 void star (int k, int end)
 {
     int p;
@@ -22,7 +43,7 @@ void star (int k, int end)
     my_putchar('\n');
 }
 
-void leaves(int layer)
+void leaves(int layer, int val_maxx)
 {
     int layermax = layer;
     int i = 0;
@@ -37,7 +58,7 @@ void leaves(int layer)
 
     while (layer <= layermax){
         while (m < height) {
-            star(1 + 2 * i, layermax * 3 - i);
+            star(1 + 2 * i, val_maxx / 2 - i);
             i++;
             m++;
         }
@@ -53,26 +74,27 @@ void leaves(int layer)
     }
 }
 
-void trunk(int htrunk)
+void trunk(int htrunk, int valmaxxx)
 {
     int ltrunk = htrunk;
     int ltrunkmax;
-    int a = 3;
-
-    while (a > 0) {
-        my_putchar(' ');
-        a--;
-    }
-    if (htrunk % 2 == 0)
+    int z = 0;
+    
+    if (htrunk % 2 == 0) 
         ltrunk = (ltrunk + 1);
     ltrunkmax = ltrunk;
     while (htrunk != 0) {
+        while(z < valmaxxx / 2 - (ltrunkmax / 2)) {
+            my_putchar(' ');
+            z++;
+        }
         while(ltrunk != 0) {
             my_putchar('|');
             ltrunk--;
         }    
     htrunk--;
     ltrunk = ltrunkmax;
+    z = 0;
     my_putchar('\n');
     }   
 }
@@ -81,6 +103,7 @@ void tree(int size)
 {
     if (size < 1)
         return;
-    leaves(size);
-    trunk(size);
+    int val_max =  taille(size);
+    leaves(size, val_max);
+    trunk(size, val_max);
 }
