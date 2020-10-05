@@ -6,8 +6,7 @@
 */
 
 int my_compute_factorial_it(int nb)
-{
-    
+{    
     int res = 0;
     
     if (nb >= 13)
