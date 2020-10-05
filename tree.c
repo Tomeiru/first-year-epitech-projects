@@ -22,7 +22,6 @@ int taille(int size)
         width = width - 2 + sus;
         width = width + (hauteur * 2);
         }
-    printf("%i\n", width);
 return (width);
 }
 
