@@ -11,7 +11,6 @@ int my_strcmp(char const *s1, char const *s2)
     int ans = 0;
     
     while (s1[p] != '\0' || s2[p] != '\0') {
-        printf("s1 = %c\ns2 = %c\n", s1[p], s2[p]);
         if (s1[p] == s2[p])
             p++;
         else {
