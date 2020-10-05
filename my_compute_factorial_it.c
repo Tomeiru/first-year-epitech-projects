@@ -8,9 +8,9 @@
 int my_compute_factorial_it(int nb)
 {
     
-    long res = 0;
+    int res = 0;
     
-    if (res > 2147483647)
+    if (nb >= 13)
         return (0);
     if (nb < 0)
         return (0);
@@ -18,8 +18,6 @@ int my_compute_factorial_it(int nb)
         return (1);
     if (nb == 1)
         return (1);
-
     res = nb * my_compute_factorial_it(nb - 1);
-    
-    return ((int)res);
+    return (res);
 }
