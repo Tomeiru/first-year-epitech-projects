@@ -5,12 +5,12 @@
 ** my_compute_factorial_it
 */
 
-int my_compute_factorial_it(long nb)
+int my_compute_factorial_it(int nb)
 {
     
-    int res = 0;
+    long res = 0;
     
-    if (nb > 2147483647)
+    if (res > 2147483647)
         return (0);
     if (nb < 0)
         return (0);
@@ -21,5 +21,5 @@ int my_compute_factorial_it(long nb)
 
     res = nb * my_compute_factorial_it(nb - 1);
     
-    return (res);
+    return ((int)res);
 }
