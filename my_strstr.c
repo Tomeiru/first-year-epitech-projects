@@ -5,8 +5,6 @@
 ** my_strstr
 */
 
-#include <stdlib.h>
-
 int my_strstr(char *str, char const *to_find)
 {
     int i = 0;
@@ -25,5 +23,5 @@ int my_strstr(char *str, char const *to_find)
             return (&str[i]);
     i++;
     }
-    return (NULL);
+    return (0);
 }
