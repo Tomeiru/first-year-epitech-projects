@@ -11,7 +11,7 @@ int my_str_isnum(char const *str)
     int count = 0;
     
     while(str[i] != '\0') {
-        if (str[i] < 48 && str[i] > 57)
+        if (str[i] < 48 || str[i] > 57)
             count++;
         i++;
     }
