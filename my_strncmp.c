@@ -10,6 +10,8 @@ int my_strncmp(char const *s1, char const *s2, int n)
     int p = 0;
     int ans = 0;
 
+    if (n == 0)
+        return(0);
     while (s1[p] != '\0' || s2[p] != '\0') {
         if (s1[p] == s2[p] || n < p)
             p++;
