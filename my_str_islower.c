@@ -11,7 +11,7 @@ int my_str_islower(char const *str)
     int count = 0;
     
     while(str[i] != '\0') {
-        if (str[i] < 97 && str[i] > 122)
+        if (str[i] < 97 || str[i] > 122)
             count++;
         i++;
     }
