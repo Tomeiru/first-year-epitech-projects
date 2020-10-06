@@ -5,7 +5,7 @@
 ** my_str_isalpha
 */
 
-int my_str_isnum(char const *str)
+int my_str_isupper(char const *str)
 {
     int i = 0;
     int count = 0;
