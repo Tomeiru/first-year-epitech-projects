@@ -5,7 +5,7 @@
 ** my_put_nbr
 */
 
-int     my_put_nbr(int nb)
+int my_put_nbr(int nb)
 {
     int den = 1;
     

@@ -10,7 +10,7 @@ int my_str_isalpha(char const *str)
     int i = 0;
     int count = 0;
     
-    while(str[i] != '\0') {
+    while (str[i] != '\0') {
         if (str[i] < 65 || str[i] > 122 || str[i] <= 96 && str[i] >= 91)
             count++;
         i++;
