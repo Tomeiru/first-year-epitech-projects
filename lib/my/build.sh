@@ -1,3 +1,4 @@
 #! /bin/sh
 gcc -Wall -c *.c
-ar -cvq libmy.a *.o
+ar rc libmy.a *.o
+mv libmy.a ..
