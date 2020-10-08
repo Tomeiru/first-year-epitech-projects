@@ -5,12 +5,15 @@
 ** my_putstr
 */
 
+void my_putchar(char c);
+
 int my_putstr(char const *str)
 {
-    int l;
+    int l = 0;
 
-    while (str[l] != '\0'){
+    while (str[l] != '\0') {
         my_putchar(str[l]);
-        l = l + 1;
+        l += 1;
     }
+    return (0);
 }
