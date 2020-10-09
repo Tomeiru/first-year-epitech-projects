@@ -5,4 +5,4 @@
 ** my_macro_abs
 */
 
-#define my_macro_abs(x) ((x < 0) ? (x * -1) : x)
+#define ABS(value) ((value < 0) ? (value * -1) : value)
