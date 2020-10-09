@@ -74,7 +74,5 @@ char **my_str_to_word_array(char const *str)
             char_ia++;
         }
     }
-    //wordarray[string_i + 1] = "\0";
-    //printf("%s\n", wordarray[1]);
     return (wordarray);
 }
