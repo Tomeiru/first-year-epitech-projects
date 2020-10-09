@@ -5,7 +5,17 @@
 ** my_strcat
 */
 
-char *my_strcat(char *dest , char  const *src)
+char *my_strcat(char *dest , char const *src)
 {
-    return (0);
+    int i = 0;
+    int p = 0;
+
+    while (dest[i] != '\0') 
+        i++;
+    while (src[p] != '\0') {
+        dest[i + p] = src[p];
+        p++;
+    }
+    dest[i + p] = '\0';
+    return (dest);
 }

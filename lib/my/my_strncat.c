@@ -7,5 +7,15 @@
 
 char *my_strncat(char *dest , char  const *src, int nb)
 {
-    return (0);
+    int i = 0;
+    int p = 0;
+
+    while (dest[i] != '\0') 
+        i++;
+    while (src[p] != '\0' && p < nb) {
+        dest[i + p] = src[p];
+        p++;
+    }
+    dest[i + p] = '\0';
+    return (dest);
 }
