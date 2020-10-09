@@ -49,7 +49,7 @@ char **my_str_to_word_array(char const *str)
 {
     int char_i = 0;
     int char_ia = 0;
-    int string_i = 1;
+    int string_i = 0;
     int charmax = charcounter(str);
     char **wordarray;
     
@@ -57,17 +57,24 @@ char **my_str_to_word_array(char const *str)
     wordarray[string_i] = malloc(sizeof(char) * charmax);
     for (char_i = 0; str[char_i] != '\0'; char_i++) {
         if (str[char_i] > 57 && str [char_i] < 65 || str[char_i] > 90 &
-        & str[char_i] < 97 || str[char_i] > 122 || str[char_i] < 48) {
-            wordarray[string_i][char_ia] = '\0';
-            string_i++;
-            wordarray[string_i] = malloc(sizeof(char) * charmax);
-            char_ia = 0;
+            & str[char_i] < 97 || str[char_i] > 122 || str[char_i] < 48) {
+                if (str[char_i + 1] > 47 && str[char_i + 1] < 58 || str[char_i + 1] > 64 &
+                & str[char_i + 1] < 91 || str[char_i + 1] > 96 && str[char_i + 1] < 123) {
+                     wordarray[string_i][char_ia] = '\0';
+                    string_i++;
+                    wordarray[string_i] = malloc(sizeof(char) * charmax);
+                    char_ia = 0;
+                }
+                else {
+                   char_ia++;
+                }
         }
         else {
             wordarray[string_i][char_ia] = str[char_i];
             char_ia++;
         }
     }
-    wordarray[string_i + 1] = "\0";
+    //wordarray[string_i + 1] = "\0";
+    //printf("%s\n", wordarray[1]);
     return (wordarray);
 }
