@@ -9,7 +9,7 @@ int my_isneg(int n)
 {
     char N = 'N';
     char P = 'P';
-        
+
     if (n >= 0) {
         my_putchar(P);
     }

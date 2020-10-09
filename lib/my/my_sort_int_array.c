@@ -5,7 +5,7 @@
 ** my_sort_int_array
 */
 
-void my_sort_int_array(int *array , int  size)
+void my_sort_int_array(int *array, int size)
 {
     return (0);
 }
