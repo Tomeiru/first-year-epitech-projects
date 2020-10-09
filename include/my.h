@@ -5,6 +5,9 @@
 ** my.h
 */
 
+#ifndef MY_H
+#define MY_H 
+
 int my_compute_power_rec(int nb, int p);
 int my_compute_square_root(int nb);
 int my_find_prime_sup(int nb);
@@ -35,3 +38,5 @@ char *my_strncpy(char *dest, char const *src, int n);
 char *my_strstr(char *str, char const *to_find);
 char *my_strupcase(char *str);
 void my_swap(int *a, int *b);
+
+#endif /* TEST_H_*/
