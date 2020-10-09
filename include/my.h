@@ -38,5 +38,6 @@ char *my_strncpy(char *dest, char const *src, int n);
 char *my_strstr(char *str, char const *to_find);
 char *my_strupcase(char *str);
 void my_swap(int *a, int *b);
+void last_letter_swap(char *p, char *l);
 
 #endif /* TEST_H_*/
