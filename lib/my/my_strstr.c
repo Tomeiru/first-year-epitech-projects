@@ -21,7 +21,7 @@ char *my_strstr(char *str, char const *to_find)
         }
         if (l != 1)
             return (&str[i]);
-    i++;
+        i++;
     }
     return (0);
 }
