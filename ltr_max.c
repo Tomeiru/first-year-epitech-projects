@@ -5,6 +5,8 @@
 ** ltr_max
 */
 
+#include "proto.h"
+
 int my_ltr_isalpha(char ltr)
 {
     int i = 0;

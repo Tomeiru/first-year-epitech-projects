@@ -5,6 +5,8 @@
 ** my_str_is_not_alpha
 */
 
+#include "proto.h"
+
 int my_str_isnotalpha(char const *str)
 {
     int i = 0;

@@ -5,10 +5,13 @@
 ** Rush
 */
 
+#include "proto.h"
+
 int rush(int ac, char **av)
 {
     int res = 0;
 
+    //error(ac, av);
     for (int i = 2; i < ac; ++i) {
         res = 0;
         my_putchar(av[i][0]);
