@@ -9,6 +9,10 @@
 #define proto
 
 int match(char const *s1, char const *s2);
-int rec_match (char const *s1, char const *s2, int i, int j);
+int no_star(char const *s1, char const *s2);
+int one_star(char const *s1, char const*s2);
+int stars (char const *s1, char const *s2);
+int main (void);
+int my_strlen(char const *str);
 
 #endif /* !proto */
