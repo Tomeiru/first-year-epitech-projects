@@ -43,7 +43,7 @@ NAME = libmy.a
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-		ar rc libmy.a *.o
+		ar rc $(NAME) $(OBJ)
 		cp libmy.a ../
 		cp my.h ../../include/
 
@@ -52,3 +52,6 @@ clean:
 
 fclean:	clean
 		rm -f $(NAME)
+		@rm -fr ../libmy.a
+
+re:	fclean all
