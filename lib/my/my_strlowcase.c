@@ -5,6 +5,8 @@
 ** my_strupcase
 */
 
+#include "my.h"
+
 char *my_strlowcase(char *str)
 {
     int i = 0;

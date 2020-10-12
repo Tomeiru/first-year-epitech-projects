@@ -5,6 +5,8 @@
 ** my_str_isalpha
 */
 
+#include "my.h"
+
 int my_str_isupper(char const *str)
 {
     int i = 0;

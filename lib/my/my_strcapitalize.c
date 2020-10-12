@@ -5,6 +5,8 @@
 ** my_strcapitalize
 */
 
+#include "my.h"
+
 char *my_strcapitalize(char *str)
 {
     int i = 0;

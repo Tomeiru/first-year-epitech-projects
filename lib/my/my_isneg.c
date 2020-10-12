@@ -5,6 +5,8 @@
 ** my_isneg
 */
 
+#include "my.h"
+
 int my_isneg(int n)
 {
     char N = 'N';

@@ -5,6 +5,8 @@
 ** my_strncat
 */
 
+#include "my.h"
+
 char *my_strncat(char *dest , char  const *src, int nb)
 {
     int i = 0;

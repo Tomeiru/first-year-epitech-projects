@@ -5,6 +5,8 @@
 ** my_strstr
 */
 
+#include "my.h"
+
 char *my_strstr(char *str, char const *to_find)
 {
     int i = 0;

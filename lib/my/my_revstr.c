@@ -5,6 +5,8 @@
 ** my_rev_str
 */
 
+#include "my.h"
+
 void last_letter_swap(char *p, char *l)
 {
     char z;
