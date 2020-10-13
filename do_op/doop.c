@@ -13,6 +13,7 @@ int doop(int ac, char **av)
     int nbr2 = my_getnbr(av[3]);
     int sign = my_get_sign(av[2]);
     int res = 0;
+    int useless = 0;
 
     if (sign == 0)
         res = nbr1 + nbr2;
@@ -20,6 +21,7 @@ int doop(int ac, char **av)
         res = nbr1 - nbr2;
     if (sign == 2)
         res = nbr1 * nbr2;
+    useless = 1;
     if (sign == 3)
         res = nbr1 / nbr2;
     if (sign == 4)

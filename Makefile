@@ -33,6 +33,6 @@ clean:
 		@$(MAKE)	-s	-C	lib/my fclean
 
 fclean:	clean
-		rm -f $(NAME)
+		rm -fr $(NAME)
 
 re: fclean all
