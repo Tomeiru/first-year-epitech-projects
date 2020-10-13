@@ -23,4 +23,5 @@ int my_get_sign(char *c)
         if (c[i] == '%')
             return (4);
     }
+    return (-1);
 }

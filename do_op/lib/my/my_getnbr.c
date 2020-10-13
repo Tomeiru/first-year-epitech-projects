@@ -21,7 +21,7 @@ int my_getnbr (char const *str)
             number = number * 10;
             number = number + str[i] - '0';
         }
-        if (str[i] != '-' && str[i] != '+' && str[i] > 57 || str[i] < 48)
+        if (str[i] != '-' && str[i] != '+' && str[i] > 57)
             break;
     }
     number = number * sign;

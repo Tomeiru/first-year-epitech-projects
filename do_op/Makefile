@@ -18,7 +18,7 @@ NAME = do-op
 
 OBJ = 	$(SRC:.c=.o)
 
-CFLAGS = -I. -I$(INC_PATH)
+CFLAGS = -I. -I$(INC_PATH) -Wall -Wextra
 
 LIBS =	-L lib/my -lmy
 

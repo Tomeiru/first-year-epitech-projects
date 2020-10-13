@@ -17,4 +17,6 @@ int main(int argc, char **argv)
         return(84);
     }
     my_put_nbr(doop(argc, argv));
+    my_putchar('\n');
+    return (0);
 }
