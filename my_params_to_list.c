@@ -6,6 +6,7 @@
 */
 
 #include <stddef.h>
+#include "mylist.h"
 
 linked_list_t *pleaselist(linked_list_t *list, char *s)
 {
