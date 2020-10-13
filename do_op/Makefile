@@ -5,12 +5,12 @@
 ## Makefile
 ##
 
-SRC =	do_op/doop.c	\
-		do_op/error.c	\
-		do_op/has_nbr.c	\
-		do_op/is_op.c	\
-		do_op/main.c	\
-		do_op/my_get_sign.c
+SRC =	doop.c	\
+		error.c	\
+		has_nbr.c	\
+		is_op.c	\
+		main.c	\
+		my_get_sign.c
 
 INC_PATH=include
 
@@ -20,7 +20,7 @@ OBJ = 	$(SRC:.c=.o)
 
 CFLAGS = -I. -I$(INC_PATH)
 
-LIBS =	-L ./lib/my -lmy
+LIBS =	-L lib/my -lmy
 
 $(NAME):	$(OBJ)
 		@$(MAKE)	-s	-C	lib/my
