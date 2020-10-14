@@ -11,7 +11,7 @@
 int my_find_nodes(linked_list_t const *begin , int (*f)(), void const *data_ref, int (*cmp)())
 {
     while (begin != NULL) {
-        if (cmp(begin->data, data_ref))
+        if (cmp(begin->data, data_ref) == 0)
             return (begin);
         begin = begin->next;
     }

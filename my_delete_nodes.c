@@ -13,7 +13,7 @@ int my_delete_nodes(linked_list_t **begin , void const *data_ref , int (*cmp)())
     linked_list_t *list = *begin;
 
     while (begin != NULL) {
-        if (cmp(list->data, data_ref))
+        if (cmp(list->data, data_ref) == 0)
             *begin = list->next;
         list = list->next;
     }
