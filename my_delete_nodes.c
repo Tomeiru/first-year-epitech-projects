@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "mylist.h"
 
-int my_delete_nodes(linked_list_t **begin , void const *data_ref , int (*cmp)())
+int my_delete_nodes(linked_list_t **begin, void const *data_ref, int (*cmp)())
 {
     linked_list_t *list = *begin;
 
