@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-int my_getnbr (char const *str)
+int my_getnbr(char const *str)
 {
     int i = 0;
     int sign = 1;
@@ -27,5 +27,5 @@ int my_getnbr (char const *str)
     number = number * sign;
     if (number > 2147483647 || number < -2147483647)
         return (0);
-    return((int)number);
+    return ((int)number);
 }
