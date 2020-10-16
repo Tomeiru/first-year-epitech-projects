@@ -15,7 +15,7 @@ char *zero(char *str, int dif, int len)
 
     for (i = 0; i != len; i++)
         newstr[i] = str[i];
-    for (i; i != len + dif; i ++)
+    for ( ; i != len + dif; i ++)
         newstr[i] = '0';
     newstr[i] = '\0';
     return (newstr);
