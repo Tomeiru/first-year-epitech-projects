@@ -25,4 +25,5 @@ int biggest_number (char *fst_num, char *sec_num, int fst_sign, int sec_sign)
             return (-1);
     }
     my_putchar('0');
+    return (0);
 }

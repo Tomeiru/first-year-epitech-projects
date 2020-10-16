@@ -5,6 +5,9 @@
 ** second_longest
 */
 
+#include "infinadd.h"
+#include "my.h"
+
 void second_longest(char *fst_num, char *sec_num, int fst_sign, int sec_sign)
 {
     int fst_len = my_strlen(fst_num);

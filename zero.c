@@ -5,6 +5,9 @@
 ** zero
 */
 
+#include "infinadd.h"
+#include "my.h"
+
 char *zero(char *str, int dif, int len)
 {
     int i = 0;
