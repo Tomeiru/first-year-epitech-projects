@@ -25,5 +25,5 @@ int infinadd(char *fst_num, char *sec_num)
     if (longest == -1)
         second_longest(fst_abs, sec_abs, fst_sign, sec_sign);
 
-    return(0);
+    return (0);
 }
