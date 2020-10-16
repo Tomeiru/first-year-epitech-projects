@@ -18,8 +18,7 @@ int infinadd(char *fst_num, char *sec_num)
     char *sec_abs = absol(sec_num, sec_sign, sec_length);
     int longest = longest_string(fst_length, sec_length, fst_sign, sec_sign);
 
-
     if (longest == 0)
-        same_tenth(fst_num, sec_num, fst_sign, sec_sign);
+        same_tenth(fst_abs, sec_abs, fst_sign, sec_sign);
     return(0);
 }

@@ -19,7 +19,7 @@ SRC =	absol.c	\
 
 INC_PATH=include
 
-NAME = do-op
+NAME = infin_add
 
 OBJ = 	$(SRC:.c=.o)
 

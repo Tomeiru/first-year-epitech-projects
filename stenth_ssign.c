@@ -16,7 +16,7 @@ char *stenth_ssign(char *fst_num, char *sec_num, int retenue, int number)
     for (i = 0; fst_num[i]; ++i) {
         int a = (fst_num[i] - 48);
         int b = (sec_num[i] - 48);
-        number = a - b + retenue;
+        number = a + b + retenue;
         if (number >= 10) {
             retenue = 1;
             number %= 10;

@@ -17,7 +17,7 @@ int is_valid_num(char const *str);
 int longest_string(int first, int second, int fst_sign, int sec_sign);
 int main(int argc, char **argv);
 int my_sign(char *num);
-int same_tenth(char *fst_num, char *sec_num, int fst_sign, int sec_sign);
+void same_tenth(char *fst_num, char *sec_num, int fst_sign, int sec_sign);
 char *stenth_dsign(char *fst_num, char *sec_num, int retenue, int number);
 char *stenth_ssign(char *fst_num, char *sec_num, int retenue, int number);
 

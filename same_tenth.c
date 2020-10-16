@@ -8,7 +8,7 @@
 #include "infinadd.h"
 #include "my.h"
 
-int same_tenth(char *fst_num, char *sec_num, int fst_sign, int sec_sign)
+void same_tenth(char *fst_num, char *sec_num, int fst_sign, int sec_sign)
 {
     int biggest = biggest_number(fst_num, sec_num, fst_sign, sec_sign);
 
