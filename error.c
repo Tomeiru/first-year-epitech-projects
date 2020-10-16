@@ -16,5 +16,8 @@ int error (int ac, char **av)
         return (84);
     if (ac != 3)
         return (84);
+    if ((my_strlen(av[1]) == 1 && av[1][0] == '0') && (my_strlen(av[2]) == 1 
+    && av[2][0] == '0'))
+        my_putchar('0');
     return (0);
 }
