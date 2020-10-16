@@ -12,7 +12,6 @@ char *stenth_ssign(char *fst_num, char *sec_num, int retenue, int number)
 {
     char *result = malloc(sizeof(char) * my_strlen(fst_num) + 1);
     int i = 0;
-
     for (i = 0; fst_num[i]; ++i) {
         int a = (fst_num[i] - 48);
         int b = (sec_num[i] - 48);

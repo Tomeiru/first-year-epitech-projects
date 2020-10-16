@@ -23,6 +23,8 @@ int biggest_number (char *fst_num, char *sec_num, int fst_sign, int sec_sign)
             return (1);
         if (fst_num[i] < sec_num [i] && sec_sign == 1)
             return (-1);
+        if (fst_sign == 1 && sec_sign == 1)
+            return (0);
     }
     my_putchar('0');
     return (0);
