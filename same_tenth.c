@@ -24,7 +24,6 @@ void same_tenth(char *fst_num, char *sec_num, int fst_sign, int sec_sign)
         my_putchar('\n');
     }
     if (fst_sign + sec_sign == -2) {
-        my_putchar('-');
         my_putstr(stenth_ssign(fst_num, sec_num, 0, 0));
         my_putchar('\n');
     }

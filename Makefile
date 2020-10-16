@@ -15,7 +15,10 @@ SRC =	absol.c	\
 		my_sign.c	\
 		same_tenth.c	\
 		stenth_dsign.c	\
-		stenth_ssign.c
+		stenth_ssign.c	\
+		first_longest.c	\
+		second_longest.c	\
+		zero.c
 
 INC_PATH=include
 

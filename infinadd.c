@@ -20,5 +20,10 @@ int infinadd(char *fst_num, char *sec_num)
 
     if (longest == 0)
         same_tenth(fst_abs, sec_abs, fst_sign, sec_sign);
+    if (longest == 1)
+        first_longest(fst_abs, sec_abs, fst_sign, sec_sign);
+    if (longest == -1)
+        second_longest(fst_abs, sec_abs, fst_sign, sec_sign);
+
     return(0);
 }

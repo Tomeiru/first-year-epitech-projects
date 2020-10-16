@@ -17,7 +17,7 @@ char *stenth_dsign(char *fst_num, char *sec_num, int retenue, int number)
         int b = (sec_num[i] - 48);
         a - (b + retenue) < 0 ? a += 10 : a;
         number = a - (b + retenue);
-        if (a > 10)
+        if (a >= 10)
             retenue = 1;
         else
             retenue = 0;
