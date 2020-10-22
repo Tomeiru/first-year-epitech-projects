@@ -8,7 +8,8 @@
 int main(int ac, char **av)
 {
     if (ac == 2) {
-        printf("%d\n", mix(av[1]));
+        my_put_nbr(mix(av[1]));
+        my_putchar('\n');
         return (0);
     }
     return (84);
