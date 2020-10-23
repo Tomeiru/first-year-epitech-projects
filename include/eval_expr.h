@@ -16,5 +16,6 @@ int multi_fac(char const *str);
 void my_strtolfac(char const *str, char **endptr);
 int my_strtol(char const *str, char **endptr);
 int my_strsign(char const *str);
+int assign_value(char const *str, char **endptr);
 
 #endif /* !EVAL_EXPR_H_ */
