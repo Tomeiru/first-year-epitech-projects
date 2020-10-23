@@ -5,6 +5,8 @@
 ** counter
 */
 
+#include "eval_expr.h"
+
 int add_counter(char const *str)
 {
     int count = 0;

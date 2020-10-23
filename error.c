@@ -5,6 +5,8 @@
 ** error
 */
 
+#include "eval_expr.h"
+
 int error(char const *str)
 {
     for (int i = 0; str[i]; i++) {

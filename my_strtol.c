@@ -5,11 +5,12 @@
 ** my_strtol
 */
 
+#include "eval_expr.h"
+
 void my_strtolfac(char const *str, char **endptr)
 {
     int i = 0;
     int sign = 1;
-    long number = 0;
 
     if (str[0] == '-') {
         sign = sign * -1;
@@ -52,7 +53,6 @@ int my_strsign(char const *str)
 {
     int i = 0;
     int sign = 1;
-    long number = 0;
 
     if (str[0] == '-') {
             sign *= -1;

@@ -5,6 +5,8 @@
 ** multi_fac
 */
 
+#include "eval_expr.h"
+
 int multi_fac(char const *str, int count)
 {
     int *numb = malloc(sizeof(int) * (count + 1));

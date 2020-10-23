@@ -5,6 +5,8 @@
 ** mix
 */
 
+#include "eval_expr.h"
+
 int mix(char const *str)
 {
     int count = add_counter(str);
