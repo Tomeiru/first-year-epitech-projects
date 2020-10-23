@@ -5,11 +5,7 @@
 ## Makefile
 ##
 
-SRC =	counter.c	\
-		main.c		\
-		mix.c		\
-		multi_fac.c	\
-		my_strtol.c	\
+SRC =	eval_expr.c	\
 		error.c
 
 INC_PATH=include
