@@ -10,13 +10,13 @@
 char *my_strstr(char *str, char const *to_find)
 {
     int i = 0;
-    int m = 0;
+    int n = 0;
     int k = 0;
 
     while (str[i] != '\0') {
         k = 0;
-        for (m = 0; to_find[m] != '\0'; m++) {
-            if (str[i + m] != to_find[m]) {
+        for (n = 0; to_find[n] != '\0'; n++) {
+            if (str[i + n] != to_find[n]) {
                 k = 1;
                 break;
             }
