@@ -35,9 +35,8 @@ int my_strtol(char const *str, char **endptr)
             i++;
     }
     for (i; str[i]; i++) {
-        if (str[i] >= '0' && str[i] <= '9') {
+        if (str[i] >= '0' && str[i] <= '9')
             number = number * 10 + str[i] - '0';
-        }
         if (str[i] > 57 || str[i] < 48)
             break;
     }
