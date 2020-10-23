@@ -9,14 +9,14 @@
 
 int my_isneg(int n)
 {
-    char N = 'N';
-    char P = 'P';
+    char neg = 'N';
+    char pos = 'P';
 
     if (n >= 0) {
-        my_putchar(P);
+        my_putchar(pos);
     }
 
     else {
-        my_putchar(N);
+        my_putchar(neg);
     }
 }
