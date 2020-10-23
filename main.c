@@ -5,10 +5,10 @@
 ** main
 */
 
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
-    if (ac == 2) {
-        my_put_nbr(mix(av[1]));
+    if (argc == 2) {
+        my_put_nbr(mix(argv[1]));
         my_putchar('\n');
         return (0);
     }

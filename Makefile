@@ -23,7 +23,7 @@ LIBS =	-L lib/my -lmy
 
 $(NAME):	$(OBJ)
 		@$(MAKE)	-s	-C	lib/my
-		@gcc -o $(NAME) $(OBJ) $(LIBS) $(CFLAGS)
+		@gcc -g -o $(NAME) $(OBJ) $(LIBS) $(CFLAGS)
 
 all:	$(NAME)
 
