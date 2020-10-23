@@ -18,7 +18,7 @@ NAME = eval_expr
 
 OBJ = 	$(SRC:.c=.o)
 
-CFLAGS = -I. -I$(INC_PATH) -Wall -Wextra
+CFLAGS = -I. -I$(INC_PATH) -Wall -Wextra -g
 
 LIBS =	-L lib/my -lmy
 
