@@ -9,7 +9,8 @@ SRC =	counter.c	\
 		main.c		\
 		mix.c		\
 		multi_fac.c	\
-		my_strtol.c
+		my_strtol.c	\
+		error.c
 
 INC_PATH=include
 
