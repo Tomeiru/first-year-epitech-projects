@@ -8,11 +8,12 @@
 #ifndef RUSH_H_
 #define RUSH_H_
 
-#define BUFF_SIZE 4096
+#define BUFF_SIZE 8192
 #include "my.h"
 
 int main(void);
-int rush(char *sqr);
+int rush(char *sqr, int j);
+int counter (int *res);
 void display(int *tab, int *res, int i, int j);
 int *square_size(char *buff);
 void print(char *str, int *tab);

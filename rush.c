@@ -13,8 +13,13 @@ int *square_size(char *buff)
     for (int i = 0; buff[i]; ++i)
         if (buff[i] == '\n')
             ++size[1];
+    if (size[0] < 1 || size[1] < 1) {
+        size[0] = 1;
+        size[1] = 1;
+    }
     return (size);
 }
+
 void print(char *str, int *tab)
 {
     my_putstr(str);
@@ -22,8 +27,16 @@ void print(char *str, int *tab)
     my_put_nbr(tab[0]);
     my_putchar(' ');
     my_put_nbr(tab[1]);
-
 }
+
+void second_print(int j)
+{
+    if (j > 1)
+        my_putstr(" || ");
+    if (j == 1)
+        my_putchar('\n');
+}
+
 void display(int *tab, int *res, int i, int j)
 {
     switch (i) {
@@ -43,17 +56,23 @@ void display(int *tab, int *res, int i, int j)
         print("[rush1-5]", tab);
         break;
     }
-    if (j > 1)
-	my_putstr(" || ");
-    if (j == 1)
-	my_putchar('\n'); 
+    second_print(j);
 }
 
-int rush(char *sqr)
+int counter (int *res)
+{
+    int j = 0;
+
+    for (int i = 0; res[i] != -1; i++)
+        if (res[i] == 1)
+            j++;
+    return (j);
+}
+
+int rush(char *sqr, int j)
 {
     int *tab = square_size(sqr);
     int *res = malloc(sizeof(int) * 6);
-    int j = 0;
 
     res[0] = sqcmp(sqr, rush_one(tab[0], tab[1]));
     res[1] = sqcmp(sqr, rush_two(tab[0], tab[1]));
@@ -65,12 +84,11 @@ int rush(char *sqr)
         my_putstr("none\n");
         return (84);
     }
+    j = counter(res);
     for (int i = 0; res[i] != -1; i++)
-	    if(res[i] == 1)
-	        j++;
-    for(int i = 0; res[i] != -1; i++)
-	    if(res[i] == 1) {
+	    if (res[i] == 1) {
 	        display(tab, res, i, j);
 	        j--;
 	    }
+    return (0);
 }
