@@ -21,5 +21,5 @@ int main(void)
     buff[offset] = '\0';
     if (len < 0)
         return (84);
-    return(rush(buff, 0));
+    return (rush(buff, 0));
 }
