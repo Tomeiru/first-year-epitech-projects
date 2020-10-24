@@ -58,7 +58,7 @@ int rush(char *sqr)
     res[0] = sqcmp(sqr, rush_one(tab[0], tab[1]));
     res[1] = sqcmp(sqr, rush_two(tab[0], tab[1]));
     res[2] = sqcmp(sqr, rush_three(tab[0], tab[1]));
-    res[3] = sqcmp(sqr, rush_three(tab[0], tab[1]));
+    res[3] = sqcmp(sqr, rush_four(tab[0], tab[1]));
     res[4] = sqcmp(sqr, rush_five(tab[0], tab[1]));
     res[5] = -1;
     if (error(res) == 84) {
