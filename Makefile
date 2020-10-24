@@ -13,7 +13,8 @@ SRC =	main.c	\
 		rush_three.c	\
 		rush_four.c	\
 		rush_five.c	\
-		error.c
+		error.c	\
+		second_print.c
 
 INC_PATH=include
 

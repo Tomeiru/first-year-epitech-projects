@@ -29,14 +29,6 @@ void print(char *str, int *tab)
     my_put_nbr(tab[1]);
 }
 
-void second_print(int j)
-{
-    if (j > 1)
-        my_putstr(" || ");
-    if (j == 1)
-        my_putchar('\n');
-}
-
 void display(int *tab, int *res, int i, int j)
 {
     switch (i) {
