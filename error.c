@@ -5,6 +5,9 @@
 ** error
 */
 
+#include <unistd.h>
+#include "rush.h"
+
 int error(int *res)
 {
     int i = 0;

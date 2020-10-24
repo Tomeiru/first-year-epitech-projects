@@ -5,6 +5,9 @@
 ** my_strcmp
 */
 
+#include <unistd.h>
+#include "rush.h"
+
 int sqcmp(char const *s1, char const *s2)
 {
     int i = 0;

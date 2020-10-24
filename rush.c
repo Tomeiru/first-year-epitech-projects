@@ -5,6 +5,9 @@
 ** rush
 */
 
+#include <unistd.h>
+#include "rush.h"
+
 int *square_size(char *buff)
 {
     int *size = malloc(sizeof(int) * 2);
@@ -33,7 +36,7 @@ void display(int *tab, int *res, int i, int j)
 {
     switch (i) {
     case 0 :
-	    print("[rush1-1]", tab);
+        print("[rush1-1]", tab);
         break;
     case 1 :
         print("[rush1-2]", tab);

@@ -5,6 +5,9 @@
 ** rush
 */
 
+#include <unistd.h>
+#include "rush.h"
+
 static char *top_bot_line(int a, char *square)
 {
     int amax = a;

@@ -5,6 +5,9 @@
 ** second_print
 */
 
+#include <unistd.h>
+#include "rush.h"
+
 void second_print(int j)
 {
     if (j > 1)

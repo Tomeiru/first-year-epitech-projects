@@ -22,10 +22,5 @@ char *rush_four(int x, int y);
 char *rush_three(int x, int y);
 char *rush_two(int x, int y);
 char *rush_one(int x, int y);
-char *between_lines(int b, int c, char *square, int i);
-char *top_line(int a, char *square);
-char *exception(int e, int f, char *square);
-char *bot_line(int a, char *square);
-char *top_bot_line(int a, char *square);
 
 #endif /* !RUSH_H_ */
