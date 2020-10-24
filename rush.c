@@ -35,19 +35,19 @@ void print(char *str, int *tab)
 void display(int *tab, int *res, int i, int j)
 {
     switch (i) {
-    case 0 :
+    case 0:
         print("[rush1-1]", tab);
         break;
-    case 1 :
+    case 1:
         print("[rush1-2]", tab);
         break;
-    case 2 :
+    case 2:
         print("[rush1-3]", tab);
         break;
-    case 3 :
+    case 3:
         print("[rush1-4]", tab);
         break;
-    case 4 :
+    case 4:
         print("[rush1-5]", tab);
         break;
     }

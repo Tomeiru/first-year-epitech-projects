@@ -35,7 +35,7 @@ static char *between_lines(int b, int c, char *square, int i)
 {
     int bmax = b;
 
-    for (c -= 2; c > 0; c-- && i++) {
+    for (c -= 2; c > 0; c--) {
         if (b == bmax) {
             square[i] = 'B';
             i++;
@@ -50,7 +50,7 @@ static char *between_lines(int b, int c, char *square, int i)
             i++;
         }
         b = bmax;
-        square[i] = '\n';
+        square[i++] = '\n';
     }
     return (square);
 }
