@@ -43,9 +43,9 @@ void display(int *tab, int *res, int i, int j)
         print("[rush1-5]", tab);
         break;
     }
-    if(j > 1)
+    if (j > 1)
 	my_putstr(" || ");
-    if(j == 1)
+    if (j == 1)
 	my_putchar('\n'); 
 }
 
