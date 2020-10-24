@@ -54,7 +54,7 @@ int rush(char *sqr)
     int *tab = square_size(sqr);
     int *res = malloc(sizeof(int) * 6);
     int j = 0;
-    
+
     res[0] = sqcmp(sqr, rush_one(tab[0], tab[1]));
     res[1] = sqcmp(sqr, rush_two(tab[0], tab[1]));
     res[2] = sqcmp(sqr, rush_three(tab[0], tab[1]));
