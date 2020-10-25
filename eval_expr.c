@@ -28,17 +28,34 @@ int my_strtol(char *str, char **endptr)
     return (nbr);
 }
 
-int factors(char *str, char **endptr)
+int parentheses(char *str, char **endptr)
 {
     int res = my_strtol(str, endptr);
 
+    if ((str[0] == '+' || str[0] == '-' || str[0] == '*' || str[0] == '/' ||
+    str[0] == '%') && (str[1] == '('))
+        str++;
+    if (*str == '(') {
+        str++;
+        res = summands(&str);
+        *endptr = str;
+        if (**endptr == ')')
+            *endptr += 1;
+    }
+    return (res);
+}
+
+int factors(char *str, char **endptr)
+{
+    int res = parentheses(str, endptr);
+
     while (**endptr == '*' || **endptr == '/' || **endptr == '%') {
         if (**endptr == '*')
-            res = res * my_strtol(*endptr, endptr);
+            res = res * parentheses(*endptr, endptr);
         else if (**endptr == '/')
-            res = res / my_strtol(*endptr, endptr);
+            res = res / parentheses(*endptr, endptr);
         else
-            res = res % my_strtol(*endptr, endptr);
+            res = res % parentheses(*endptr, endptr);
     }
     return (res);
 }
@@ -49,7 +66,8 @@ int summands(char **str_ptr)
     int res = factors(*str_ptr, &endptr);
 
     while (*endptr == '+' || *endptr == '-')
-            res += factors(endptr, &endptr);
+        res += factors(endptr, &endptr);
+    *str_ptr = endptr;
     return (res);
 }
 
