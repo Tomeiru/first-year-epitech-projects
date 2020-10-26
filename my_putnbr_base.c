@@ -8,20 +8,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*int  my_putnbr_base(char *nbr , char  const *base)
+int  my_putnbr_base(int nbr , char  const *base)
 {
     int n = strlen(base);
 
-    if (nbr[0] == '-') {
+    if (nbr > 0) {
         my_putchar('-');
-        nbr++;
+        nbr *= -1;
     }
-    if (my_getnbr(nbr) > n) {
-        my_putnbr_base(infindiv(nbr/n), base);
+    if (nbr > n) {
+        my_putnbr_base(nbr/n, base);
     }
-    my_putchar(base[infinmod(nbr % n)]);
+    my_putchar(base[nbr % n]);
     return (0);
-}*/
+}
 
 int power_it (int len_base, int n)
 {
