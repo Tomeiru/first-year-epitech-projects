@@ -5,7 +5,10 @@
 ** infinsub
 */
 
-int infinsub(char *fst_num, char *sec_num)
+#include "infinadd.h"
+#include "my.h"
+
+char *infinsub(char *fst_num, char *sec_num)
 {
     int length = my_strlen(sec_num);
 
@@ -19,5 +22,5 @@ int infinsub(char *fst_num, char *sec_num)
         sec_num[length] = '-';
         sec_num = my_revstr(my_strdup(sec_num));
     }
-    infinadd(fst_num, sec_num);
+    return (infinadd(fst_num, sec_num));
 }
