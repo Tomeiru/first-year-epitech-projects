@@ -29,8 +29,7 @@ char *divcalc(char *fst_abs, char *sec_abs)
     char *temp;
     int i = 0;
 
-    if (fst_abs[0] == '0')
-        return ("0");
+    for (; fst_abs[0] == '0'; ++fst_abs);
     if ((do_we_div(fst_abs, sec_abs) == 0))
         return ("0");
     for (int i = 0; i != -1; i++) {
