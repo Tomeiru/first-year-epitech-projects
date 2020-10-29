@@ -61,6 +61,7 @@ char *modglob(char *fst_abs, char *sec_abs)
     int sec_length = my_strlen(sec_abs);
     int length_dif = my_strlen(fst_abs) - my_strlen(sec_abs);
     char *sent = malloc(sizeof(char) * sec_length + 4);
+    char *modulo = malloc(sizeof(char) * sec_length + 4);
     char *ans = malloc(sizeof(char) * length_dif + 3);
     int i = 0;
     int p = 0;
@@ -82,10 +83,11 @@ char *modglob(char *fst_abs, char *sec_abs)
         if (i == length_dif)
             p = 0;
         ans[i] = divcalc(sent, sec_abs)[0];
+        modulo = rest(sent, sec_abs, ans[i]);
         sent = rest(sent, sec_abs, ans[i]);
         sent[my_strlen(sent)] = fst_abs[sec_length + i + p];
     }
-    if (sent[0] == '\0')
+    if (modulo[0] == '\0')
         return("0");
-    return (sent);
+    return (modulo);
 }
