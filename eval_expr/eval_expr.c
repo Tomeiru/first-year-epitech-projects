@@ -17,7 +17,7 @@ char *my_strtol(char *str, char **endptr, char *ops)
         res[j++] = '-';
         i++;
     }
-    else if (str[i] == '+' || str[i] == ops[4] || str[i] == ops[5] ||
+    else if (str[i] == ops[2] || str[i] == ops[4] || str[i] == ops[5] ||
     str[i] == ops[6])
         i++;
     for ( ; str[i] != '\0'; i++) {
@@ -75,7 +75,6 @@ char *summands(char **str_ptr, char *ops, int size)
 
 char *eval_expr(char *base, char *ops, char *expr, int size)
 {
-    expr = "3+5*2";
     if (error(expr) == 1)
         return (summands(&expr, ops, size));
     return ("Error");

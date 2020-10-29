@@ -18,7 +18,7 @@ static char  *get_expr(unsigned int size)
         my_putstr(SYNTAX_ERROR_MSG);
         exit(EXIT_SIZE_NEG);
     }
-    expr = malloc(size + 1);
+    expr = malloc(sizeof(char) * (size + 1));
     if (expr == 0) {
         my_putstr(ERROR_MSG);
         exit(EXIT_MALLOC);
@@ -61,5 +61,6 @@ int main(int ac, char **av)
     check_base(av[1]);
     check_ops(av[2]);
     my_putstr(eval_expr(av[1], av[2], expr, size));
+    my_putchar('\n');
     return (EXIT_SUCCESS);
 }

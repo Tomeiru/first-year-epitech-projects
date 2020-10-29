@@ -5,12 +5,15 @@
 ## Makefile
 ##
 
-SRC =	eval_expr.c	\
-		error.c
+SRC =	main.c	\
+		my_atoi.c	\
+		eval_expr.c	\
+		error.c	\
+		infin_tests.c
 
 INC_PATH =	include
 
-NAME =	bistro
+NAME =	calc
 
 OBJ = 	$(SRC:.c=.o)
 
