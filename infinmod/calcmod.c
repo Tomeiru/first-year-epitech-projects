@@ -29,6 +29,7 @@ static char *divcalc(char *fst_abs, char *sec_abs)
     char *temp;
     int i = 0;
 
+    for (; fst_abs[0] == '0'; ++fst_abs);
     if ((do_we_div(fst_abs, sec_abs) == 0))
         return ("0");
     for (int i = 0; i != -1; i++) {
@@ -78,16 +79,15 @@ char *modglob(char *fst_abs, char *sec_abs)
             break;
     }
     sent[i] = '\0';
-
     for (i = 0; i != length_dif + 1; i++) {
         if (i == length_dif)
             p = 0;
         ans[i] = divcalc(sent, sec_abs)[0];
-        modulo = rest(sent, sec_abs, ans[i]);
-        sent = rest(sent, sec_abs, ans[i]);
+        sent = my_strdup(rest(sent, sec_abs, ans[i]));
+        modulo = my_strdup(sent);
         sent[my_strlen(sent)] = fst_abs[sec_length + i + p];
     }
-    if (modulo[0] == '\0')
+    if (modulo[0] == '0')
         return("0");
     return (modulo);
 }
