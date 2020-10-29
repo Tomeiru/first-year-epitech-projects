@@ -33,8 +33,8 @@ int biggest_number(char *fst_num, char *sec_num, int fst_sign, int sec_sign)
         if (fst_sign == 1 && sec_sign == 1)
             return (0);
     }
-    if (fst_sign + sec_sign == 0)
-        return (-9);
+    /*if (fst_sign + sec_sign == 0)
+        return (-9);*/
     return (0);
 }
 
@@ -53,8 +53,8 @@ char *same_tenth(char *fst_num, char *sec_num, int fst_sign, int sec_sign)
             return (minus_adder(stenth_dsign(fst_num, sec_num, 0, 0)));
         if (biggest == -2)
             return (minus_adder(stenth_dsign(sec_num, fst_num, 0, 0)));
-        if (biggest == -9)
-            return ("0");
+        /*if (biggest == -9)
+            return ("0");*/
     }
     if (fst_sign + sec_sign == -2)
         return (minus_adder(stenth_ssign(fst_num, sec_num, 0, 0)));
