@@ -5,6 +5,9 @@
 ** putstr_base
 */
 
+#include "../include/bistromatic.h"
+#include "../include/my.h"
+
 char *infinpower(char *nbr, int power)
 {
     char *result = "1";
@@ -28,7 +31,7 @@ char *my_nbrtostr(int nbr)
     return(str);
 }
 
-int  putstr_base(char *nbr , char *base, int m)
+int putstr_base(char *nbr , char *base, int m)
 {
     int n = my_strlen(nbr) - 1;
     int cpt;
@@ -49,6 +52,5 @@ int  putstr_base(char *nbr , char *base, int m)
         former_result = putstr_base(nbr, base, m);
     }
     result = infin_add(result, former_result);
-    printf("%s\n", result);
     return (result);
 }
