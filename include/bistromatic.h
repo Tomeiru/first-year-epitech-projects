@@ -30,6 +30,7 @@
 #define ERROR_MSG "error"
 
 #include <stdlib.h>
+#include "my.h"
 
 char *my_strtol(char *str, char **endptr, char *ops);
 char *parentheses(char *str, char **endptr, char *ops, int size);
@@ -65,5 +66,6 @@ int do_we_mod(char *fst_num, char *sec_num);
 char *infin_mod(char *fst_num, char *sec_num);
 char *infin_sub(char *fst_num, char *sec_num);
 void div_by_zero(char *num);
+void main_error(char **av, char *expr);
 
 #endif /* BISTROMATIC_H_*/
