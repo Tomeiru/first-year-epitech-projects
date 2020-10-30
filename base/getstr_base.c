@@ -21,12 +21,32 @@ char *getstr_base(char *nbr, char *base, int len, char *res)
     nbr++;
     if (len > 0)
         res = infin_add(res, getstr_base(nbr, base, len, res));
-    printf("%s\n", res);
     return (res);
 }
 
-int main (int ac, char **av)
+char *getstr(char *nbr, char *base, char *op)
 {
-    getstr_base(av[1], av[2], my_strlen(av[1]), "0");
-    return (0);
+    char *temp = malloc(10000);
+    char *result = malloc(10000);
+    int k = 0;
+    int g = 0;
+
+    for (int i = 0; nbr[i] != '\0'; i++)
+    {
+        if (nbr[i] != op[0] && nbr[i] != op[1] && nbr[i] != op[2] && nbr[i] !=
+        op[3] && nbr[i] != op[4] && nbr[i] != op[5] && nbr[i] != op[6])
+            temp[k++] = nbr[i];
+        if (nbr[i] == op[0] || nbr[i] == op[1] || nbr[i] == op[2] || nbr[i] ==
+        op[3] || nbr[i] == op[4] || nbr[i] == op[5] || nbr[i] == op[6] || nbr[i
+        + 1] == '\0'){
+            temp[k] = '\0';
+            temp = getstr_base(temp, base, my_strlen(temp), "0");
+            k = 0;
+            for (int j = 0; temp[j] != '\0'; j++)
+                result[g++] = temp[j];
+            result[g++] = nbr[i];
+        }
+    }
+    result[g - 1] = '\0';
+    return(result);
 }

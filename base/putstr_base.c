@@ -31,7 +31,7 @@ char *my_nbrtostr(int nbr)
     return(str);
 }
 
-int putstr_base(char *nbr , char *base, int m)
+char *putstr_base(char *nbr , char *base, int m)
 {
     int n = my_strlen(nbr) - 1;
     int cpt;
