@@ -43,7 +43,6 @@ int main(int ac, char **av)
         my_putstr(" base ops\"()+_*/%\" exp_len\n");
         return (EXIT_USAGE);
     }
-    printf("%s, %s, %s, %i\n", av[1], av[2], expr, size);
     my_putstr(eval_expr(av[1], av[2], expr, size));
     return (EXIT_SUCCESS);
 }
