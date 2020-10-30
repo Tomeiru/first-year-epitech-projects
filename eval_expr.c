@@ -67,15 +67,17 @@ char *summands(char **str_ptr, char *ops, int size)
     char *endptr = "test";
     char *res = factors(*str_ptr, &endptr, ops, size);
 
-    while (*endptr == ops[2] || *endptr == ops[3])
-        res = infin_add(res, factors(endptr, &endptr, ops, size));
+    while (*endptr == ops[2] || *endptr == ops[3]) {
+        if (*endptr == ops[2])
+            res = infin_add(res, factors(endptr, &endptr, ops, size));
+        if (*endptr == ops[3])
+            res = infin_sub(res, factors(endptr, &endptr, ops, size));
+    }
     *str_ptr = endptr;
     return (res);
 }
 
 char *eval_expr(char *base, char *ops, char *expr, int size)
 {
-    if (error(expr) == 84)
-        return ("Error");
     return (summands(&expr, ops, size));
 }

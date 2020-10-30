@@ -18,6 +18,7 @@ char *infin_div(char *fst_num, char *sec_num)
     char *sec_abs = absol(sec_num, sec_sign, sec_length);
     char *result;
 
+    div_by_zero(sec_abs);
     if (do_we_div(fst_abs, sec_abs) != 2) {
         if (do_we_div(fst_abs, sec_abs) == 1)
             result = "1";

@@ -40,5 +40,6 @@ char *mod_glob(char *fst_abs, char *sec_abs)
     }
     if (modulo[0] == '\0')
         return("0");
+    for (; modulo[0] == '0' && my_strlen(modulo) != 1; ++modulo);
     return (modulo);
 }

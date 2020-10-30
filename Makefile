@@ -6,6 +6,7 @@
 ##
 
 SRC =	main.c	\
+		main_error.c	\
 		my_atoi.c	\
 		eval_expr.c	\
 		error.c	\
