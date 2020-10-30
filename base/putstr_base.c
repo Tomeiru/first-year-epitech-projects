@@ -17,7 +17,7 @@ char *infinpower(char *nbr, int power)
     return (result);
 }
 
-char *my_nbrtostr(int nbr)
+char *nbrtostr(int nbr)
 {
     char *str = malloc(10);
     int i = 0;
@@ -37,11 +37,11 @@ char *putstr_base(char *nbr , char *base, int m)
     int cpt;
     char *former_result = malloc(10000);
     char *result;
-    char *lenght_base = my_nbrtostr(my_strlen(base));
+    char *lenght_base = nbrtostr(my_strlen(base));
 
     former_result = "0";
     for (cpt = 0; nbr[n] != base[cpt]; cpt++);
-    result = infin_mult(my_nbrtostr(cpt), infinpower(lenght_base, m));
+    result = infin_mult(nbrtostr(cpt), infinpower(lenght_base, m));
     m++;
     if (nbr[n] == '-') {
         my_putchar('-');

@@ -16,7 +16,7 @@ char *getstr_base(char *nbr, char *base, int len, char *res)
     if (nbr[0] == '-')
         my_putchar('-');
     for (i = 0; base[i] != nbr[0]; i++);
-    res = infin_mult(my_nbrtostr(i), infinpower(my_nbrtostr(len_base), len - 1));
+    res = infin_mult(nbrtostr(i), infinpower(nbrtostr(len_base), len - 1));
     len--;
     nbr++;
     if (len > 0)
@@ -48,5 +48,5 @@ char *getstr(char *nbr, char *base, char *op)
         }
     }
     result[g - 1] = '\0';
-    return(result);
+    return (result);
 }
