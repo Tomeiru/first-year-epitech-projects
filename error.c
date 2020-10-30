@@ -35,12 +35,3 @@ int error_inf(int ac, char **av)
         return (84);
     return (0);
 }
-
-int error(char const *str)
-{
-    for (int i = 0; str[i]; i++) {
-        if ((str[i] == '%' || str[i] == '/') && str[i + 1] == '0')
-            return(84);
-    }
-    return (1);
-}

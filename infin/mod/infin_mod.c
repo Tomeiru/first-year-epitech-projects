@@ -8,6 +8,15 @@
 #include "../../include/bistromatic.h"
 #include "../../include/my.h"
 
+void div_by_zero(char *num)
+{
+    for (; num[0] == '0'; ++num);
+    if (num[0] == '\0') {
+        my_putstr(SYNTAX_ERROR_MSG);
+        exit(EXIT_USAGE);
+    }
+}
+
 int do_we_mod(char *fst_num, char *sec_num)
 {
     if (my_strlen(fst_num) < my_strlen(sec_num))
@@ -33,6 +42,7 @@ char *infin_mod(char *fst_num, char *sec_num)
     char *sec_abs = absol(sec_num, sec_sign, sec_length);
     char *result;
 
+    div_by_zero(sec_abs);
     if (do_we_mod(fst_abs, sec_abs) != 2) {
         if (do_we_mod(fst_abs, sec_abs) == 1)
             result = "0";

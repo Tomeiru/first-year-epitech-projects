@@ -23,6 +23,8 @@
 #define EXIT_MALLOC 84
 #define EXIT_READ 84
 #define EXIT_OPS 84
+#define EXIT_EMPTY 84
+#define EXIT_PARA 84
 
 #define SYNTAX_ERROR_MSG "syntax error"
 #define ERROR_MSG "error"
@@ -62,5 +64,6 @@ char *mod_glob(char *fst_abs, char *sec_abs);
 int do_we_mod(char *fst_num, char *sec_num);
 char *infin_mod(char *fst_num, char *sec_num);
 char *infin_sub(char *fst_num, char *sec_num);
+void div_by_zero(char *num);
 
 #endif /* BISTROMATIC_H_*/

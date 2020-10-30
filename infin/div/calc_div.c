@@ -27,7 +27,6 @@ char *div_calc(char *fst_abs, char *sec_abs)
 {
     char *ans = "0";
     char *temp;
-    int i = 0;
 
     for (; fst_abs[0] == '0'; ++fst_abs);
     if ((do_we_div(fst_abs, sec_abs) == 0))
@@ -74,5 +73,6 @@ char *div_glob(char *fst_abs, char *sec_abs)
         sent = my_strdup(rest(sent, sec_abs, ans[i]));
         sent[my_strlen(sent)] = fst_abs[sec_length + i + p];
     }
+    for (; ans[0] == '0' && my_strlen(ans) != 1; ++ans);
     return (ans);
 }
