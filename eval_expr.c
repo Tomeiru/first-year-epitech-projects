@@ -14,7 +14,7 @@ char *my_strtol(char *str, char **endptr, char *ops)
     int j = 0;
 
     if (str[i] == ops[3]) {
-        res[j++] = '-';
+        res[j++] = ops[3];
         i++;
     }
     else if (str[i] == ops[2] || str[i] == ops[4] || str[i] == ops[5] ||
