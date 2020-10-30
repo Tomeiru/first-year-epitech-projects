@@ -43,36 +43,45 @@ char *div_calc(char *fst_abs, char *sec_abs)
     return (ans);
 }
 
+char *div_loop(char *fst_abs, char *sec_abs, char *sent, int more)
+{
+    int length_dif = my_strlen(fst_abs) - my_strlen(sec_abs);
+    int p = 0;
+    char *ans = malloc(sizeof(char) * length_dif + 3);
+
+    if (more == 1) {
+        length_dif -= 1;
+        p = 1;
+    }
+    for (int i = 0; i != length_dif + 1; i++) {
+        i == length_dif ? p = 0: 0;
+        ans[i] = div_calc(sent, sec_abs)[0];
+        sent = my_strdup(rest(sent, sec_abs, ans[i]));
+        sent[my_strlen(sent)] = fst_abs[my_strlen(sec_abs) + i + p];
+    }
+    for (; ans[0] == '0' && my_strlen(ans) != 1; ++ans);
+    return (ans);
+}
+
 char *div_glob(char *fst_abs, char *sec_abs)
 {
-    int sec_length = my_strlen(sec_abs);
-    int length_dif = my_strlen(fst_abs) - my_strlen(sec_abs);
-    char *sent = malloc(sizeof(char) * sec_length + 4);
-    char *ans = malloc(sizeof(char) * length_dif + 3);
-    char *calc;
+    char *sent = malloc(sizeof(char) * my_strlen(sec_abs) + 4);
+    char *ans;
+    int more = 0;
     int i = 0;
-    int p = 0;
 
-    for (i = 0; i != sec_length; i++)
+    for (i = 0; i != my_strlen(sec_abs); i++)
         sent[i] = fst_abs[i];
     for (int j = 0; sec_abs[j]; j++) {
         if (sec_abs[j] > sent[j]) {
-            sent[i++] = fst_abs[sec_length + p++];
-            length_dif -= 1;
+            sent[i++] = fst_abs[my_strlen(sec_abs)];
+            more = 1;
             break;
         }
         if (sent[j] > sec_abs[j])
             break;
     }
     sent[i] = '\0';
-    for (i = 0; i != length_dif + 1; i++) {
-        if (i == length_dif)
-            p = 0;
-        calc = div_calc(sent, sec_abs);
-        ans[i] = calc[0];
-        sent = my_strdup(rest(sent, sec_abs, ans[i]));
-        sent[my_strlen(sent)] = fst_abs[sec_length + i + p];
-    }
-    for (; ans[0] == '0' && my_strlen(ans) != 1; ++ans);
+    ans = div_loop(fst_abs, sec_abs, sent, more);
     return (ans);
 }
