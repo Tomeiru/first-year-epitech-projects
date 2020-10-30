@@ -7,11 +7,10 @@
 
 char *infinpower(char *nbr, int power)
 {
-    char *result = malloc(100);
+    char *result = "1";
 
-    for (int i = 0; i < power; i++)
-        result = infinmul(result, nbr);
-    printf("%s\n", result);
+    for (int i = 1; i <= power; i++)
+        result = infin_mult(result, nbr);
     return (result);
 }
 
@@ -33,27 +32,23 @@ int  putstr_base(char *nbr , char *base, int m)
 {
     int n = my_strlen(nbr) - 1;
     int cpt;
-    char *former_result;
+    char *former_result = malloc(10000);
     char *result;
     char *lenght_base = my_nbrtostr(my_strlen(base));
 
+    former_result = "0";
     for (cpt = 0; nbr[n] != base[cpt]; cpt++);
+    result = infin_mult(my_nbrtostr(cpt), infinpower(lenght_base, m));
+    m++;
     if (nbr[n] == '-') {
         my_putchar('-');
         nbr[n] = '\0';
     }
     if (n > 0) {
         nbr[n] = '\0';
-        m++;
         former_result = putstr_base(nbr, base, m);
     }
-    result = infinadd(my_nbrtostr(cpt), infinpower(lenght_base, m));
+    result = infin_add(result, former_result);
+    printf("%s\n", result);
     return (result);
-}
-
-int main (int ac, char **av)
-{
-    putstr_base(av[1], av[2], 0);
-    my_putchar('\n');
-    return (0);
 }
