@@ -36,7 +36,7 @@ char *my_strtol(char *str, char **endptr, char *ops);
 char *parentheses(char *str, char **endptr, char *ops, int size);
 char *factors(char *str, char **endptr, char *ops, int size);
 char *summands(char **str_ptr, char *ops, int size);
-char *eval(char *base, char *ops, char *expr, int size);
+char *eval_expr(char *base, char *ops, char *expr, int size);
 int my_atoi(char *str);
 char *absol(char *num, int sign, int length);
 int biggest_number (char *fst_num, char *sec_num, int fst_sign, int sec_sign);
