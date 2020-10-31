@@ -35,6 +35,7 @@ int main(int ac, char **av)
 {
     unsigned int size = my_atoi(av[3]);
     char *expr = get_expr(size);
+    char *result;
 
     main_error(av, expr);
     if (ac != 4) {
@@ -43,6 +44,7 @@ int main(int ac, char **av)
         my_putstr(" base ops\"()+_*/%\" exp_len\n");
         return (EXIT_USAGE);
     }
-    my_putstr(str_base(eval(av[1], av[2], getstr(av[1], av[2], expr), size), av[1], 0));
+    result = eval_expr(av[1], av[2], getstr(av[1], av[2], expr), size);
+    my_putstr(str_base(result, av[1], 0));
     return (EXIT_SUCCESS);
 }
