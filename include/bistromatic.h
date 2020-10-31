@@ -68,7 +68,8 @@ char *infin_sub(char *fst_num, char *sec_num);
 void div_by_zero(char *num);
 char *getstr(char *base, char *op, char *nbr);
 char *getstr_base(char *nbr, char *base, int len, char *res);
-char *str_base(char *nbr , char *base, int m);
+int *str_base(char *nbr , char *base, char *op);
+int print_str_base(char *nbr);
 char *nbrtostr(int nbr);
 char *infinpower(char *nbr, int power);
 
