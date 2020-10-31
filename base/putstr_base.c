@@ -31,26 +31,35 @@ char *nbrtostr(int nbr)
     return(str);
 }
 
-char *str_base(char *nbr , char *base, int m)
+int print_str_base(char *nbr)
 {
-    int n = my_strlen(nbr) - 1;
-    int cpt;
-    char *former_result = malloc(10000);
-    char *result;
-    char *lenght_base = nbrtostr(my_strlen(base));
+    nbr++;
+    my_putstr(nbr);
+    my_putchar('\n');
+    return (0);
+}
 
-    former_result = "0";
-    for (cpt = 0; nbr[n] != base[cpt]; cpt++);
-    result = infin_mult(nbrtostr(cpt), infinpower(lenght_base, m));
-    m++;
-    if (nbr[n] == '-') {
-        my_putchar('-');
-        nbr[n] = '\0';
+int *str_base(char *nbr , char *base, char *op)
+{
+    char *len_base = nbrtostr(my_strlen(base));
+    int len;
+    char *temp = malloc(10000);
+    char *result = malloc(10000);
+
+    if (nbr[0] == '-') {
+        my_putchar(op[3]);
+        nbr++;
     }
-    if (n > 0) {
-        nbr[n] = '\0';
-        former_result = str_base(nbr, base, m);
+    if (nbr[0] == '0')
+        my_putchar(base[0]);
+    for (len = 0; my_getnbr(infinpower(len_base, len)) < my_getnbr(nbr); len++);
+    for (int i = 0; len >= 0; len--)
+    {
+        temp = infin_div(nbr, infinpower(len_base, len));
+        nbr = infin_mod(nbr, infinpower(len_base, len));
+        result[i++] = base[my_getnbr(temp)];
+        result[i] = '\0';
     }
-    result = infin_add(result, former_result);
-    return (result);
+    print_str_base(result);
+    return (0);
 }
