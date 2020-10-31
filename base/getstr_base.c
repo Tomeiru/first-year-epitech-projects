@@ -30,8 +30,12 @@ char *getstr(char *base, char *op, char *nbr)
     char *result = malloc(10000);
     int k = 0;
     int g = 0;
-
-    for (int i = 0; nbr[i] != '\0'; i++)
+    int i = 0;
+    if (nbr[0] < '0' || nbr[0] > '9') {
+        result[g++] = nbr[i];
+        i++;
+    }
+    for ( ; nbr[i] != '\0'; i++)
     {
         if (nbr[i] != op[0] && nbr[i] != op[1] && nbr[i] != op[2] && nbr[i] !=
         op[3] && nbr[i] != op[4] && nbr[i] != op[5] && nbr[i] != op[6])
@@ -47,6 +51,6 @@ char *getstr(char *base, char *op, char *nbr)
             result[g++] = nbr[i];
         }
     }
-    result[g - 1] = '\0';
+    result[g] = '\0';
     return (result);
 }
