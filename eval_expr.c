@@ -77,7 +77,7 @@ char *summands(char **str_ptr, char *ops, int size)
     return (res);
 }
 
-char *eval_expr(char *base, char *ops, char *expr, int size)
+char *eval(char *base, char *ops, char *expr, int size)
 {
     return (summands(&expr, ops, size));
 }

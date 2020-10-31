@@ -31,7 +31,7 @@ char *nbrtostr(int nbr)
     return(str);
 }
 
-char *putstr_base(char *nbr , char *base, int m)
+char *str_base(char *nbr , char *base, int m)
 {
     int n = my_strlen(nbr) - 1;
     int cpt;
@@ -49,7 +49,7 @@ char *putstr_base(char *nbr , char *base, int m)
     }
     if (n > 0) {
         nbr[n] = '\0';
-        former_result = putstr_base(nbr, base, m);
+        former_result = str_base(nbr, base, m);
     }
     result = infin_add(result, former_result);
     return (result);

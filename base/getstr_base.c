@@ -24,7 +24,7 @@ char *getstr_base(char *nbr, char *base, int len, char *res)
     return (res);
 }
 
-char *getstr(char *nbr, char *base, char *op)
+char *getstr(char *base, char *op, char *nbr)
 {
     char *temp = malloc(10000);
     char *result = malloc(10000);
