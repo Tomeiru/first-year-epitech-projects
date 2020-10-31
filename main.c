@@ -36,7 +36,7 @@ int main(int ac, char **av)
     unsigned int size = my_atoi(av[3]);
     char *expr = get_expr(size);
 
-    main_error(ac, av, expr);
+    main_error(av, expr);
     if (ac != 4) {
         my_putstr("Usage: ");
         my_putstr(av[0]);

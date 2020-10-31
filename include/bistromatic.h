@@ -30,6 +30,7 @@
 #define ERROR_MSG "error"
 
 #include <stdlib.h>
+#include "my.h"
 
 char *my_strtol(char *str, char **endptr, char *ops);
 char *parentheses(char *str, char **endptr, char *ops, int size);

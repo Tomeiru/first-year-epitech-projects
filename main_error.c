@@ -86,8 +86,7 @@ static void check_baseops(char const *b, char const *ops)
     }
 }
 
-
-void main_error(int ac, char **av, char *expr)
+void main_error(char **av, char *expr)
 {
     check_base(av[1]);
     check_ops(av[2]);
