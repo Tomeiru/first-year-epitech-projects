@@ -40,7 +40,7 @@ int print_str_base(char *nbr)
 
     for (i = 1; nbr[i] == '0'; i++);
     if (my_strlen(nbr) != i)
-        nbr++;
+        for (;nbr[0] == '0'; nbr++);
     my_putstr(nbr);
     my_putchar('\n');
     return (0);
@@ -55,7 +55,7 @@ int calc_lenght(char *str, char *base)
     for (; result[0] == '-'; len ++){
         result = infin_sub(infinpower(len_base, len), str);
     }
-    return(len - 1);
+    return(len);
 }
 
 
