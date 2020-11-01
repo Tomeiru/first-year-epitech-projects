@@ -22,8 +22,7 @@ SRC =	main.c	\
 		infin/div/calc_div.c	\
 		infin/mod/infin_mod.c	\
 		infin/mod/calc_mod.c	\
-		base/getstr_base.c	\
-		base/putstr_base.c	\
+		main_error_second.c	\
 
 INC_PATH =	include
 

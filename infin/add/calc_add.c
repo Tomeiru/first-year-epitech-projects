@@ -33,7 +33,7 @@ char *stenth_dsign(char *fst_num, char *sec_num, int leftover, int number)
 
 char *stenth_ssign(char *fst_num, char *sec_num, int leftover, int number)
 {
-    char *result = malloc(sizeof(char) * my_strlen(fst_num) + 1);
+    char *result = malloc(sizeof(char) * my_strlen(fst_num) + 2);
     int i = 0;
     for (i = 0; fst_num[i]; ++i) {
         int a = (fst_num[i] - 48);

@@ -40,7 +40,7 @@ static void check_ops(char const *ops)
         exit(EXIT_OPS);
     }
     for (i = 0; ops[i]; i++) {
-        for (j = i + 1; ops[j] != ops[i] && ops[j] != '\0'; j++);
+        for (j = 0; (ops[j] != ops[i] && ops[j] != '\0') || (j == i); j++);
         if (ops[j] != '\0')
             break;
     }
@@ -55,12 +55,12 @@ static void check_base(char const *b)
     int i = 0;
     int j = 0;
 
-    if (my_strlen(b) < 2) {
+    if (my_strlen(b) != 10) {
         my_putstr(SYNTAX_ERROR_MSG);
         exit(EXIT_BASE);
     }
     for (i = 0; b[i]; i++) {
-        for (j = i + 1; b[j] != b[i] && b[j] != '\0'; j++);
+        for (j = 0; (b[j] != b[i] && b[j] != '\0') || (i == j); j++);
         if (b[j] != '\0')
             break;
     }
@@ -76,7 +76,7 @@ static void check_baseops(char const *b, char const *ops)
     int j = 0;
 
     for (i = 0; ops[i]; i++) {
-        for (j = i; b[j] != ops[i] && b[j] != '\0'; j++);
+        for (j = 0; b[j] != ops[i] && b[j] != '\0'; j++);
         if (b[j] != '\0')
             break;
     }
@@ -88,6 +88,7 @@ static void check_baseops(char const *b, char const *ops)
 
 void main_error(char **av, char *expr)
 {
+    main_error_second(av, expr);
     check_base(av[1]);
     check_ops(av[2]);
     check_baseops(av[1], av[2]);

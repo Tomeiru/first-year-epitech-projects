@@ -19,8 +19,10 @@ char *infin_sub(char *fst_num, char *sec_num)
     }
     else {
         sec_num = my_revstr(my_strdup(sec_num));
-        sec_num[length] = '-';
+        sec_num[length++] = '-';
+        sec_num[length] = '\0';
         sec_num = my_revstr(my_strdup(sec_num));
+        for ( ; sec_num[0] != '-'; ++sec_num);
     }
     return (infin_add(fst_num, sec_num));
 }

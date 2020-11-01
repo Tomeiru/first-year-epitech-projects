@@ -25,6 +25,7 @@
 #define EXIT_OPS 84
 #define EXIT_EMPTY 84
 #define EXIT_PARA 84
+#define EXIT_MULT_FACT 84
 
 #define SYNTAX_ERROR_MSG "syntax error"
 #define ERROR_MSG "error"
@@ -36,7 +37,7 @@ char *my_strtol(char *str, char **endptr, char *ops);
 char *parentheses(char *str, char **endptr, char *ops, int size);
 char *factors(char *str, char **endptr, char *ops, int size);
 char *summands(char **str_ptr, char *ops, int size);
-char *eval_expr(char *base, char *ops, char *expr, int size);
+char *eval_expr(char *ops, char *expr, int size);
 int my_atoi(char *str);
 char *absol(char *num, int sign, int length);
 int biggest_number (char *fst_num, char *sec_num, int fst_sign, int sec_sign);
@@ -72,5 +73,8 @@ int *str_base(char *nbr , char *base, char *op);
 int print_str_base(char *nbr);
 char *nbrtostr(int nbr);
 char *infinpower(char *nbr, int power);
+void main_error(char **av, char *expr);
+void check_all_digits(char const *expr, char const *base, char const *ops);
+void main_error_second(char **av, char *expr);
 
 #endif /* BISTROMATIC_H_*/

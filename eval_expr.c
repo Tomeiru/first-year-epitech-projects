@@ -91,7 +91,7 @@ char *summands(char **str_ptr, char *ops, int size)
     return (res);
 }
 
-char *eval_expr(char *base, char *ops, char *expr, int size)
+char *eval_expr(char *ops, char *expr, int size)
 {
 
     char *result = summands(&expr, ops, size);
