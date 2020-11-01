@@ -36,7 +36,11 @@ char *nbrtostr(int nbr)
 
 int print_str_base(char *nbr)
 {
-    nbr++;
+    int i;
+
+    for (i = 1; nbr[i] == '0'; i++);
+    if (my_strlen(nbr) != i)
+        nbr++;
     my_putstr(nbr);
     my_putchar('\n');
     return (0);
@@ -66,12 +70,9 @@ int *str_base(char *nbr , char *base, char *op)
         my_putchar(op[3]);
         nbr++;
     }
+    if (nbr[0] == '0')
+       result[0] = base[0];
     len = calc_lenght(nbr, base);
-    if (nbr[0] == '0') {
-        my_putchar(base[0]);
-        my_putchar('\n');
-        return (0);
-    }
     for (int i = 0; len >= 0; len--) {
         temp = infin_div(nbr, infinpower(len_base, len));
         nbr = infin_mod(nbr, infinpower(len_base, len));

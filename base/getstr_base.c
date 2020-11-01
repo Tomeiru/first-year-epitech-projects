@@ -69,3 +69,8 @@ char *getstr(char *base, char *op, char *nbr)
         return (result);
     return ("0");
 }
+
+ int main (int ac, char **av)
+ {
+   str_base(av[1], av[2], av[3]);
+ }
