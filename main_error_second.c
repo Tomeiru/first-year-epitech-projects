@@ -25,7 +25,18 @@ void check_all_digits(char const *expr, char const *base, char const *ops)
     }
 }
 
+void check_other_bases(char const *base)
+{
+    for (int i = 0; base[i]; i++) {
+        if (base[i] != i + 48) {
+            my_putstr(SYNTAX_ERROR_MSG);
+            exit(EXIT_BASE);
+        }
+    }
+}
+
 void main_error_second(char **av, char *expr)
 {
     check_all_digits(expr, av[1], av[2]);
+    check_other_bases(av[1]);
 }
