@@ -67,6 +67,11 @@ int *str_base(char *nbr , char *base, char *op)
         nbr++;
     }
     len = calc_lenght(nbr, base);
+    if (nbr[0] == '0') {
+        my_putchar(base[0]);
+        my_putchar('\n');
+        return (0);
+    }
     for (int i = 0; len >= 0; len--) {
         temp = infin_div(nbr, infinpower(len_base, len));
         nbr = infin_mod(nbr, infinpower(len_base, len));
