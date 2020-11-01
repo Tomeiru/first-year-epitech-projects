@@ -76,5 +76,6 @@ char *infinpower(char *nbr, int power);
 void main_error(char **av, char *expr);
 void check_all_digits(char const *expr, char const *base, char const *ops);
 void main_error_second(char **av, char *expr);
+int help(void);
 
 #endif /* BISTROMATIC_H_*/
