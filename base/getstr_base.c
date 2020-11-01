@@ -11,17 +11,32 @@
 char *getstr_base(char *nbr, char *base, int len, char *res)
 {
     int len_base = my_strlen(base);
-    int i;
+    int i = 0;
 
-    if (nbr[0] == '-')
-        my_putchar('-');
-    for (i = 0; base[i] != nbr[0]; i++);
+    for (; base[i] != nbr[0]; i++);
+    my_strdup(res);
     res = infin_mult(nbrtostr(i), infinpower(nbrtostr(len_base), len - 1));
     len--;
     nbr++;
     if (len > 0)
         res = infin_add(res, getstr_base(nbr, base, len, res));
     return (res);
+}
+
+int condition (char c, char *op)
+{
+    if (c != op[0] && c != op[1] && c != op[2] && c !=
+        op[3] && c != op[4] && c != op[5] && c != op[6])
+        return (1);
+    return (0);
+}
+
+int condition2 (char c, char *op)
+{
+    if (c == op[0] || c == op[1] || c == op[2] || c ==
+        op[3] || c == op[4] || c == op[5] || c == op[6])
+        return (1);
+    return (0);
 }
 
 char *getstr(char *base, char *op, char *nbr)
@@ -31,26 +46,36 @@ char *getstr(char *base, char *op, char *nbr)
     int k = 0;
     int g = 0;
     int i = 0;
-    if (nbr[0] < '0' || nbr[0] > '9') {
-        result[g++] = nbr[i];
-        i++;
-    }
+
+    if (condition2(nbr[0], op))
+        result[g++] = nbr[i++];
+    for (; nbr[i] == base[0]; i++);
     for ( ; nbr[i] != '\0'; i++)
     {
-        if (nbr[i] != op[0] && nbr[i] != op[1] && nbr[i] != op[2] && nbr[i] !=
-        op[3] && nbr[i] != op[4] && nbr[i] != op[5] && nbr[i] != op[6])
+        if (condition(nbr[i], op) == 1) {
             temp[k++] = nbr[i];
-        if (nbr[i] == op[0] || nbr[i] == op[1] || nbr[i] == op[2] || nbr[i] ==
-        op[3] || nbr[i] == op[4] || nbr[i] == op[5] || nbr[i] == op[6] || nbr[i
-        + 1] == '\0'){
+        }
+        if (condition2(nbr[i], op) == 1 || nbr[i + 1] == '\0'){
             temp[k] = '\0';
-            temp = getstr_base(temp, base, my_strlen(temp), "0");
-            k = 0;
+            printf("%s\n", temp);
+            if (my_strlen(temp) > 0)
+                temp = getstr_base(temp, base, my_strlen(temp), "0");/**/
             for (int j = 0; temp[j] != '\0'; j++)
                 result[g++] = temp[j];
-            result[g++] = nbr[i];
+            if (condition2(nbr[i], op) == 1)
+                result[g] = nbr[i];
+            g++;
+            k = 0;
         }
     }
     result[g] = '\0';
-    return (result);
+    if (my_strlen(result) > 0)
+        return (result);
+    return ("0");
+}
+
+int main (int ac, char **av)
+{
+    printf("%s\n", getstr(av[2], av[3], av[1]));
+    return (0);
 }

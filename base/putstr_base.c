@@ -22,6 +22,8 @@ char *nbrtostr(int nbr)
 {
     char *str = malloc(10);
     int i = 0;
+    if (nbr == 0)
+        return("0");
     for (; nbr > 0; i++)
     {
         str[i] = nbr % 10 + 48;
