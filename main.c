@@ -42,20 +42,21 @@ static char *get_expr(unsigned int size)
 
 int main(int ac, char **av)
 {
-    unsigned int size = my_atoi(av[3]);
+    unsigned int size;
     char *expr;
 
     if (ac == 2 && av[1][0] == '-' && av[1][1] == 'h' && av[1][2] == '\0') {
         return (help());
     }
-    expr = get_expr(size);
-    main_error(av, expr);
     if (ac != 4) {
         my_putstr("Usage: ");
         my_putstr(av[0]);
         my_putstr(" base ops\"()+_*/%\" exp_len\n");
         return (EXIT_USAGE);
     }
+    size = my_atoi(av[3]);
+    expr = get_expr(size);
+    main_error(av, expr);
     my_putstr(eval_expr(av[2], expr, size));
     return (EXIT_SUCCESS);
 }
