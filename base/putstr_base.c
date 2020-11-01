@@ -12,8 +12,9 @@ char *infinpower(char *nbr, int power)
 {
     char *result = "1";
 
-    for (int i = 1; i <= power; i++)
-        result = infin_mult(result, nbr);
+    for (int i = 1; i <= power; i++) {
+        result = infin_mult(result, nbr); /**/
+    }
     return (result);
 }
 
@@ -52,9 +53,8 @@ int *str_base(char *nbr , char *base, char *op)
     }
     if (nbr[0] == '0')
         my_putchar(base[0]);
-    for (len = 0; my_getnbr(infinpower(len_base, len)) < my_getnbr(nbr); len++);
-    for (int i = 0; len >= 0; len--)
-    {
+    for (len = 0; my_strcmp(infinpower(len_base, len), nbr) < 0; len++); /**/
+    for (int i = 0; len >= 0; len--) {
         temp = infin_div(nbr, infinpower(len_base, len));
         nbr = infin_mod(nbr, infinpower(len_base, len));
         result[i++] = base[my_getnbr(temp)];
