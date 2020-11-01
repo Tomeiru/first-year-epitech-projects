@@ -14,9 +14,10 @@ char *my_strtol(char *str, char **endptr, char *ops)
     int j = 0;
     int sign = 1;
 
-    for ( ;str[i] == ops[2] || str[i] == ops[3]; i++)
+    for ( ;str[i] == ops[2] || str[i] == ops[3]; i++) {
         if (str[i] == ops[3])
             sign *= -1;
+    }
     if (sign == -1)
         res[j++] = '-';
     for ( ; str[i] != '\0'; i++) {
@@ -33,7 +34,7 @@ char *parentheses(char *str, char **endptr, char *ops, int size)
 {
     char *res = my_strtol(str, endptr, ops);
 
-    for ( ; str[0] == ops[3]; ++str);
+    for ( ; str[0] == ops[3] || str[0] == ops[2]; ++str);
     if ((str[0] == ops[2] || str[0] == ops[3] || str[0] == ops[4] ||
     str[0] == ops[5] || str[0] == ops[6]) && (str[1] == ops[0]))
         str++;
@@ -92,5 +93,10 @@ char *summands(char **str_ptr, char *ops, int size)
 
 char *eval_expr(char *base, char *ops, char *expr, int size)
 {
-    return (summands(&expr, ops, size));
+
+    char *result = summands(&expr, ops, size);
+    char **temp = "test";
+
+    result = my_strtol(result, &temp, ops);
+    return (result);
 }

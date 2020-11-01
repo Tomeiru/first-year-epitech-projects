@@ -51,7 +51,7 @@ char *infin_mod(char *fst_num, char *sec_num)
     }
     else
         result = mod_glob(fst_abs, sec_abs);
-    if ((fst_sign + sec_sign == 0) && result[0] != '0')
+    if ((fst_sign == -1) && result[0] != '0')
         result = minus_adder(result);
     return (result);
 }
