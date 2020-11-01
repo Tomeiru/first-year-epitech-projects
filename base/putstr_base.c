@@ -13,7 +13,7 @@ char *infinpower(char *nbr, int power)
     char *result = "1";
 
     for (int i = 1; i <= power; i++) {
-        result = infin_mult(result, nbr); /**/
+        result = infin_mult(result, nbr);
     }
     return (result);
 }
@@ -42,10 +42,23 @@ int print_str_base(char *nbr)
     return (0);
 }
 
+int calc_lenght(char *str, char *base)
+{
+    int len = 0;
+    char *len_base = nbrtostr(my_strlen(base));
+    char *result = infin_sub(infinpower(len_base, len), str);
+
+    for (; result[0] == '-'; len ++){
+        result = infin_sub(infinpower(len_base, len), str);
+    }
+    return(len - 1);
+}
+
+
 int *str_base(char *nbr , char *base, char *op)
 {
     char *len_base = nbrtostr(my_strlen(base));
-    int len;
+    int len = 100;
     char *temp = malloc(10000);
     char *result = malloc(10000);
 
@@ -53,9 +66,7 @@ int *str_base(char *nbr , char *base, char *op)
         my_putchar(op[3]);
         nbr++;
     }
-    if (nbr[0] == '0')
-        my_putchar(base[0]);
-    for (len = 0; my_strcmp(infinpower(len_base, len), nbr) < 0; len++); /**/
+    len = calc_lenght(nbr, base);
     for (int i = 0; len >= 0; len--) {
         temp = infin_div(nbr, infinpower(len_base, len));
         nbr = infin_mod(nbr, infinpower(len_base, len));

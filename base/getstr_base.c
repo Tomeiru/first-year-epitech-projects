@@ -45,21 +45,17 @@ char *getstr(char *base, char *op, char *nbr)
     char *result = malloc(10000);
     int k = 0;
     int g = 0;
-    int i = 0;
 
     if (condition2(nbr[0], op))
-        result[g++] = nbr[i++];
-    for (; nbr[i] == base[0]; i++);
-    for ( ; nbr[i] != '\0'; i++)
-    {
-        if (condition(nbr[i], op) == 1) {
+        result[g++] = nbr++;
+    for (; nbr[0] == base[0]; nbr++);
+    for (int i = 0; nbr[i] != '\0'; i++) {
+        if (condition(nbr[i], op) == 1)
             temp[k++] = nbr[i];
-        }
-        if (condition2(nbr[i], op) == 1 || nbr[i + 1] == '\0'){
+        if (condition2(nbr[i], op) == 1 || nbr[i + 1] == '\0') {
             temp[k] = '\0';
-            printf("%s\n", temp);
             if (my_strlen(temp) > 0)
-                temp = getstr_base(temp, base, my_strlen(temp), "0");/**/
+                temp = getstr_base(temp, base, my_strlen(temp), "0");
             for (int j = 0; temp[j] != '\0'; j++)
                 result[g++] = temp[j];
             if (condition2(nbr[i], op) == 1)
@@ -73,3 +69,8 @@ char *getstr(char *base, char *op, char *nbr)
         return (result);
     return ("0");
 }
+
+ int main (int ac, char **av)
+ {
+    printf("%s\n", getstr(av[2], av[3], av[1]));
+ }
