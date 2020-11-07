@@ -47,7 +47,7 @@ static int check_all_character(char *board)
     return (0);
 }
 
-static int my_get_first_line(char *board)
+int my_get_first_line(char *board)
 {
     int i = 0;
     char *first_line;
