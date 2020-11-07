@@ -31,7 +31,7 @@ static int line_counter(int line_number, char *board)
     for (i; board[i]; i++)
         if (board[i] == '\n')
             counter++;
-    if (line_number - 1 != counter)
+    if (line_number != counter - 1)
         return (84);
     return (0);
 }
@@ -42,7 +42,7 @@ static int check_all_character(char *board)
 
     for (i = 0; board[i] != '\n' && board[i] != '\0'; i++);
     for (i; board[i]; i++)
-        if (board[i] != 'o' || board[i] != '.' || board[i] != '\n')
+        if (board[i] != 'o' && board[i] != '.' && board[i] != '\n')
             return (84);
     return (0);
 }
