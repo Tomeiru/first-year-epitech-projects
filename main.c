@@ -9,5 +9,5 @@
 
 int main(int ac, char **av)
 {
-    return(bsq(ac, av));
+    return (bsq(ac, av));
 }
