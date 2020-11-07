@@ -38,6 +38,11 @@ static int check_num(char **av)
             write(2, "Numbers shouldn't have two '.'\n", 31);
             exit (84);
         }
+        for (j = 0; av[7][j]; j++)
+            if (av[7][j] == '.') {
+                write(2, "n can't be a float number\n", 26);
+                exit (84);
+            }
         counter = 0;
     }
     return (0);
