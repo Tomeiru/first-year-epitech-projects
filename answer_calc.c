@@ -80,5 +80,5 @@ float answer_calc(float *vec_minus_one, float *vec_zero, int n)
             printf("The incidence angle is:\n%.2f degrees\n", inc_angle);
     }
     else
-        printf("The ball won’t reach the paddle.\n");
+        printf("The ball won't reach the paddle.\n");
 }
