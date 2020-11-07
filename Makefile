@@ -7,7 +7,8 @@
 
 SRC =	file_reader.c	\
 		bsq.c	\
-		board_check.c
+		board_check.c	\
+		algorithm.c	\
 
 MAIN =	main.c
 
