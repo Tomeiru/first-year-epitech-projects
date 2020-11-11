@@ -17,23 +17,21 @@ char *normal_print(char *format)
 
 int which_type(char c)
 {
-    char *conv_spe = "dicouxXbsSp%";
+    char *conv_spe = "dicouxXbpsS%";
     int type = 0;
     int i = 0;
 
     for ( ; i < 3; i++)
         if (conv_spe[i] == c)
             return (0);
-    for ( ; i < 8; i++)
+    for ( ; i < 9; i++)
         if (conv_spe[i] == c)
             return (1);
-    for ( ; i < 10; i++)
+    for ( ; i < 11; i++)
         if (conv_spe[i] == c)
             return (2);
-    if (conv_spe[10] == c)
-        return (3);
     if (conv_spe[11] == c)
-        return (4);
+        return (3);
 }
 
 int my_printf(const char *format, ...)
@@ -65,9 +63,7 @@ int my_printf(const char *format, ...)
             arg_uns_int(flag, va_arg(list, unsigned long long));
         if (type == 2)
             arg_str(flag, va_arg(list, char *));
-        /*if (type == 3)
-            arg_ptr(flag, va_arg(list, void *));*/
-        if (type == 4)
+        if (type == 3)
             my_putchar('%');
     }
     my_putstr(format);

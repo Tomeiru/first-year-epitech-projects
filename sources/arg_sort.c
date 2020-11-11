@@ -26,6 +26,14 @@ int which_len_mod(char *flag)
         return (3);
 }
 
+void arg_ptr(unsigned long long number, char *flag)
+{
+    char *nb = print_x(number);
+
+    my_putstr("0x");
+    my_putstr(nb);
+}
+
 void arg_int(char *flag, long long number)
 {
     int len_mod = 0;
@@ -46,12 +54,12 @@ void arg_int(char *flag, long long number)
 
 void arg_uns_int(char *flag, unsigned long long number)
 {
-    char *conv_spe = "oxXub";
-    void (*ptr_uns_integer[5])(unsigned long long, char *) = {
-        arg_oct, arg_hexa, arg_HEXA, arg_uns, arg_bin
+    char *conv_spe = "oxXubp";
+    void (*ptr_uns_integer[6])(unsigned long long, char *) = {
+        arg_oct, arg_hexa, arg_HEXA, arg_uns, arg_bin, arg_ptr
     };
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 7; i++) {
         if (flag[0] == conv_spe[i])
             ptr_uns_integer[i](number, flag);
     }
