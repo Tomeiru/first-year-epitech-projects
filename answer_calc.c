@@ -7,43 +7,43 @@
 
 #include "pong.h"
 
-float *vector_dif(float *A, float *B)
+double *vector_dif(double *A, double *B)
 {
-    float *res_vec = malloc(sizeof(float) * 3);
+    double *res_vec = malloc(sizeof(double) * 3);
 
     for (int i = 2; i >= 0; i--)
         res_vec[i] = A[i] - B[i];
     return (res_vec);
 }
 
-float *vector_sum(float *A, float *B)
+double *vector_sum(double *A, double *B)
 {
-    float *res_vec = malloc(sizeof(float) * 3);
+    double *res_vec = malloc(sizeof(double) * 3);
 
     for (int i = 2; i >= 0; i--)
         res_vec[i] = A[i] + B[i];
     return (res_vec);
 }
 
-float vector_coef(float *v)
+double vector_coef(double *v)
 {
-    float res = 0;
-    float x = v[0] * v[0] + v[1] * v[1] + v[2] * v[2];
+    double res = 0;
+    double x = v[0] * v[0] + v[1] * v[1] + v[2] * v[2];
 
     res = sqrt(x);
     return (res);
 }
 
-float answer_calc(float *vec_minus_one, float *vec_zero, int n)
+double answer_calc(double *vec_minus_one, double *vec_zero, int n)
 {
-    float *vec_dif = vector_dif(vec_zero, vec_minus_one);
+    double *vec_dif = vector_dif(vec_zero, vec_minus_one);
     printf("The velocity vector of the ball is:\n(%.2f, %.2f, %.2f)\n", vec_dif[0], vec_dif[1], vec_dif[2]);
-    float *vec_value = vector_sum(vec_zero, vec_dif);
-    float vec_coef;
-    float x;
-    float inc_angle;
-    float val_bef;
-    float val_aft;
+    double *vec_value = vector_sum(vec_zero, vec_dif);
+    double vec_coef;
+    double x;
+    double inc_angle;
+    double val_bef;
+    double val_aft;
     int board = 0;
 
     if (vec_zero[2] < 0)
