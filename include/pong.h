@@ -16,7 +16,7 @@
 int main(int ac, char **av);
 int error(int ac, char **av);
 int pong(int ac, char **av);
-float answer_calc(float *vec_minus_one, float *vec_zero, int n);
+double answer_calc(double *vec_minus_one, double *vec_zero, int n);
 
 
 #endif /* !PONG_H_ */
