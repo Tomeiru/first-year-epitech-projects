@@ -7,9 +7,9 @@
 
 #include "pong.h"
 
-float *arg_to_vec(char **av, int nb_vec)
+double *arg_to_vec(char **av, int nb_vec)
 {
-    float *res = malloc(sizeof(int) * 3);
+    double *res = malloc(sizeof(int) * 3);
 
     if (nb_vec == 1) {
         res[0] = atof(av[1]);
@@ -26,8 +26,8 @@ float *arg_to_vec(char **av, int nb_vec)
 
 int pong(int ac, char **av)
 {
-    float *vec_minus_one;
-    float *vec_zero;
+    double *vec_minus_one;
+    double *vec_zero;
     int n;
 
     error(ac, av);
