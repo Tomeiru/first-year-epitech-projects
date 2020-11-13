@@ -71,7 +71,7 @@ double answer_calc(double *vec_minus_one, double *vec_zero, int n)
     }
     vec_coef = vector_coef(vec_dif);
     x = (vec_dif[2]/vec_coef);
-    inc_angle = (asin(x) / 0.017453);
+    inc_angle = (asin(x) * (180 / 3.14159265358979323846264338327950));
     printf("At time t + %i, ball coordinates will be:\n(%.2f, %.2f, %.2f)\n", n, vec_value[0], vec_value[1], vec_value[2]);
     if (board == 1) {
         if (inc_angle < 0)
