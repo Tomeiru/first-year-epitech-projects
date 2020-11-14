@@ -33,11 +33,11 @@ void arg_hexa(unsigned long long number, char *flag)
     }
 }
 
-void arg_HEXA(unsigned long long number, char *flag)
+void arg_hexamaj(unsigned long long number, char *flag)
 {
     int len_mod = which_len_mod(flag);
     void (*ptr_HEXA[4])(unsigned long long, char *) = {
-        nHEXA, hHEXA, hhHEXA, llHEXA
+        nhexamaj, hhexamaj, hhhexamaj, llhexamaj
     };
 
     for (int i = 0; i < 4; i++) {
