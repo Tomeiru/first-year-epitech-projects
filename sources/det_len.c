@@ -9,8 +9,8 @@
 
 int det_len_signed(long long nb)
 {
-    int count = 0;
     int neg = 0;
+    int count = 0;
 
     if (nb < 0)
         neg = 1;
