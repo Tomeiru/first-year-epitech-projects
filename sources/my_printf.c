@@ -18,7 +18,6 @@ char *normal_print(char *format)
 int which_type(char c)
 {
     char *conv_spe = "dicouxXbpsS%";
-    int type = 0;
     int i = 0;
 
     for ( ; i < 3; i++)
@@ -32,22 +31,20 @@ int which_type(char c)
             return (2);
     if (conv_spe[11] == c)
         return (3);
+    return (0);
 }
 
-int my_printf(const char *format, ...)
+void my_printf(char *format, ...)
 {
     int counter = 0;
-    int type = 0;
     char *flag;
     va_list list;
 
     for (int i = 0; format[i]; i++)
         if (format[i] == '%' && format[i + 1] != '%')
             counter++;
-    if (counter == 0) {
+    if (counter == 0)
         my_putstr(format);
-        return(my_strlen(format));
-    }
     va_start(list, format);
     for (int i = 0; i < counter; i++) {
         format = normal_print(format);
@@ -56,15 +53,7 @@ int my_printf(const char *format, ...)
             format += my_strlen(flag);
         else
             my_putchar('%');
-        type = which_type(my_revstr(flag)[0]);
-        if (type == 0)
-            arg_int(flag, va_arg(list, long long));
-        if (type == 1)
-            arg_uns_int(flag, va_arg(list, unsigned long long));
-        if (type == 2)
-            arg_str(flag, va_arg(list, char *));
-        if (type == 3)
-            my_putchar('%');
+        type_sort(flag, list);
     }
     my_putstr(format);
 }
