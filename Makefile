@@ -9,21 +9,22 @@ SRC =	sources/arg_sort.c	\
 		sources/bin_printer.c	\
 		sources/det_len.c	\
 		sources/flag.c	\
-		sources/hexa_printer.c	\
-		sources/HEXA_printer.c	\
+		sources/hexamin_printer.c	\
+		sources/hexamaj_printer.c	\
 		sources/int_printer.c	\
 		sources/my_printf.c	\
-		sources/my_putchar.c	\
-		sources/my_putstr.c	\
-		sources/my_revstr.c	\
-		sources/my_strdup.c	\
-		sources/my_strlen.c	\
+		sources/my_getnbr.c	\
+		sources/lib_function.c	\
 		sources/oct_printer.c	\
 		sources/print_hexadecimal.c	\
 		sources/print_numbers.c	\
-		sources/print_S.c	\
+		sources/print_string.c	\
 		sources/uns_printer.c	\
-		sources/unsint_printer.c
+		sources/unsint_printer.c	\
+		sources/type_sort.c	\
+		sources/print_width.c	\
+		sources/width_modifier.c	\
+		sources/type_sort.c	\
 
 INC_PATH =	includes
 
