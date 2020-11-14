@@ -11,29 +11,37 @@ void nbin(unsigned long long number, char *flag)
 {
     unsigned int cast = number;
     char *nb = print_b(cast);
+    char *width_modifier = width_check(flag);
+    int length = my_strlen(nb);
 
-    my_putstr(nb);
+    print_width(width_modifier, length, nb, flag);
 }
 
 void hbin(unsigned long long number, char *flag)
 {
     unsigned short cast = number;
     char *nb = print_b(cast);
+    char *width_modifier = width_check(flag);
+    int length = my_strlen(nb);
 
-    my_putstr(nb);
+    print_width(width_modifier, length, nb, flag);
 }
 
 void hhbin(unsigned long long number, char *flag)
 {
     unsigned char cast = number;
     char *nb = print_b(cast);
+    char *width_modifier = width_check(flag);
+    int length = my_strlen(nb);
 
-    my_putstr(nb);
+    print_width(width_modifier, length, nb, flag);
 }
 
 void llbin(unsigned long long number, char *flag)
 {
     char *nb = print_b(number);
+    char *width_modifier = width_check(flag);
+    int length = my_strlen(nb);
 
-    my_putstr(nb);
+    print_width(width_modifier, length, nb, flag);
 }
