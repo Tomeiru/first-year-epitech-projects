@@ -2,20 +2,20 @@
 ** EPITECH PROJECT, 2020
 ** my_printf
 ** File description:
-** print_X
+** print_xmaj
 */
 
 #include "my_printf.h"
 
 char which_letter_maj(unsigned long long decimal)
 {
-    int value = 10;
+    unsigned long long value = 10;
     int i = 0;
     char letter[6] = {
         'A', 'B', 'C', 'D', 'E', 'F'
     };
 
-    for (value; i < 6; i++) {
+    for ( ; i < 6; i++) {
         if (decimal % 16 == value)
             return (letter[i]);
         value++;
@@ -23,7 +23,7 @@ char which_letter_maj(unsigned long long decimal)
     return (0);
 }
 
-char *print_X(unsigned long long decimal)
+char *print_xmaj(unsigned long long decimal)
 {
     int len = det_len_unsigned_hexa(decimal);
     char *hexadecimal = malloc(sizeof(char) * len);
@@ -43,13 +43,13 @@ char *print_X(unsigned long long decimal)
 
 char which_letter_min(unsigned long long decimal)
 {
-    int value = 10;
+    unsigned long long value = 10;
     int i = 0;
     char letter[6] = {
         'a', 'b', 'c', 'd', 'e', 'f'
     };
 
-    for (value; i < 6; i++) {
+    for ( ; i < 6; i++) {
         if (decimal % 16 == value)
             return (letter[i]);
         value++;
