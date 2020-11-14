@@ -18,7 +18,7 @@ char *print_di(long long nb)
         neg = 1;
     if (nb == 0)
         return (my_strdup("0"));
-    for (i; nb != 0; nb /= 10) {
+    for (; nb != 0; nb /= 10) {
         if (neg == 1)
             number[i++] = nb % 10 * -1 + 48;
         else
@@ -69,7 +69,7 @@ char *print_u(unsigned long long nb)
 
     if (nb == 0)
         return (my_strdup("0"));
-    for (i; nb != 0; nb /= 10) {
+    for ( ; nb != 0; nb /= 10) {
         number[i++] = nb % 10 + 48;
     }
     number[i] = '\0';
