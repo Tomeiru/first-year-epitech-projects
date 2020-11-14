@@ -29,20 +29,28 @@ int which_len_mod(char *flag)
 void arg_ptr(unsigned long long number, char *flag)
 {
     char *nb = print_x(number);
+    char *width_modifier = width_check(flag);
+    int length = my_strlen(nb);
+    char *new_nb = malloc(sizeof(char) * (my_strlen(nb) + 3));
+    int i = 0;
 
-    my_putstr("0x");
-    my_putstr(nb);
+    new_nb[0] = '0';
+    new_nb[1] = 'x';
+    for (i = 0; nb[i]; i++)
+        new_nb[2 + i] = nb[i];
+    new_nb[2 + i] = '\0';
+    print_width(width_modifier, length, new_nb, flag);
 }
 
 void arg_int(char *flag, long long number)
 {
     int len_mod = 0;
     void (*ptr_integer[4])(long long, char *) = {
-        nint, hint, hhint, llint
+        nint, hint, hhint, llint,
     };
 
     if (flag[0] == 'c') {
-        my_putchar(number);
+        char_print(number, flag);
         return;
     }
     len_mod = which_len_mod(flag);
@@ -56,7 +64,7 @@ void arg_uns_int(char *flag, unsigned long long number)
 {
     char *conv_spe = "oxXubp";
     void (*ptr_uns_integer[6])(unsigned long long, char *) = {
-        arg_oct, arg_hexa, arg_HEXA, arg_uns, arg_bin, arg_ptr
+        arg_oct, arg_hexa, arg_hexamaj, arg_uns, arg_bin, arg_ptr
     };
 
     for (int i = 0; i < 7; i++) {
@@ -68,12 +76,12 @@ void arg_uns_int(char *flag, unsigned long long number)
 void arg_str(char *flag, char *str)
 {
     char *conv_spe = "sS";
-    void (*ptr_str[2])(const char *) = {
-        my_putstr, print_S
+    void (*ptr_str[2])(char *, char *) = {
+        print_str, print_alt_string
     };
 
     for (int i = 0; i < 6; i++) {
-        if (my_revstr(flag)[0] == conv_spe[i])
-            ptr_str[i](str);
+        if (flag[0] == conv_spe[i])
+            ptr_str[i](str, flag);
     }
 }
