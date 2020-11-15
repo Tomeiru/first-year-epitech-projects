@@ -23,6 +23,7 @@ SRC =	sources/arg_sort.c	\
 		sources/unsint_printer.c	\
 		sources/type_sort.c	\
 		sources/print_width.c	\
+		sources/second_print_width.c	\
 		sources/width_modifier.c	\
 		sources/type_sort.c	\
 
