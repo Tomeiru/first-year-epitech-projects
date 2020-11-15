@@ -67,7 +67,7 @@ void llbin(unsigned long long number, char *flag);
 int which_len_mod(char *flag);
 char *flag_finder(char *format);
 char *width_check(char *flag);
-void print_width(char *width_mod, int length, char *print, char *flag);
+void print_width(char *width_mod, int len, char *print, char *flag);
 void char_print(char number, char *flag);
 void type_sort(char *flag, va_list list, int *count);
 char *neg_int(char *print, int *nb);
@@ -76,6 +76,7 @@ void arg_int(char *flag, long long number);
 void arg_uns_int(char *flag, unsigned long long number);
 void arg_str(char *flag, char *str);
 int which_type(char c);
-
+int len_cho(int length, char *width_mod, char *flag);
+void print_with_precision(char *width_mod, int length, char *print, char *flag);
 
 #endif /* !MY_PRINTF_H_ */
