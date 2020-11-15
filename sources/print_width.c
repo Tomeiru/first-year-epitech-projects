@@ -89,8 +89,7 @@ void print_width(char *width_mod, int len, char *print, char *flag)
             my_putchar(' ');
     negative_width(width_mod, print, my_revstr(flag));
     if (conditions(2, width_mod, flag) == 1) {
-        if (print[0] == '-')
-            print = neg_int(print, &nb);
+        (print[0] == '-') ? print = neg_int(print, &nb) : 0;
         for ( ; nb != 0; nb--)
             my_putchar('0');
     }
