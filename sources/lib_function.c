@@ -50,7 +50,7 @@ char *my_revstr(char *str)
     int j = my_strlen(str) - 1;
     int i = 0;
 
-    for ( ; i <= j; i ++){
+    for ( ; i <= j; i++){
         temp = str[i];
         str[i] = str[j];
         str[j] = temp;
