@@ -9,7 +9,7 @@
 
 static int flag_condition(char c)
 {
-    char *allowed_c = "#0123456789 +-hljztqZ";
+    char *allowed_c = "#0123456789 +-.hljztqZ";
 
     for (int i = 0; allowed_c[i]; i++) {
         if (allowed_c[i] == c)
