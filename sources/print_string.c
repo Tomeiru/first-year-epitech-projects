@@ -25,7 +25,7 @@ static char *zero(char *str)
             return (my_revstr(new_str));
         }
     }
-    return("0");
+    return ("0");
 }
 
 static char *create_alt_string(char const *str)
