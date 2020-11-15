@@ -31,15 +31,9 @@ void arg_ptr(unsigned long long number, char *flag)
     char *nb = print_x(number);
     char *width_modifier = width_check(flag);
     int length = my_strlen(nb);
-    char *new_nb = malloc(sizeof(char) * (my_strlen(nb) + 3));
-    int i = 0;
 
-    new_nb[0] = '0';
-    new_nb[1] = 'x';
-    for (i = 0; nb[i]; i++)
-        new_nb[2 + i] = nb[i];
-    new_nb[2 + i] = '\0';
-    print_width(width_modifier, length, new_nb, flag);
+    width_modifier[0] = '1';
+    print_width(width_modifier, length, nb, flag);
 }
 
 void arg_int(char *flag, long long number)
