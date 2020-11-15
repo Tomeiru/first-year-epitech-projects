@@ -53,7 +53,7 @@ char *flag_finder(char *format)
             result[i + 1] = '\0';
             result = flag_checker(result);
             return (result);
-            }
+        }
         if (j == 11) {
             i++;
             j = -1;
