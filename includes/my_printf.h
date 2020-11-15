@@ -69,7 +69,7 @@ char *flag_finder(char *format);
 char *width_check(char *flag);
 void print_width(char *width_mod, int length, char *print, char *flag);
 void char_print(char number, char *flag);
-void type_sort(char *flag, va_list list);
+void type_sort(char *flag, va_list list, int *count);
 char *neg_int(char *print, int *nb);
 int my_getnbr(char const *str);
 void arg_int(char *flag, long long number);
