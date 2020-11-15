@@ -18,17 +18,27 @@ static int flag_condition(char c)
     return (0);
 }
 
+static int flag_condition_sec(char c)
+{
+    char *allowed_c = "diouxXbcsSp%";
+
+    for (int i = 0; allowed_c[i]; i++) {
+        if (allowed_c[i] == c)
+            return (1);
+    }
+    return (0);
+}
+
 static char *flag_checker(char *flag)
 {
-    int number = 0;
     int i = 0;
 
     flag = my_revstr(flag);
-    if (number == 1) {
-        for (i = 1; flag_condition(flag[i]) == 1 && flag[i] != '\0'; i++);
-        if (flag[i] != '\0')
-            return ("e");
-    }
+    if (flag_condition_sec(flag[0]) != 1)
+        return ("e");
+    for (i = 1; flag_condition(flag[i]) == 1 && flag[i] != '\0'; i++);
+    if (flag[i] != '\0')
+        return ("e");
     return (my_revstr(flag));
 }
 
