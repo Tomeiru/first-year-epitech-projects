@@ -41,19 +41,18 @@ void my_printf(char *format, ...)
     va_list list;
 
     for (int i = 0; format[i]; i++)
-        if (format[i] == '%' && format[i + 1] != '%')
+        if (format[i] == '%')
             counter++;
-    if (counter == 0)
-        my_putstr(format);
     va_start(list, format);
     for (int i = 0; i < counter; i++) {
         format = normal_print(format);
         flag = my_strdup(flag_finder(format));
-        if (flag[0] != 'e')
+        if (flag[0] != 'e') {
             format += my_strlen(flag);
+            type_sort(flag, list, &counter);
+        }
         else
             my_putchar('%');
-        type_sort(flag, list);
     }
     my_putstr(format);
 }
