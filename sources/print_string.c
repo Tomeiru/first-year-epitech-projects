@@ -63,7 +63,6 @@ void print_alt_string(char *str, char *flag)
 
 void print_str(char *str, char *flag)
 {
-    
     char *width_modifier = width_check(flag);
     int length = my_strlen(str);
 
