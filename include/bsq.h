@@ -20,5 +20,6 @@ int main(int ac, char **av);
 char *file_reader(char *filepath);
 int board_check(char *board);
 int my_get_first_line(char *board);
+void algorithm(char *board);
 
 #endif /* !BSQ_H_ */
