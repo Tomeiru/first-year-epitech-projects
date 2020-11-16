@@ -15,7 +15,7 @@ static int line_length(char *board)
 
     for (i = 0; board[i] != '\n' && board[i] != '\0'; i++);
     len -= ++i;
-    for (i; board[i] != '\n' && board[i] != '\0'; i++)
+    for ( ; board[i] != '\n' && board[i] != '\0'; i++)
         j++;
     if (len % ++j != 0)
         return (84);
@@ -28,7 +28,7 @@ static int line_counter(int line_number, char *board)
     int counter = 0;
 
     for (i = 0; board[i] != '\n' && board[i] != '\0'; i++);
-    for (i; board[i]; i++)
+    for ( ; board[i]; i++)
         if (board[i] == '\n')
             counter++;
     if (line_number != counter - 1)
@@ -41,7 +41,7 @@ static int check_all_character(char *board)
     int i = 0;
 
     for (i = 0; board[i] != '\n' && board[i] != '\0'; i++);
-    for (i; board[i]; i++)
+    for ( ; board[i]; i++)
         if (board[i] != 'o' && board[i] != '.' && board[i] != '\n')
             return (84);
     return (0);
