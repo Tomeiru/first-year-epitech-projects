@@ -7,104 +7,69 @@
 
 #include "bsq.h"
 
-int am_i_edgy(char *board, int location, int line_len, int actual_exp)
+int find_smallest_value(int value_corner, int value_left, int value_up)
 {
-    int i = location;
-    int next_objective = location + line_len * actual_exp;
-
-    for ( ; i < next_objective && board[i] != '\0'; i++);
-    if (board[location + actual_exp] == '\n' || board[i] == '\0')
-        return (1);
-    return (0);
+    if (value_corner <= value_left && value_corner <= value_up)
+        return (value_corner);
+    if (value_left <= value_corner && value_left <= value_up)
+        return (value_left);
+    else
+        return (value_up);
 }
 
-int can_i_expand(char *board, int location, int line_len, int actual_exp)
+char free_space(char *number_board, int i, int line_len)
 {
-    int corner = 0;
-    int horizontal = 0;
-    int vertical = 0;
+    int value_corner = 0;
+    int value_left = 0;
+    int value_up = 0;
+    int smallest_value = 0;
 
-    if (am_i_edgy(board, location, line_len, actual_exp) == 1)
-        return (0);
-    corner = location + actual_exp + actual_exp * line_len;
-    horizontal = location + actual_exp * line_len;
-    vertical = location + actual_exp;
-    if (board[corner] == 'o')
-        return (0);
-    for (vertical; vertical != corner; vertical += line_len)
-        if (board[vertical] == 'o')
-            return (0);
-    for (horizontal; horizontal != corner; horizontal++)
-        if (board[horizontal] == 'o')
-            return (0);
-    return (1);
+    if (i < line_len || i % line_len == 0)
+        return (49);
+    value_corner = number_board[i - line_len - 1];
+    value_left = number_board[i - 1];
+    value_up = number_board[i - line_len];
+    smallest_value = find_smallest_value(value_corner, value_left, value_up);
+    return (smallest_value + 1);
 }
 
-int square_size (char *board, int location, int line_len, int line_num, int champ)
+int new_challenger(int max_value, int challenger, int pos_chall, int *max_pos)
 {
-    int res = 1;
-    int j = location;
-    int l = location;
-
-    for (int i = 0; i < champ; i++)
-    for (j; board[j] != '\0' && board[j] != '\n' && board[j] != 'o'; j++);
-    if (j - location <= champ)
-        return (res);
-    for (j = location; board[l] != 'o' && l < line_len * line_num; l += line_len)
-        j++;
-    if (j - location <= champ)
-        return (res);
-    l = location;
-    for (j = location; board[l] != 'o' && l < line_len * line_num && 
-    board[j] != '\0' && board[j] != '\n'; l += (line_len + 1))
-        j++;
-    if (j - location <= champ)
-        return (res);
-    for (res; can_i_expand(board, location, line_len, res) == 1; res++);
-    return (res);
+    if (max_value >= challenger)
+        return (max_value);
+    *max_pos = pos_chall;
+    return (challenger);
 }
 
-
-int who_is_larger(int champ, int new_chall, int *champ_pos, int pos)
+void print_function(int max_value, int max_pos, int line_len, char *board)
 {
-    if (champ < new_chall) {
-        *champ_pos = pos;
-        return (new_chall);
+    int back_up = max_pos - max_value;
+
+    for (int i = 0; i < max_value; i++) {
+        for ( ; max_pos != back_up; max_pos--)
+            board[max_pos] = 'x';
+        max_pos = max_pos - line_len + max_value;
+        back_up -= line_len;
     }
-    if (champ >= new_chall)
-        return (champ);
-    return (0);
+    my_putstr(board);
 }
 
-void print_map(char *board, int champ_pos, int champ, int len)
+void algorithm(char *board)
 {
-    int pos_hoz = champ_pos;
-    int pos_vert = champ_pos;
-    int goal = champ_pos + champ;
-
-    for (pos_vert; pos_vert != champ_pos + len * champ; pos_vert += len) {
-        for (pos_hoz; pos_hoz != goal; pos_hoz++)
-            board[pos_hoz] = 'x';
-        pos_hoz += (len - champ);
-        goal += len;
-    }
-    my_putstr (board);
-}
-
-void algorithm(char *board, int line_num)
-{
-    int new_chall = 0;
-    int champ = 0;
-    int champ_pos = 0;
     int line_len = 1;
+    int max_value = 0;
+    int max_pos = 0;
+    char *number_board = my_strdup(board);
 
     for (int i = 0; board[i] != '\n'; i++)
         line_len++;
     for (int i = 0; board[i]; i++) {
-        if (board[i] == '.') {
-            new_chall = square_size(board, i, line_len, line_num, champ);
-            champ = who_is_larger(champ, new_chall, &champ_pos, i);
+        if (board[i] == 'o')
+            number_board[i] = '0';
+        else if (board[i] == '.') {
+            number_board[i] = free_space(number_board, i, line_len);
+            max_value = new_challenger(max_value, number_board[i], i, &max_pos);
         }
     }
-    print_map(board, champ_pos, champ, line_len);
+    print_function(max_value - 48, max_pos, line_len, board);
 }
