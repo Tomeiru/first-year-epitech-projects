@@ -72,4 +72,5 @@ void algorithm(char *board)
         }
     }
     print_function(max_value - 48, max_pos, line_len, board);
+    free(number_board);
 }
