@@ -17,7 +17,7 @@ int find_smallest_value(int value_corner, int value_left, int value_up)
         return (value_up);
 }
 
-char free_space(char *number_board, int i, int line_len)
+int free_space(int *number_board, int i, int line_len)
 {
     int value_corner = 0;
     int value_left = 0;
@@ -25,7 +25,7 @@ char free_space(char *number_board, int i, int line_len)
     int smallest_value = 0;
 
     if (i < line_len || i % line_len == 0)
-        return (49);
+        return (1);
     value_corner = number_board[i - line_len - 1];
     value_left = number_board[i - 1];
     value_up = number_board[i - line_len];
@@ -59,18 +59,26 @@ void algorithm(char *board)
     int line_len = 1;
     int max_value = 0;
     int max_pos = 0;
-    char *number_board = my_strdup(board);
+    int *number_board;
+    int j = 0;
 
+    for ( ; board[j]; j++);
+    number_board = malloc(sizeof(int) * (++j));
+    number_board[j] = -1;
     for (int i = 0; board[i] != '\n'; i++)
         line_len++;
     for (int i = 0; board[i]; i++) {
+        if (board[i] == '\n')
+            number_board[i] = -1000;
         if (board[i] == 'o')
-            number_board[i] = '0';
+            number_board[i] = 0;
         else if (board[i] == '.') {
             number_board[i] = free_space(number_board, i, line_len);
             max_value = new_challenger(max_value, number_board[i], i, &max_pos);
         }
     }
-    print_function(max_value - 48, max_pos, line_len, board);
+    //for (int i = 0; number_board[i] != -1; i++)
+    //    printf("%i,", number_board[i]);
+    print_function(max_value, max_pos, line_len, board);
     free(number_board);
 }
