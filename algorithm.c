@@ -17,7 +17,7 @@ int find_smallest_value(int value_corner, int value_left, int value_up)
         return (value_up);
 }
 
-int free_space(int *number_board, int i, int line_len)
+int free_space(short *number_board, int i, int line_len)
 {
     int value_corner = 0;
     int value_left = 0;
