@@ -51,22 +51,16 @@ void print_function(int max_value, int max_pos, int line_len, char *board)
         max_pos = max_pos - line_len + max_value;
         back_up -= line_len;
     }
-    my_putstr(board);
+    write(1, board, my_strlen(board));
 }
 
-void algorithm(char *board)
+void algorithm(char *board, int len_board, int line_len)
 {
-    int line_len = 1;
     int max_value = 0;
     int max_pos = 0;
-    short *number_board;
-    int j = 0;
+    short *number_board = malloc(sizeof(short) * (++len_board));
 
-    for ( ; board[j]; j++);
-    number_board = malloc(sizeof(short) * (++j));
-    number_board[j] = -1;
-    for (int i = 0; board[i] != '\n'; i++)
-        line_len++;
+    number_board[len_board] = -1;
     for (int i = 0; board[i]; i++) {
         if (board[i] == '\n')
             number_board[i] = -1000;
