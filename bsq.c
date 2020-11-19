@@ -10,6 +10,8 @@
 int bsq(int ac, char **av)
 {
     char *board;
+    int len_board;
+    int line_len = 1;
 
     if (ac != 2)
         return (84);
@@ -18,6 +20,9 @@ int bsq(int ac, char **av)
         return (84);
     for ( ; *board != '\n'; board++);
     board++;
-    algorithm(board);
+    for (int i = 0; board[i] != '\n'; i++)
+        line_len++;
+    len_board = my_strlen(board);
+    algorithm(board, len_board, line_len);
     return (0);
 }
