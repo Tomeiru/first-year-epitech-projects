@@ -59,11 +59,11 @@ void algorithm(char *board)
     int line_len = 1;
     int max_value = 0;
     int max_pos = 0;
-    int *number_board;
+    short *number_board;
     int j = 0;
 
     for ( ; board[j]; j++);
-    number_board = malloc(sizeof(int) * (++j));
+    number_board = malloc(sizeof(short) * (++j));
     number_board[j] = -1;
     for (int i = 0; board[i] != '\n'; i++)
         line_len++;
@@ -77,8 +77,6 @@ void algorithm(char *board)
             max_value = new_challenger(max_value, number_board[i], i, &max_pos);
         }
     }
-    //for (int i = 0; number_board[i] != -1; i++)
-    //    printf("%i,", number_board[i]);
     print_function(max_value, max_pos, line_len, board);
     free(number_board);
 }
