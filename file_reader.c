@@ -24,9 +24,15 @@ char *file_reader(char *filepath)
     int read_value = 0;
     int stat_value = 0;
 
+    if (fd == -1)
+        return ("!");
     stat_value = stat(filepath, &stats);
+    if (stat_value != 0)
+        return ("!");
     board = malloc(sizeof(char) * (stats.st_size + 1));
     read_value = read(fd, board, stats.st_size);
+    if (read_value == -1)
+        return ("!");
     board[stats.st_size] = '\0';
     if (error_read(fd, read_value, stat_value, board) == 84)
         return ("!");
