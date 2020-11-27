@@ -230,7 +230,7 @@ void dash_l(char *filepath)
 
     my_printf("total %lli\n", total);
     for (int i = 0; i < nb_file; i++) {
-        my_printf("%s. ", array_typeperm[i]);
+        my_printf("%s ", array_typeperm[i]);
         my_printf("%hi ", array_hardlinks[i]);
         my_printf("%s ", array_fileowner[i]);
         my_printf("%s ", array_groupowner[i]);
@@ -257,7 +257,7 @@ void dash_l_reverse(char *filepath)
 
     my_printf("total %lli\n", total);
     for (int i = nb_file - 1; i >= 0; i--) {
-        my_printf("%s. ", array_typeperm[i]);
+        my_printf("%s ", array_typeperm[i]);
         my_printf("%hi ", array_hardlinks[i]);
         my_printf("%s ", array_fileowner[i]);
         my_printf("%s ", array_groupowner[i]);

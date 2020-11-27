@@ -107,7 +107,7 @@ void single_l(char *filename)
     char *size = size_to_str(filename);
     char *time = time_to_str(filename);
 
-    my_printf("%s. ", typeperm);
+    my_printf("%s ", typeperm);
     my_printf("%hi ", hardlinks);
     my_printf("%s ", fileowner);
     my_printf("%s ", groupowner);

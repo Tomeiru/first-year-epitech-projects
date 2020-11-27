@@ -66,7 +66,7 @@ void caps_rl_gestion(char *filepath)
     my_printf("%s:\n", filepath);
     my_printf("total %lli\n", total);
     for (int i = 0; i < nb_file; i++) {
-        my_printf("%s. ", array_typeperm[i]);
+        my_printf("%s ", array_typeperm[i]);
         my_printf("%hi ", array_hardlinks[i]);
         my_printf("%s ", array_fileowner[i]);
         my_printf("%s ", array_groupowner[i]);
@@ -124,7 +124,7 @@ void caps_rrl_gestion(char *filepath)
     my_printf("%s:\n", filepath);
     my_printf("total %lli\n", total);
     for (int i = nb_file - 1; i >= 0; i--) {
-        my_printf("%s. ", array_typeperm[i]);
+        my_printf("%s ", array_typeperm[i]);
         my_printf("%hi ", array_hardlinks[i]);
         my_printf("%s ", array_fileowner[i]);
         my_printf("%s ", array_groupowner[i]);
