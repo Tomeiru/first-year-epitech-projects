@@ -37,8 +37,21 @@ char **time_to_array(int nb_file, char **array_filename);
 char *add_quote(char *str);
 char **file_name_to_array(int nb_file, char *filepath);
 char **my_arrdup(char **array_filename, int nb_file);
-
-
-#include <stdio.h>
+void caps_rrl_gestion(char *filepath);
+void caps_rr_gestion(char *filepath);
+void caps_rl_gestion(char *filepath);
+void caps_r_gestion(char *filepath);
+void single_l(char *filename);
+void dash_l_reverse(char *filepath);
+void dash_l(char *filepath);
+void l_flag(char *flags, char *filepath);
+void d_flag(char *flags, char *filepath);
+void capr_flag(char *flags, char *filepath);
+char *transcript(char *perm, char *type);
+void no_arguments(void);
+void ls_sorter(char *flags, char *filepath);
+void simple_reverse(void);
+long long total_blocks(int nb_file, char **array_filename);
+char *cut_useless_info(char *time_str);
 
 #endif /* !MY_LS_H_ */

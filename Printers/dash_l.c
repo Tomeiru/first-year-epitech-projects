@@ -121,7 +121,6 @@ char **size_to_array(int nb_file, char **array_filename)
 {
     struct stat stats;
     char **size = malloc(sizeof(char *) * (nb_file));
-    int lenmax = 0;
 
     for (int i = 0; i < nb_file; i++) {
         stat(array_filename[i], &stats);
@@ -132,7 +131,6 @@ char **size_to_array(int nb_file, char **array_filename)
 
 char *cut_useless_info(char *time_str)
 {
-    int i = 0;
     char *result = my_strdup(time_str);
 
     for ( ; *result != ' '; result++);
