@@ -53,5 +53,6 @@ void ls_sorter(char *flags, char *filepath);
 void simple_reverse(void);
 long long total_blocks(int nb_file, char **array_filename);
 char *cut_useless_info(char *time_str);
+int my_strcmp(char const *s1, char const *s2);
 
 #endif /* !MY_LS_H_ */

@@ -10,6 +10,7 @@ SRC =	Essential_functions/capr_flag.c	\
 		Essential_functions/l_flag.c	\
 		Essential_functions/ls_sorter.c	\
 		Essential_functions/my_ls.c	\
+		Essential_functions/my_strcmp.c	\
 		Printers/caps_rl_gestion.c	\
 		Printers/dash_l.c	\
 		Printers/file_name_to_array.c	\

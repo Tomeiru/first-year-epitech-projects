@@ -26,7 +26,7 @@ char **file_path_to_array(int nb_file, char *filepath, char **array_filename)
 {
     char **filepath_array;
 
-    if (strcmp(filepath, ".") == 0)
+    if (my_strcmp(filepath, ".") == 0)
         return (array_filename);
     filepath_array = malloc(sizeof(char *) * (nb_file));
     for (int i = 0; i < nb_file; i++)
