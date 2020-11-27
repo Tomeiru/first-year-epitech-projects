@@ -126,6 +126,10 @@ void modifier_matrix(char **av)
             i++;
         }
     }
+    for (int i = 0; i < 9; i++) {
+        if (modifier_mat[i] > -0.001 && modifier_mat[i] < 0)
+            modifier_mat[i] = 0;
+    }
     printf("%-8.2f%-8.2f%.2f\n%-8.2f%-8.2f%.2f\n%-8.2f%-8.2f%.2f\n", modifier_mat[0], modifier_mat[1], modifier_mat[2], modifier_mat[3], modifier_mat[4], modifier_mat[5], modifier_mat[6], modifier_mat[7], modifier_mat[8]);
     free(modifier_mat);
 }
