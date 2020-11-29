@@ -42,13 +42,13 @@ char *ls_flag(int ac, char **av)
 
 char **arg_to_path(int ac, char **av, int path_counter)
 {
-    char **path_array = malloc(sizeof(char *) * (path_counter + 1));
+    char **path_array = malloc(sizeof(char *) * path_counter);
     int j = 0;
 
     for (int i = 0; i < ac; i++)
         if (av[i][0] != '-' || (av[i][0] == '-' && av[i][1] == '\0'))
             path_array[j++] = my_strdup(av[i]);
-    path_array[j] = NULL;
+    return (path_array);
 }
 
 int is_there_path(int ac, char **av)
@@ -67,13 +67,7 @@ void ls_arguments(int ac, char **av)
     char *ls_flags = ls_flag(ac, av);
     char **path_array;
 
-    if (path_counter != 0) {
-        path_array = arg_to_path(ac, av, path_counter);
-        /*for (int i = 1; i < path_counter + 1; i++)
-            ls_sorter(ls_flags, path_array[i]);*/
-    }
-    else
-        ls_sorter(ls_flags, ".");
+    ls_sorter(ls_flags, ".");
 }
 
 int my_ls(int ac, char **av)
