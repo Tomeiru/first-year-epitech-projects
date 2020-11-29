@@ -1,1 +1,16 @@
 Hey! Welcome to my hunter!
+
+The goal of the game is simple!
+
+You need to get the higher score possible before losing.
+
+To raise your score, you need to kill birds, each bird has a different speed and a different worth.
+    Pink => 1 point
+    Black => 2 points
+    Red => 3 points
+
+To prevent a game over, you need to kill at least five birds per round!
+
+A round is 10 bird, you kill a bird by pressing left click over a bird and you miss by missing your shot or letting a bird escape.
+
+Good luck and have fun!

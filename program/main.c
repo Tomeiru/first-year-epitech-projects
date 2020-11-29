@@ -10,11 +10,11 @@
 static void print_help()
 {
     int fd = open("files/help", O_RDONLY);
-    char *help_text = malloc(sizeof(char) * 27);
+    char *help_text = malloc(sizeof(char) * 511);
 
-    read(fd, help_text, 26);
-    help_text[26] = '\0';
-    printf("%s\n", help_text);
+    read(fd, help_text, 510);
+    help_text[510] = '\0';
+    my_printf("%s\n", help_text);
     free(help_text);
     return;
 }
