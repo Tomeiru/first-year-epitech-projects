@@ -64,7 +64,7 @@ void ls_sorter(char *flags, char *filepath)
         capr_flag(flags, filepath);
     if (flags[0] == '1' && flags[2] != '1'  && flags[1] != '1')
         l_flag(flags, filepath);
-    if (flags[4] == '1' && flags[0] != '1' && flags[2] != '1'  &&
+    if (flags[4] == '1' && flags[0] != '1' && flags[2] != '1' &&
     flags[1] != '1')
         if (flags[3] == '1') {
             my_printf("No -tr gestion for the moment\n");

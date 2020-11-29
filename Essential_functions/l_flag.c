@@ -9,7 +9,7 @@
 
 void l_flag(char *flags, char *filepath)
 {
-    if (flags[4] == '1')
+    if (flags[4] == '1') {
         if (flags[3] == '1') {
             my_printf("No -ltr gestion for the moment\n");
             exit(84);
@@ -17,6 +17,7 @@ void l_flag(char *flags, char *filepath)
             my_printf("No -lt gestion for the moment\n");
             exit(84);
         }
+    }
     else if (flags[3] == '1')
             dash_l_reverse(filepath);
         else
