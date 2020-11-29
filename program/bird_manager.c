@@ -26,11 +26,11 @@ void roll_difficulty(struct game_struct *game_man)
     game_man->game_birds->which_bird = nb_bird;
     if (game_man->game_birds->which_bird == 0) {
         game_man->game_birds->rect.top = 272;
-        game_man->game_birds->speed = 1;
+        game_man->game_birds->speed = 0.5;
     }
     if (game_man->game_birds->which_bird == 1) {
         game_man->game_birds->rect.top = 0;
-        game_man->game_birds->speed = 1.25;
+        game_man->game_birds->speed = 1;
     }
     if (game_man->game_birds->which_bird == 2) {
         game_man->game_birds->rect.top = 136;

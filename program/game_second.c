@@ -75,7 +75,7 @@ sfClock *clock)
     sfRenderWindow_drawSprite(window, game_man->game_birds->sprite, NULL);
     crosshair_manager(window, game_man);
     sfRenderWindow_display(window);
-    game_man->game_stats->score += 1;
+    game_man->game_stats->score += (game_man->game_birds->speed * 2);
     game_man->game_stats->score_this_round += 1;
     game_man->game_stats->phase = 2;
 }
