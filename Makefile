@@ -11,11 +11,19 @@ SRC =	Essential_functions/capr_flag.c	\
 		Essential_functions/ls_sorter.c	\
 		Essential_functions/my_ls.c	\
 		Essential_functions/my_strcmp.c	\
+		Printers/array_creators.c	\
+		Printers/array_creators_second.c	\
+		Printers/array_creators_third.c	\
+		Printers/caps_r_gestion.c	\
+		Printers/caps_rr_gestion.c	\
+		Printers/caps_rrl_gestion.c	\
 		Printers/caps_rl_gestion.c	\
 		Printers/dash_l.c	\
 		Printers/file_name_to_array.c	\
 		Printers/no_arguments.c	\
-		Printers/single_l.c
+		Printers/single_l.c	\
+		Printers/string_creators_second.c	\
+		Printers/string_creators.c
 
 MAIN =	Essential_functions/main.c
 

@@ -61,18 +61,18 @@ int is_there_path(int ac, char **av)
     return (counter);
 }
 
-void ls_arguments(int ac, char **av)
+int my_ls(int ac, char **av)
 {
     int path_counter = is_there_path(ac, av);
     char *ls_flags = ls_flag(ac, av);
     char **path_array;
-    if (my_strcmp(ls_flags, "00000") == 0)
-        no_arguments();
-    ls_sorter(ls_flags, ".");
-}
 
-int my_ls(int ac, char **av)
-{
-    ls_arguments(ac, av);
+    if (path_counter != 0) {
+        path_array = arg_to_path(ac, av, path_counter);
+        for (int i = 1; i < path_counter + 1; i++)
+            ls_type(ls_flags, path_array[i], path_counter, i);
+    }
+    else
+        ls_sorter(ls_flags, ".");
     return (0);
 }

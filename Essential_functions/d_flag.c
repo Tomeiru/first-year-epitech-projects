@@ -9,11 +9,8 @@
 
 void d_flag(char *flags, char *filepath)
 {
-    if (flags[0] == '1') {
+    if (flags[0] == '1')
         single_l(filepath);
-        exit(EXIT_SUCCESS);
-    }else {
+    else
         my_printf("%s\n", filepath);
-        exit(EXIT_SUCCESS);
-    }
 }

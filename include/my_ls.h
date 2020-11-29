@@ -48,11 +48,25 @@ void l_flag(char *flags, char *filepath);
 void d_flag(char *flags, char *filepath);
 void capr_flag(char *flags, char *filepath);
 char *transcript(char *perm, char *type);
-void no_arguments(void);
+void no_arguments(char *filepath);
 void ls_sorter(char *flags, char *filepath);
 void simple_reverse(void);
 long long total_blocks(int nb_file, char **array_filename);
 char *cut_useless_info(char *time_str);
 int my_strcmp(char const *s1, char const *s2);
+char *group_owner_to_str(short gid);
+char *size_to_str(char *filename);
+char *time_to_str(char *filename);
+char *stat_mode_to_typeperm_str(char *statmode);
+char *stat_mode_to_str(char *filename);
+short get_hard_link(char *filename);
+short get_uid(char *filename);
+short get_gid(char *filename);
+char *file_owner_to_str(short uid);
+void ls_sorter_file(char *flags, char *filepath);
+char *slash_cut(char *filepath);
+void ls_type(char *flags, char *filepath, int path_counter, int i);
+char **file_path_to_arr(int nb_file, char *filepath, char **array_filename);
+char *filepath_creator(char *filepath, char *folder);
 
 #endif /* !MY_LS_H_ */

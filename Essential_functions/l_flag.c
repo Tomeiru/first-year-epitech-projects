@@ -17,11 +17,8 @@ void l_flag(char *flags, char *filepath)
             my_printf("No -lt gestion for the moment\n");
             exit(84);
         }
-    else if (flags[3] == '1') {
+    else if (flags[3] == '1')
             dash_l_reverse(filepath);
-            exit(EXIT_SUCCESS);
-        }else {
+        else
             dash_l(filepath);
-            exit(EXIT_SUCCESS);
-        }
 }

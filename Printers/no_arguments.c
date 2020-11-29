@@ -7,10 +7,9 @@
 
 #include "my_ls.h"
 
-void no_arguments(void)
+void no_arguments(char *filepath)
 {
-    int nb_file = file_counter(".");
-    char *filepath = ".";
+    int nb_file = file_counter(filepath);
     char **array_filename = file_name_to_array(nb_file, filepath);
 
     for (int i = 0; i < nb_file; i++) {
@@ -19,7 +18,6 @@ void no_arguments(void)
         else
             my_printf("%s\n", add_quote(array_filename[i]));
     }
-    exit(EXIT_SUCCESS);
 }
 
 void simple_reverse(void)
@@ -34,5 +32,4 @@ void simple_reverse(void)
         else
             my_printf("%s\n", add_quote(array_filename[i]));
     }
-    exit(EXIT_SUCCESS);
 }
