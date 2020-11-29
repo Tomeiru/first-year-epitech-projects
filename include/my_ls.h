@@ -64,7 +64,6 @@ short get_uid(char *filename);
 short get_gid(char *filename);
 char *file_owner_to_str(short uid);
 void ls_sorter_file(char *flags, char *filepath);
-char *slash_cut(char *filepath);
 void ls_type(char *flags, char *filepath, int path_counter, int i);
 char **file_path_to_arr(int nb_file, char *filepath, char **array_filename);
 char *filepath_creator(char *filepath, char *folder);

@@ -15,7 +15,7 @@ void caps_rr_gestion(char *filepath)
     char **array_statmode = stat_mode_to_array(nb_file, array_filepath);
     char **array_typeperm = stat_mode_to_typeperm(nb_file, array_statmode);
 
-    my_printf("%s:\n", slash_cut(filepath));
+    my_printf("%s:\n", (filepath));
     for (int i = nb_file - 1; i >= 0; i--) {
         if (i - 1 != -1)
             my_printf("%s  ", add_quote(array_filename[i]));

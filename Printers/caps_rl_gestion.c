@@ -48,16 +48,6 @@ long long total_blocks(int nb_file, char **array_filename)
     return (total);
 }
 
-char *slash_cut(char *filepath)
-{
-    int i = 0;
-
-    for ( ; filepath[i]; i++);
-    if (filepath[i - 1] == '/')
-        filepath[i - 1] = '\0';
-    return (filepath);
-}
-
 void caps_rl_gestion(char *filepath)
 {
     int nb_file = file_counter(filepath);
@@ -66,7 +56,7 @@ void caps_rl_gestion(char *filepath)
     char **array_statmode = stat_mode_to_array(nb_file, array_filepath);
     char **array_typeperm = stat_mode_to_typeperm(nb_file, array_statmode);
 
-    my_printf("%s:\n", slash_cut(filepath));
+    my_printf("%s:\n", (filepath));
     dash_l(filepath);
     for (int i = 0; i < nb_file; i++) {
         if (array_typeperm[i][0] == 'd') {

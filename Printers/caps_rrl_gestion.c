@@ -15,7 +15,7 @@ void caps_rrl_gestion(char *filepath)
     char **array_statmode = stat_mode_to_array(nb_file, array_filepath);
     char **array_typeperm = stat_mode_to_typeperm(nb_file, array_statmode);
 
-    my_printf("%s:\n", slash_cut(filepath));
+    my_printf("%s:\n", (filepath));
     dash_l_reverse(filepath);
     for (int i = nb_file - 1; i >= 0; i--) {
         if (array_typeperm[i][0] == 'd') {

@@ -29,7 +29,7 @@ void ls_multi_file(char *flags, char *filepath, int i)
         my_putchar('\n');
     if (typeperm[0] == 'd') {
         if (flags[1] != '1')
-            my_printf("%s:\n", slash_cut(filepath));
+            my_printf("%s:\n", (filepath));
         ls_sorter(flags, filepath);
     }
     else if (typeperm[0] == '-')
