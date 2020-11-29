@@ -66,15 +66,13 @@ void ls_arguments(int ac, char **av)
     int path_counter = is_there_path(ac, av);
     char *ls_flags = ls_flag(ac, av);
     char **path_array;
-
+    if (my_strcmp(ls_flags, "00000") == 0)
+        no_arguments();
     ls_sorter(ls_flags, ".");
 }
 
 int my_ls(int ac, char **av)
 {
-    if (ac == 1)
-        no_arguments();
-    else
-        ls_arguments(ac, av);
+    ls_arguments(ac, av);
     return (0);
 }
