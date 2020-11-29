@@ -16,6 +16,7 @@ static void print_help()
     help_text[510] = '\0';
     my_printf("%s\n", help_text);
     free(help_text);
+    close(fd);
     return;
 }
 
