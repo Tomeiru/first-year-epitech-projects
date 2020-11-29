@@ -68,5 +68,6 @@ char *slash_cut(char *filepath);
 void ls_type(char *flags, char *filepath, int path_counter, int i);
 char **file_path_to_arr(int nb_file, char *filepath, char **array_filename);
 char *filepath_creator(char *filepath, char *folder);
+char *cut_useless_info(char *time_str);
 
 #endif /* !MY_LS_H_ */

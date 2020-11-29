@@ -7,16 +7,6 @@
 
 #include "my_ls.h"
 
-char *cut_useless_info(char *time_str)
-{
-    char *result = my_strdup(time_str);
-
-    for ( ; *result != ' '; result++);
-    result++;
-    result[12] = '\0';
-    return (result);
-}
-
 char **time_to_array(int nb_file, char **array_filename)
 {
     struct stat stats;
@@ -46,6 +36,23 @@ char type_transcript(char *type)
     return (48);
 }
 
+char *perm_selection(char perm, char *typeperm, int j)
+{
+    if (perm == '7' || perm == '4' || perm == '6' || perm == '5')
+        typeperm[j++] = 'r';
+    else
+        typeperm[j++] = '-';
+    if (perm == '7' || perm == '2' || perm == '6' || perm == '3')
+        typeperm[j++] = 'w';
+    else
+        typeperm[j++] = '-';
+    if (perm == '7' || perm == '1' || perm == '3' || perm == '5')
+        typeperm[j++] = 'x';
+    else
+        typeperm[j++] = '-';
+    return (typeperm);
+}
+
 char *transcript(char *perm, char *type)
 {
     char *typeperm = malloc(sizeof(char) * 11);
@@ -53,22 +60,12 @@ char *transcript(char *perm, char *type)
 
     typeperm[0] = type_transcript(type);
     for (int i = 0; i < 3; i++) {
-        if (perm[i] == '7' || perm[i] == '4' || perm[i] == '6' || perm[i] == '5')
-            typeperm[j++] = 'r';
-        else
-            typeperm[j++] = '-';
-        if (perm[i] == '7' || perm[i] == '2' || perm[i] == '6' || perm[i] == '3')
-            typeperm[j++] = 'w';
-        else
-            typeperm[j++] = '-';
-        if (my_getnbr(type) == 17 && i == 2)
-            typeperm[j++] = 't';
-        else if (perm[i] == '7' || perm[i] == '1' || perm[i] == '3' || perm[i] == '5')
-            typeperm[j++] = 'x';
-        else
-            typeperm[j++] = '-';
+        typeperm = perm_selection(perm[i], typeperm, j);
+        j += 3;
     }
-    typeperm[j] = '\0';
+    typeperm[10] = '\0';
+    if (my_getnbr(type) == 17)
+        typeperm[9] = 't';
     return (typeperm);
 }
 

@@ -50,3 +50,13 @@ char *stat_mode_to_typeperm_str(char *statmode)
     typeperm = transcript(perm, type);
     return (typeperm);
 }
+
+char *cut_useless_info(char *time_str)
+{
+    char *result = my_strdup(time_str);
+
+    for ( ; *result != ' '; result++);
+    result++;
+    result[12] = '\0';
+    return (result);
+}
