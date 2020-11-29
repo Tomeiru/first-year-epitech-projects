@@ -78,4 +78,6 @@ void restart(struct game_struct *game_man)
     game_man->game_stats->act_speed = 5;
     game_man->game_stats->bird_this_round = 0;
     game_man->game_stats->missed = 0;
+    game_man->game_stats->game_over_sound_played = 0;
+    game_man->game_stats->game_menu_sound_played = 0;
 }
