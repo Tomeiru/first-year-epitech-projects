@@ -146,7 +146,7 @@ char **time_to_array(int nb_file, char **array_filename)
 
     for (int i = 0; i < nb_file; i++) {
         stat(array_filename[i], &stats);
-        time[i] = ctime(&stats.st_ctime);
+        time[i] = ctime(&stats.st_mtime);
         time[i] = cut_useless_info(time[i]);
     }
     return (my_arrdup(time, nb_file));

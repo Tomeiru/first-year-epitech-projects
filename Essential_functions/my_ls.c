@@ -69,6 +69,8 @@ void ls_arguments(int ac, char **av)
 
     if (path_counter != 0) {
         path_array = arg_to_path(ac, av, path_counter);
+        /*for (int i = 1; i < path_counter + 1; i++)
+            ls_sorter(ls_flags, path_array[i]);*/
     }
     else
         ls_sorter(ls_flags, ".");

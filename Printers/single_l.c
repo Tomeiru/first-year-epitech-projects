@@ -72,7 +72,7 @@ char *time_to_str(char *filename)
 {
     struct stat stats;
     int stat_value = stat(filename, &stats);
-    char *time = cut_useless_info(ctime(&stats.st_ctime));
+    char *time = cut_useless_info(ctime(&stats.st_mtime));
 
     return (time);
 }
