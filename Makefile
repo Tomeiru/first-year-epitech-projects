@@ -8,6 +8,7 @@
 SRC =	cipher.c	\
 		error.c	\
 		encryption.c	\
+		decryption.c	\
 
 MAIN =	main.c
 
