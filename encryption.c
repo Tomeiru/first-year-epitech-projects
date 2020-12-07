@@ -85,7 +85,7 @@ void encryption(char **av)
                 printf("%i\n", key_matrix[k++]);
         }
     }
-    printf("Encrypted message:\n");
+    printf("\nEncrypted message:\n");
     for (int i = 0; i < len_message; i++) {
         if (i != len_message - 1)
             printf("%i ", encryption[i]);
