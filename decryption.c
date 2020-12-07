@@ -138,5 +138,6 @@ void decryption(char **av)
                 printf("%.3f\n", inversed_key[k++]);
         }
     }
+    printf("\nDecrypted message:\n");
     printf("%s\n", encryption);
 }
