@@ -134,6 +134,14 @@ void move_print(int *sorted, node *head_b, int ac)
     final_print(ops, size);
 }
 
+int check_unsorted(int *unsorted, int ac)
+{
+    for (int i = 0; i < ac - 2; i++)
+        if (unsorted[i] > unsorted[i + 1])
+            return (0);
+    return (1);
+}
+
 int pushswap(int ac, char **av)
 {
     int *unsorted = malloc(sizeof(int) * (ac - 1));
@@ -142,10 +150,16 @@ int pushswap(int ac, char **av)
     node *head_b = NULL;
 
     head_b = args_to_list(ac, av, head_b);
-    if (ac == 2)
+    if (ac == 2) {
+        write(1, "\n", 1);
         return (0);
+    }
     for (int i = 1; i < ac; i++)
         unsorted[i - 1] = my_getnbr(av[i]);
+    if (check_unsorted(unsorted, ac) == 1) {
+        write(1, "\n", 1);
+        return (0);
+    }
     sorted = heapsort(unsorted, size);
     move_print(sorted, head_b, ac);
     return (0);
