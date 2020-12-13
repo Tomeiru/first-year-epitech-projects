@@ -13,7 +13,7 @@ int main(int ac, char **av)
         write(2, "Error: bad arguments\n", 21);
         return (84);
     }
-    if (ac > 50000)
+    if (ac > 10000)
         return (0);
     return (pushswap(ac, av));
 }
