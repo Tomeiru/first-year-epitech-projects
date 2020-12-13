@@ -71,6 +71,8 @@ double *inversion_mat(int *key_matrix)
     int *cofactor = minor_to_cofactor(minor);
     int *adjugate = cofactor_adjugation(cofactor);
     int determinant = key_matrix[0] * cofactor[0] + key_matrix[1] * cofactor[1] + key_matrix[2] * cofactor[2];
+    if (determinant == 0)
+        exit(84);
     double *inversed_key = adjugate_to_inverse(adjugate, determinant);
     return (inversed_key);
 }
@@ -111,7 +113,7 @@ char *decrypted_message(double *key_matrix, double *message_matrix, int len_matr
     for (i = 0; i < count; i++) {
         for (j = 0; j < len_matrix; j++)
             e_message_d[i] += message_matrix[j + i / len_matrix * len_matrix] * key_matrix[j * len_matrix + i % len_matrix];
-        e_message[i] = e_message_d[i] + 0.5;
+        e_message[i] = round(e_message_d[i]);
     }
     return (e_message);
 }
