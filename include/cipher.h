@@ -15,5 +15,8 @@
 int error(int ac, char **av);
 int cypher(int ac, char **av);
 void encryption(char **av);
+char *decrypted_message_three(double *key_matrix, double *message_matrix, int len_matrix, char *message);
+char *decrypted_message_two(double *key_matrix, double *message_matrix, int len_matrix, char *message);
+char *decrypted_message_one(double *key_matrix, double *message_matrix, int len_matrix, char *message);
 
 #endif /* !CYPHER_H_ */
