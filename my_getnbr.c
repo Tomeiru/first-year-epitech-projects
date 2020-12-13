@@ -7,6 +7,27 @@
 
 #include "pushswap.h"
 
+void list_move(node **head_b, node **temp, node **prev, int which)
+{
+    if (which == 0) {
+        if (*temp == *head_b)
+            *head_b = (*head_b)->next;
+        else 
+            (*prev)->next = (*temp)->next;
+        if ((*temp)->next == NULL)
+            *temp = *head_b;
+        else
+            *temp = (*temp)->next;
+    }
+    if (which == 1) {
+        *prev = *temp;
+        if ((*temp)->next == NULL)
+            *temp = *head_b;
+        else
+            *temp = (*temp)->next;
+    }
+}
+
 int my_getnbr(char const *str)
 {
     int i = 0;

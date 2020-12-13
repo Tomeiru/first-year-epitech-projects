@@ -24,5 +24,6 @@ void my_swap(int* a, int* b);
 node *pb_to_list(int ac, node *head, node **last);
 void add_end(node **last, int data);
 node *args_to_list(int ac, char **av, node *head);
+void list_move(node **head_b, node **temp, node **prev, int which);
 
 #endif /* !PUSHSWAP_H_ */

@@ -60,27 +60,14 @@ void move_print(int *sorted, node *head_b, int ac)
         while (sorted[i] != temp->data) {
             add_end(&last_op, 3);
             size += 3;
-            prev = temp;
-            if (temp->next == NULL)
-                temp = head_b;
-            else
-                temp = temp->next;
-        }
-        if (i == 0)
+            list_move(&head_b, &temp, &prev, 1);
+        }if (i == 0)
             add_end(&last_op, 2);
         else
             add_end(&last_op, 1);
         size += 3;
-        if (temp == head_b)
-            head_b = head_b->next;
-        else 
-            prev->next = temp->next;
-        if (temp->next == NULL)
-            temp = head_b;
-        else
-            temp = temp->next;
-    }
-    free(sorted);
+        list_move(&head_b, &temp, &prev, 0);
+    }free(sorted);
     final_print(ops, size);
 }
 
