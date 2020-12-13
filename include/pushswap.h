@@ -21,5 +21,8 @@ int error(int ac, char **av);
 int my_getnbr(char const *str);
 int *heapsort(int *nb_array, int size);
 void my_swap(int* a, int* b);
+node *pb_to_list(int ac, node *head, node **last);
+void add_end(node **last, int data);
+node *args_to_list(int ac, char **av, node *head);
 
 #endif /* !PUSHSWAP_H_ */

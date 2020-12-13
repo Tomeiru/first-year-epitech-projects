@@ -10,6 +10,7 @@ SRC =	pushswap.c	\
 		heapsort.c	\
 		my_swap.c	\
 		error.c	\
+		list_func.c
 
 MAIN =	main.c
 
