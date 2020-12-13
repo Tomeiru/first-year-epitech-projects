@@ -58,7 +58,6 @@ double *adjugate_to_inverse(int *adjugate, int determinant)
     double *inversed_key = malloc(sizeof(double) * 9);
     double uno = 1;
     double ddeterminant = determinant;
-    double invert = uno / ddeterminant;
 
     for (int i = 0; i < 9; i++)
         inversed_key[i] = uno / ddeterminant * adjugate[i];
@@ -112,6 +111,7 @@ double *inversion_mat(int *key_matrix, int len_matrix)
         return (inversion_two(key_matrix));
     if (len_matrix > 4 && len_matrix < 10)
         return (inversion_three(key_matrix));
+    exit(84);
 }
 
 double *decryption_num_matrix(char *message)
@@ -142,6 +142,7 @@ char *decrypted_message(double *key_matrix, double *message_matrix, int len_matr
         return (decrypted_message_two(key_matrix, message_matrix, len_matrix, message));
     if (len_key > 4 && len_key < 10)
         return (decrypted_message_three(key_matrix, message_matrix, len_matrix, message));
+    exit(84);
 }
 
 char *decrypted_message_one(double *key_matrix, double *message_matrix, int len_matrix, char *message)
