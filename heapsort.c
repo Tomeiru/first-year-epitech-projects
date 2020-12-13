@@ -17,8 +17,7 @@ void heap_to_max_heap(int *nb_array, int *size, int i)
     if (left_pos < *size && nb_array[left_pos] > nb_array[up_pos]) {
         my_swap(&nb_array[left_pos], &nb_array[up_pos]);
         change = 1;
-    }
-    if (right_pos < *size && nb_array[right_pos] > nb_array[up_pos]) {
+    }if (right_pos < *size && nb_array[right_pos] > nb_array[up_pos]) {
         if (change == 1) {
             my_swap(&nb_array[right_pos], &nb_array[up_pos]);
             my_swap(&nb_array[right_pos], &nb_array[left_pos]);
@@ -26,8 +25,7 @@ void heap_to_max_heap(int *nb_array, int *size, int i)
         else
             my_swap(&nb_array[right_pos], &nb_array[up_pos]);
         change = 2;
-    }
-    if (change == 1)
+    }if (change == 1)
         heap_to_max_heap(nb_array, size, left_pos);
     if (change == 2)
         heap_to_max_heap(nb_array, size, right_pos);
