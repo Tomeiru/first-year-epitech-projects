@@ -205,9 +205,19 @@ char *decrypted_message_three(double *key_matrix, double *message_matrix, int le
     return (e_message);
 }
 
+void exclude(char **av, int len_key)
+{
+    if (len_key > 10)
+        exit(84);
+    for (int j = 0; av[1][j]; j++)
+        if (av[1][j] != ' ' && (av[1][j] > '9' || av[1][j] < '0'))
+            exit(84);
+}
+
 void decryption(char **av)
 {
     int len_key = strlen(av[2]);
+    exclude(av, len_key);
     int len_matrix = len_matrix_finder(len_key);
     int *key_matrix = key_matrix_value(av[2], len_matrix);
     double *number_matrix = decryption_num_matrix(av[1]);
