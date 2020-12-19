@@ -7,6 +7,8 @@
 
 #include "navy.h"
 
+struct game_stats game_struct;
+
 int main(int ac, char **av)
 {
     return (navy(ac, av));

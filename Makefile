@@ -11,7 +11,8 @@ SRC =	navy.c	\
 		board_creation.c	\
 		host.c	\
 		player_two.c	\
-		my_getnbr.c
+		my_getnbr.c	\
+		attack.c
 
 MAIN =	main.c
 

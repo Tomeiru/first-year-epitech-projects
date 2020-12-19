@@ -10,30 +10,37 @@
 void *connected(int signum, siginfo_t *siginfo, void *context)
 {
     if (signum == SIGUSR2) {
-        printf("\nennemy connected\n\n");
-        kill(siginfo->si_pid, SIGUSR1);
+        if (game_struct.start == 0) {
+            printf("\nennemy connected\n\n");
+            game_struct.enemy_pid = siginfo->si_pid;
+            kill(siginfo->si_pid, SIGUSR1);
+            printf(game_struct.board);
+            game_struct.start = 1;
+        }
+        game_struct.wait = 1;
     }
-    //printf(board);
 }
 
 void waiting_co_host(void)
 {
-    struct sigaction saStruct;
-    int i = 0
+    struct sigaction actionstart;
 
-    sigemptyset(&saStruct.sa_mask);
-    saStruct.sa_sigaction = &connected;
-    saStruct.sa_flags = SA_SIGINFO;
-    sigaction(SIGUSR2, &saStruct, NULL);
+    sigemptyset(&actionstart.sa_mask);
+    actionstart.sa_sigaction = &connected;
+    actionstart.sa_flags = SA_SIGINFO;
+    sigaction(SIGUSR2, &actionstart, NULL);
+    while (game_struct.wait == 0);
 }
 
 void host(char *filepath)
 {
-    int pid = getpid();
     char *pos_str = get_pos_str(filepath);
-    char *board = add_boat(create_board(), pos_str);
 
-    printf("my_pid: %i\n", pid);
+    game_struct.board = add_boat(create_board(), pos_str);
+    game_struct.pid = getpid();
+    printf("my_pid: %i\n", game_struct.pid);
     write(1, "waiting for enemy connection...\n", 33);
-    while (1);
+    waiting_co_host();
+    game_struct.wait = 0;
+    attack_host();
 }

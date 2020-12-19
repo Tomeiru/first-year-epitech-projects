@@ -60,6 +60,22 @@ void check_format(char *pos_str)
     }
 }
 
+char *value_to_pos(int value)
+{
+    char let_list[8] = {
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'
+    };
+    char *pos = malloc(sizeof(char) * 4);
+
+    pos[1] = value % 10 + 49;
+    for (int i = 0; i < 8; i++)
+        if (value / 10 == i)
+            pos[0] = let_list[i];
+    pos[2] = ':';
+    pos[3] = '\0';
+    return (pos);
+}
+
 int pos_to_value(char letter, char number)
 {
     char let_list[8] = {

@@ -23,9 +23,25 @@ char *get_pos_str(char *pos_file)
     return (pos_str);
 }
 
+void init_struct(void)
+{
+    game_struct.pid = 0;
+    game_struct.enemy_pid = 0;
+    game_struct.wait = 0;
+    game_struct.hit = 0;
+    game_struct.enemy_hit = 0;
+    game_struct.signal_received_x = 0;
+    game_struct.signal_received_y = 0;
+    game_struct.x = 0;
+    game_struct.y = 0;
+    game_struct.start = 0;
+    game_struct.status = 0;
+}
+
 int navy(int ac, char **av)
 {
     error_args(ac, av);
+    init_struct();
     if (ac == 2)
         host(av[1]);
     else
