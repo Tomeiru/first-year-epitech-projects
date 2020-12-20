@@ -10,15 +10,15 @@
 void register_cord(int which_one)
 {
     if (which_one == 1) {
-        if (game_struct.signal_received_x == 0)
+        if (game_struct.signal_rec_x == 0)
             game_struct.x += 1;
         else
             game_struct.y += 1;
     } if (which_one == 2) {
-        if (game_struct.signal_received_x == 0)
-            game_struct.signal_received_x = 1;
-        else if (game_struct.signal_received_y == 0)
-            game_struct.signal_received_y = 1;
+        if (game_struct.signal_rec_x == 0)
+            game_struct.signal_rec_x = 1;
+        else if (game_struct.signal_rec_y == 0)
+            game_struct.signal_rec_y = 1;
     }
 }
 
@@ -29,7 +29,7 @@ void *register_coord(int signum, siginfo_t *siginfo, void *context)
             register_cord(1);
         }if (signum == SIGUSR1) {
             register_cord(2);
-        }if (game_struct.signal_received_x == 1 && game_struct.signal_received_y == 1)
+        }if (game_struct.signal_rec_x == 1 && game_struct.signal_rec_y == 1)
             game_struct.wait = 1;
     }if (game_struct.status == 1) {
         write(1, value_to_pos(game_struct.pos), 3);

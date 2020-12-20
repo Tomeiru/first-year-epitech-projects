@@ -7,9 +7,22 @@
 
 #include "navy.h"
 
+void defense_check(int value)
+{
+    if (game_struct.board[52 + value / 10 * 2 + value % 10 * 18] == '.') {
+        write(1, " missed\n\n", 9);
+        game_struct.board[52 + value / 10 * 2 + value % 10 * 18] = 'o';
+        kill(game_struct.enemy_pid, SIGUSR2);
+    }else {
+        write(1, " hit\n\n", 6);
+        game_struct.board[52 + value / 10 * 2 + value % 10 * 18] = 'x';
+        kill(game_struct.enemy_pid, SIGUSR1);
+        game_struct.enemy_hit += 1;
+    }
+}
+
 int defense_ptwo(void)
 {
-    char *pos;
     int value = 0;
 
     if (check_win() != 2)
@@ -24,28 +37,15 @@ int defense_ptwo(void)
         sigaction(SIGUSR2, &actionattack, NULL);
         sigaction(SIGUSR1, &actionattack, NULL);
         game_struct.first = 1;
-    }
-    while (game_struct.wait == 0);
+    }while (game_struct.wait == 0);
     value = game_struct.x * 10 + game_struct.y;
-    pos = value_to_pos(value);
-    write(1, pos, 3);
-    if (game_struct.board[52 + value / 10 * 2 + value % 10 * 18] == '.') {
-        write(1, " missed\n\n", 9);
-        game_struct.board[52 + value / 10 * 2 + value % 10 * 18] = 'o';
-        kill(game_struct.enemy_pid, SIGUSR2);
-    }
-    else {
-        write(1, " hit\n\n", 6);
-        game_struct.board[52 + value / 10 * 2 + value % 10 * 18] = 'x';
-        kill(game_struct.enemy_pid, SIGUSR1);
-        game_struct.enemy_hit += 1;
-    }
+    write(1, value_to_pos(value), 3);
+    defense_check(value);
     attack_ptwo();
 }
 
 int defense_host(void)
 {
-    char *pos;
     int value = 0;
 
     if (check_win() != 2)
@@ -54,18 +54,7 @@ int defense_host(void)
     reset_glob();
     while (game_struct.wait == 0);
     value = game_struct.x * 10 + game_struct.y;
-    pos = value_to_pos(value);
-    write(1, pos, 3);
-    if (game_struct.board[52 + value / 10 * 2 + value % 10 * 18] == '.') {
-        write(1, " missed\n\n", 9);
-        game_struct.board[52 + value / 10 * 2 + value % 10 * 18] = 'o';
-        kill(game_struct.enemy_pid, SIGUSR2);
-    }
-    else {
-        write(1, " hit\n\n", 6);
-        game_struct.board[52 + value / 10 * 2 + value % 10 * 18] = 'x';
-        kill(game_struct.enemy_pid, SIGUSR1);
-        game_struct.enemy_hit += 1;
-    }
+    write(1, value_to_pos(value), 3);
+    defense_check(value);
     attack_host();
 }

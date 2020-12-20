@@ -26,8 +26,8 @@ void reset_glob(void)
 {
     game_struct.wait = 0;
     game_struct.status = 2;
-    game_struct.signal_received_x = 0;
-    game_struct.signal_received_y = 0;
+    game_struct.signal_rec_x = 0;
+    game_struct.signal_rec_y = 0;
     game_struct.x = 0;
     game_struct.y = 0;
 }
@@ -39,8 +39,8 @@ void init_struct(void)
     game_struct.wait = 0;
     game_struct.hit = 0;
     game_struct.enemy_hit = 0;
-    game_struct.signal_received_x = 0;
-    game_struct.signal_received_y = 0;
+    game_struct.signal_rec_x = 0;
+    game_struct.signal_rec_y = 0;
     game_struct.x = 0;
     game_struct.y = 0;
     game_struct.start = 0;

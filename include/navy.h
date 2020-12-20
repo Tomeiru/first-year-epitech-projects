@@ -65,8 +65,8 @@ struct game_stats
     int wait;
     int hit;
     int enemy_hit;
-    int signal_received_x;
-    int signal_received_y;
+    int signal_rec_x;
+    int signal_rec_y;
     int x;
     int y;
     int start;

@@ -34,14 +34,11 @@ int error_args(int ac, char **av)
     if (ac == 1 || ac > 3 || (ac == 2 && my_strcmp(av[1], "-h") == 0)) {
         help_error();
         return (84);
-    }
-    if (ac == 2) {
+    }if (ac == 2) {
         if (check_pos_file(av[1]) == 84)
             return (84);
-    }
-    else {
+    }else {
         if (check_pos_file(av[2]) == 84)
             return (84);
-    }
-    return (0);
+    }return (0);
 }
