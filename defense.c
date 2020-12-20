@@ -41,7 +41,7 @@ int defense_ptwo(void)
     value = game_struct.x * 10 + game_struct.y;
     write(1, value_to_pos(value), 3);
     defense_check(value);
-    attack_ptwo();
+    return(attack_ptwo());
 }
 
 int defense_host(void)
@@ -56,5 +56,5 @@ int defense_host(void)
     value = game_struct.x * 10 + game_struct.y;
     write(1, value_to_pos(value), 3);
     defense_check(value);
-    attack_host();
+    return(attack_host());
 }

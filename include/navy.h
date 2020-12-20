@@ -29,6 +29,7 @@ char *get_pos_str(char *pos_file);
 int check_format(char *pos_str);
 int check_content(char *pos_str);
 int pos_to_value(char letter, char number);
+char *value_to_pos(int value);
 int error_write(int value);
 void init_struct(void);
 char *get_pos_str(char *pos_file);

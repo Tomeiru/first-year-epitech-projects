@@ -15,7 +15,7 @@ int attack_ptwo(void)
     game_struct.wait = 0;
     send_signal();
     while (game_struct.wait == 0);
-    defense_ptwo();
+    return(defense_ptwo());
 }
 
 int attack_host(void)
@@ -35,5 +35,5 @@ int attack_host(void)
     }
     send_signal();
     while (game_struct.wait == 0);
-    defense_host();
+    return(defense_host());
 }
