@@ -18,10 +18,10 @@ int check_format(char *pos_str)
     int comp = 2;
 
     for (int i = 0; i < 16; i++)
-        if ((i < 8 && (pos_str[letter_char[i]] < 'A' || 
+        if ((i < 8 && (pos_str[letter_char[i]] < 'A' ||
         pos_str[letter_char[i]] > 'H')) ||
-        (i > 7 && pos_str[double_points[i]] != ':') || 
-        (i > 7 && (pos_str[letter_char[i]] < '1' || 
+        (i > 7 && pos_str[double_points[i]] != ':') ||
+        (i > 7 && (pos_str[letter_char[i]] < '1' ||
         pos_str[letter_char[i]] > '9')) ||
         (i < 4 && pos_str[double_points[i]] != 48 + comp++) ||
         (i > 3 && i < 8 && pos_str[double_points[i]] != '\n'))

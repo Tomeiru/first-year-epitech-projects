@@ -57,7 +57,7 @@ void send_signal(void)
     for ( ; pos == -1; pos = stdin_to_pos());
     game_struct.pos = pos;
     for (int i = 0; i < pos / 10; i++) {
-        kill(game_struct.enemy_pid, SIGUSR2); 
+        kill(game_struct.enemy_pid, SIGUSR2);
         usleep(100);
     } kill(game_struct.enemy_pid, SIGUSR1);
     usleep(100);
