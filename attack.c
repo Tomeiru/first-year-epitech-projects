@@ -7,9 +7,10 @@
 
 #include "navy.h"
 
-void attack_ptwo(void)
+int attack_ptwo(void)
 {
-    check_win();
+    if (check_win() != 2)
+        return (check_win);
     game_struct.status = 1;
     game_struct.wait = 0;
     send_signal();
@@ -17,10 +18,11 @@ void attack_ptwo(void)
     defense_ptwo();
 }
 
-void attack_host(void)
+int attack_host(void)
 {
-    check_win();
-    printf(game_struct.board);
+    if (check_win() != 2)
+        return (check_win);
+    write(1, game_struct.board, 395);
     game_struct.status = 1;
     game_struct.wait = 0;
     if (game_struct.first == 0) {

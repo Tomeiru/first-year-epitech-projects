@@ -27,15 +27,17 @@ void waiting_co_player_two(void)
     while (game_struct.wait == 0);
 }
 
-void player_two(int host_pid, char *filepath)
+int player_two(int host_pid, char *filepath)
 {
     char *pos_str = get_pos_str(filepath);
 
     game_struct.board = add_boat(create_board(), pos_str);
     game_struct.pid = getpid();
     game_struct.enemy_pid = host_pid;
-    printf("my_pid: %i\n", game_struct.pid);
+    write(1, "my_pid: ", 8);
+    my_put_nbr(game_struct.pid);
+    write(1, "\n", 1);
     kill(host_pid, SIGUSR2);
     waiting_co_player_two();
-    defense_ptwo();
+    return (defense_ptwo());
 }

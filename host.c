@@ -31,15 +31,17 @@ void waiting_co_host(void)
     while (game_struct.wait == 0);
 }
 
-void host(char *filepath)
+int host(char *filepath)
 {
     char *pos_str = get_pos_str(filepath);
 
     game_struct.board = add_boat(create_board(), pos_str);
     game_struct.pid = getpid();
-    printf("my_pid: %i\n", game_struct.pid);
+    write(1, "my_pid: ", 8);
+    my_put_nbr(game_struct.pid);
+    write(1, "\n", 1);
     write(1, "waiting for enemy connection...\n", 33);
     waiting_co_host();
     game_struct.wait = 0;
-    attack_host();
+    return (attack_host());
 }

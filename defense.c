@@ -7,13 +7,14 @@
 
 #include "navy.h"
 
-void defense_ptwo(void)
+int defense_ptwo(void)
 {
     char *pos;
     int value = 0;
 
-    check_win();
-    printf(game_struct.board);
+    if (check_win() != 2)
+        return (check_win);
+    write(1, game_struct.board, 395);
     write(1, "waiting for enemy's attack...\n", 31);
     reset_glob();
     if (game_struct.first == 0) {
@@ -42,12 +43,13 @@ void defense_ptwo(void)
     attack_ptwo();
 }
 
-void defense_host(void)
+int defense_host(void)
 {
     char *pos;
     int value = 0;
 
-    check_win();
+    if (check_win() != 2)
+        return (check_win);
     write(1, "waiting for enemy's attack...\n", 31);
     reset_glob();
     while (game_struct.wait == 0);

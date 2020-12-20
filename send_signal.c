@@ -11,7 +11,7 @@ int error_stdin(char *input)
 {
     int pos = 0;
 
-    if (strlen(input) > 3) {
+    if (my_strlen(input) > 3) {
         write(1, "wrong position\n", 16);
         return (-1);
     } if (input[0] > 'H' || input[0] < 'A') {

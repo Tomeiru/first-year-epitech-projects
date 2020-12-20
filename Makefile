@@ -18,7 +18,8 @@ SRC =	navy.c	\
 		coordinates.c	\
 		send_signal.c	\
 		defense.c	\
-		lib_functions.c
+		lib_functions.c	\
+		lib_functions_second.c
 
 MAIN =	main.c
 

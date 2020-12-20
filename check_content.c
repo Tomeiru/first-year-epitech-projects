@@ -38,7 +38,7 @@ int pos_to_value(char letter, char number)
     return (value);
 }
 
-void check_content(char *pos_str)
+int check_content(char *pos_str)
 {
     int first = 0;
     int second = 0;
@@ -48,6 +48,7 @@ void check_content(char *pos_str)
         second = pos_to_value(pos_str[i * 8 + 5], pos_str[i * 8 + 6]);
         if (first != second - (i + 1) * 10 && first != second + (i + 1) * 10
         && first != second - i - 1 && first != second + i + 1)
-            error_write(2);
+            return (error_write(2));
     }
+    return (0);
 }

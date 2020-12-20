@@ -10,15 +10,14 @@
 char *get_pos_str(char *pos_file)
 {
     int fd = open(pos_file, O_RDONLY);
-    struct stat stats;
     char *pos_str;
 
-    if (fd == -1 || stat(pos_file, &stats) == -1)
-        error_write(1);
-    pos_str = malloc(sizeof(char) * (stats.st_size + 1));
-    if (read(fd, pos_str, stats.st_size) == -1)
-        error_write(1);
-    pos_str[stats.st_size] = '\0';
+    if (fd == -1)
+        return ("!");
+    pos_str = malloc(sizeof(char) * (32 + 1));
+    if (read(fd, pos_str, 32) == -1)
+        return ("!");
+    pos_str[32] = '\0';
     close(fd);
     return (pos_str);
 }
@@ -50,11 +49,12 @@ void init_struct(void)
 
 int navy(int ac, char **av)
 {
-    error_args(ac, av);
+    if (error_args(ac, av) == 84)
+        return (84);
     init_struct();
     if (ac == 2)
-        host(av[1]);
+        return (host(av[1]));
     else
-        player_two(my_getnbr(av[1]), av[2]);
+        return (player_two(my_getnbr(av[1]), av[2]));
     return (0);
 }

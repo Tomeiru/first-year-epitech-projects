@@ -7,7 +7,7 @@
 
 #include "navy.h"
 
-void help(void)
+void help_error(void)
 {
     int fd = open("help", O_RDONLY);
     char *buffer = malloc(sizeof(char) * 204);
@@ -16,5 +16,4 @@ void help(void)
     write(1, buffer, 204);
     free(buffer);
     close(fd);
-    exit(84);
 }
