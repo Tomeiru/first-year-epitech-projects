@@ -11,7 +11,7 @@ void *connected(int signum, siginfo_t *siginfo, void *context)
 {
     if (signum == SIGUSR2) {
         if (game_struct.start == 0) {
-            write(1, "\nennemy connected\n\n", 19);
+            write(1, "\nenemy connected\n\n", 18);
             game_struct.enemy_pid = siginfo->si_pid;
             kill(siginfo->si_pid, SIGUSR1);
             game_struct.start = 1;
