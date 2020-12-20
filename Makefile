@@ -6,13 +6,19 @@
 ##
 
 SRC =	navy.c	\
-		error.c	\
-		my_swap.c	\
-		board_creation.c	\
+		error_manager.c	\
+		help.c	\
+		check_format.c	\
+		check_content.c	\
 		host.c	\
+		board_creation.c	\
 		player_two.c	\
-		my_getnbr.c	\
-		attack.c
+		attack.c \
+		win_condition.c	\
+		coordinates.c	\
+		send_signal.c	\
+		defense.c	\
+		lib_functions.c
 
 MAIN =	main.c
 
