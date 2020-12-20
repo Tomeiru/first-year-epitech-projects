@@ -10,18 +10,18 @@
 int attack_ptwo(void)
 {
     if (check_win() != 2)
-        return (check_win);
+        return (check_win());
     game_struct.status = 1;
     game_struct.wait = 0;
     send_signal();
     while (game_struct.wait == 0);
-    return(defense_ptwo());
+    return (defense_ptwo());
 }
 
 int attack_host(void)
 {
     if (check_win() != 2)
-        return (check_win);
+        return (check_win());
     write(1, game_struct.board, 395);
     game_struct.status = 1;
     game_struct.wait = 0;
@@ -35,5 +35,5 @@ int attack_host(void)
     }
     send_signal();
     while (game_struct.wait == 0);
-    return(defense_host());
+    return (defense_host());
 }
