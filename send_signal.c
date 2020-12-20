@@ -29,7 +29,7 @@ int error_stdin(char *input)
     return (0);
 }
 
-int stdin_to_pos()
+int stdin_to_pos(void)
 {
     char *input = malloc(sizeof(char) * 3);
     int size = 2;
