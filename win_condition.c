@@ -9,15 +9,21 @@
 
 int i_won(void)
 {
-    write(1, game_struct.board, 395);
-    write(1, "I won\n\n", 8);
+    if (game_struct.win_written == 0) {
+        write(1, game_struct.board, 395);
+        write(1, "I won\n\n", 8);
+        game_struct.win_written = 1;
+    }
     return (0);
 }
 
 int enemy_won(void)
 {
-    write(1, game_struct.board, 395);
-    write(1, "Enemy won\n\n", 12);
+    if (game_struct.win_written == 0) {
+        write(1, game_struct.board, 395);
+        write(1, "Enemy won\n\n", 12);
+        game_struct.win_written = 1;
+    }
     return (1);
 }
 

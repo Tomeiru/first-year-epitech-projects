@@ -75,6 +75,7 @@ struct game_stats
     int status;
     int first;
     int value_sent;
+    int win_written;
     char *board;
 };
 

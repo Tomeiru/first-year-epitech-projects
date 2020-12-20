@@ -45,6 +45,7 @@ void init_struct(void)
     game_struct.y = 0;
     game_struct.start = 0;
     game_struct.status = 0;
+    game_struct.win_written = 0;
 }
 
 int navy(int ac, char **av)
