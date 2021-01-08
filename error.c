@@ -22,7 +22,7 @@ static void check_args(char **av)
     if (strcmp(av[1], "1") != 0 && strcmp(av[1], "2") != 0 && strcmp(av[1], "3") != 0) {
         printf("Error: the flag must be one (for a sphere) or two (for a cylinder) or three (for a cone), currently '%s'\n", av[1]);
         exit(84);
-    }for (int i = 2; i < 9; i++) {
+    }for (int i = 2; i < 8; i++) {
         if (av[i][0] == '-')
             j = 1;
         else
@@ -33,6 +33,10 @@ static void check_args(char **av)
             exit(84);
         }
     }
+    if (av[8][0] == '-')
+        exit(84);
+    if (strcmp(av[4], "0") == 0 && strcmp(av[5], "0") == 0 && strcmp(av[6], "0") == 0)
+        exit(84);
 }
 
 int error(int ac, char **av)
