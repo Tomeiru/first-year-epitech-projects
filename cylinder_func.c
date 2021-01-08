@@ -25,7 +25,7 @@ void calc_cylinder(int *point_coord, int *vector_coord, int cylinder_radius)
         double t = get_single_t(a, b);
         print_single(point_coord, vector_coord, t);
     }if (delta > 0) {
-        printf("2 intersection point:\n");
+        printf("2 intersection points:\n");
         double *two_t = get_double_t(a, b, delta);
         print_double(point_coord, vector_coord, two_t);
     }
