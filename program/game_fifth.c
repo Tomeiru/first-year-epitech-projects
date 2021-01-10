@@ -19,12 +19,15 @@ void jump(struct game_struct *game_man, sfClock *clock)
         game_man->game_stats->animation += 1;
         game_man->game_gui->jumping_mario_rect.left += 89;
         if (game_man->game_stats->animation < 9)
-            sfSprite_move(game_man->game_gui->jumping_mario, coord_to_pos(0, -20));
+            sfSprite_move(game_man->game_gui->jumping_mario, 
+            coord_to_pos(0, -20));
         else
-            sfSprite_move(game_man->game_gui->jumping_mario, coord_to_pos(0, 20));
+            sfSprite_move(game_man->game_gui->jumping_mario, 
+            coord_to_pos(0, 20));
     }
     if (seconds > 0.05) {
-        sfSprite_setPosition(game_man->game_gui->jumping_mario, coord_to_pos(200, 720));
+        sfSprite_setPosition(game_man->game_gui->jumping_mario, 
+        coord_to_pos(200, 720));
         game_man->game_stats->animation = 0;
         game_man->game_gui->jumping_mario_rect.left = 0;
         game_man->game_stats->is_jumping = 0;
