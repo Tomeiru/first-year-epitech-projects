@@ -16,7 +16,8 @@ void draw_mario(sfRenderWindow *window, struct game_struct *game_man)
     if (game_man->game_stats->is_jumping == 0)
         sfRenderWindow_drawSprite(window, game_man->game_gui->mario, NULL);
     else
-        sfRenderWindow_drawSprite(window, game_man->game_gui->jumping_mario, NULL);
+        sfRenderWindow_drawSprite(window, game_man->game_gui->jumping_mario,
+         NULL);
 }
 
 void draw_sprite(sfRenderWindow *window, struct game_struct *game_man)
