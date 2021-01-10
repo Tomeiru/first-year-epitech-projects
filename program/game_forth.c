@@ -9,9 +9,11 @@
 
 void check_collision(struct game_struct *game_man)
 {
-    if (game_man->game_stats->is_jumping == 1 && game_man->game_stats->invicible == 0)
+    if (game_man->game_stats->is_jumping == 1 && 
+    game_man->game_stats->invicible == 0)
         jump_check(game_man);
-    if (game_man->game_stats->is_jumping == 0 && game_man->game_stats->invicible == 0)
+    if (game_man->game_stats->is_jumping == 0 && 
+    game_man->game_stats->invicible == 0)
         run_check(game_man);
 }
 
@@ -20,7 +22,8 @@ void draw_score(sfRenderWindow *window, struct game_struct *game_man)
     sfRenderWindow_drawText(window, game_man->game_gui->score, NULL);
     sfRenderWindow_drawText(window, game_man->game_gui->score_value, NULL);
     sfRenderWindow_drawSprite(window, game_man->game_gui->crown, NULL);
-    sfText_setString(game_man->game_gui->hscore_value, print_u(game_man->game_stats->high_score));
+    sfText_setString(game_man->game_gui->hscore_value, 
+    print_u(game_man->game_stats->high_score));
     sfRenderWindow_drawText(window, game_man->game_gui->hscore_value, NULL);
 }
 
