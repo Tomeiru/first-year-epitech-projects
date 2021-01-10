@@ -12,7 +12,11 @@ SRC =	program/game.c	\
 		program/game_second.c	\
 		program/game_third.c	\
 		program/game_fifth.c	\
-		program/utils.c
+		program/utils.c	\
+		program/my_revstr.c	\
+		program/my_strdup.c	\
+		program/my_strlen.c	\
+		program/det_len.c
 
 MAIN =	program/main.c
 
@@ -26,7 +30,7 @@ OBJMAIN = 	$(MAIN:.c=.o)
 
 CFLAGS = -I. -I$(INC_PATH) -Wall -Wextra -g
 
-LIBS =	-lcsfml-system -lcsfml-window -lcsfml-graphics -lcsfml-audio -L. -lmy
+LIBS =	-lcsfml-system -lcsfml-window -lcsfml-graphics -lcsfml-audio
 
 $(NAME):	$(OBJ)	$(OBJMAIN)
 		@gcc -o $(NAME) $(OBJ) $(OBJMAIN) $(LIBS) $(CFLAGS)
