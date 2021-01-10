@@ -47,11 +47,15 @@ void jump_check(struct game_struct *game_man)
 {
     int obstacle_x = sfSprite_getPosition(game_man->game_gui->obstacle).x;
     int obstacle_y = sfSprite_getPosition(game_man->game_gui->obstacle).y;
-    int jumping_mario_x = sfSprite_getPosition(game_man->game_gui->jumping_mario).x;
-    int jumping_mario_y = sfSprite_getPosition(game_man->game_gui->jumping_mario).y;
+    int jumping_mario_x = sfSprite_getPosition(
+        game_man->game_gui->jumping_mario).x;
+    int jumping_mario_y = sfSprite_getPosition(
+        game_man->game_gui->jumping_mario).y;
 
-    if (!((jumping_mario_x + 88 < obstacle_x) || (jumping_mario_x > obstacle_x + 48)))
-        if (!((jumping_mario_y + 144 < obstacle_y) || (jumping_mario_y > obstacle_y + 48)))
+    if (!((jumping_mario_x + 88 < obstacle_x) || (
+        jumping_mario_x > obstacle_x + 48)))
+        if (!((jumping_mario_y + 144 < obstacle_y) || (
+            jumping_mario_y > obstacle_y + 48)))
             touched(game_man);
 }
 
