@@ -14,12 +14,14 @@ char **list_to_arr(char **all_words, int nb_words, char *str)
     for (int i = 0; i < nb_words; i++) {
         for ( ; str[k] == '\t' || str[k] == ' '; k++);
         backupk = k;
-        for ( ; str[k] != '\t' && str[k] != ' ' && str[k] != '\0'; k++) {
+        for ( ; str[k] != '\t' && str[k] != ' ' &&
+                  str[k] != '\0'; k++) {
             j++;
         }
         all_words[i] = malloc(sizeof(char) * (j + 1));
         k = backupk;
-        for (j = 0; str[k] != '\t' && str[k] != ' ' && str[k] != '\0'; k++) {
+        for (j = 0; str[k] != '\t' && str[k] != ' ' &&
+                 str[k] != '\0'; k++) {
             all_words[i][j] = str[k];
             j++;
         }
@@ -46,23 +48,36 @@ int words_counter(char *str)
     return (result);
 }
 
+void norm(char **all_words, int nb_words, char *str, int i)
+{
+    int count = 1;
+    int stop = 0;
+
+    for (int k = 0; k < i; k++)
+        if (my_strcmp(all_words[k], all_words[i]) == 0)
+            stop = 1;
+    for (int j = 0; j < nb_words && stop == 0; j++)
+        if (j != i && my_strcmp(all_words[i], all_words[j]) == 0)
+            count++;
+    if (stop == 0)
+        printf("%s: %i\n", all_words[i], count);
+    count = 1;
+    stop = 0;
+}
+
 int countwords(char *str)
 {
     int nb_words = words_counter(str);
     char **all_words;
     int count = 1;
+    int stop = 0;
 
     if (nb_words == 0) {
         write(1, "\n", 1);
         return (0);
     }all_words = malloc(sizeof(char *) * nb_words);
     all_words = list_to_arr(all_words, nb_words, str);
-    for (int i = 0; i < nb_words; i++) {
-        for (int j = 0; j < nb_words; j++)
-            if (j != i && my_strcmp(all_words[i], all_words[j]) == 0)
-                count++;
-        printf("%s: %i\n", all_words[i], count);
-        count = 1;
-    }
+    for (int i = 0; i < nb_words; i++)
+        norm(all_words, nb_words, str, i);
     return (0);
 }
