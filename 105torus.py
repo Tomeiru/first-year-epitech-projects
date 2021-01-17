@@ -23,9 +23,9 @@ def secant(interval, a, n):
     interval[0], interval[1] = x1, x_new
     print("x =", round(x_new, n))
     if x_new - x1 <= pow(10, -n) and x1 - x_new <= pow(10, -n):
-        return (0)
+        sys.exit(84)
     else:
-        return (secant(interval, a, n))
+        secant(interval, a, n)
 
 def newton(x, a, n):
     fct_x = function(x, a)
@@ -33,9 +33,9 @@ def newton(x, a, n):
     x_new = (x - (fct_x/prime_x)) % n
     print("x =", round(x, n))
     if x_new <= pow(10, -n) or x_new - x <= pow(10, -n):
-        return (0)
+        sys.exit(0)
     else:
-        return (newton(x_new, a, n))
+        newton(x_new, a, n)
 
 def bisection(interval, a, n):
     i = 0
@@ -49,9 +49,9 @@ def bisection(interval, a, n):
         interval[0] = c
     print("x =", round(c, n))
     if c - i <= pow(10, -n) and i - c <= pow(10, -n):
-        return (0)
+        sys.exit(0)
     else:
-        return (bisection(interval, a, n))
+        bisection(interval, a, n)
 
 def compare_strings(reference, string):
     count = 0
@@ -69,7 +69,7 @@ def main(opt, a, n):
         return secant([float(0), float(1)], a, n)
     print("./105torus: error: invalid method ", end="", file=stderr)
     print("option given, check usage with -h", file=stderr)
-    return (84)
+    sys.exit(84)
 
 def print_help():
     print("USAGE\n\t./105torus opt a0 a1 a2 a3 a4 n\n\n", end="", file=stderr)
@@ -79,7 +79,7 @@ def print_help():
     print("coefficients of the equation\n\tn\tprecision ", end="", file=stderr)
     print("(the application of the polynomial to the ", end="", file=stderr)
     print("solution should be smaller than 10^-n)", file=stderr)
-    return 84
+    return (84)
 
 if __name__ == "__main__":
     if len(sys.argv) == 8:
@@ -88,6 +88,8 @@ if __name__ == "__main__":
         int(sys.argv[7]))
     elif len(sys.argv) == 2 and compare_strings("-h", sys.argv[1]) == True:
         print_help()
+        sys.exit(84)
     else:
         print("./105torus: error: invalid number ", end="", file=stderr)
         print("of arguments given, check usage with '-h'", file=stderr)
+        sys.exit(84)
