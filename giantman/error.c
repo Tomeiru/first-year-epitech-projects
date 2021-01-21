@@ -28,7 +28,7 @@ char *file_reader(char *filepath, int *len)
     return (file);
 }
 
-int error(int ac, char **av)
+int error_manager(int ac, char **av)
 {
     if (ac != 3)
         return (84);

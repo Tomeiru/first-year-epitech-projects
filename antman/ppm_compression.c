@@ -9,38 +9,12 @@
 
 int get_new_len(char *file, int len)
 {
-    int count = 0;
     int new_len = get_index(file, len);
 
     for (int i = get_index(file, len); file[i]; i++)
         if (file[i] == '\n')
             new_len += 2;
     return (new_len);
-}
-
-unsigned char compress_number(char *file, int *i)
-{
-    int index = *i;
-    char *number;
-
-    if ((file[index + 1] >= '0' && file[index + 1] <= '9') &&
-    (file[index + 2] >= '0' && file[index + 2] <= '9')) {
-        number = malloc(sizeof(char) * 4);
-        number[0] = file[index];
-        number[1] = file[index + 1];
-        number[2] = file[index + 2];
-        number[3] = '\0';
-        *i += 3;
-        return (my_getnbr(number));
-    }if (file[index + 1] >= '0' && file[index + 1] <= '9') {
-        number = malloc(sizeof(char) * 3);
-        number[0] = file[index];
-        number[1] = file[index + 1];
-        number[2] = '\0';
-        *i += 2;
-        return (my_getnbr(number));
-    }*i += 1;
-    return (file[index] - 48);
 }
 
 int conditions(char *reverse_file, int *i)
@@ -77,6 +51,31 @@ int get_index(char *file, int len)
     return (len - i + 1);
 }
 
+unsigned char compress_number(char *file, int *i)
+{
+    int index = *i;
+    char *number;
+
+    if ((file[index + 1] >= '0' && file[index + 1] <= '9') &&
+    (file[index + 2] >= '0' && file[index + 2] <= '9')) {
+        number = malloc(sizeof(char) * 4);
+        number[0] = file[index];
+        number[1] = file[index + 1];
+        number[2] = file[index + 2];
+        number[3] = '\0';
+        *i += 3;
+        return (my_getnbr(number));
+    }if (file[index + 1] >= '0' && file[index + 1] <= '9') {
+        number = malloc(sizeof(char) * 3);
+        number[0] = file[index];
+        number[1] = file[index + 1];
+        number[2] = '\0';
+        *i += 2;
+        return (my_getnbr(number));
+    }*i += 1;
+    return (file[index] - 48);
+}
+
 void ppm_compression(char *file, int len)
 {
     int new_len = get_new_len(file, len);
@@ -92,7 +91,8 @@ void ppm_compression(char *file, int len)
             compressed_file[j] = file[i++];
         else
             compressed_file[j] = compress_number(file, &i);
-    }my_put_nbr(len);
+    }
+    my_put_nbr(len);
     write(1, "\n", 1);
     my_put_nbr(get_index(file, len));
     write(1, "\n", 1);

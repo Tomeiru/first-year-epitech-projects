@@ -30,7 +30,7 @@ int antman(int ac, char **av)
     char *file;
     int len = 0;
 
-    if (error(ac, av) == 84)
+    if (error_manager(ac, av) == 84)
         return (84);
     file = file_reader(av[1], &len);
     if (my_strcmp(file, "!") == 0)

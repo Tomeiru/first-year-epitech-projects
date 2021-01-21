@@ -54,7 +54,7 @@ int check_filetype(char *filepath, char *str_parameter)
     return (84);
 }
 
-int error(int ac, char **av)
+int error_manager(int ac, char **av)
 {
     if (ac != 3)
         return (84);

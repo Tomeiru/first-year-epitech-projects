@@ -13,16 +13,19 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "../../lib/my/my.h"
 
-int error(int ac, char **av);
-char *file_reader(char *filepath, int *len);
-int my_strcmp(char const *s1, char const *s2);
-int antman(int ac, char **av);
-char *my_revstr(char *str);
-char *my_strdup(char const *src);
-int my_strlen(char const *str);
-void ppm_compression(char *file, int len);
-void my_putchar(char c);
-int get_index(char *file, int len);
+int main(int, char **);
+int antman(int, char **);
+int error_manager(int, char **);
+int check_filetype(char *, char *);
+char *filepath_to_filetype(char *);
+char *file_reader(char *, int *);
+void choose_algorithm(char *, int, int);
+void ppm_compression(char *, int);
+int get_new_len(char *, int);
+int get_index(char *, int);
+int conditions(char *reverse_file, int *i);
+unsigned char compress_number(char *, int *);
 
 #endif /* !ANTMAN_H_ */

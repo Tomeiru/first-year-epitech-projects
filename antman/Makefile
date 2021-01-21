@@ -7,11 +7,11 @@
 
 SRC =	antman.c	\
 		error.c	\
-		lib_func.c	\
 		ppm_compression.c	\
-		my_getnbr.c
 
 MAIN =	main.c
+
+LIB_PATH	=	../lib/my/
 
 INC_PATH =	include
 
@@ -21,10 +21,12 @@ OBJ = 	$(SRC:.c=.o)
 
 OBJMAIN = 	$(MAIN:.c=.o)
 
+LIB	=	-L	$(LIB_PATH)	-lmy
+
 CFLAGS = -I. -I$(INC_PATH) -Wall -Wextra -g
 
 $(NAME):	$(OBJ)	$(OBJMAIN)
-		@gcc -o $(NAME) $(OBJ) $(OBJMAIN) $(CFLAGS)
+		@gcc	-o	$(NAME)	$(OBJ)	$(OBJMAIN)	$(LIB)	$(CFLAGS)
 
 all:	$(NAME)
 

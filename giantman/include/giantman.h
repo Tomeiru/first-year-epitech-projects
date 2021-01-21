@@ -13,16 +13,16 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "../../lib/my/my.h"
 
-void ppm_decompression(char *file, int len);
-int error(int ac, char **av);
-char *file_reader(char *filepath, int *len);
-int my_strcmp(char const *s1, char const *s2);
-int my_strlen(char const *str);
-char *my_revstr(char *str);
-char *my_strdup(char const *src);
-int giantman(int ac, char **av);
-void my_putchar(char c);
-
+int main(int, char **);
+int giantman(int, char **);
+int error_manager(int, char **);
+char *file_reader(char *, int *);
+void choose_algorithm(char *, int, int);
+void ppm_decompression(char *, int);
+int get_new_len(char *);
+int get_index(char *);
+void decompress_and_print(char *, int, int);
 
 #endif /* !GIANTMAN_H_ */

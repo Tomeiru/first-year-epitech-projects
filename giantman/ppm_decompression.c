@@ -7,16 +7,29 @@
 
 #include "giantman.h"
 
-int get_index(char *file)
+char *my_get_first_line(char const *src)
 {
-    char *index = my_get_first_line(file);
-    return (my_getnbr(index));
+    char *dest;
+    int i = 0;
+
+    for ( ; src[i] != '\n' && src[i] != '\0'; i++);
+    dest = malloc(sizeof(char) * (i + 1));
+    for (i = 0; src[i] != '\n'; i++)
+        dest[i] = src[i];
+    dest[i] = '\0';
+    return (dest);
 }
 
 int get_new_len(char *file)
 {
     char *new_len = my_get_first_line(file);
     return (my_getnbr(new_len));
+}
+
+int get_index(char *file)
+{
+    char *index = my_get_first_line(file);
+    return (my_getnbr(index));
 }
 
 void decompress_and_print(char *file, int new_len, int i)

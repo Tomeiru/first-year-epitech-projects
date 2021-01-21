@@ -7,21 +7,26 @@
 
 NAME = do_it
 
-ANT = $(MAKE)	-s	-C	antman
+LIB = $(MAKE)	-s	-C	lib/my/
 
-GIANT = $(MAKE)	-s	-C	giantman
+ANT = $(MAKE)	-s	-C	antman/
+
+GIANT = $(MAKE)	-s	-C	giantman/
 
 $(NAME):
+		$(LIB)
 		$(ANT)
 		$(GIANT)
 
 all:	$(NAME)
 
 clean:
+		@$(LIB)	clean
 		@$(ANT)	clean
 		@$(GIANT)	clean
 
 fclean:	clean
+		@$(LIB)	fclean
 		@$(ANT)	fclean
 		@$(GIANT)	fclean
 
