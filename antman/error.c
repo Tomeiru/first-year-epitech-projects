@@ -15,8 +15,10 @@ char *file_reader(char *filepath, int *len)
 
     if (fd == -1)
         return ("!");
-    if (stat(filepath, &stats) != 0 || stats.st_size == 0)
+    if (stat(filepath, &stats) != 0)
         return ("!");
+    if (stats.st_size == 0)
+        return ("empty");
     file = malloc(sizeof(char) * (stats.st_size + 1));
     if (file == NULL)
         return ("!");

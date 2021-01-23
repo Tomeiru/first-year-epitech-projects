@@ -35,6 +35,8 @@ int giantman(int ac, char **av)
     file = file_reader(av[1], &len);
     if (my_strcmp(file, "!") == 0)
         return (84);
+    if (my_strcmp(file, "empty") == 0)
+        return (0);
     choose_algorithm(file, av[2][0] - 48, len);
     return (0);
 }
