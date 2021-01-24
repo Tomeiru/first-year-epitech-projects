@@ -5,53 +5,76 @@
 ## 5th project in the math module
 ##
 
-import sys
+from sys import argv
 from sys import stderr
+from sys import exit
 
 def prime(x, a):
-    return (4*a[4]*pow(x, 3) + 3*a[3]*pow(x, 2) + 2*a[2]*x + a[1])
+    return 4*a[4]*(x**3) + 3*a[3]*(x**2) + 2*a[2]*x + a[1]
 
 def function(x, a):
-    return (a[4]*pow(x, 4) + a[3]*pow(x, 3) + a[2]*pow(x, 2) + a[1]*x + a[0])
+    return a[4]*(x**4) + a[3]*(x**3) + a[2]*(x**2) + a[1]*x + a[0]
 
 def secant(interval, a, n):
-    x0 = interval[0]
-    x1 = interval[1]
-    fct_x0 = function(interval[0], a)
-    fct_x1 = function(interval[1], a)
-    x_new = x1 - (fct_x1*(x1 - x0)/(fct_x1 - fct_x0))
-    interval[0], interval[1] = x1, x_new
-    print("x =", round(x_new, n))
-    if x_new - x1 <= pow(10, -n) and x1 - x_new <= pow(10, -n):
-        sys.exit(84)
-    else:
-        secant(interval, a, n)
+    while abs(interval[1]) - abs(interval[0]) > 10**(-n) or abs(interval[0]) - abs(interval[1]) > 10**(-n):
+        fct_x0, fct_x1 = function(interval[0], a), function(interval[1], a)
+        x_new = interval[1] - (fct_x1 * (interval[1] - interval[0]) / (fct_x1 - fct_x0))
+        if x_new < 0.0 or x_new > 1.0:
+            print("./105torus: error: arguments make algorithm give result outside of [0, 1] interval")
+            exit(84)
+        interval[0], interval[1] = interval[1], x_new
+        string = str(x_new)
+        if len(string) > n+2:
+            print("x =", string[0:n+2])
+        else:
+            print("x =", string)
+    exit(0)
 
 def newton(x, a, n):
-    fct_x = function(x, a)
-    prime_x = prime(x, a)
-    x_new = (x - (fct_x/prime_x)) % n
-    print("x =", round(x, n))
-    if x_new <= pow(10, -n) or x_new - x <= pow(10, -n):
-        sys.exit(0)
-    else:
-        newton(x_new, a, n)
+    print("x =", x)
+    while abs(function(x, a)) > 10**(-n):
+        fct_x = function(x, a)
+        prime_x = prime(x, a)
+        x_new = (x - (fct_x/prime_x))
+        if x_new < 0.0 or x_new > 1.0:
+            print("./105torus: error: arguments make algorithm give result outside of [0, 1] interval")
+            exit(84)
+        string = str(x_new)
+        if len(string) > n+2:
+            print("x =", string[0:n+2])
+        else:
+            print("x =", string)
+        x = x_new
+    exit(0)
 
 def bisection(interval, a, n):
-    i = 0
-    c = (interval[0]+interval[1])/2
-    fct_a, fct_c = function(interval[0], a), function(c, a)
-    if fct_a*fct_c < 0:
-        i = interval[1]
-        interval[1] = c
+    while (interval[1]- interval[0]) / 2.0 > pow(10, -n):
+        x_new = (interval[0] + interval[1]) / 2
+        if x_new < 0.0 or x_new > 1.0:
+            print("./105torus: error: arguments make algorithm give result outside of [0, 1] interval.")
+            exit(84)
+        fct_x0, fct_x_new = function(interval[0], a), function(x_new, a)
+        if fct_x0 * fct_x_new < 0:
+            interval[1] = x_new
+        else:
+            interval[0] = x_new
+        string = str(x_new)
+        if len(string) > n+2:
+            print("x =", string[0:n+2])
+        else:
+            print("x =", string)
+    x_new = (interval[0] + interval[1]) / 2
+    fct_x0, fct_x_new = function(interval[0], a), function(x_new, a)
+    if fct_x0 * fct_x_new < 0:
+        interval[1] = x_new
     else:
-        i = interval[0]
-        interval[0] = c
-    print("x =", round(c, n))
-    if c - i <= pow(10, -n) and i - c <= pow(10, -n):
-        sys.exit(0)
+        interval[0] = x_new
+    string = str(x_new)
+    if len(string) > n+2:
+        print("x =", string[0:n+2])
     else:
-        bisection(interval, a, n)
+        print("x =", string)
+    exit(0)
 
 def compare_strings(reference, string):
     count = 0
@@ -62,14 +85,14 @@ def compare_strings(reference, string):
 
 def main(opt, a, n):
     if compare_strings("1", opt) == True:
-        return bisection([float(0), float(1)], a, n)
+        bisection([float(0), float(1)], a, n)
     elif compare_strings("2", opt) == True:
-        return newton(0.5, a, n)
+        newton(0.5, a, n)
     elif compare_strings("3", opt) == True:
-        return secant([float(0), float(1)], a, n)
+        secant([float(0), float(1)], a, n)
     print("./105torus: error: invalid method ", end="", file=stderr)
     print("option given, check usage with -h", file=stderr)
-    sys.exit(84)
+    exit(84)
 
 def print_help():
     print("USAGE\n\t./105torus opt a0 a1 a2 a3 a4 n\n\n", end="", file=stderr)
@@ -81,15 +104,22 @@ def print_help():
     print("solution should be smaller than 10^-n)", file=stderr)
     return (84)
 
+def check_args(argv):
+    for i in range(1, 8):
+        for x in argv[i]:
+            if x.isdigit() == False and x != '-':
+                return (0)
+    return (1)
+
 if __name__ == "__main__":
-    if len(sys.argv) == 8:
-        main(sys.argv[1], [float(sys.argv[2]), float(sys.argv[3]),
-        float(sys.argv[4]), float(sys.argv[5]), float(sys.argv[6])],
-        int(sys.argv[7]))
-    elif len(sys.argv) == 2 and compare_strings("-h", sys.argv[1]) == True:
+    if len(argv) == 8 and check_args(argv) == 1:
+        main(argv[1], [float(argv[2]), float(argv[3]),
+        float(argv[4]), float(argv[5]), float(argv[6])],
+        int(argv[7]))
+    elif len(argv) == 2 and compare_strings("-h", argv[1]) == True:
         print_help()
-        sys.exit(84)
+        exit(84)
     else:
-        print("./105torus: error: invalid number ", end="", file=stderr)
-        print("of arguments given, check usage with '-h'", file=stderr)
-        sys.exit(84)
+        print("./105torus: error: invalid ", end="", file=stderr)
+        print("arguments given, check usage with '-h'", file=stderr)
+        exit(84)
