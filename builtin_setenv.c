@@ -66,10 +66,15 @@ int builtin_setenv(char **command, char **env)
     char **new_env;
 
     for ( ; command[i]; i++);
+    if (setenv_error(command, i) == 84 && isatty(0) == 1)
+        exit(-1);
     if (setenv_error(command, i) == 84)
         return (mysh(env, -1));
     if (i == 1)
-        return (builtin_env(env));
+        exit(builtin_env(env));
     new_env = get_newenv(i, env, command);
-    return (mysh(new_env, 0));
+    if (isatty(0) == 1)
+        return (mysh(new_env, 0));
+    else
+        exit(0);
 }

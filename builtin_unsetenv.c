@@ -44,6 +44,12 @@ char **get_unsetenv(int nb_env, char **command, char **env, char **before_equal)
     return (new_env);
 }
 
+void norm(char *be, char *com, int *nb_env)
+{
+    if (my_strcmp(be, com) == 0)
+        *nb_env--;
+}
+
 int builtin_unsetenv(char **command, char **env)
 {
     int nb_env = 0;
@@ -52,14 +58,18 @@ int builtin_unsetenv(char **command, char **env)
     char **new_env;
 
     for ( ; command[i]; i++);
-    if (i == 1)
+    if (i == 1 && isatty(0) == 1)
         return (mysh(env, -1));
+    if (i == 1)
+        exit (-1);
     for ( ; env[nb_env]; nb_env++);
     before_equal = get_beforeequal(env, nb_env);
-    for (i = 1; command[i]; i++) {
+    for (i = 1; command[i]; i++)
         for (int j = 0; before_equal[j]; j++)
-            if (my_strcmp(before_equal[j], command[i]) == 0)
-                nb_env--;
-    }new_env = get_unsetenv(nb_env, command, env, before_equal);
-    return (mysh(new_env, 0));
+            norm(before_equal[j], command[i], &nb_env);
+    new_env = get_unsetenv(nb_env, command, env, before_equal);
+    if (isatty(0) == 1)
+        return (mysh(new_env, 0));
+    else
+        exit(0);
 }

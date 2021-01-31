@@ -44,11 +44,19 @@ int builtin_cd(char **command, char **env)
     int return_value = 0;
 
     for ( ; command[i]; i++);
-    if (i > 2) {
+    if (i > 2 && isatty(0) == 1) {
         return (mysh(env, -1));
-    }if (i == 1) {
+    if (i > 2)
+        exit(-1);
+    }if (i == 1 && isatty(0) == 1) {
         cd_home(env);
         return (mysh(env, 0));
+    }if (i == 1) {
+        cd_home(env);
+        exit(0);
     }return_value = cd_path(command, env);
-    return (mysh(env, return_value));
+    if (isatty(0) == 1)
+        return (mysh(env, return_value));
+    else
+        exit(return_value);
 }
