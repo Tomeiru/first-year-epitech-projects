@@ -1,4 +1,0 @@
-setenv LANG en_US.UTF-8
-ls --help
-setenv LANG fr_FR.UTF-8
-ls --help
