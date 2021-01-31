@@ -21,6 +21,7 @@ int setenv_error(char **command, int i)
         "setenv: Variable name must contain alphanumeric characters.\n", 60);
         return (84);
     }
+    return (0);
 }
 
 char *get_newenv_str(char **command)
@@ -62,7 +63,6 @@ char **get_newenv(int i, char **env, char **command)
 int builtin_setenv(char **command, char **env)
 {
     int i = 0;
-    int nb_env = 0;
     char **new_env;
 
     for ( ; command[i]; i++);

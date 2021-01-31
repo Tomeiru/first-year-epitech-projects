@@ -19,6 +19,7 @@ int builtin(char **command, char **env)
         return (builtin_unsetenv(command, env));
     if (my_strcmp("/bin/cd", command[0]) == 0)
         return (builtin_cd(command, env));
+    return (0);
 }
 
 int is_it_builtin(char *command)

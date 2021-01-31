@@ -28,4 +28,5 @@ int get_input_len(char *input)
     for (int i = 0; input[i]; i++)
         if (input[i] != ' ')
             len++;
+    return (len);
 }

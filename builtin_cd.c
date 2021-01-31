@@ -7,7 +7,7 @@
 
 #include "mysh.h"
 
-void cd_home(char **command, char **env)
+void cd_home(char **env)
 {
     char *path = malloc(sizeof(char) * (2 + (my_strlen(env[39]))));
     int i = 0;
@@ -47,7 +47,7 @@ int builtin_cd(char **command, char **env)
     if (i > 2) {
         return (mysh(env, -1));
     }if (i == 1) {
-        cd_home(command, env);
+        cd_home(env);
         return (mysh(env, 0));
     }return_value = cd_path(command, env);
     return (mysh(env, return_value));
