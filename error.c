@@ -22,9 +22,6 @@ void check_args_first(char **av)
             write(2, "Wrong first argument, see -h\n", 29);
             exit(84);
         }
-    }if (atoi(av[1]) == 0) {
-        write(2, "Wrong first argument, see -h\n", 29);
-        exit(84);
     }for (int i = 0; av[2][i]; i++) {
         if (!((av[2][i] >= '0' && av[2][i] <= '9') || (av[2][i] == '.'))) {
             write(2, "Wrong second argument, see -h\n", 30);
@@ -49,9 +46,6 @@ void check_args_second(char **av)
                 write(2, "Wrong argument, see -h\n", 23);
                 exit(84);
             }
-        }if (atoi(av[j]) == 0) {
-            write(2, "Wrong argument, see -h\n", 23);
-            exit(84);
         }
     } if (atoi(av[2]) >= atoi(av[3])) {
         write(2, "Wrong argument, see -h\n", 23);
