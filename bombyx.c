@@ -21,8 +21,8 @@ void first_option(char **av)
 
 void second_option(char **av)
 {
-    double *value = malloc(sizeof(double) * 301);
-    for (int i = 0; i <= 300; i++)
+    double *value = malloc(sizeof(double) * 302);
+    for (int i = 0; i <= 301; i++)
         value[i] = atof(av[1]);
     double i0 = atof(av[2]);
     double i1 = atof(av[3]);
