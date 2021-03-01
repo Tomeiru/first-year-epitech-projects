@@ -44,7 +44,7 @@ void check_args_first(char **av)
 void check_args_second(char **av)
 {
     for (int j = 1; av[j]; j++) {
-        for (int i = 0; av[1][i]; i++) {
+        for (int i = 0; av[j][i]; i++) {
             if (!(av[j][i] >= '0' && av[j][i] <= '9')) {
                 write(2, "Wrong argument, see -h\n", 23);
                 exit(84);
