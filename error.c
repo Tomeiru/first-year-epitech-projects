@@ -53,6 +53,9 @@ void check_args_second(char **av)
             write(2, "Wrong argument, see -h\n", 23);
             exit(84);
         }
+    } if (atoi(av[2]) >= atoi(av[3])) {
+        write(2, "Wrong argument, see -h\n", 23);
+        exit(84);
     }
 }
 
