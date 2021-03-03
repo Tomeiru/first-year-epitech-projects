@@ -5,7 +5,18 @@
 ## Makefile
 ##
 
-SRC =	my_sokoban.c
+SRC =	change_linked_list.c	\
+		check_win_or_lose.c	\
+		condition_direction.c	\
+		create_linked_list.c	\
+		error.c	\
+		file_reader.c	\
+		ini_struct.c	\
+		input_gestion.c	\
+		map_str_to_map_arr.c	\
+		my_sokoban.c	\
+		run_game.c	\
+		my_strcmp.c	\
 
 MAIN =	main.c
 
