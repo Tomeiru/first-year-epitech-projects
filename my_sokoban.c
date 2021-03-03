@@ -359,7 +359,7 @@ struct node *head_storages)
             print_map(game);
             game->reset = 1;
         }input_gestion(game, head_boxes);
-        //check_win_or_lose(game, head_boxes, head_storages);
+        check_win_or_lose(game, head_boxes, head_storages);
         refresh();
     }endwin();
 }
