@@ -45,6 +45,8 @@ void run_game(struct game_struct *game, struct node *head_boxes,
 struct node *head_storages)
 {
     initscr();
+    noecho();
+    curs_set(0);
     keypad(stdscr, TRUE);
     get_window_info(game);
     while (1) {

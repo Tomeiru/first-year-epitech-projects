@@ -7,7 +7,7 @@
 
 #include "my_sokoban.h"
 
-void is_it_O(struct game_struct *game)
+void is_it_o(struct game_struct *game)
 {
     if (game->edited_map_arr[game->cursor_y - game->y_to_center]
     [game->cursor_x - game->x_to_center] == 'O')
