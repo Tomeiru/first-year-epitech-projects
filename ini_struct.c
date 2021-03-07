@@ -56,5 +56,6 @@ struct game_struct *ini_struct(void)
     game->initial_p_x = 0;
     game->initial_p_y = 0;
     game->nb_of_boxes = 0;
+    game->reset = 0;
     return (game);
 }

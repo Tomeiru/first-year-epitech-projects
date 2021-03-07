@@ -9,7 +9,7 @@
 
 void change_linked_list_down(struct game_struct *game, struct node *head_boxes)
 {
-    while (game->cursor_x - game->x_to_center != head_boxes->x &&
+    while (game->cursor_x - game->x_to_center != head_boxes->x ||
     game->cursor_y - game->y_to_center + 1 != head_boxes->y)
         head_boxes = head_boxes->next;
     head_boxes->y += 1;
@@ -17,7 +17,7 @@ void change_linked_list_down(struct game_struct *game, struct node *head_boxes)
 
 void change_linked_list_up(struct game_struct *game, struct node *head_boxes)
 {
-    while (game->cursor_x - game->x_to_center != head_boxes->x &&
+    while (game->cursor_x - game->x_to_center != head_boxes->x ||
     game->cursor_y - game->y_to_center - 1 != head_boxes->y)
         head_boxes = head_boxes->next;
     head_boxes->y -= 1;
@@ -25,7 +25,7 @@ void change_linked_list_up(struct game_struct *game, struct node *head_boxes)
 
 void change_linked_list_left(struct game_struct *game, struct node *head_boxes)
 {
-    while (game->cursor_x - 1 - game->x_to_center != head_boxes->x &&
+    while (game->cursor_x - 1 - game->x_to_center != head_boxes->x ||
     game->cursor_y - game->y_to_center != head_boxes->y)
         head_boxes = head_boxes->next;
     head_boxes->x -= 1;
@@ -33,7 +33,7 @@ void change_linked_list_left(struct game_struct *game, struct node *head_boxes)
 
 void change_linked_list_right(struct game_struct *game, struct node *head_boxes)
 {
-    while (game->cursor_x + 1 - game->x_to_center != head_boxes->x &&
+    while (game->cursor_x + 1 - game->x_to_center != head_boxes->x ||
     game->cursor_y - game->y_to_center != head_boxes->y)
         head_boxes = head_boxes->next;
     head_boxes->x += 1;

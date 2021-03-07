@@ -21,23 +21,48 @@ int lose_condition(struct game_struct *game, struct node *head_boxes)
     return (0);
 }
 
+int o_condition(struct game_struct *game, struct node *head_boxes)
+{
+    if (game->edited_map_arr[head_boxes->y][head_boxes->x] == 'O')
+        return (0);
+    return (1);
+}
+
 void check_lose(struct game_struct *game, struct node *head_boxes)
 {
     int idx = head_boxes->idx;
 
-    if (lose_condition(game, head_boxes) == 0)
+    if (lose_condition(game, head_boxes) == 0
+    || o_condition(game, head_boxes) == 0)
         return;
     head_boxes = head_boxes->next;
     while (head_boxes->idx != idx) {
-        if (lose_condition(game, head_boxes) == 0)
+        if (lose_condition(game, head_boxes) == 0
+    || o_condition(game, head_boxes) == 0)
             return;
         head_boxes = head_boxes->next;
     }endwin();
     exit(1);
 }
 
+void check_win(struct game_struct *game, struct node *head_boxes)
+{
+    int idx = head_boxes->idx;
+
+    if (o_condition(game, head_boxes) == 1)
+        return;
+    head_boxes = head_boxes->next;
+    while (head_boxes->idx != idx) {
+        if (o_condition(game, head_boxes) == 1)
+            return;
+        head_boxes = head_boxes->next;
+    }endwin();
+    exit(0);
+}
+
 void check_win_or_lose(struct game_struct *game, struct node *head_boxes,
 struct node *head_storages)
 {
     check_lose(game, head_boxes);
+    check_win(game, head_boxes);
 }
