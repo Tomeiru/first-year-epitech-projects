@@ -5,7 +5,8 @@
 ## Makefile
 ##
 
-SRC =	sources/my_defender.c
+SRC =	sources/my_defender.c	\
+		sources/ini_struct.c
 
 MAIN =	main.c
 

@@ -20,23 +20,25 @@ typedef struct entity_s {
     sfIntRect texture_rect;
     sfVector2f position;
     sfVector2f speed;
-    struct entity_s *next;
 } entity_t; //backgrounds, entities, buildings, buttons, etc, pareil que scene // garder le next pour les boutton (à voir) et retirer le next pour le reste
 
+enum scene {
+    MAIN_MENU = 0
+};
+
 typedef struct scene_s {
-    int index;
-    entity_t *entities;
-    struct scene_s *next;
-} scene_t; // transformer ça en tableau avec enum
+    entity_t **entities;
+} scene_t;
 
 typedef struct stats_s {
+    enum scene num_scene;
     int score;
 } stats_t;
 
 typedef struct game_s {
-    scene_t *scenes;
-    stats_t stats;
-    clock_t clock;
+    scene_t **scenes;
+    stats_t *stats;
+    clock_t *clock;
 } game_t;
 
 // se docu avec la function view en csfml
