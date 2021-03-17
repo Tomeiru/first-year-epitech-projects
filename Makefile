@@ -5,8 +5,14 @@
 ## Makefile
 ##
 
-SRC =	sources/my_defender.c	\
-		sources/ini_struct.c
+SRC =	sources/cast_struct.c	\
+		sources/event.c		\
+		sources/events_options_menu.c	\
+		sources/ini_struct.c	\
+		sources/main_menu.c		\
+		sources/my_defender.c	\
+		sources/options_menu.c	\
+		sources/scene_manager.c	\
 
 MAIN =	main.c
 
