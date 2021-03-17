@@ -7,30 +7,30 @@
 
 #include "my_defender.h"
 
+sfRenderWindow *create_window(int width, int height, char *window_name,
+sfView *view)
+{
+    sfVideoMode mode = {width, height, 32};
+    sfRenderWindow *window;
+
+    window = sfRenderWindow_create(mode, window_name, sfFullscreen, NULL);
+    sfRenderWindow_setFramerateLimit(window, 60);
+    sfRenderWindow_setView(window, view);
+    return (window);
+}
+
+sfView *create_view(float width, float height)
+{
+    sfFloatRect view_rect = create_float_rect(0, 0, width, height);
+    sfView *view = sfView_createFromRect(view_rect);
+
+    return (view);
+}
+
 clock_t *ini_clock_struct(void)
 {
-    clock_t *clock = malloc(sizeof(clock_t));
+    clocks_t *clock = malloc(sizeof(clocks_t));
     return (clock);
-}
-
-sfVector2f create_float_vector(int x, int y)
-{
-    sfVector2f vector;
-
-    vector.x = x;
-    vector.y = y;
-    return (vector);
-}
-
-sfIntRect create_int_rect(int top, int left, int width, int height)
-{
-    sfIntRect rect;
-
-    rect.top = top;
-    rect.left = left;
-    rect.width = width;
-    rect.height = height;
-    return (rect);
 }
 
 sfSound *filepath_to_sound(char *filepath)

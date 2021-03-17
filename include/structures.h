@@ -10,10 +10,10 @@
 
 #include "my_defender.h"
 
-typedef struct clock_s
+typedef struct clocks_s
 {
     sfClock *clock;
-} clock_t;
+} clocks_t;
 
 typedef struct entity_s {
     sfSprite *sprite;
