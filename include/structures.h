@@ -39,11 +39,23 @@ typedef struct mouse_s {
     sfVector2i pos;
 } mouse_t;
 
+typedef struct options_s
+{
+    int sound_off;
+    int volume_off;
+    int sound;
+    int volume;
+    int fps;
+    int resolution;
+} options_t;
+
+
 typedef struct game_s {
     scene_t **scenes;
     stats_t *stats;
     clock_t *clock;
     mouse_t *mouse_info;
+    options_t *options;
     sfEvent event;
 } game_t;
 

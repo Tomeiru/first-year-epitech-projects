@@ -156,6 +156,19 @@ mouse_t *ini_mouse_struct(void)
     return (mouse_info);
 }
 
+options_t *ini_options_struct(void)
+{
+    options_t *options = malloc(sizeof(options_t));
+
+    options->sound_off = 0;
+    options->volume_off = 0;
+    options->sound = 100;
+    options->volume = 100;
+    options->fps = 2;
+    options->resolution = 3;
+    return (options);
+}
+
 game_t *ini_game_struct(void)
 {
     game_t *game = malloc(sizeof(game_t));
@@ -163,5 +176,6 @@ game_t *ini_game_struct(void)
     game->stats = ini_stats_struct();
     game->clock = ini_clock_struct();
     game->mouse_info = ini_mouse_struct();
+    game->options = ini_options_struct();
     return (game);
 }
