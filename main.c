@@ -9,7 +9,7 @@
 
 void loop(game_t *game)
 {
-    int col;
+    int col = 0;
 
     while (game->win == 0) {
         game->turn += 1;
@@ -27,10 +27,10 @@ void loop(game_t *game)
 
 int main (int ac, char **av)
 {
-  game_t *game;
+    game_t *game;
 
-  error(ac, av);
-  game = init_game(ac, av);
-  loop(game);
-  return (0);
+    error(ac, av);
+    game = init_game(ac, av);
+    loop(game);
+    return (0);
 }
