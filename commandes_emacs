@@ -1,0 +1,14 @@
+Recherche : ctrl-s
+Sauvegarder : ctrl-x ctrl-s
+Quitter : ctrl-x ctrl-c
+Enregistrer sous : ctrl-x ctrl-w
+Changer de fenetre : ctrl-x o
+Annuler : ctrl-x u ou ctrl-_
+
+Sélection (de la "mark" au curseur)
+Pour poser la "mark" : ctrl-space
+Couper : ctrl-w
+Copier : alt-w
+Coller : ctrl-y
+
+
