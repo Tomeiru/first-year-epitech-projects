@@ -39,6 +39,8 @@ void game_default(game_t *game)
     game->p1 = 'X';
     game->p2 = 'O';
     game->referee = '#';
+    game->win = 0;
+    game->turn = 0;
 }
 
 game_t *init_game(int ac, char **av)
@@ -58,6 +60,7 @@ game_t *init_game(int ac, char **av)
 	if (strcmp(av[i], "-a") == 0)
 	    game->referee = av[i + 1][0];
     }
+    game->current_player = game->p1;
     game->map = create_map(game);
     return (game);
 }

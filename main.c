@@ -6,3 +6,27 @@
 */
 
 #include "stumper.h"
+
+void loop(game_t *game)
+{
+    int col;
+
+    while (game->win == 0) {
+        game->turn += 1;
+        col = get_col(game);
+        add_piece(game, col);
+        check_win(game);
+	for (int i = 0; game->map[i]; i++)
+            printf("%s\n", game->map[i]);
+    }
+}
+
+int main (int ac, char **av)
+{
+  game_t *game;
+
+  error(ac, av);
+  game = init_game(ac, av);
+  loop(game);
+  return (0);
+}

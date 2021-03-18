@@ -6,8 +6,12 @@
 ##
 
 SRC =	main.c	\
+	win.c	\
+	structs.c	\
+	game.c	\
+	error.c	\
 
-NAME =	stumper2
+NAME =	connect4
 
 OBJ = 	$(SRC:.c=.o)
 
