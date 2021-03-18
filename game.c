@@ -35,7 +35,7 @@ void add_piece(game_t *game, int col)
 {
     int i = 1;
   
-    for (; game->map[i][col] == '.'; i++);
+    for ( ; game->map[i][col] == '.'; i++);
     game->map[i - 1][col] = game->current_player;
     return;
 }
