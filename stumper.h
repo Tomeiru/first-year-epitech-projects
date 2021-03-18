@@ -8,6 +8,9 @@
 #ifndef STUMPER_H_
 #define STUMPER_H_
 
+#include <stdio.h>
+#include <stdlib.h>
+
 typedef struct game_s {
     int win;
     int width;
