@@ -38,6 +38,8 @@ void check_char(game_t *game, int i, int j)
         return;
     win_horinzontal(game, i, j);
     win_vertical(game, i, j);
+    win_diagonal_r(game, i, j);
+    win_diagonal_l(game, i, j);
 }
 
 int condition_win(game_t *game)
@@ -50,6 +52,7 @@ int condition_win(game_t *game)
 
 void check_win(game_t *game)
 {
+    tie(game);
     condition_win(game);
     if (game->current_player == game->p1)
         game->current_player = game->p2;
@@ -71,7 +74,9 @@ int get_col(game_t *game)
 {
     int col = -1;
   
-    while (col < 1 || col > game->width || game->map[1][col] != '.')
+    while (col < 1 || col > game->width || game->map[1][col] != '.') {
+        printf("Player %c, where do you want to play: ", game->current_player);
         col = get_col_input();
+    }
     return (col);
 }//TO DO : INPUT
