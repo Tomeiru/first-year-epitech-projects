@@ -14,14 +14,14 @@ int win_horinzontal (game_t *game, int i, int j)
 
     for ( ; game->map[i][x]; x++) {
         if (game->map[i][x] != game->current_player
-            && game->map[i][x] != '#')
+            && game->map[i][x] != game->referee)
             break;
 	cpt++;
     }
     if (cpt > 3) {
         game->win = 1;
         for (int x = j; x < j + cpt; x++)
-            game->map[i][x] = '#';
+            game->map[i][x] = game->referee;
     }
 }
 
@@ -32,14 +32,14 @@ void win_vertical (game_t *game, int i, int j)
 
     for (; game->map[y][j]; y++) {
         if (game->map[y][j] != game->current_player
-            && game->map[y][j] != '#')
+            && game->map[y][j] != game->referee)
 	    break;
 	cpt++;
     }
     if (cpt > 3) {
         game->win = 1;
         for (int y = i; y < i + cpt; y++)
-            game->map[y][j] = '#';
+            game->map[y][j] = game->referee;
     }
 }
 
@@ -51,7 +51,7 @@ void win_diagonal_r (game_t *game, int i, int j)
 
     for (; game->map[y][x]; y++) {
         if (game->map[y][x] != game->current_player
-            && game->map[y][x] != '#')
+            && game->map[y][x] != game->referee)
 	    break;
 	cpt++;
 	x++;
@@ -61,7 +61,7 @@ void win_diagonal_r (game_t *game, int i, int j)
         y = i;
         x = j;
         for (; y < i + cpt; y++)
-            game->map[y][x++] = '#';
+            game->map[y][x++] = game->referee;
     }
 }
 
@@ -73,7 +73,7 @@ void win_diagonal_l (game_t *game, int i, int j)
 
     for (; game->map[y][x]; y++) {
         if (game->map[y][x] != game->current_player
-            && game->map[y][x] != '#')
+            && game->map[y][x] != game->referee)
 	    break;
 	cpt++;
 	x--;
@@ -83,7 +83,7 @@ void win_diagonal_l (game_t *game, int i, int j)
         y = i;
         x = j;
         for (; y < i + cpt; y++)
-            game->map[y][x--] = '#';
+            game->map[y][x--] = game->referee;
     }
 }
 
