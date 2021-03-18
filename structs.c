@@ -43,6 +43,20 @@ void game_default(game_t *game)
     game->turn = 0;
 }
 
+void error_after_init(game_t *game)
+{
+    if (game->width > 80 || game->height > 16)
+        exit(84);
+    if (game->width * game->height < 20)
+        exit(84);
+    if (game->p1 == game->p2)
+        exit(84);
+    if (game->p2 == game->referee)
+        exit(84);
+    if (game->p1 == game->referee)
+        exit(84);
+}
+
 game_t *init_game(int ac, char **av)
 {
     game_t *game = malloc(sizeof(game_t));
@@ -60,6 +74,7 @@ game_t *init_game(int ac, char **av)
 	if (strcmp(av[i], "-a") == 0)
 	    game->referee = av[i + 1][0];
     }
+    error_after_init(game);
     game->current_player = game->p1;
     game->map = create_map(game);
     return (game);
