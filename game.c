@@ -54,9 +54,9 @@ void check_win(game_t *game)
 {
     tie(game);
     condition_win(game);
-    if (game->current_player == game->p1)
+    if (game->current_player == game->p1 && game->win == 0)
         game->current_player = game->p2;
-    else
+    else if (game->win == 0)
         game->current_player = game->p1;
     return;
 }
