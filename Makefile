@@ -7,9 +7,11 @@
 
 SRC =	main.c	\
 	win.c	\
+	winsecond.c	\
 	structs.c	\
 	game.c	\
 	error.c	\
+	errorsecond.c	\
 
 NAME =	connect4
 
