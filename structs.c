@@ -9,6 +9,29 @@
 #include <stdlib.h>
 
 
+char **create_map(game_t *game)
+{
+    char **map = malloc(sizeof(char *) * (game->heigth + 3));
+    int i = 0;
+
+    for (i = 0; map[i]; i++)
+        map[i] = malloc(sizeof(char) * (map->width + 3));
+    map[i] = NULL;
+    for (i = 0; i < game->width + 2; i++) {
+        map[0][i] = '+';
+        map[game->heigth + 1][i] = '+';
+    }map[0][i] = '\0';
+    map[game->heigth + 1][i] = '\0';
+    for (i = 1; i < game->heigth + 1; i++) {
+        for (int j = 0; j < game->width + 2; j++) {
+            map[i][j] = '.';
+            map[i][0] = '|';
+            map[i][width + 1] = '|';
+        }
+    }
+    return (map);
+}
+
 void game_default(game_t *game)
 {
     game->width = 7;
