@@ -18,6 +18,15 @@ sfVector2f create_float_vector(int x, int y)
     return (vector);
 }
 
+sfVector2u create_unsigned_vector(unsigned int x, unsigned int y)
+{
+    sfVector2u vector;
+
+    vector.x = x;
+    vector.y = y;
+    return (vector);
+}
+
 sfFloatRect create_float_rect(float top, float left, float width, float height)
 {
     sfFloatRect rect;

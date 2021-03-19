@@ -21,6 +21,7 @@
 sfVector2f create_float_vector(int x, int y);
 sfFloatRect create_float_rect(float top, float left, float width, float height);
 sfIntRect create_int_rect(int top, int left, int width, int height);
+sfVector2u create_unsigned_vector(unsigned int x, unsigned int y);
 
 //event.c
 void event_options_menu(game_t *game, sfRenderWindow *window);
@@ -37,7 +38,7 @@ void left_click_options_event(game_t *game, sfRenderWindow *window);
 //ini_struct.c
 sfRenderWindow *create_window(int width, int height, char *window_name, sfView *view);
 sfView *create_view(float width, float height);
-clock_t *ini_clock_struct(void);
+clocks_t *ini_clock_struct(void);
 sfSound *filepath_to_sound(char *filepath);
 sfSprite *filepath_to_sprite(char *filepath);
 entity_t **malloc_options_struct(void);
@@ -59,8 +60,8 @@ void main_menu(sfRenderWindow *window, game_t *game);
 
 //my_defender.c
 void draw_sprites_wo_speed(sfRenderWindow *window, entity_t *entity);
-void update_mouse_info(game_t *game, sfRenderWindow *window);
-void run_game(sfRenderWindow *window, game_t *game);
+void run_game(sfRenderWindow *window, game_t *game, sfView *view);
+void update_mouse_info(game_t *game, sfRenderWindow *window, sfView *view);
 int my_defender(void);
 
 //options_menu.c

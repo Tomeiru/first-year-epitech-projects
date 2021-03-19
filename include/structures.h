@@ -37,6 +37,7 @@ typedef struct stats_s {
 
 typedef struct mouse_s {
     sfVector2i pos;
+    sfVector2f rpos;
 } mouse_t;
 
 typedef struct options_s
@@ -53,7 +54,7 @@ typedef struct options_s
 typedef struct game_s {
     scene_t **scenes;
     stats_t *stats;
-    clock_t *clock;
+    clocks_t *clock;
     mouse_t *mouse_info;
     options_t *options;
     sfEvent event;
