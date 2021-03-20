@@ -75,4 +75,12 @@ void option_menu(sfRenderWindow *window, game_t *game);
 //scene_manager.c
 void scene_manager(sfRenderWindow *window, game_t *game);
 
+
+//event_game.c
+void event_game(game_t *game, sfRenderWindow *window);
+
+//game_scene.c
+void game_scene(sfRenderWindow *window, game_t *game);
+
+
 #endif /* !MY_DEFENDER_H_ */

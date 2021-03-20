@@ -21,10 +21,33 @@ void update_mouse_info(game_t *game, sfRenderWindow *window, sfView *view)
     game->mouse_info->pos, view);
 }
 
+void set_music_volume(game_t *game, float value)
+{
+    sfSound_setVolume(game->scenes[0]->sound[0], value);
+}
+
+void set_sound_volume(game_t *game, float value)
+{
+    sfSound_setVolume(game->scenes[0]->sound[1], value);
+}
+
 void volume_and_sound_check(game_t *game)
 {
-    if (game->options->volume_off == 1)
-        return;
+    float zero = 0;
+    float hundred = 100;
+
+    if (game->options->volume_off == 1 &&
+    sfSound_getVolume(game->scenes[0]->sound[0]) != zero)
+        set_music_volume(game, zero);
+    if (game->options->volume_off == 0 &&
+    sfSound_getVolume(game->scenes[0]->sound[0]) != hundred)
+        set_music_volume(game, hundred);
+    if (game->options->sound_off == 1 &&
+    sfSound_getVolume(game->scenes[0]->sound[1]) != zero)
+        set_sound_volume(game, zero);
+    if (game->options->volume_off == 0 &&
+    sfSound_getVolume(game->scenes[0]->sound[1]) != hundred)
+        set_sound_volume(game, hundred);
 }
 
 void run_game(sfRenderWindow *window, game_t *game, sfView *view)
