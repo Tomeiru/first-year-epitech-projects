@@ -9,6 +9,7 @@
 
 void draw_menu_buttons(sfRenderWindow *window, game_t *game)
 {
+    draw_sprites_wo_speed(window, game->scenes[0]->entities[4]);
     draw_sprites_wo_speed(window, game->scenes[0]->entities[0]);
     draw_sprites_wo_speed(window, game->scenes[0]->entities[1]);
     draw_sprites_wo_speed(window, game->scenes[0]->entities[2]);

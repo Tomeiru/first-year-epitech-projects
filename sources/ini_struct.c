@@ -111,21 +111,24 @@ entity_t **ini_option_entity_struct(void)
 
 entity_t **ini_main_menu_entity_struct(void)
 {
-    entity_t **buttons = malloc(sizeof(entity_t *) * 4);
+    entity_t **buttons = malloc(sizeof(entity_t *) * 5);
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
         buttons[i] = malloc(sizeof(entity_t));
-        buttons[i]->texture_rect = create_int_rect(0, 0, 500, 100);
         buttons[i]->speed = create_float_vector(0, 0);
-    }
+        if (i != 4)
+            buttons[i]->texture_rect = create_int_rect(0, 0, 500, 100);
+    }buttons[4]->texture_rect = create_int_rect(0, 0, 1920, 1080);
+    buttons[4]->position = create_float_vector(0, 0);
+    buttons[4]->sprite = filepath_to_sprite("assets/Buttons/Background_mm.png");
     buttons[0]->sprite = filepath_to_sprite("assets/Buttons/Play.png");
     buttons[1]->sprite = filepath_to_sprite("assets/Buttons/Tutorial.png");
     buttons[2]->sprite = filepath_to_sprite("assets/Buttons/Settings.png");
     buttons[3]->sprite = filepath_to_sprite("assets/Buttons/Quit.png");
-    buttons[0]->position = create_float_vector(710, 565);
-    buttons[1]->position = create_float_vector(710, 688);
-    buttons[2]->position = create_float_vector(710, 811);
-    buttons[3]->position = create_float_vector(710, 934);
+    buttons[0]->position = create_float_vector(1266, 588);
+    buttons[1]->position = create_float_vector(1266, 711);
+    buttons[2]->position = create_float_vector(1266, 834);
+    buttons[3]->position = create_float_vector(1266, 957);
     return (buttons);
 }
 
