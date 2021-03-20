@@ -55,6 +55,7 @@ typedef struct stats_s {
 
 typedef struct mouse_s {
     sfVector2i pos;
+    sfVector2f rpos;
 } mouse_t;
 
 typedef struct options_s

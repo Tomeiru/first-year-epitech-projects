@@ -5,6 +5,8 @@
 ** main
 */
 
+#include "my_defender.h"
+
 int main(void)
 {
     return (my_defender());
