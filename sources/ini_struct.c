@@ -170,6 +170,32 @@ options_t *ini_options_struct(void)
     return (options);
 }
 
+entity_t **ini_game_scene_entities(void)
+{
+    entity_t **sprites = malloc(sizeof(entity_t *) * 2);
+
+    for (int i = 0; i < 3; i++) {
+        sprites[i] = malloc(sizeof(entity_t));
+        sprites[i]->texture_rect = create_int_rect(0, 0, 1920, 1080);
+        sprites[i]->speed = create_float_vector(0, 0);
+        sprites[i]->position = create_float_vector(0, 0);
+    }
+    sprites[0]->sprite = filepath_to_sprite("assets/Map/map.png");
+    sprites[1]->sprite = filepath_to_sprite("assets/Map/grid.png");
+    sprites[2]->sprite = filepath_to_sprite("assets/Map/shop.png");
+    return (sprites);
+}
+
+game_scene_t *ini_game_scene_struct(void)
+{
+    game_scene_t *game_scene = malloc(sizeof(game_scene_t));
+
+    game_scene->gold = 0;
+    game_scene->castle_pv = 0;
+    game_scene->entities = ini_game_scene_entities();
+    return (game_scene);
+}
+
 game_t *ini_game_struct(void)
 {
     game_t *game = malloc(sizeof(game_t));
@@ -178,5 +204,6 @@ game_t *ini_game_struct(void)
     game->clock = ini_clock_struct();
     game->mouse_info = ini_mouse_struct();
     game->options = ini_options_struct();
+    game->game_scene = ini_game_scene_struct();
     return (game);
 }

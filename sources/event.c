@@ -37,7 +37,7 @@ void event_main_menu(game_t *game, sfRenderWindow *window)
     game->scenes[0]->entities[value]->texture_rect.left =
     game->scenes[0]->entities[0]->texture_rect.width * 2;
     if (value == 0)
-        game->stats->num_scene = 3;
+        game->stats->num_scene = 2;
     if (value == 2)
         game->stats->num_scene = 1;
     if (value == 3)
@@ -51,4 +51,5 @@ void analyse_event(game_t *game, sfRenderWindow *window)
         sfRenderWindow_close(window);
     event_main_menu(game, window);
     event_options_menu(game, window);
+    event_game(game, window);
 }

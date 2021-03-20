@@ -14,6 +14,7 @@ SRC =	sources/cast_struct.c	\
 		sources/options_menu.c	\
 		sources/scene_manager.c	\
 		sources/game_scene.c	\
+		sources/event_game.c
 
 MAIN =	main.c
 

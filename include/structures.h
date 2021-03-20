@@ -11,7 +11,7 @@
 #include "my_defender.h"
 
 enum scene {
-    MAIN_MENU = 0, OPTIONS, GAME
+    MAIN_MENU = 0, OPTIONS, GAME, PAUSE
 };
 
 typedef struct entity_s {
@@ -78,6 +78,7 @@ typedef struct game_scene_s {
     wave_t wave;
     ennemy_t *ennemies_types;
     ennemy_t *ennemies;
+    entity_t **entities;
 } game_scene_t;
 
 typedef struct game_s {
