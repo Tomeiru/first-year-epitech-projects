@@ -10,9 +10,31 @@
 
 #include "my_defender.h"
 
+enum scene {
+    MAIN_MENU = 0, OPTIONS
+};
+
+typedef struct player_stats_s {
+    int gold;
+    int castle_pv;
+} player_stats_t;
+
+typedef struct wave_s {
+    float mul_speed;
+    float mul_HP;
+    float mul_gold; //increases at the end of every wave
+    float mul_damage;
+    float freq_spawn;
+    int nbr_ennemies;
+    int index;
+    int type; //indicates which caracteristic is going to increase at the end : speed(1), HP(2), damage(3) ou fréquence de spawn (4)
+} wave_t;
+
 typedef struct clocks_s
 {
     sfClock *clock;
+    float wave_time;
+    int wave_check;
 } clocks_t;
 
 typedef struct entity_s {
@@ -21,10 +43,6 @@ typedef struct entity_s {
     sfVector2f position;
     sfVector2f speed;
 } entity_t; //backgrounds, entities, buildings, buttons, etc, pareil que scene // garder le next pour les boutton (à voir) et retirer le next pour le reste
-
-enum scene {
-    MAIN_MENU = 0, OPTIONS
-};
 
 typedef struct scene_s {
     entity_t **entities;
@@ -51,13 +69,16 @@ typedef struct options_s
 
 
 typedef struct game_s {
+    wave_t wave;
     scene_t **scenes;
     stats_t *stats;
-    clock_t *clock;
+    clocks_t *clock;
     mouse_t *mouse_info;
     options_t *options;
     sfEvent event;
 } game_t;
+
+//à faire : structure player
 
 // se docu avec la function view en csfml
 // faire un choix de framerate
