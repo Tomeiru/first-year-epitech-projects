@@ -21,6 +21,12 @@ void update_mouse_info(game_t *game, sfRenderWindow *window, sfView *view)
     game->mouse_info->pos, view);
 }
 
+void volume_and_sound_check(game_t *game)
+{
+    if (game->options->volume_off == 1)
+        return;
+}
+
 void run_game(sfRenderWindow *window, game_t *game, sfView *view)
 {
     while (sfRenderWindow_isOpen(window)) {
@@ -28,6 +34,7 @@ void run_game(sfRenderWindow *window, game_t *game, sfView *view)
         while(sfRenderWindow_pollEvent(window, &game->event))
             analyse_event(game, window);
         scene_manager(window, game);
+        volume_and_sound_check(game);
         sfRenderWindow_display(window);
         sfRenderWindow_clear(window, sfBlack);
     }

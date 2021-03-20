@@ -51,6 +51,8 @@ typedef struct clocks_s
 
 typedef struct scene_s {
     entity_t **entities;
+    sfSound **sound;
+    int has_music_started;
 } scene_t;
 
 typedef struct stats_s {

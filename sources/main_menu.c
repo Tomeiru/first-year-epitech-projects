@@ -53,6 +53,10 @@ void main_menu(sfRenderWindow *window, game_t *game)
 {
     if (game->stats->num_scene != MAIN_MENU)
         return;
+    if (game->scenes[0]->has_music_started == 0) {
+        sfSound_play(game->scenes[0]->sound[0]);
+        game->scenes[0]->has_music_started = 1;
+    }
     highlight_menu_buttons(game->scenes[0]->entities, game->mouse_info);
     draw_menu_buttons(window, game);
 }
