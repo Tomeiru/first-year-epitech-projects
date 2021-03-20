@@ -117,7 +117,8 @@ entity_t **ini_main_menu_entity_struct(void)
         buttons[i] = malloc(sizeof(entity_t));
         buttons[i]->texture_rect = create_int_rect(0, 0, 500, 100);
         buttons[i]->speed = create_float_vector(0, 0);
-    }buttons[0]->sprite = filepath_to_sprite("assets/Buttons/Play.png");
+    }
+    buttons[0]->sprite = filepath_to_sprite("assets/Buttons/Play.png");
     buttons[1]->sprite = filepath_to_sprite("assets/Buttons/Tutorial.png");
     buttons[2]->sprite = filepath_to_sprite("assets/Buttons/Settings.png");
     buttons[3]->sprite = filepath_to_sprite("assets/Buttons/Quit.png");

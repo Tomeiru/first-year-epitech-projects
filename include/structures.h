@@ -11,15 +11,27 @@
 #include "my_defender.h"
 
 enum scene {
-    MAIN_MENU = 0, OPTIONS
+    MAIN_MENU = 0, OPTIONS, GAME
 };
 
-typedef struct player_stats_s {
-    int gold;
-    int castle_pv;
-} player_stats_t;
+typedef struct entity_s {
+    sfSprite *sprite;
+    sfIntRect texture_rect;
+    sfVector2f position;
+    sfVector2f speed;
+} entity_t; //backgrounds, entities, buildings, buttons, etc, pareil que scene // garder le next pour les boutton (à voir) et retirer le next pour le reste
+
+typedef struct ennemy_s {
+    float attack;
+    float speed;
+    float HP;
+    float gold;
+    entity_t entity;
+    struct ennemy_s *next;
+} ennemy_t;
 
 typedef struct wave_s {
+    int mobs_spawned;
     float mul_speed;
     float mul_HP;
     float mul_gold; //increases at the end of every wave
@@ -36,13 +48,6 @@ typedef struct clocks_s
     float wave_time;
     int wave_check;
 } clocks_t;
-
-typedef struct entity_s {
-    sfSprite *sprite;
-    sfIntRect texture_rect;
-    sfVector2f position;
-    sfVector2f speed;
-} entity_t; //backgrounds, entities, buildings, buttons, etc, pareil que scene // garder le next pour les boutton (à voir) et retirer le next pour le reste
 
 typedef struct scene_s {
     entity_t **entities;
@@ -68,9 +73,16 @@ typedef struct options_s
     int resolution;
 } options_t;
 
+typedef struct game_scene_s {
+    int gold;
+    int castle_pv;
+    wave_t wave;
+    ennemy_t *ennemies_types;
+    ennemy_t *ennemies;
+} game_scene_t;
 
 typedef struct game_s {
-    wave_t wave;
+    game_scene_t *game_scene;
     scene_t **scenes;
     stats_t *stats;
     clocks_t *clock;
