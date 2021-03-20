@@ -137,7 +137,17 @@ sfSound **ini_audio_main_menu(void)
 
     sound[0] = filepath_to_sound("assets/Buttons/main_menu_music.ogg");
     sound[1] = filepath_to_sound("assets/Buttons/button_sound.ogg");
+    sound[2] = filepath_to_sound("assets/Buttons/click.ogg");
     return (sound);
+}
+
+int *generate_sound_started(void)
+{
+    int *values = malloc(sizeof(int) * 3);
+    
+    for (int i = 0; i < 3; i++)
+        values[i] = 0;
+    return (values);
 }
 
 scene_t **ini_scene_struct(void)
@@ -148,7 +158,7 @@ scene_t **ini_scene_struct(void)
         scenes[i] = malloc(sizeof(scene_t));
     scenes[0]->entities = ini_main_menu_entity_struct();
     scenes[0]->sound = ini_audio_main_menu();
-    scenes[0]->has_music_started = 0;
+    scenes[0]->sound_started = generate_sound_started();
     scenes[1]->entities = ini_option_entity_struct();
     return (scenes);
 }

@@ -33,6 +33,7 @@ void event_main_menu(game_t *game, sfRenderWindow *window)
     game->mouse_info);
     if (value == 4)
         return;
+    sfSound_play(game->scenes[0]->sound[1]);
     if (value == 0) {
         game->stats->num_scene = 2;
         sfSound_stop(game->scenes[0]->sound[0]);

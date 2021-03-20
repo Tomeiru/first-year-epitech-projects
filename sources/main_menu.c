@@ -36,7 +36,8 @@ int is_cursor_on_buttons_menu(entity_t **entities, mouse_t *mouse_info)
     return (4);
 }
 
-void highlight_menu_buttons(entity_t **entities, mouse_t *mouse_info)
+void highlight_menu_buttons(entity_t **entities, mouse_t *mouse_info,
+sfSound **sounds, int *sound_started)
 {
     int value = is_cursor_on_buttons_menu(entities, mouse_info);
 
@@ -44,19 +45,27 @@ void highlight_menu_buttons(entity_t **entities, mouse_t *mouse_info)
     entities[1]->texture_rect.left = 0;
     entities[2]->texture_rect.left = 0;
     entities[3]->texture_rect.left = 0;
-    if (value == 4)
+    if (value == 4) {
+        sound_started[2] = 0;
         return;
+    }playsound(sounds, sound_started, 2);
     entities[value]->texture_rect.left = entities[0]->texture_rect.width;
+}
+
+void playsound(sfSound **sound, int *value, int idx)
+{
+    if (value[idx] == 0) {
+        sfSound_play(sound[idx]);
+        value[idx] = 1;
+    }
 }
 
 void main_menu(sfRenderWindow *window, game_t *game)
 {
     if (game->stats->num_scene != MAIN_MENU)
         return;
-    if (game->scenes[0]->has_music_started == 0) {
-        sfSound_play(game->scenes[0]->sound[0]);
-        game->scenes[0]->has_music_started = 1;
-    }
-    highlight_menu_buttons(game->scenes[0]->entities, game->mouse_info);
+    playsound(game->scenes[0]->sound, game->scenes[0]->sound_started, 0);
+    highlight_menu_buttons(game->scenes[0]->entities, game->mouse_info,
+    game->scenes[0]->sound, game->scenes[0]->sound_started);
     draw_menu_buttons(window, game);
 }
