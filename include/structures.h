@@ -67,8 +67,7 @@ typedef struct options_s
 {
     int sound_off;
     int volume_off;
-    int sound;
-    int volume;
+    int grid_off;
     int fps;
     int resolution;
 } options_t;

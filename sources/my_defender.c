@@ -36,7 +36,7 @@ void run_game(sfRenderWindow *window, game_t *game, sfView *view)
 int my_defender(void)
 {
     sfView *view = create_view(1920, 1080);
-    sfRenderWindow *window = create_window(1920, 1080, "MyDefender", view);
+    sfRenderWindow *window = create_window(1900, 1060, "MyDefender", view);
     game_t *game = ini_game_struct();
 
     run_game(window, game, view);

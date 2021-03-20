@@ -164,8 +164,7 @@ options_t *ini_options_struct(void)
 
     options->sound_off = 0;
     options->volume_off = 0;
-    options->sound = 100;
-    options->volume = 100;
+    options->grid_off = 0;
     options->fps = 2;
     options->resolution = 3;
     return (options);

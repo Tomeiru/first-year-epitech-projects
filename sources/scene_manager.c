@@ -11,4 +11,5 @@ void scene_manager(sfRenderWindow *window, game_t *game)
 {
     main_menu(window, game);
     option_menu(window, game);
+    game_scene(window, game);
 }

@@ -13,6 +13,7 @@ SRC =	sources/cast_struct.c	\
 		sources/my_defender.c	\
 		sources/options_menu.c	\
 		sources/scene_manager.c	\
+		sources/game_scene.c	\
 
 MAIN =	main.c
 
