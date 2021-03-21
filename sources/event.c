@@ -7,6 +7,15 @@
 
 #include "../include/my_defender.h"
 
+void event_tuto(game_t *game)
+{
+    if (game->stats->num_scene != TUTO)
+        return;
+    if (game->event.type == sfEvtKeyReleased &&
+        game->event.key.code == sfKeyEscape)
+        game->stats->num_scene = MAIN_MENU;
+}
+
 void event_options_menu(game_t *game, sfRenderWindow *window)
 {
     if (game->stats->num_scene != OPTIONS)
@@ -42,6 +51,8 @@ void event_main_menu(game_t *game, sfRenderWindow *window)
         game->stats->num_scene = 1;
     if (value == 3)
         sfRenderWindow_close(window);
+    if (value == 1)
+        game->stats->num_scene = TUTO;
 }
 
 void analyse_event(game_t *game, sfRenderWindow *window)
@@ -52,4 +63,5 @@ void analyse_event(game_t *game, sfRenderWindow *window)
     event_main_menu(game, window);
     event_options_menu(game, window);
     event_game(game, window);
+    event_tuto(game);
 }

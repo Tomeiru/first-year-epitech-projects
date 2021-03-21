@@ -22,6 +22,12 @@ SRC =	sources/cast_struct.c	\
 		sources/my_strdup.c	\
 		sources/fps.c	\
 		sources/resolution.c	\
+		sources/shop.c	\
+		sources/sound.c	\
+		sources/create_mic.c	\
+		sources/init_options.c	\
+		sources/init_structures.c	\
+		sources/game_scene_second.c	\
 
 MAIN =	main.c
 

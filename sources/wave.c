@@ -76,6 +76,7 @@ void gestion_mobs(game_t *game, sfRenderWindow *window)
     }
     for (temp = game->game_scene->ennemies; temp != NULL;
         temp = temp->next) {
+        //printf("%i\n", temp->HP);
         if (temp->entity.position.x <= 150)
             mob_attack(game, temp);
         else
