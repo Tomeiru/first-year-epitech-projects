@@ -133,7 +133,7 @@ entity_t **ini_main_menu_entity_struct(void)
 
 sfSound **ini_audio_main_menu(void)
 {
-    sfSound **sound = malloc(sizeof(sfSound *) * 2);
+    sfSound **sound = malloc(sizeof(sfSound *) * 3);
 
     sound[0] = filepath_to_sound("assets/Buttons/main_menu_music.ogg");
     sound[1] = filepath_to_sound("assets/Buttons/button_sound.ogg");
@@ -195,7 +195,7 @@ options_t *ini_options_struct(void)
 
 entity_t **ini_game_scene_entities(void)
 {
-    entity_t **sprites = malloc(sizeof(entity_t *) * 2);
+    entity_t **sprites = malloc(sizeof(entity_t *) * 3);
 
     for (int i = 0; i < 3; i++) {
         sprites[i] = malloc(sizeof(entity_t));
