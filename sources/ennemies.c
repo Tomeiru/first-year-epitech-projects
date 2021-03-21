@@ -9,18 +9,18 @@
 
 void init_ennemies_array_second(game_t *game)
 {
-    game->game_scene->ennemies_types[1].attack = 100;
+    game->game_scene->ennemies_types[1].attack = 15;
     game->game_scene->ennemies_types[1].gold = 10;
-    game->game_scene->ennemies_types[1].HP = 100;
-    game->game_scene->ennemies_types[1].speed = 2;
+    game->game_scene->ennemies_types[1].HP = 25;
+    game->game_scene->ennemies_types[1].speed = 1;
     game->game_scene->ennemies_types[2].entity.sprite =
         filepath_to_sprite("assets/Ennemies/assasin.png");
     game->game_scene->ennemies_types[2].entity.texture_rect =
         (sfIntRect){0, 70, 60, 70};
-    game->game_scene->ennemies_types[2].attack = 10;
+    game->game_scene->ennemies_types[2].attack = 5;
     game->game_scene->ennemies_types[2].gold = 10;
     game->game_scene->ennemies_types[2].HP = 10;
-    game->game_scene->ennemies_types[2].speed = 10;
+    game->game_scene->ennemies_types[2].speed = 5;
 }
 
 void init_ennemies_array(game_t *game)
@@ -33,7 +33,7 @@ void init_ennemies_array(game_t *game)
     game->game_scene->ennemies_types[0].attack = 2;
     game->game_scene->ennemies_types[0].gold = 10;
     game->game_scene->ennemies_types[0].HP = 10;
-    game->game_scene->ennemies_types[0].speed = 20;
+    game->game_scene->ennemies_types[0].speed = 10;
     game->game_scene->ennemies_types[1].entity.sprite =
         filepath_to_sprite("assets/Ennemies/assasin.png");
     game->game_scene->ennemies_types[1].entity.texture_rect =

@@ -20,6 +20,8 @@ SRC =	sources/cast_struct.c	\
 		sources/move_ennemies.c	\
 		sources/texts.c	\
 		sources/my_strdup.c	\
+		sources/fps.c	\
+		sources/resolution.c	\
 
 MAIN =	main.c
 
