@@ -146,7 +146,7 @@ sfSound **ini_audio_main_menu(void)
 int *generate_sound_started(void)
 {
     int *values = malloc(sizeof(int) * 3);
-    
+
     for (int i = 0; i < 3; i++)
         values[i] = 0;
     return (values);
@@ -241,5 +241,6 @@ game_t *ini_game_struct(void)
     game->game_scene = ini_game_scene_struct();
     init_wave(game);
     init_ennemies_array(game);
+    init_texts(game);
     return (game);
 }

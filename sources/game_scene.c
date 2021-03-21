@@ -47,4 +47,5 @@ void game_scene(sfRenderWindow *window, game_t *game)
     adjust_rect_map(game);
     draw_game_map(window, game);
     wave(game, window);
+    draw_texts(game, window);
 }

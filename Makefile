@@ -18,6 +18,7 @@ SRC =	sources/cast_struct.c	\
 		sources/wave.c		\
 		sources/ennemies.c	\
 		sources/move_ennemies.c	\
+		sources/texts.c	\
 
 MAIN =	main.c
 
