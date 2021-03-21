@@ -219,14 +219,29 @@ entity_t **ini_game_scene_entities(void)
     }return (sprites);
 }
 
+char *ini_map_nbr(void)
+{
+    char *map_nbr = malloc(sizeof(char) * 106);
+    map_nbr = my_strdup("111111111111111111000100011111111010101011111\
+000010101010000111110101010111111110001000111111111111111111");
+    return (map_nbr);
+}
+
 game_scene_t *ini_game_scene_struct(void)
 {
     game_scene_t *game_scene = malloc(sizeof(game_scene_t));
 
+    game_scene->time_check_cycle = 0;
+    game_scene->time_check_rec = 0;
     game_scene->gold = 10;
     game_scene->castle_pv = 0;
     game_scene->phase = 0;
+    game_scene->gold_cycle = 0;
+    game_scene->damage_cycle = 1;
+    game_scene->time_cycle = 5;
     game_scene->entities = ini_game_scene_entities();
+    game_scene->map_nbr = ini_map_nbr();
+    game_scene->tower = NULL;
     return (game_scene);
 }
 
