@@ -9,6 +9,7 @@
 
 void init_wave(game_t *game)
 {
+    game->game_scene->castle_pv = 1000000;
     game->clock->wave_time = sfClock_getElapsedTime(game->clock->clock).microseconds / 1000000;
     game->game_scene->wave.phase = 0;
     game->game_scene->wave.mobs_spawned = 0;
@@ -16,11 +17,12 @@ void init_wave(game_t *game)
     game->game_scene->wave.mul_HP = 1;
     game->game_scene->wave.mul_gold = 1;
     game->game_scene->wave.mul_damage = 1;
-    game->game_scene->wave.nbr_ennemies = 10;
+    game->game_scene->wave.nbr_ennemies = 0;
     game->game_scene->wave.freq_spawn = 1;
     game->game_scene->wave.index = 1;
     game->game_scene->wave.type = 1;
-}//OK, run to setup
+    game->game_scene->ennemies = NULL;
+}
 
 void end_wave(game_t *game)
 {
@@ -37,7 +39,7 @@ void end_wave(game_t *game)
     game->game_scene->wave.mul_gold += 0.1;
     game->game_scene->wave.mobs_spawned = 0;
     game->game_scene->wave.index += 1;
-    game->game_scene->wave.nbr_ennemies = 10 + game->game_scene->wave.index / 2;
+    game->game_scene->wave.nbr_ennemies = 0;
     game->game_scene->wave.type += 1;
     game->game_scene->wave.phase = 0;
     if (game->game_scene->wave.type > 4)
@@ -47,15 +49,18 @@ void end_wave(game_t *game)
 
 void wave(game_t *game, sfRenderWindow *window)
 {
-    printf("%i", game->game_scene->wave.phase);
-    if (game->game_scene->wave.phase == 0)
+    if (game->game_scene->wave.phase == 0) {
+        printf("cooldown\n");
         if (sfClock_getElapsedTime(game->clock->clock).microseconds
         / 1000000 - game->clock->wave_time > 15)
             game->game_scene->wave.phase = 1;
-    else {
+    } else {
+        printf("mobs\n");
         gestion_mobs(game, window);
-        if (game->game_scene->wave.nbr_ennemies == 0)
+        if (game->game_scene->wave.nbr_ennemies == 0) {
+            printf("end_wave\n");
             end_wave(game);
+        }
     }
     return;
 }//OK run in loop

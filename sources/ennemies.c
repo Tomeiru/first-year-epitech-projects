@@ -32,8 +32,8 @@ void init_ennemies_array(game_t *game)
 
 void draw_mob(sfRenderWindow *window, ennemy_t *ennemy)
 {
-    sfSprite_setPosition(ennemy->entity.sprite, ennemy->entity.position);
-    sfSprite_setTextureRect(ennemy->entity.sprite, ennemy->entity.texture_rect); //change for animation
+    sfSprite_setPosition(ennemy->entity.sprite, ennemy->entity.position); //11
+    sfSprite_setTextureRect(ennemy->entity.sprite, ennemy->entity.texture_rect);
     sfRenderWindow_drawSprite(window, ennemy->entity.sprite, NULL);
 }//???
 
@@ -59,6 +59,7 @@ void create_mob(game_t *game)
     new_ennemy->next = game->game_scene->ennemies;
     game->game_scene->ennemies = new_ennemy;
     game->game_scene->wave.mobs_spawned += 1;
+    game->game_scene->wave.nbr_ennemies += 1;
     return;
 }
 
@@ -74,7 +75,7 @@ void gestion_mobs(game_t *game, sfRenderWindow *window)
         game->clock->wave_time = sfClock_getElapsedTime(game->clock->clock).microseconds / 1000000;
     }
     for (temp = game->game_scene->ennemies; temp->next != NULL; temp = temp->next) {
-        if (temp->entity.position.y <= 150)
+        if (temp->entity.position.x <= 150)
             mob_attack(game, temp);
         else
             move_mob(game, temp);

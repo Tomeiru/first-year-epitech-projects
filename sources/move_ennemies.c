@@ -9,7 +9,7 @@
 
 void turn_to_face(ennemy_t *ennemy)
 {
-    if (ennemy->entity.position.x >= 1440 && ennemy->entity.position.x <= 1469 && ennemy->entity.position.y <= 480) {
+    if (ennemy->entity.position.x >= 1440 && ennemy->entity.position.x <= 1469) {
         ennemy->entity.position.x = 1470;
         ennemy->entity.speed.x = 0;
         ennemy->entity.speed.y = ennemy->speed;
@@ -21,7 +21,7 @@ void turn_to_face(ennemy_t *ennemy)
         ennemy->entity.speed.y = ennemy->speed;
         ennemy->entity.texture_rect.top = 0;
     }
-    if (ennemy->entity.position.x > 480 && ennemy->entity.position.x <= 510) {
+    if (ennemy->entity.position.x > 480 && ennemy->entity.position.x <= 510 && ennemy->entity.position.y <= 360) {
         ennemy->entity.position.x = 510;
         ennemy->entity.speed.x = 0;
         ennemy->entity.speed.y = ennemy->speed;
@@ -31,7 +31,7 @@ void turn_to_face(ennemy_t *ennemy)
 
 void turn_to_back(ennemy_t *ennemy)
 {
-    if (ennemy->entity.position.x > 1200 && ennemy->entity.position.x <= 1230) {
+    if (ennemy->entity.position.x > 1200 && ennemy->entity.position.x <= 1230 && ennemy->entity.position.y >= 600) {
         ennemy->entity.position.x = 1230;
         ennemy->entity.speed.x = 0;
         ennemy->entity.speed.y = ennemy->speed * -1;
@@ -45,21 +45,25 @@ void turn_to_back(ennemy_t *ennemy)
     }
 }
 
-void turn_to_left(ennemy_t *ennemy)
+void turn_to_left_high(ennemy_t *ennemy)
 {
-    if (ennemy->entity.position.y <= 144) {
+    if (ennemy->entity.position.y <= 146 /*&& ennemy->entity.position.x == 1230*/) {
         ennemy->entity.position.y = 145;
         ennemy->entity.speed.y = 0;
         ennemy->entity.speed.x = ennemy->speed * -1;
         ennemy->entity.texture_rect.top = 70;
     }
-    if (ennemy->entity.position.y >= 624) {
+}
+
+void turn_to_left_low(ennemy_t *ennemy)
+{
+    if (ennemy->entity.position.y >= 625) {
         ennemy->entity.position.y = 625;
         ennemy->entity.speed.y = 0;
         ennemy->entity.speed.x = ennemy->speed * -1;
         ennemy->entity.texture_rect.top = 70;
     }
-    if (ennemy->entity.position.x <= 510 && ennemy->entity.position.y >= 385) {
+    if (ennemy->entity.position.x <= 600 && ennemy->entity.position.y >= 385) {
         ennemy->entity.position.y = 385;
         ennemy->entity.speed.y = 0;
         ennemy->entity.speed.x = ennemy->speed * -1;
@@ -69,12 +73,14 @@ void turn_to_left(ennemy_t *ennemy)
 
 void move_mob(game_t *game, ennemy_t *ennemy)
 {
-    if (ennemy->entity.speed.x != 0) {
+    if (ennemy->entity.speed.x != 0 && ennemy->entity.position.y <= 480)
         turn_to_face(ennemy);
+    if (ennemy->entity.speed.x != 0 && ennemy->entity.position.y >= 600)
         turn_to_back(ennemy);
-    } else if (ennemy->entity.speed.y != 0) {
-        turn_to_left(ennemy);
-    }
+    if (ennemy->entity.speed.y > 0)
+        turn_to_left_low(ennemy);
+    if (ennemy->entity.speed.y < 0)
+        turn_to_left_high(ennemy);
     ennemy->entity.position.x += ennemy->entity.speed.x * game->game_scene->wave.mul_speed;
     ennemy->entity.position.y += ennemy->entity.speed.y * game->game_scene->wave.mul_speed;
 }
