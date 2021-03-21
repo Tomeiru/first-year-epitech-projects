@@ -78,6 +78,7 @@ typedef struct options_s
 typedef struct game_scene_s {
     int gold;
     int castle_pv;
+    int phase;
     wave_t wave;
     ennemy_t *ennemies_types;
     ennemy_t *ennemies;

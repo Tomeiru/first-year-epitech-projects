@@ -50,17 +50,13 @@ void end_wave(game_t *game)
 void wave(game_t *game, sfRenderWindow *window)
 {
     if (game->game_scene->wave.phase == 0) {
-        printf("cooldown\n");
         if (sfClock_getElapsedTime(game->clock->clock).microseconds
         / 1000000 - game->clock->wave_time > 15)
             game->game_scene->wave.phase = 1;
     } else {
-        printf("mobs\n");
         gestion_mobs(game, window);
-        if (game->game_scene->wave.nbr_ennemies == 0) {
-            printf("end_wave\n");
+        if (game->game_scene->wave.nbr_ennemies == 0)
             end_wave(game);
-        }
     }
     return;
 }//OK run in loop
