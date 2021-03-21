@@ -19,7 +19,7 @@ typedef struct entity_s {
     sfIntRect texture_rect;
     sfVector2f position;
     sfVector2f speed;
-} entity_t; //backgrounds, entities, buildings, buttons, etc, pareil que scene // garder le next pour les boutton (à voir) et retirer le next pour le reste
+} entity_t; 
 
 typedef struct tower_s {
     sfSprite *sprite;
@@ -39,16 +39,16 @@ typedef struct ennemy_s {
 } ennemy_t;
 
 typedef struct wave_s {
-    int phase; //0 = cooldown, 1=wave
+    int phase;
     int mobs_spawned;
     float mul_speed;
     float mul_HP;
-    float mul_gold; //increases at the end of every wave
+    float mul_gold;
     float mul_damage;
     float freq_spawn;
     int nbr_ennemies;
     int index;
-    int type; //indicates which caracteristic is going to increase at the end : speed(1), HP(2), damage(3) ou fréquence de spawn (4)
+    int type;
 } wave_t;
 
 typedef struct clocks_s
@@ -122,9 +122,5 @@ typedef struct game_s {
     sfEvent event;
 } game_t;
 
-//à faire : structure player
-
-// se docu avec la function view en csfml
-// faire un choix de framerate
 
 #endif /* !STRUCTURES_H_ */

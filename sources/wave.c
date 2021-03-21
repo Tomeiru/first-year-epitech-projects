@@ -59,7 +59,6 @@ void end_wave(game_t *game)
     if (game->game_scene->wave.type > 4)
         game->game_scene->wave.type = 1;
     game->game_scene->ennemies = NULL;
-    //free_ennemies(game);
 }
 
 void gestion_mobs(game_t *game, sfRenderWindow *window)
@@ -76,7 +75,6 @@ void gestion_mobs(game_t *game, sfRenderWindow *window)
     }
     for (temp = game->game_scene->ennemies; temp != NULL;
         temp = temp->next) {
-        //printf("%i\n", temp->HP);
         if (temp->entity.position.x <= 150)
             mob_attack(game, temp);
         else
