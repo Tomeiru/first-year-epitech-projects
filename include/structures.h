@@ -86,8 +86,16 @@ typedef struct game_scene_s {
     entity_t **entities;
 } game_scene_t;
 
+typedef struct texts_s {
+    sfFont *font;
+    sfText *gold;
+    sfText *wave;
+    sfText *ennemies;
+} texts_t;
+
 typedef struct game_s {
     game_scene_t *game_scene;
+    texts_t texts;
     scene_t **scenes;
     stats_t *stats;
     clocks_t *clock;
