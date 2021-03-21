@@ -22,7 +22,7 @@ char *my_revstr(char *str)
     int j = my_strlen (str) - 1;
     int i = 0;
 
-    for (i; i <= j; i++){
+    for (i; i <= j; i++) {
         temp = str[i];
         str[i] = str[j];
         str[j] = temp;
@@ -64,7 +64,8 @@ void init_texts(game_t *game)
 void draw_texts(game_t *game, sfRenderWindow *window)
 {
     sfText_setString(game->texts.gold, int_to_char(game->game_scene->gold));
-    sfText_setString(game->texts.ennemies, int_to_char(game->game_scene->wave.nbr_ennemies));
+    sfText_setString(game->texts.ennemies,
+        int_to_char(game->game_scene->wave.nbr_ennemies));
     sfText_setString(game->texts.wave, int_to_char(game->game_scene->wave.index));
     sfRenderWindow_drawText(window, game->texts.gold, NULL);
     sfRenderWindow_drawText(window, game->texts.ennemies, NULL);

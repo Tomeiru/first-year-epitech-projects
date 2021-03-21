@@ -48,17 +48,12 @@ void adjust_rect_resolution(entity_t **entities, options_t *options)
     entities[options->resolution + 7]->texture_rect.left = 0;
 }
 
-void adjust_rect_options(entity_t **entities, options_t *options)
-{
-    adjust_rect_volume_sound(entities, options);
-    adjust_rect_fps(entities, options);
-    adjust_rect_resolution(entities, options);
-}
-
 void option_menu(sfRenderWindow *window, game_t *game)
 {
     if (game->stats->num_scene != OPTIONS)
         return;
-    adjust_rect_options(game->scenes[1]->entities, game->options);
+    adjust_rect_volume_sound(game->scenes[1]->entities, game->options);
+    adjust_rect_fps(game->scenes[1]->entities, game->options);
+    adjust_rect_resolution(game->scenes[1]->entities, game->options);
     draw_options_buttons(game, window);
 }

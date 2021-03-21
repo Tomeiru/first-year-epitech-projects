@@ -10,7 +10,8 @@
 void init_wave(game_t *game)
 {
     game->game_scene->castle_pv = 1000000;
-    game->clock->wave_time = sfClock_getElapsedTime(game->clock->clock).microseconds / 1000000;
+    game->clock->wave_time =
+        sfClock_getElapsedTime(game->clock->clock).microseconds / 1000000;
     game->game_scene->wave.phase = 0;
     game->game_scene->wave.mobs_spawned = 0;
     game->game_scene->wave.mul_speed = 1;
@@ -28,7 +29,8 @@ void free_ennemies(game_t *game)
 {
     ennemy_t *next;
 
-    for (ennemy_t *temp = game->game_scene->ennemies; temp->next != NULL; temp = next) {
+    for (ennemy_t *temp = game->game_scene->ennemies;
+        temp->next != NULL; temp = next) {
         next = temp->next;
         free(temp);
     }
@@ -54,12 +56,33 @@ void end_wave(game_t *game)
     game->game_scene->wave.nbr_ennemies = 0;
     game->game_scene->wave.type += 1;
     game->game_scene->wave.phase = 0;
-    game->clock->wave_time = sfClock_getElapsedTime(game->clock->clock).microseconds / 1000000;
     if (game->game_scene->wave.type > 4)
         game->game_scene->wave.type = 1;
     free_ennemies(game);
+}
+
+void gestion_mobs(game_t *game, sfRenderWindow *window)
+{
+    ennemy_t *temp;
+
+    if (sfClock_getElapsedTime(game->clock->clock).microseconds / 1000000 -
+        game->clock->wave_time > 1 / game->game_scene->wave.freq_spawn &&
+        game->game_scene->wave.mobs_spawned < 10 + game->game_scene->wave.index
+        / 2) {
+        create_mob(game);
+        game->clock->wave_time =
+            sfClock_getElapsedTime(game->clock->clock).microseconds / 1000000;
+    }
+    for (temp = game->game_scene->ennemies; temp != NULL;
+        temp = temp->next) {
+        if (temp->entity.position.x <= 150)
+            mob_attack(game, temp);
+        else
+            move_mob(game, temp);
+        draw_mob(window, temp);
+    }
     return;
-}//OK
+}
 
 void wave(game_t *game, sfRenderWindow *window)
 {
@@ -69,8 +92,12 @@ void wave(game_t *game, sfRenderWindow *window)
             game->game_scene->wave.phase = 1;
     } else {
         gestion_mobs(game, window);
-        if (game->game_scene->wave.nbr_ennemies == 0)
+        if (game->game_scene->wave.nbr_ennemies == 0) {
             end_wave(game);
+            game->clock->wave_time =
+                sfClock_getElapsedTime(game->clock->clock).microseconds
+                / 1000000;
+        }
     }
     return;
-}//OK run in loop
+}

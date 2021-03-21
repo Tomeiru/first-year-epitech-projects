@@ -12,10 +12,10 @@ void event_options_menu(game_t *game, sfRenderWindow *window)
     if (game->stats->num_scene != OPTIONS)
         return;
     if (game->event.type == sfEvtMouseButtonReleased &&
-    game->event.mouseButton.button == sfMouseLeft)
+        game->event.mouseButton.button == sfMouseLeft)
         left_click_options_event(game, window);
     if (!(game->event.type == sfEvtKeyReleased &&
-    game->event.key.code == sfKeyEscape))
+        game->event.key.code == sfKeyEscape))
         return;
     game->stats->num_scene = MAIN_MENU;
 }
@@ -37,7 +37,8 @@ void event_main_menu(game_t *game, sfRenderWindow *window)
     if (value == 0) {
         game->stats->num_scene = 2;
         sfSound_stop(game->scenes[0]->sound[0]);
-    }if (value == 2)
+    }
+    if (value == 2)
         game->stats->num_scene = 1;
     if (value == 3)
         sfRenderWindow_close(window);
@@ -46,7 +47,7 @@ void event_main_menu(game_t *game, sfRenderWindow *window)
 void analyse_event(game_t *game, sfRenderWindow *window)
 {
     if ((game->event.type == sfEvtKeyReleased && game->event.key.code == sfKeyQ)
-    || game->event.type == sfEvtClosed )
+        || game->event.type == sfEvtClosed )
         sfRenderWindow_close(window);
     event_main_menu(game, window);
     event_options_menu(game, window);

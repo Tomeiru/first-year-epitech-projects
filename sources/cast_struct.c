@@ -7,8 +7,6 @@
 
 #include "../include/my_defender.h"
 
-//CAST ?!?!
-
 sfVector2f create_float_vector(int x, int y)
 {
     sfVector2f vector;
