@@ -13,6 +13,12 @@ void draw_game_map(sfRenderWindow *window, game_t *game)
     if (game->options->grid_off == 0)
         draw_sprites_wo_speed(window, game->game_scene->entities[1]);
     draw_sprites_wo_speed(window, game->game_scene->entities[2]);
+    draw_sprites_wo_speed(window, game->game_scene->entities[4]);
+    draw_sprites_wo_speed(window, game->game_scene->entities[5]);
+    draw_sprites_wo_speed(window, game->game_scene->entities[6]);
+    draw_sprites_wo_speed(window, game->game_scene->entities[7]);
+    draw_sprites_wo_speed(window, game->game_scene->entities[8]);
+    draw_sprites_wo_speed(window, game->game_scene->entities[3]);
 }
 
 void game_scene(sfRenderWindow *window, game_t *game)

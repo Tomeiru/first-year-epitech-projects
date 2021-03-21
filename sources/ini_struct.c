@@ -197,18 +197,26 @@ options_t *ini_options_struct(void)
 
 entity_t **ini_game_scene_entities(void)
 {
-    entity_t **sprites = malloc(sizeof(entity_t *) * 3);
+    entity_t **sprites = malloc(sizeof(entity_t *) * 9);
+    int j = 178;
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
         sprites[i] = malloc(sizeof(entity_t));
         sprites[i]->texture_rect = create_int_rect(0, 0, 1920, 1080);
         sprites[i]->speed = create_float_vector(0, 0);
         sprites[i]->position = create_float_vector(0, 0);
-    }
-    sprites[0]->sprite = filepath_to_sprite("assets/Map/map.png");
+    }sprites[0]->sprite = filepath_to_sprite("assets/Map/map.png");
     sprites[1]->sprite = filepath_to_sprite("assets/Map/grid.png");
     sprites[2]->sprite = filepath_to_sprite("assets/Map/shop.png");
-    return (sprites);
+    sprites[3]->sprite = filepath_to_sprite("assets/Map/shop_stat.png");
+    for (int i = 4; i < 9; i++) {
+        sprites[i] = malloc(sizeof(entity_t));
+        sprites[i]->texture_rect = create_int_rect(0, 0, 150, 150);
+        sprites[i]->speed = create_float_vector(0, 0);
+        sprites[i]->position = create_float_vector(j, 922);
+        sprites[i]->sprite = filepath_to_sprite("assets/Map/Scroll.png");
+        j += 263;
+    }return (sprites);
 }
 
 game_scene_t *ini_game_scene_struct(void)
