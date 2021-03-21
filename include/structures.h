@@ -21,6 +21,13 @@ typedef struct entity_s {
     sfVector2f speed;
 } entity_t; //backgrounds, entities, buildings, buttons, etc, pareil que scene // garder le next pour les boutton (à voir) et retirer le next pour le reste
 
+typedef struct tower_s {
+    sfSprite *sprite;
+    sfIntRect texture_rect;
+    sfVector2f position;
+    struct tower_s *next;
+} tower_t;
+
 typedef struct ennemy_s {
     int display;
     float attack;
@@ -80,10 +87,19 @@ typedef struct game_scene_s {
     int gold;
     int castle_pv;
     int phase;
+    int time_check_rec;
+    int time_check_cycle;
+    char *map_nbr;
+    double damage_cycle;
+    double time_cycle;
+    double gold_cycle;
+    double rec_time;
+    double elapsed_cycle;
     wave_t wave;
     ennemy_t *ennemies_types;
     ennemy_t *ennemies;
     entity_t **entities;
+    tower_t *tower;
 } game_scene_t;
 
 typedef struct texts_s {
