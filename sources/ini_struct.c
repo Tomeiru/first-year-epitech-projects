@@ -31,6 +31,8 @@ sfView *create_view(float width, float height)
 clocks_t *ini_clock_struct(void)
 {
     clocks_t *clock = malloc(sizeof(clocks_t));
+
+    clock->clock = sfClock_create();
     return (clock);
 }
 
@@ -208,5 +210,7 @@ game_t *ini_game_struct(void)
     game->mouse_info = ini_mouse_struct();
     game->options = ini_options_struct();
     game->game_scene = ini_game_scene_struct();
+    init_wave(game);
+    init_ennemies_array(game);
     return (game);
 }

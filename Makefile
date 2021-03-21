@@ -14,7 +14,10 @@ SRC =	sources/cast_struct.c	\
 		sources/options_menu.c	\
 		sources/scene_manager.c	\
 		sources/game_scene.c	\
-		sources/event_game.c
+		sources/event_game.c	\
+		sources/wave.c		\
+		sources/ennemies.c	\
+		sources/move_ennemies.c	\
 
 MAIN =	main.c
 
@@ -35,7 +38,7 @@ $(NAME):	$(OBJ)	$(OBJMAIN)
 
 all:	$(NAME)
 
-clean:	
+clean:
 		rm -f $(OBJ) $(OBJMAIN)
 
 fclean:	clean

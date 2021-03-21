@@ -20,4 +20,5 @@ void game_scene(sfRenderWindow *window, game_t *game)
     if (game->stats->num_scene != GAME)
         return;
     draw_game_map(window, game);
+    wave(game, window);
 }

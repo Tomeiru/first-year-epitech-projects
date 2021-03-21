@@ -9,7 +9,8 @@
 
 void init_wave(game_t *game)
 {
-    game->clock->wave_time = 0;
+    game->clock->wave_time = sfClock_getElapsedTime(game->clock->clock).microseconds / 1000000;
+    game->game_scene->wave.phase = 0;
     game->game_scene->wave.mobs_spawned = 0;
     game->game_scene->wave.mul_speed = 1;
     game->game_scene->wave.mul_HP = 1;
@@ -38,23 +39,23 @@ void end_wave(game_t *game)
     game->game_scene->wave.index += 1;
     game->game_scene->wave.nbr_ennemies = 10 + game->game_scene->wave.index / 2;
     game->game_scene->wave.type += 1;
+    game->game_scene->wave.phase = 0;
     if (game->game_scene->wave.type > 4)
         game->game_scene->wave.type = 1;
     return;
 }//OK
 
-void update_time(game_t *game)
+void wave(game_t *game, sfRenderWindow *window)
 {
-    return;
-}//KO
-
-void wave(game_t *game)
-{
-    update_time(game);
-    if (game->clock->wave_time > 15)
-        gestion_mobs();
-    if (game->game_scene->wave.nbr_ennemies == 0) {
-        end_wave(game);
+    printf("%i", game->game_scene->wave.phase);
+    if (game->game_scene->wave.phase == 0)
+        if (sfClock_getElapsedTime(game->clock->clock).microseconds
+        / 1000000 - game->clock->wave_time > 15)
+            game->game_scene->wave.phase = 1;
+    else {
+        gestion_mobs(game, window);
+        if (game->game_scene->wave.nbr_ennemies == 0)
+            end_wave(game);
     }
     return;
 }//OK run in loop

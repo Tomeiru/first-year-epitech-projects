@@ -31,6 +31,7 @@ typedef struct ennemy_s {
 } ennemy_t;
 
 typedef struct wave_s {
+    int phase; //0 = cooldown, 1=wave
     int mobs_spawned;
     float mul_speed;
     float mul_HP;
