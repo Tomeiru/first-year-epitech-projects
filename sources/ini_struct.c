@@ -223,7 +223,7 @@ game_scene_t *ini_game_scene_struct(void)
 {
     game_scene_t *game_scene = malloc(sizeof(game_scene_t));
 
-    game_scene->gold = 0;
+    game_scene->gold = 10;
     game_scene->castle_pv = 0;
     game_scene->phase = 0;
     game_scene->entities = ini_game_scene_entities();
