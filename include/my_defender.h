@@ -29,10 +29,10 @@ void event_main_menu(game_t *game, sfRenderWindow *window);
 void analyse_event(game_t *game, sfRenderWindow *window);
 
 //events_options_menu.c
-void cursor_on_volume_sound(entity_t **entities, mouse_t *mouse_info, options_t *options);
-void cursor_on_fps(entity_t **entities, mouse_t *mouse_info, options_t *options, sfRenderWindow *window);
+void cursor_on_volume_sound(entity_t **entities, mouse_t *mouse_info, game_t *game);
+void cursor_on_fps(entity_t **entities, mouse_t *mouse_info, game_t *game, sfRenderWindow *window);
 void change_resolution(sfRenderWindow *window, int x);
-void cursor_on_resolution(entity_t **entities, mouse_t *mouse_info, options_t *options, sfRenderWindow *window);
+void cursor_on_resolution(entity_t **entities, mouse_t *mouse_info, game_t *game, sfRenderWindow *window);
 void left_click_options_event(game_t *game, sfRenderWindow *window);
 
 //ini_struct.c
@@ -55,8 +55,9 @@ game_t *ini_game_struct(void);
 //main_menu.c
 void draw_menu_buttons(sfRenderWindow *window, game_t *game);
 int is_cursor_on_buttons_menu(entity_t **entities, mouse_t *mouse_info);
-void highlight_menu_buttons(entity_t **entities, mouse_t *mouse_info);
+void highlight_menu_buttons(entity_t **entities, mouse_t *mouse_info, sfSound **sounds, int *sound_started);
 void main_menu(sfRenderWindow *window, game_t *game);
+void playsound(sfSound **sound, int *value, int idx);
 
 //my_defender.c
 void draw_sprites_wo_speed(sfRenderWindow *window, entity_t *entity);
@@ -74,5 +75,13 @@ void option_menu(sfRenderWindow *window, game_t *game);
 
 //scene_manager.c
 void scene_manager(sfRenderWindow *window, game_t *game);
+
+
+//event_game.c
+void event_game(game_t *game, sfRenderWindow *window);
+
+//game_scene.c
+void game_scene(sfRenderWindow *window, game_t *game);
+
 
 #endif /* !MY_DEFENDER_H_ */

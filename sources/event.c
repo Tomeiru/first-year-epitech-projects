@@ -33,12 +33,11 @@ void event_main_menu(game_t *game, sfRenderWindow *window)
     game->mouse_info);
     if (value == 4)
         return;
-    printf("Click on button %i\n", value);
-    game->scenes[0]->entities[value]->texture_rect.left =
-    game->scenes[0]->entities[0]->texture_rect.width * 2;
-    if (value == 0)
+    sfSound_play(game->scenes[0]->sound[1]);
+    if (value == 0) {
         game->stats->num_scene = 2;
-    if (value == 2)
+        sfSound_stop(game->scenes[0]->sound[0]);
+    }if (value == 2)
         game->stats->num_scene = 1;
     if (value == 3)
         sfRenderWindow_close(window);
