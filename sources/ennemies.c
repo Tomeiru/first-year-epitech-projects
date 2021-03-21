@@ -15,7 +15,7 @@ void init_ennemies_array(game_t *game)
     game->game_scene->ennemies_types[0].attack = 2;
     game->game_scene->ennemies_types[0].gold = 10;
     game->game_scene->ennemies_types[0].HP = 10;
-    game->game_scene->ennemies_types[0].speed = 100;
+    game->game_scene->ennemies_types[0].speed = 20;
     game->game_scene->ennemies_types[1].entity.sprite = filepath_to_sprite("assets/Ennemies/assasin.png");
     game->game_scene->ennemies_types[1].entity.texture_rect = (sfIntRect){0, 70, 60, 70};
     game->game_scene->ennemies_types[1].attack = 100;
@@ -32,15 +32,21 @@ void init_ennemies_array(game_t *game)
 
 void draw_mob(sfRenderWindow *window, ennemy_t *ennemy)
 {
-    sfSprite_setPosition(ennemy->entity.sprite, ennemy->entity.position); //11
-    sfSprite_setTextureRect(ennemy->entity.sprite, ennemy->entity.texture_rect);
-    sfRenderWindow_drawSprite(window, ennemy->entity.sprite, NULL);
+    if (ennemy->display == 1) {
+        sfSprite_setPosition(ennemy->entity.sprite, ennemy->entity.position); //11
+        sfSprite_setTextureRect(ennemy->entity.sprite, ennemy->entity.texture_rect);
+        sfRenderWindow_drawSprite(window, ennemy->entity.sprite, NULL);
+    }
 }//???
 
 void mob_attack(game_t *game, ennemy_t *ennemy)
 {
+    if (ennemy->display == 0)
+        return;
     ennemy->entity.speed = (sfVector2f){0, 0};
     game->game_scene->castle_pv -= ennemy->attack * game->game_scene->wave.mul_damage;
+    ennemy->display = 0;
+    game->game_scene->wave.nbr_ennemies --;
 }
 
 void create_mob(game_t *game)
@@ -48,6 +54,7 @@ void create_mob(game_t *game)
     int type = rand() % 3;
     ennemy_t *new_ennemy = malloc(sizeof(ennemy_t));
 
+    new_ennemy->display = 1;
     new_ennemy->attack = game->game_scene->ennemies_types[type].attack;
     new_ennemy->HP = game->game_scene->ennemies_types[type].HP;
     new_ennemy->speed = game->game_scene->ennemies_types[type].speed;

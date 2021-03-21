@@ -24,6 +24,18 @@ void init_wave(game_t *game)
     game->game_scene->ennemies = NULL;
 }
 
+void free_ennemies(game_t *game)
+{
+    ennemy_t *next;
+
+    for (ennemy_t *temp = game->game_scene->ennemies; temp->next != NULL; temp = next) {
+        next = temp->next;
+        free(temp);
+    }
+    free(next);
+    return (0);
+}
+
 void end_wave(game_t *game)
 {
     game->game_scene->gold += 5 * game->game_scene->wave.mul_gold;
@@ -42,8 +54,10 @@ void end_wave(game_t *game)
     game->game_scene->wave.nbr_ennemies = 0;
     game->game_scene->wave.type += 1;
     game->game_scene->wave.phase = 0;
+    game->clock->wave_time = sfClock_getElapsedTime(game->clock->clock).microseconds / 1000000;
     if (game->game_scene->wave.type > 4)
         game->game_scene->wave.type = 1;
+    free_ennemies(game);
     return;
 }//OK
 

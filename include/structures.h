@@ -22,6 +22,7 @@ typedef struct entity_s {
 } entity_t; //backgrounds, entities, buildings, buttons, etc, pareil que scene // garder le next pour les boutton (à voir) et retirer le next pour le reste
 
 typedef struct ennemy_s {
+    int display;
     float attack;
     float speed;
     float HP;
