@@ -9,7 +9,7 @@
 
 void init_wave(game_t *game)
 {
-    game->game_scene->castle_pv = 1000000;
+    game->game_scene->castle_pv = 100;
     game->clock->wave_time =
         sfClock_getElapsedTime(game->clock->clock).microseconds / 1000000;
     game->game_scene->wave.phase = 0;
@@ -58,7 +58,8 @@ void end_wave(game_t *game)
     game->game_scene->wave.phase = 0;
     if (game->game_scene->wave.type > 4)
         game->game_scene->wave.type = 1;
-    free_ennemies(game);
+    game->game_scene->ennemies = NULL;
+    //free_ennemies(game);
 }
 
 void gestion_mobs(game_t *game, sfRenderWindow *window)
