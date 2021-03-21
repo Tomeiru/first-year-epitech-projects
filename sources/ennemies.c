@@ -81,7 +81,7 @@ void gestion_mobs(game_t *game, sfRenderWindow *window)
             move_mob(game, temp);
         draw_mob(window, temp);
     }
-    if (temp->entity.position.y <= 150)
+    if (temp->entity.position.x <= 150)
         mob_attack(game, temp);
     else
         move_mob(game, temp);
