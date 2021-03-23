@@ -52,6 +52,9 @@ int error_line(game_t *game, char *line)
 
 int error(int ac, char **av)
 {
+    int a = 0;
+    int b = 0;
+
     if (ac != 3)
         return (84);
     for (int i = 0; av[1][i]; i++)
@@ -60,7 +63,11 @@ int error(int ac, char **av)
     for (int i = 0; av[2][i]; i++)
         if (!(av[1][i] >= '0' && av[1][i] <= '9'))
             return (84);
-    if (my_getnbr(av[1]) <= 1 || my_getnbr(av[2]) <= 0)
+    a = my_getnbr(av[1]);
+    b = my_getnbr(av[2]);
+    if (a < 2 || a > 99)
+        return (84);
+    if (b < 1)
         return (84);
     return (0);
 }

@@ -15,9 +15,8 @@ int my_putnbr(int nb)
         my_putchar('-');
         nb = nb * -1;
     }
-    while ((nb/den) >= 10) {
+    while ((nb/den) >= 10)
         den*=10;
-    }
     while (den > 0) {
         my_putchar((nb/den) % 10 + '0');
         den /= 10;
