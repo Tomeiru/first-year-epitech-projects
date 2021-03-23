@@ -61,7 +61,7 @@ int error(int ac, char **av)
         if (!(av[1][i] >= '0' && av[1][i] <= '9'))
             return (84);
     for (int i = 0; av[2][i]; i++)
-        if (!(av[1][i] >= '0' && av[1][i] <= '9'))
+        if (!(av[2][i] >= '0' && av[2][i] <= '9'))
             return (84);
     a = my_getnbr(av[1]);
     b = my_getnbr(av[2]);
