@@ -1,0 +1,19 @@
+/*
+** EPITECH PROJECT, 2021
+** my_rpg
+** File description:
+** actions
+*/
+
+#ifndef ACTIONS_H_
+#define ACTIONS_H_
+
+#define QUIT_GAME_ACTION 1
+#define LOAD_MENU_SCENE_ACTION 2
+#define LOAD_GAME_SCENE_ACTION 4
+#define LOAD_GAMEOVER_SCENE_ACTION 8
+#define LOAD_HOWTOPLAY_SCENE_ACTION 16
+#define LOAD_SETTINGS_SCENE_ACTION 32
+#define LOAD_LEVEL_SCENE_ACTION 64
+
+#endif /* !ACTIONS_H_ */
