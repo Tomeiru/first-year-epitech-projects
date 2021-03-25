@@ -23,7 +23,6 @@ const register = require('./register.js');
 const login = require('./login.js');
 const middleware = require('./middleware/auth.js');
 const userRoute = require('./routes/user/user.js');
-const { request, response } = require('express');
 
 app.use(bodyParser.json());
 
