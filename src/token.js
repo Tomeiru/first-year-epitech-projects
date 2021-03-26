@@ -10,11 +10,4 @@ function generateToken(email) {
     return (token);
 }
 
-function verifyToken(token, email) {
-    const secret = process.env.SECRET;
-    const payload = jwt.verify(token, secret);
-
-    return (payload.email === email)
-}
-
-module.exports = { generateToken, verifyToken };
+module.exports = { generateToken };
