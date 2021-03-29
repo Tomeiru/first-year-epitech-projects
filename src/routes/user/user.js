@@ -12,15 +12,19 @@ module.exports = function userRoute(db) {
     });
 
     router.get('/todos', (request, response) => {
+        const email = request.user.email;
+        const id = query.getUserIdFromEmail(response, email, db);
 
+        query.sendUserTodos(response, id, db);
     });
 
-    router.get('/:id', (request, response) => {
-        query.sendUserInfosFromId(response, request.params.id, db);
-    });
+    router.get('/:value', (request, response) => {
+        const value = request.params.value;
 
-    router.get('/:email', (request, response) => {
-        query.getUserInfoFromEmail(response, request.params.email, db);
+        if (isNaN(value))
+            query.sendUserInfosFromEmail(response, value, db);
+        else
+            query.sendUserInfosFromId(response, value, db);
     });
 
     router.put('/:id', (request, response) => {
