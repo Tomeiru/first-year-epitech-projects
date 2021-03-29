@@ -28,11 +28,21 @@ module.exports = function userRoute(db) {
     });
 
     router.put('/:id', (request, response) => {
+        const id = request.params.id;
 
+        if (isNaN(id)) {
+            return;
+        }
+        query.updateUserInfos(id, request, response, db);
     });
 
     router.delete('/:id', (request, response) => {
+        const id = request.params.id;
 
+        if (isNaN(id)) {
+            return;
+        }
+        query.deleteUser(id, response, db);
     });
 
     return (router);

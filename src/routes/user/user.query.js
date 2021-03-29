@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs');
+
 function getUserIdFromEmail(result, email, db) {
     const sql = "SELECT id FROM user WHERE email = ?";
 
@@ -96,10 +98,53 @@ function sendUserTodos(response, id, db) {
     });
 }
 
+function updateUserInfos(id, request, response, db) {
+    const email = request.body.email;
+    const password = request.body.password;
+    const created_at = request.body.created_at;
+    const name = request.body.name;
+    const firstname = request.body.firstname;
+
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+
+    const sql = "UPDATE user SET email = ?, password = ?, created_at = ?, name = ?, firstname = ? WHERE id = ?";
+    const args = [email, hash, name, created_at, name, firstname, id];
+
+    db.query(sql, args, (err) => {
+        if (err) {
+            response.send('{"msg": "internal server error"}');
+            return;
+        }
+        response.send(JSON.stringify({
+            id: id,
+            email: args[0],
+            password: args[1],
+            created_at: args[2],
+            name: args[3],
+            firstname: args[4]
+        }));
+    });
+}
+
+function deleteUser(id, response, db) {
+    const sql = "DELETE FROM user WHERE id = ?";
+
+    db.query(sql, [id], (err) => {
+        if (err) {
+            response.send('{"msg": "internal server error"}');
+            return;
+        }
+        response.send(`{"msg": "successfully deleted record number: ${id}"}`);
+    });
+}
+
 module.exports = {
     getUserIdFromEmail,
     sendAllUsersInfo,
     sendUserInfosFromId,
     sendUserInfosFromEmail,
-    sendUserTodos
+    sendUserTodos,
+    updateUserInfos,
+    deleteUser
 };
