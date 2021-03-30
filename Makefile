@@ -11,6 +11,7 @@ MAIN_SRC		=	src/main.c													\
 					src/infos.c													\
 					src/graphics/textures.c										\
 					src/graphics/subwindow.c									\
+					src/graphics/default_subwindow_fcts.c						\
 					src/graphics/pause.c										\
 					src/sounds/sounds.c
 

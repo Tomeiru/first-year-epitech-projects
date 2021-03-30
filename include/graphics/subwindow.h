@@ -26,12 +26,11 @@ subwindow_t *subwindow_create(infos_t *infos,
 sfVector2f pos, texture_t texture);
 void subwindow_add_element(subwindow_t *subwindow,
 element_t *element, char entity);
+
+void subwindow_move(subwindow_t *subwindow, sfVector2f new_pos);
 void subwindow_update(subwindow_t *subwindow, infos_t *infos, float elapsed);
 void subwindow_draw(subwindow_t *subwindow, sfRenderWindow *window);
 void subwindow_destroy(subwindow_t *subwindow);
-
-subwindow_t *build_subwindow_create(infos_t *infos);
-subwindow_t *game_infos_subwindow_create(infos_t *infos);
 
 subwindow_t *sound_subwindow_create(infos_t *infos);
 subwindow_t *fps_subwindow_create(infos_t *infos);

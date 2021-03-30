@@ -7,7 +7,6 @@
 
 #include <stdlib.h>
 #include "graphics/subwindow.h"
-#include "elements/entities/entity.h"
 
 subwindow_t *subwindow_create(infos_t *infos,
 sfVector2f pos, texture_t texture)
@@ -29,43 +28,11 @@ sfVector2f pos, texture_t texture)
 void subwindow_add_element(subwindow_t *subwindow,
 element_t *element, char entity)
 {
+    sfVector2f new_pos = {subwindow->pos.x + element->pos.x,
+    subwindow->pos.y + element->pos.y};
+
+    element->move(element, new_pos);
     create_list(&(subwindow->elements), element);
     if (entity)
         create_list(&(subwindow->entities), element);
-}
-
-void subwindow_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
-{
-    entity_t *entity;
-
-    for (list_t *list = subwindow->entities; list; list = list->next) {
-        entity = (entity_t*) list->data;
-        entity->update(entity, infos, elapsed);
-    }
-}
-
-void subwindow_draw(subwindow_t *subwindow, sfRenderWindow *window)
-{
-    element_t *element;
-
-    sfRenderWindow_drawSprite(window, subwindow->background, NULL);
-    for (list_t *list = subwindow->elements; list; list = list->next) {
-        element = (element_t*) list->data;
-        element->draw(element, window);
-    }
-}
-
-void subwindow_destroy(subwindow_t *subwindow)
-{
-    element_t *element;
-    list_t *next;
-
-    sfSprite_destroy(subwindow->background);
-    for (list_t *list = subwindow->elements; list; list = next) {
-        next = list->next;
-        element = (element_t*) list->data;
-        element->destroy(element);
-        free(list);
-    }
-    free(subwindow);
 }
