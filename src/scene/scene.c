@@ -10,7 +10,7 @@
 #include "my_list.h"
 #include "scene/scene.h"
 #include "elements/element.h"
-#include "scene/subwindow.h"
+#include "graphics/subwindow.h"
 
 scene_t *scene_create_default(size_t size,
 update_scene_fct_t update, destroy_scene_fct_t destroy)

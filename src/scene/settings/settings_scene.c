@@ -7,8 +7,8 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
-#include "texture.h"
-#include "scene/subwindow.h"
+#include "graphics/texture.h"
+#include "graphics/subwindow.h"
 #include "scene/settings_scene.h"
 #include "elements/entities/button.h"
 

@@ -9,7 +9,7 @@
 #include "my_rpg.h"
 #include "scene/menu_scene.h"
 #include "elements/entities/button.h"
-#include "texture.h"
+#include "graphics/texture.h"
 
 static int init_menu_scene_buttons(menu_scene_t *menu_scene, infos_t *infos)
 {

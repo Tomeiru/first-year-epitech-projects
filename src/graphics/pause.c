@@ -7,8 +7,8 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
-#include "pause.h"
-#include "texture.h"
+#include "graphics/pause.h"
+#include "graphics/texture.h"
 #include "elements/entities/button.h"
 
 static int pause_create_buttons(pause_t *pause, infos_t *infos)

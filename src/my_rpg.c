@@ -8,8 +8,8 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 #include "actions.h"
-#include "texture.h"
-#include "scene/subwindow.h"
+#include "graphics/texture.h"
+#include "graphics/subwindow.h"
 
 static int execute_action(infos_t *infos, int action)
 {

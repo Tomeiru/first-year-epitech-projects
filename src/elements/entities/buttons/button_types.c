@@ -5,7 +5,7 @@
 ** button types
 */
 
-#include "texture.h"
+#include "graphics/texture.h"
 #include "elements/entities/button.h"
 
 button_t *text_button_create(infos_t *infos, char *text_str,

@@ -7,8 +7,8 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
-#include "texture.h"
 #include "sound.h"
+#include "graphics/texture.h"
 #include "scene/menu_scene.h"
 
 int setup_infos(infos_t *infos, sfRenderWindow *window)

@@ -8,8 +8,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "my_rpg.h"
-#include "texture.h"
-#include "texture_list.h"
+#include "graphics/texture.h"
+#include "graphics/texture_list.h"
 
 static int load_texture(list_t **textures, const char *path)
 {

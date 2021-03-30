@@ -6,7 +6,7 @@
 */
 
 #include "my_rpg.h"
-#include "scene/subwindow.h"
+#include "graphics/subwindow.h"
 #include "elements/entities/button.h"
 
 subwindow_t *sound_subwindow_create(infos_t *infos)

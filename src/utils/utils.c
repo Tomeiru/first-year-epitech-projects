@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "my_rpg.h"
-#include "scene/subwindow.h"
+#include "graphics/subwindow.h"
 
 float get_distance(sfVector2f pos1, sfVector2f pos2)
 {

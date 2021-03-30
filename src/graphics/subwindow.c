@@ -6,7 +6,7 @@
 */
 
 #include <stdlib.h>
-#include "scene/subwindow.h"
+#include "graphics/subwindow.h"
 #include "elements/entities/entity.h"
 
 subwindow_t *subwindow_create(infos_t *infos,

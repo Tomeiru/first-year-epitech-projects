@@ -9,7 +9,7 @@
 #define IMAGE_H_
 
 #include "elements/element.h"
-#include "texture.h"
+#include "graphics/texture.h"
 
 typedef struct image_s {
     element_type_t type;

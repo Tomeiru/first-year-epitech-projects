@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 #include "actions.h"
-#include "scene/subwindow.h"
+#include "graphics/subwindow.h"
 #include "elements/entities/button.h"
 
 static int manage_mouse_button_evt(infos_t *infos,

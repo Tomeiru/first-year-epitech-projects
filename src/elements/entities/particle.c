@@ -6,7 +6,7 @@
 */
 
 #include "my_rpg.h"
-#include "texture.h"
+#include "graphics/texture.h"
 #include "elements/entities/particle.h"
 
 particle_t *particle_create(sfVector2f pos, float rot,
