@@ -109,13 +109,14 @@ function updateUserInfos(id, request, response, db) {
     const hash = bcrypt.hashSync(password, salt);
 
     const sql = "UPDATE user SET email = ?, password = ?, created_at = ?, name = ?, firstname = ? WHERE id = ?";
-    const args = [email, hash, name, created_at, name, firstname, id];
+    const args = [email, hash, created_at, name, firstname, id];
 
-    db.query(sql, args, (err) => {
+    db.query(sql, args, (err, result) => {
         if (err) {
             response.send('{"msg": "internal server error"}');
             return;
         }
+        console.log(result.affectedRows);
         response.send(JSON.stringify({
             id: id,
             email: args[0],
