@@ -24,7 +24,7 @@ infos_t *infos, sfMouseButton button_type)
     }
     if (!img)
         return (0);
-    image_add_text_pos(img, -1, 0);
+    image_add_texture_pos(img, -1, 0);
     button_set_clicked(button, 1, infos);
     return (0);
 }
@@ -43,7 +43,7 @@ infos_t *infos, sfMouseButton button_type)
     }
     if (!img)
         return (0);
-    image_add_text_pos(img, 1, 0);
+    image_add_texture_pos(img, 1, 0);
     button_set_clicked(button, 1, infos);
     return (0);
 }

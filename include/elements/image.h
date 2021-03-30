@@ -29,7 +29,7 @@ typedef struct image_s {
 
 image_t *image_create(infos_t *infos, texture_t texture,
 sfVector2f pos, sfVector2i size);
-void image_add_text_pos(image_t *image, int x, int y);
-void image_set_text_pos(image_t *image, int x, int y);
+void image_add_texture_pos(image_t *image, int x, int y);
+void image_set_texture_pos(image_t *image, int x, int y);
 
 #endif /* !IMAGE_H_ */

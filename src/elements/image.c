@@ -26,7 +26,7 @@ sfVector2f pos, sfVector2i size)
     return (image);
 }
 
-void image_add_text_pos(image_t *image, int x, int y)
+void image_add_texture_pos(image_t *image, int x, int y)
 {
     sfVector2i size = image->size;
     sfVector2i text_pos =
@@ -37,7 +37,7 @@ void image_add_text_pos(image_t *image, int x, int y)
     sfSprite_setTextureRect(image->sprite, rect);
 }
 
-void image_set_text_pos(image_t *image, int x, int y)
+void image_set_texture_pos(image_t *image, int x, int y)
 {
     sfVector2i size = image->size;
     sfVector2i text_pos = {size.x * x, size.y * y};
