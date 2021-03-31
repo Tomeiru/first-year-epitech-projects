@@ -116,7 +116,6 @@ function updateUserInfos(id, request, response, db) {
             response.send('{"msg": "internal server error"}');
             return;
         }
-        console.log(result.affectedRows);
         response.send(JSON.stringify({
             id: id,
             email: args[0],
