@@ -25,11 +25,15 @@ void write_one(info_t *info, int i);
 void write_two(info_t *info, int i);
 void write_three(info_t *info, int i);
 void write_four(info_t *info, int i);
-
 void write_five(info_t *info, int i);
 void write_six(info_t *info, int i);
 void write_seven(info_t *info, int i);
 void write_eight(info_t *info, int i);
 void write_nine(info_t *info, int i);
+void exit_and_free(int value, info_t *info_struct);
+void error_three_arg(char **av, info_t *info_struct);
+void error_five_arg(char **av, info_t *info_struct);
+void crocus(info_t *info_struct);
+void init_struct(info_t *info);
 
 #endif /* !STUMPER_H_ */

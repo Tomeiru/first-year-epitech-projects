@@ -7,7 +7,7 @@
 
 #include "stumper.h"
 
-int crocus(info_t *info_struct)
+void crocus(info_t *info_struct)
 {
     void (* print_nbr[10])(info_t *, int) = {
     write_zero, write_one, write_two, write_three, write_four,
@@ -16,6 +16,8 @@ int crocus(info_t *info_struct)
 
     for (int i = 0; info_struct->numbers[i]; i++)
         print_nbr[info_struct->numbers[i] - '0'](info_struct, i * 6);
-    for (int i = 0; info_struct->array[i]; i++)
-        printf("%s\n", info_struct->array[i]);
+    for (int i = 0; info_struct->array[i]; i++) {
+        info_struct->array[i][info_struct->width - 1] = '\n';
+        printf("%s", info_struct->array[i]);
+    }
 }
