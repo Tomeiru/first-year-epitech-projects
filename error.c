@@ -27,10 +27,6 @@ static int check_params(char **av, info_t *info_struct)
 
 static void check_str(char *str, info_t *info_struct)
 {
-    if (strlen(str) > 9) {
-        free(info_struct->numbers);
-        exit_and_free(84, info_struct);
-    }
     for (int i = 0; str[i]; i++)
         if (str[i] <= 31) {
             free(info_struct->numbers);
