@@ -10,6 +10,7 @@ SRC =	main.c	\
 	setup.c	\
 	write_numbers_first.c	\
 	write_numbers_second.c	\
+	crocus.c	\
 
 NAME =	crocus
 
