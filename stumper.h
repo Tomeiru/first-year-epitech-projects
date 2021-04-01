@@ -8,6 +8,9 @@
 #ifndef STUMPER_H_
 #define STUMPER_H_
 
+#include <string.h>
+#include <stdlib.h>
+
 typedef struct info_s {
     int width;
     int lenght_chars;

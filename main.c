@@ -5,7 +5,13 @@
 ** main
 */
 
+#include "stumper.h"
+
 int main(int ac, char **av)
 {
+    info_t *info_struct = malloc(sizeof(info_t));
+
+    error(ac, av, info_struct);
+    crocus(info_struct);
     return (0);
 }

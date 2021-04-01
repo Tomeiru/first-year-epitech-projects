@@ -6,8 +6,9 @@
 ##
 
 SRC =	main.c	\
+	error.c	\
 
-NAME =	stumper3
+NAME =	crocus
 
 OBJ = 	$(SRC:.c=.o)
 
