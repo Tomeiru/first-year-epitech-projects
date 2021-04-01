@@ -16,10 +16,8 @@ NAME =	crocus
 
 OBJ = 	$(SRC:.c=.o)
 
-CFLAGS += -g
-
 $(NAME):	$(OBJ)
-		@gcc -g -o $(NAME) $(OBJ)
+		@gcc -o $(NAME) $(OBJ)
 
 all:	$(NAME)
 

@@ -12,11 +12,11 @@ static void create_array(info_t *info)
     char **array = malloc(sizeof(char *) * 6);
 
     if (array == NULL)
-        exit(84);
+        exit_and_free(84, info);
     for (int i = 0; i < 5; i++) {
         array[i] = malloc(sizeof(char) * info->width + 1);
         if (array[i] == NULL)
-            exit(84);
+            exit_and_free(84, free);
         for (int j = 0; j < info->width; j++)
             array[i][j] = ' ';
         array[i][info->width] = '\0';
