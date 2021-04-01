@@ -11,6 +11,7 @@
 typedef struct info_s {
     int width;
     char *numbers;
+    char *chars;
     char **array;
 } info_t;
 
