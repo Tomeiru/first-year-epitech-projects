@@ -28,5 +28,6 @@ static void create_array(info_t *info)
 void init_struct(info_t *info)
 {
     info->width = strlen(info->numbers) * 6;
+    info->lenght_chars = strlen(info->chars);
     create_array(info);
 }

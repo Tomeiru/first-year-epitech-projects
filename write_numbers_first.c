@@ -59,6 +59,7 @@ void write_two(info_t *info, int i)
 
 void write_three(info_t *info, int i)
 {
+    printf("%i\n", info->lenght_chars % 3);
     info->array[0][i] = info->chars[info->lenght_chars % 3];
     info->array[0][i + 1] = info->chars[info->lenght_chars % 3];
     info->array[0][i + 2] = info->chars[info->lenght_chars % 3];
