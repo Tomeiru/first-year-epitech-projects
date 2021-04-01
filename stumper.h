@@ -10,6 +10,7 @@
 
 typedef struct info_s {
     int width;
+    int lenght_chars;
     char *numbers;
     char *chars;
     char **array;
