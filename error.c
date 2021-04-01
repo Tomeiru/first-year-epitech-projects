@@ -7,30 +7,14 @@
 
 #include "stumper.h"
 
-void exit_and_free(int value, info_t *info_struct)
-{
-    free(info_struct);
-    exit(value);
-}
-
-void is_num_for_str(char *str, info_t *info_struct)
+static void is_num_for_str(char *str, info_t *info_struct)
 {
     for (int i = 0; str[i]; i++)
         if (!(str[i] >= '0' && str[i] <= '9'))
             exit_and_free(84, info_struct);
 }
 
-void error_three_arg(char **av, info_t *info_struct)
-{
-    if (strcmp("-n", av[1]) != 0)
-        exit_and_free(84, info_struct);
-    is_num_for_str(av[2], info_struct);
-    info_struct->numbers = strdup(av[2]);
-    info_struct->chars = strdup("000000000");
-    info_struct->lenght_chars = 9;
-}
-
-int check_params(char **av, info_t *info_struct)
+static int check_params(char **av, info_t *info_struct)
 {
     int error = 0;
 
@@ -43,7 +27,7 @@ int check_params(char **av, info_t *info_struct)
     return (error);
 }
 
-void check_str(char *str, info_t *info_struct)
+static void check_str(char *str, info_t *info_struct)
 {
     if (strlen(str) > 9) {
         free(info_struct->numbers);
@@ -54,6 +38,16 @@ void check_str(char *str, info_t *info_struct)
             free(info_struct->numbers);
             exit_and_free(84, info_struct);
         }
+}
+
+void error_three_arg(char **av, info_t *info_struct)
+{
+    if (strcmp("-n", av[1]) != 0)
+        exit_and_free(84, info_struct);
+    is_num_for_str(av[2], info_struct);
+    info_struct->numbers = strdup(av[2]);
+    info_struct->chars = strdup("000000000");
+    info_struct->lenght_chars = 9;
 }
 
 void error_five_arg(char **av, info_t *info_struct)
@@ -67,22 +61,9 @@ void error_five_arg(char **av, info_t *info_struct)
         check_str(av[4], info_struct);
         info_struct->chars = strdup(av[4]);
         info_struct->lenght_chars = strlen(av[4]);
-    }else {
+    } else {
         check_str(av[2], info_struct);
         info_struct->chars = strdup(av[2]);
         info_struct->lenght_chars = strlen(av[2]);
     }
-}
-
-void error(int ac, char **av, info_t *info_struct)
-{
-    if (ac != 3 && ac != 5)
-        exit_and_free(84, info_struct);
-    for (int i = 1; av[i]; i++)
-        if (strlen(av[i]) < 1)
-            exit_and_free(84, info_struct);
-    if (ac == 3)
-        error_three_arg(av, info_struct);
-    else
-        error_five_arg(av, info_struct);
 }

@@ -7,7 +7,7 @@
 
 #include "stumper.h"
 
-void create_array(info_t *info)
+static void create_array(info_t *info)
 {
     char **array = malloc(sizeof(char *) * 6);
 
