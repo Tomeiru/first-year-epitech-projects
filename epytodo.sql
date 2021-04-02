@@ -24,3 +24,7 @@ CREATE TABLE IF NOT EXISTS `todo` (
 
 ALTER TABLE `todo`
   ADD FOREIGN KEY (`user_id`) REFERENCES `user`(`id`);
+
+CREATE USER IF NOT EXISTS 'epytodo'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL ON epytodo.* TO 'epytodo'@'localhost';
+FLUSH PRIVILEGES;
