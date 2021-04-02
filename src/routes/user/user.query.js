@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 
-function getUserIdFromEmail(result, email, db) {
+function getUserIdFromEmail(email, db) {
     const sql = "SELECT id FROM user WHERE email = ?";
 
     db.query(sql, [email], (err, result) => {

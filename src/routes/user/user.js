@@ -13,7 +13,7 @@ module.exports = function userRoute(db) {
 
     router.get('/todos', (request, response) => {
         const email = request.user.email;
-        const id = query.getUserIdFromEmail(response, email, db);
+        const id = query.getUserIdFromEmail(email, db);
 
         query.sendUserTodos(response, id, db);
     });
