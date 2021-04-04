@@ -28,7 +28,7 @@ def matrix_squared(sq_matr, matrix):
     for y in range(len(matrix)):
         for x in range(len(matrix[y])):
             sq_matr[y][x] = coeff_squared(sq_matr, matrix, y, x)
-    return (sq_matr)
+    return sq_matr
 
 def sin_h(matrix):
     result = matrix
@@ -43,9 +43,10 @@ def sin_h(matrix):
     for y in range(len(result)):
         for x in range(len(matrix)):
             if x == len(matrix) - 1:
-                print(matrix[y][x])
+                print(result[y][x])
             else:
-                print(matrix[y][x], end="  ")
+                print(result[y][x], end="\t")
+    sys.exit(0)
 
 def cos_h(matrix):
     result = id_matrix(len(matrix))
@@ -60,9 +61,10 @@ def cos_h(matrix):
     for y in range(len(result)):
         for x in range(len(matrix)):
             if x == len(matrix) - 1:
-                print(matrix[y][x])
+                print(result[y][x])
             else:
-                print(matrix[y][x], end="  ")
+                print(result[y][x], end="\t")
+    sys.exit(0)
 
 def sin(matrix):
     result = matrix
@@ -77,9 +79,10 @@ def sin(matrix):
     for y in range(len(result)):
         for x in range(len(matrix)):
             if x == len(matrix) - 1:
-                print(matrix[y][x])
+                print(result[y][x])
             else:
-                print(matrix[y][x], end="  ")
+                print(result[y][x], end="\t")
+    sys.exit(0)
 
 def cos(matrix):
     result = id_matrix(len(matrix))
@@ -94,9 +97,10 @@ def cos(matrix):
     for y in range(len(result)):
         for x in range(len(matrix)):
             if x == len(matrix) - 1:
-                print(matrix[y][x])
+                print(result[y][x])
             else:
-                print(matrix[y][x], end="  ")
+                print(result[y][x], end="\t")
+    sys.exit(0)
 
 def exp(matrix):
     result = id_matrix(len(matrix))
@@ -110,9 +114,10 @@ def exp(matrix):
     for y in range(len(result)):
         for x in range(len(matrix)):
             if x == len(matrix) - 1:
-                print(matrix[y][x])
+                print(result[y][x])
             else:
-                print(matrix[y][x], end="  ")
+                print(result[y][x], end="\t")
+    sys.exit(0)
 
 def create_matrix(nbrs):
     matrix = list()
@@ -134,9 +139,6 @@ def print_help():
     print("DESCRIPTION\n\tfun\tfunction to be applied, among at least 'EXP', 'COS', 'SIN', 'COSH' and 'SINH'")
     print("\tai\tcoefficients of the matrix")
 
-def test():
-    return 2
-
 try:
     if (len(argv) == 2 and argv[1] == "-h"):
         print_help()
@@ -146,18 +148,13 @@ try:
     matrix = create_matrix(nbrs)
     if (argv[1] == "EXP"):
         exp(matrix)
-        sys.exit(0)
     elif (argv[1] == "COS"):
         cos(matrix)
-        sys.exit(0)
     elif (argv[1] == "SIN"):
         sin(matrix)
-        sys.exit(0)
     elif (argv[1] == "COSH"):
         cos_h(matrix)
-        sys.exit(0)
     elif (argv[1] == "SINH"):
         sin_h(matrix)
-        sys.exit(0)
 except:
     sys.exit(84)
