@@ -11,7 +11,7 @@
 
 subwindow_t *sound_subwindow_create(infos_t *infos)
 {
-    subwindow_t *subwindow = subwindow_create(infos,
+    subwindow_t *subwindow = subwindow_create(sizeof(subwindow_t), infos,
     (sfVector2f) {620, 300}, SETTINGS_SUBWINDOW_TEXT);
     button_t *minus = text_button_create(infos, "-",
     (sfVector2f) {36, 50}, RED_BUTTON);
@@ -33,7 +33,7 @@ subwindow_t *sound_subwindow_create(infos_t *infos)
 
 subwindow_t *fps_subwindow_create(infos_t *infos)
 {
-    subwindow_t *subwindow = subwindow_create(infos,
+    subwindow_t *subwindow = subwindow_create(sizeof(subwindow_t), infos,
     (sfVector2f) {620, 500}, SETTINGS_SUBWINDOW_TEXT);
     button_t *minus = text_button_create(infos, "-",
     (sfVector2f) {36, 50}, RED_BUTTON);
@@ -55,7 +55,7 @@ subwindow_t *fps_subwindow_create(infos_t *infos)
 
 subwindow_t *res_subwindow_create(infos_t *infos)
 {
-    subwindow_t *subwindow = subwindow_create(infos,
+    subwindow_t *subwindow = subwindow_create(sizeof(subwindow_t), infos,
     (sfVector2f) {620, 700}, SETTINGS_SUBWINDOW_TEXT);
     button_t *res1280 = text_button_create(infos, "1280x720",
     (sfVector2f) {36, 50}, BLUE_BUTTON);

@@ -9,7 +9,7 @@
 #include "graphics/subwindow.h"
 #include "elements/entities/entity.h"
 
-void subwindow_move(subwindow_t *subwindow, sfVector2f new_pos)
+void subwindow_default_move(subwindow_t *subwindow, sfVector2f new_pos)
 {
     sfVector2f diff = {new_pos.x - subwindow->pos.x,
     new_pos.y - subwindow->pos.y};
@@ -26,7 +26,7 @@ void subwindow_move(subwindow_t *subwindow, sfVector2f new_pos)
     }
 }
 
-void subwindow_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
+void subwindow_default_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
 {
     entity_t *entity;
 
@@ -36,7 +36,7 @@ void subwindow_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
     }
 }
 
-void subwindow_draw(subwindow_t *subwindow, sfRenderWindow *window)
+void subwindow_default_draw(subwindow_t *subwindow, sfRenderWindow *window)
 {
     element_t *element;
 
@@ -47,7 +47,7 @@ void subwindow_draw(subwindow_t *subwindow, sfRenderWindow *window)
     }
 }
 
-void subwindow_destroy(subwindow_t *subwindow)
+void subwindow_default_destroy(subwindow_t *subwindow)
 {
     element_t *element;
     list_t *next;

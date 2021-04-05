@@ -8,10 +8,10 @@
 #include <stdlib.h>
 #include "graphics/subwindow.h"
 
-subwindow_t *subwindow_create(infos_t *infos,
+subwindow_t *subwindow_create(size_t size, infos_t *infos,
 sfVector2f pos, texture_t texture)
 {
-    subwindow_t *subwindow = malloc(sizeof(subwindow_t));
+    subwindow_t *subwindow = malloc(size);
     sfSprite *sprite = sfSprite_create();
 
     if (!subwindow)
@@ -22,6 +22,10 @@ sfVector2f pos, texture_t texture)
     subwindow->pos = pos;
     subwindow->elements = NULL;
     subwindow->entities = NULL;
+    subwindow->move = &subwindow_default_move;
+    subwindow->update = &subwindow_default_update;
+    subwindow->draw = &subwindow_default_draw;
+    subwindow->destroy = &subwindow_default_destroy;
     return (subwindow);
 }
 

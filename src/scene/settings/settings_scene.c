@@ -47,13 +47,16 @@ scene_t *settings_scene_create(infos_t *infos)
 int settings_scene_update(scene_t *scene, infos_t *infos, float elapsed)
 {
     entity_t *entity;
+    subwindow_t *subwindow;
 
     for (list_t *list = scene->entities; list; list = list->next) {
         entity = (entity_t*) list->data;
         entity->update(entity, infos, elapsed);
     }
-    for (list_t *list = scene->subwindows; list; list = list->next)
-        subwindow_update((subwindow_t*) list->data, infos, elapsed);
+    for (list_t *list = scene->subwindows; list; list = list->next) {
+        subwindow = (subwindow_t*) list->data;
+        subwindow->update(subwindow, infos, elapsed);
+    }
     return (0);
 }
 
@@ -63,7 +66,7 @@ void settings_scene_destroy(scene_t *scene)
 
     for (list_t *list = scene->subwindows; list; list = next) {
         next = list->next;
-        subwindow_destroy((subwindow_t*) list->data);
+        ((subwindow_t*) list->data)->destroy((subwindow_t*) list->data);
         free(list);
     }
     scene_destroy_all_elements(scene);
