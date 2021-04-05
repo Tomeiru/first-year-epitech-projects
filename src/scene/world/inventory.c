@@ -28,11 +28,10 @@ void inventory_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
     inventory_t *inventory = (inventory_t*) subwindow;
     sfView *view = sfRenderWindow_getView(infos->window);
-    int cam_left_pos = sfView_getCenter(view).x - sfView_getSize(view).x / 2;
 
-    if (inventory->show && inventory->pos.x != cam_left_pos + 500)
+    if (inventory->show && inventory->anim)
         inventory_anim_move(inventory, view, 500, elapsed);
-    else if (!inventory->show && inventory->pos.x != cam_left_pos + 1921) {
+    else if (!inventory->show && inventory->anim) {
         inventory_anim_move(inventory, view, 1921, elapsed);
         if (!inventory->anim)
             world_scene->can_move = 1;
