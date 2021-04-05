@@ -22,6 +22,8 @@ void world_move(world_scene_t *world_scene, infos_t *infos, float elapsed)
     sfVector2f pos = sfView_getCenter(view);
     float speed = 5 * elapsed;
 
+    if (!world_scene->can_move)
+        return;
     if (sfKeyboard_isKeyPressed(sfKeyZ) ^ sfKeyboard_isKeyPressed(sfKeyS))
         pos.y += sfKeyboard_isKeyPressed(sfKeyZ) ? -speed : speed;
     if (sfKeyboard_isKeyPressed(sfKeyQ) ^ sfKeyboard_isKeyPressed(sfKeyD))

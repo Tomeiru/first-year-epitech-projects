@@ -8,8 +8,9 @@
 #ifndef WORLD_SCENE_H_
 #define WORLD_SCENE_H_
 
-#include "scene.h"
 #include <SFML/Window/Event.h>
+#include "scene/scene.h"
+#include "inventory.h"
 
 typedef struct world_scene_s {
     sfSprite *background;
@@ -20,6 +21,8 @@ typedef struct world_scene_s {
     draw_scene_fct_t draw;
     event_scene_fct_t event;
     destroy_scene_fct_t destroy;
+    inventory_t *inventory;
+    char can_move;
 } world_scene_t;
 
 scene_t *world_scene_create(infos_t *infos);

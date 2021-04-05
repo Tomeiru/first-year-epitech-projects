@@ -21,7 +21,8 @@ typedef enum texture_e {
     PAUSE_BACKGROUND_TEXT,
     SETTINGS_SUBWINDOW_TEXT,
     HOWTOPLAY_IMG_TEXT,
-    WORLD_BACKGROUND_TEXT
+    WORLD_BACKGROUND_TEXT,
+    INVENTORY_TEXT
 } texture_t;
 
 list_t *load_textures(void);

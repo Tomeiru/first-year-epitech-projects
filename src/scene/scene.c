@@ -34,14 +34,17 @@ update_scene_fct_t update, destroy_scene_fct_t destroy)
 void scene_default_draw(scene_t *scene, infos_t *infos)
 {
     element_t *element;
+    subwindow_t *subwindow;
 
     sfRenderWindow_drawSprite(infos->window, scene->background, NULL);
     for (list_t *list = scene->elements; list; list = list->next) {
         element = (element_t*) list->data;
         element->draw(element, infos->window);
     }
-    for (list_t *list = scene->subwindows; list; list = list->next)
-        subwindow_draw((subwindow_t*) list->data, infos->window);
+    for (list_t *list = scene->subwindows; list; list = list->next) {
+        subwindow = (subwindow_t*) list->data;
+        subwindow->draw(subwindow, infos->window);
+    }
     sfRenderWindow_drawText(infos->window, infos->hover_infos->text, 0);
     sfRenderWindow_display(infos->window);
 }
