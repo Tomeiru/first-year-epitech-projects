@@ -56,6 +56,8 @@ int button_load_settings_scene(element_t *element,
 infos_t *infos, sfMouseButton button_type);
 int button_load_howtoplay_scene(element_t *element,
 infos_t *infos, sfMouseButton button_type);
+int button_load_world_scene(element_t *element,
+infos_t *infos, sfMouseButton button_type);
 
 int button_resume(element_t *element,
 infos_t *infos, sfMouseButton button_type);

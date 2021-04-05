@@ -44,3 +44,12 @@ infos_t *infos, sfMouseButton button_type)
     button_set_clicked(button, 1, infos);
     return (LOAD_HOWTOPLAY_SCENE_ACTION);
 }
+
+int button_load_world_scene(element_t *element,
+infos_t *infos, sfMouseButton button_type)
+{
+    button_t *button = (button_t*) element;
+
+    button_set_clicked(button, 1, infos);
+    return (LOAD_WORLD_SCENE_ACTION);
+}

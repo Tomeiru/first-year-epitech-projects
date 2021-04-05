@@ -11,6 +11,8 @@
 
 int load_scene(infos_t *infos, int action)
 {
+    sfView *view = sfRenderWindow_getView(infos->window);
+
     for (int i = 0; i < NB_SCENES; i++) {
         if (LOAD_ACTION[i] == action) {
             infos->state = SCENE_STATE[i];
@@ -20,5 +22,6 @@ int load_scene(infos_t *infos, int action)
     }
     if (infos->scene == NULL)
         return (1);
+    sfView_setCenter(view, (sfVector2f) {WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2});
     return (0);
 }

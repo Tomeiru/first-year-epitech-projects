@@ -24,7 +24,7 @@ static int init_menu_scene_buttons(menu_scene_t *menu_scene, infos_t *infos)
 
     if (!game || !settings || !leave)
         return (1);
-    game->on_click = NULL;
+    game->on_click = &button_load_world_scene;
     settings->on_click = &button_load_settings_scene;
     howtoplay->on_click = &button_load_howtoplay_scene;
     leave->on_click = &button_close_game;

@@ -35,7 +35,9 @@ SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/settings/settings_scene.c							\
 					src/scene/settings/settings_subwindows.c					\
 					src/scene/settings/button_settings_actions.c				\
-					src/scene/settings/button_settings_res_actions.c
+					src/scene/settings/button_settings_res_actions.c			\
+					src/scene/world/world_scene.c								\
+					src/scene/world/world.c
 
 UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/origins.c											\

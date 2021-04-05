@@ -27,9 +27,9 @@
 
 typedef enum game_state_e {
     MAIN_MENU,
-    GAME,
     HOWTOPLAY,
     SETTINGS,
+    WORLD
 } game_state_t;
 
 typedef struct infos_s {
