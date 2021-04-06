@@ -11,11 +11,14 @@
 
 int world_scene_init(world_scene_t *world_scene, infos_t *infos)
 {
+    pause_t *pause = pause_create(infos);
     inventory_t *inventory = inventory_create(infos);
 
-    if (!inventory)
+    if (!pause || !inventory)
         return (1);
+    world_scene->pause = pause;
     world_scene->inventory = inventory;
+    create_list(&(world_scene->subwindows), pause);
     create_list(&(world_scene->subwindows), inventory);
     return (0);
 }
@@ -38,18 +41,15 @@ scene_t *world_scene_create(infos_t *infos)
 
 int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
 {
-    entity_t *entity;
-    subwindow_t *subwindow;
+    world_scene_t *world_scene = (world_scene_t*) scene;
 
-    world_move((world_scene_t*) scene, infos, elapsed);
-    for (list_t *list = scene->entities; list; list = list->next) {
-        entity = (entity_t*) list->data;
-        entity->update(entity, infos, elapsed);
+    if (world_scene->pause->pause) {
+        world_scene->pause->update((subwindow_t*)
+        world_scene->pause, infos, elapsed);
+        return (0);
     }
-    for (list_t *list = scene->subwindows; list; list = list->next) {
-        subwindow = (subwindow_t*) list->data;
-        subwindow->update(subwindow, infos, elapsed);
-    }
+    world_move(world_scene, infos, elapsed);
+    scene_update_elements(scene, infos, elapsed);
     return (0);
 }
 
@@ -62,7 +62,8 @@ int world_scene_event(scene_t *scene, infos_t *infos, sfEvent *event)
         if (keyEv.code == sfKeyTab) {
             world_scene->can_move = 0;
             inventory_show(world_scene->inventory);
-        }
+        } else if (keyEv.code == sfKeyEscape)
+            pause_set_pause(world_scene->pause, infos);
     }
     return (0);
 }

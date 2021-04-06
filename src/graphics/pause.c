@@ -25,54 +25,58 @@ static int pause_create_buttons(pause_t *pause, infos_t *infos)
     resume->on_click = &button_resume;
     menu->on_click = &button_load_menu_scene;
     leave->on_click = &button_close_game;
-    create_list(&(pause->elements), leave);
-    create_list(&(pause->elements), menu);
-    create_list(&(pause->elements), resume);
+    subwindow_add_element((subwindow_t*) pause, (element_t*) resume, 1);
+    subwindow_add_element((subwindow_t*) pause, (element_t*) menu, 1);
+    subwindow_add_element((subwindow_t*) pause, (element_t*) leave, 1);
     return (0);
 }
 
 pause_t *pause_create(infos_t *infos)
 {
-    pause_t *pause = malloc(sizeof(pause_t));
-    element_t *background = element_create_default(sizeof(element_t),
-    BACKGROUND, (sfVector2f) {0, 0});
-    sfSprite *background_sprite = sfSprite_create();
+    pause_t *pause = (pause_t*) subwindow_create(sizeof(pause_t),
+    infos, (sfVector2f) {0, 1081}, PAUSE_BACKGROUND_TEXT);
 
-    if (!background || !background_sprite)
+    if (!pause || pause_create_buttons(pause, infos))
         return (NULL);
-    sfSprite_setTexture(background_sprite,
-    get_texture(infos, PAUSE_BACKGROUND_TEXT), 0);
-    background->sprite = background_sprite;
-    pause->elements = NULL;
-    if (pause_create_buttons(pause, infos))
-        return (NULL);
-    create_list(&(pause->elements), background);
+    pause->update = &pause_update;
+    pause->anim = 0;
+    pause->pause = 0;
     return (pause);
 }
 
-void set_pause(pause_t *pause, infos_t *infos)
+void pause_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
 {
-    element_t *element;
+    pause_t *pause = (pause_t*) subwindow;
+    sfView *view = sfRenderWindow_getView(infos->window);
 
-    pause->pause = 1;
-    sfMusic_pause(infos->music);
-    for (list_t *list = pause->elements; list; list = list->next) {
-        element = (element_t*) list->data;
-        if (element->type == BUTTON)
-            button_set_clicked((button_t*) element, 0, infos);
+    if (pause->pause && pause->anim)
+        pause_anim_move(pause, view, 0, elapsed);
+    else if (!pause->pause && pause->anim)
+        pause_anim_move(pause, view, 1081, elapsed);
+}
+
+void pause_anim_move(pause_t *pause,
+sfView *view, int target, float elapsed)
+{
+    int cam_up_pos = sfView_getCenter(view).y - sfView_getSize(view).y / 2;
+    int x_pos = sfView_getCenter(view).x - 960;
+    float speed = PAUSE_SPEED * elapsed;
+
+    if (abs((int) (pause->pos.y - cam_up_pos - target)) <= speed) {
+        pause->move((subwindow_t*) pause,
+        (sfVector2f) {x_pos, cam_up_pos + target});
+        pause->anim = 0;
+    } else {
+        if (pause->pos.y < cam_up_pos + target)
+            speed = -speed;
+        pause->move((subwindow_t*) pause, (sfVector2f)
+        {x_pos, pause->pos.y - speed});
     }
 }
 
-void pause_destroy(pause_t *pause)
+void pause_set_pause(pause_t *pause, infos_t *infos)
 {
-    list_t *next;
-    element_t *element;
-
-    for (list_t *list = pause->elements; list; list = next) {
-        next = list->next;
-        element = (element_t*) list->data;
-        element->destroy(element);
-        free(list);
-    }
-    free(pause);
+    pause->pause = !pause->pause;
+    pause->anim = 1;
+    sfMusic_pause(infos->music);
 }

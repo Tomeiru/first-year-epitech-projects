@@ -11,6 +11,7 @@
 #include <SFML/Window/Event.h>
 #include "scene/scene.h"
 #include "inventory.h"
+#include "graphics/pause.h"
 
 typedef struct world_scene_s {
     sfSprite *background;
@@ -21,6 +22,7 @@ typedef struct world_scene_s {
     draw_scene_fct_t draw;
     event_scene_fct_t event;
     destroy_scene_fct_t destroy;
+    pause_t *pause;
     inventory_t *inventory;
     char can_move;
 } world_scene_t;

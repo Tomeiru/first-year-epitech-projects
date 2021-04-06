@@ -28,6 +28,7 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/entities/buttons/button_load_actions.c
 
 SCENE_SRC		=	src/scene/scene.c											\
+					src/scene/scene_elements.c									\
 					src/scene/load_scene.c										\
 					src/scene/menu_scene.c										\
 					src/scene/howtoplay/howtoplay_scene.c						\
