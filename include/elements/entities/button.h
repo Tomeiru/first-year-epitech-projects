@@ -59,9 +59,6 @@ infos_t *infos, sfMouseButton button_type);
 int button_load_world_scene(element_t *element,
 infos_t *infos, sfMouseButton button_type);
 
-int button_resume(element_t *element,
-infos_t *infos, sfMouseButton button_type);
-
 int button_fps_minus(element_t *element,
 infos_t *infos, sfMouseButton button_type);
 int button_fps_plus(element_t *element,

@@ -30,6 +30,10 @@ typedef struct pause_s {
 
 pause_t *pause_create(infos_t *infos);
 void pause_update(subwindow_t *subwindow, infos_t *infos, float elapsed);
+void pause_draw(subwindow_t *subwindow, sfRenderWindow *window);
+
+int button_pause_resume(element_t *element,
+infos_t *infos, sfMouseButton button_type);
 void pause_anim_move(pause_t *pause,
 const sfView *view, int target, float elapsed);
 void pause_set_pause(pause_t *pause, infos_t *infos);
