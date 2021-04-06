@@ -11,13 +11,16 @@
 
 int world_scene_init(world_scene_t *world_scene, infos_t *infos)
 {
+    player_t *player = player_create(infos);
     pause_t *pause = pause_create(infos);
     inventory_t *inventory = inventory_create(infos);
 
-    if (!pause || !inventory)
+    if (!pause || !player || !inventory)
         return (1);
+    world_scene->player = player;
     world_scene->pause = pause;
     world_scene->inventory = inventory;
+    scene_add_element((scene_t*) world_scene, player, 1);
     create_list(&(world_scene->subwindows), pause);
     create_list(&(world_scene->subwindows), inventory);
     return (0);
@@ -34,7 +37,6 @@ scene_t *world_scene_create(infos_t *infos)
         return (NULL);
     world_scene->background = background;
     world_scene->event = &world_scene_event;
-    world_scene->can_move = 1;
     world_load(world_scene, infos);
     return (scene);
 }
@@ -60,7 +62,7 @@ int world_scene_event(scene_t *scene, infos_t *infos, sfEvent *event)
 
     if (event->type == sfEvtKeyPressed) {
         if (keyEv.code == sfKeyTab) {
-            world_scene->can_move = 0;
+            world_scene->player->can_move = 0;
             inventory_show(world_scene->inventory);
         } else if (keyEv.code == sfKeyEscape)
             pause_set_pause(world_scene->pause, infos);

@@ -34,7 +34,7 @@ void inventory_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
     else if (!inventory->show && inventory->anim) {
         inventory_anim_move(inventory, view, 1921, elapsed);
         if (!inventory->anim)
-            world_scene->can_move = 1;
+            world_scene->player->can_move = 1;
     }
 }
 

@@ -19,6 +19,7 @@ MAIN_SRC		=	src/main.c													\
 ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/default_element_fcts.c							\
 					src/elements/image.c										\
+					src/elements/entities/player.c								\
 					src/elements/entities/particle.c							\
 					src/elements/entities/text.c								\
 					src/elements/entities/text_update_fcts.c					\

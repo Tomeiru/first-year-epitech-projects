@@ -12,6 +12,7 @@
 #include "scene/scene.h"
 #include "inventory.h"
 #include "graphics/pause.h"
+#include "elements/entities/player.h"
 
 typedef struct world_scene_s {
     sfSprite *background;
@@ -24,7 +25,7 @@ typedef struct world_scene_s {
     destroy_scene_fct_t destroy;
     pause_t *pause;
     inventory_t *inventory;
-    char can_move;
+    player_t *player;
 } world_scene_t;
 
 scene_t *world_scene_create(infos_t *infos);
