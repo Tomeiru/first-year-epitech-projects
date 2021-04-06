@@ -24,13 +24,12 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/entities/text_update_fcts.c					\
 					src/elements/entities/buttons/button.c						\
 					src/elements/entities/buttons/button_default_fcts.c			\
-					src/elements/entities/buttons/button_types.c				\
-					src/elements/entities/buttons/button_actions.c				\
-					src/elements/entities/buttons/button_load_actions.c
+					src/elements/entities/buttons/button_types.c
 
 SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/scene_elements.c									\
 					src/scene/load_scene.c										\
+					src/scene/button_load_actions.c								\
 					src/scene/menu_scene.c										\
 					src/scene/howtoplay/howtoplay_scene.c						\
 					src/scene/howtoplay/button_htp_actions.c					\
