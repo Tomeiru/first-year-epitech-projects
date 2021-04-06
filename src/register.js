@@ -8,6 +8,7 @@ module.exports = function register(request, response, db) {
     const name = request.body.name;
     const firstname = request.body.firstname;
     const password = request.body.password;
+    console.log(email, name, firstname, password);
 
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
