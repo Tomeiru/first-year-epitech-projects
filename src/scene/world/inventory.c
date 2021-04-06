@@ -27,7 +27,7 @@ void inventory_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
 {
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
     inventory_t *inventory = (inventory_t*) subwindow;
-    sfView *view = sfRenderWindow_getView(infos->window);
+    const sfView *view = sfRenderWindow_getView(infos->window);
 
     if (inventory->show && inventory->anim)
         inventory_anim_move(inventory, view, 500, elapsed);
@@ -39,7 +39,7 @@ void inventory_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
 }
 
 void inventory_anim_move(inventory_t *inventory,
-sfView *view, int target, float elapsed)
+const sfView *view, int target, float elapsed)
 {
     int cam_left_pos = sfView_getCenter(view).x - sfView_getSize(view).x / 2;
     int y_pos = sfView_getCenter(view).y - 150;

@@ -18,10 +18,10 @@ void world_load(world_scene_t *world_scene, infos_t *infos)
 
 void world_move(world_scene_t *world_scene, infos_t *infos, float elapsed)
 {
-    subwindow_t *subwindow;
-    sfView *view = sfRenderWindow_getView(infos->window);
+    const sfView *view = sfRenderWindow_getView(infos->window);
     sfVector2f move = {0, 0};
     float speed = 5 * elapsed;
+    subwindow_t *subwindow;
 
     if (!world_scene->can_move)
         return;

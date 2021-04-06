@@ -11,7 +11,7 @@
 
 int load_scene(infos_t *infos, int action)
 {
-    sfView *view = sfRenderWindow_getView(infos->window);
+    const sfView *view = sfRenderWindow_getView(infos->window);
 
     for (int i = 0; i < NB_SCENES; i++) {
         if (LOAD_ACTION[i] == action) {

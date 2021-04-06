@@ -47,7 +47,7 @@ pause_t *pause_create(infos_t *infos)
 void pause_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
 {
     pause_t *pause = (pause_t*) subwindow;
-    sfView *view = sfRenderWindow_getView(infos->window);
+    const sfView *view = sfRenderWindow_getView(infos->window);
 
     if (pause->pause && pause->anim)
         pause_anim_move(pause, view, 0, elapsed);
@@ -56,7 +56,7 @@ void pause_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
 }
 
 void pause_anim_move(pause_t *pause,
-sfView *view, int target, float elapsed)
+const sfView *view, int target, float elapsed)
 {
     int cam_up_pos = sfView_getCenter(view).y - sfView_getSize(view).y / 2;
     int x_pos = sfView_getCenter(view).x - 960;
