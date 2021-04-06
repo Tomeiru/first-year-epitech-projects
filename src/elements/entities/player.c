@@ -12,8 +12,9 @@
 
 player_t *player_create(infos_t *infos)
 {
-    player_t *player = (player_t*) element_create_default(sizeof(player_t),
+    element_t *element = element_create_default(sizeof(player_t),
     PLAYER, (sfVector2f) {0, 0});
+    player_t *player = (player_t*) element;
     sfSprite *sprite = sfSprite_create();
 
     if (!player || !sprite)
@@ -22,6 +23,8 @@ player_t *player_create(infos_t *infos)
     player->sprite = sprite;
     player->update = &player_update;
     player->can_move = 1;
+    sprite_set_origin_center(sprite);
+    element_set_hitbox(element, sfSprite_getGlobalBounds(sprite));
     return (player);
 }
 
