@@ -12,31 +12,56 @@ module.exports = function todosRoute(db) {
     });
 
     router.post('/', (request, response) => {
-        query.createTodo(request, response, db, id);
+        const data = {
+            title: request.body.title,
+            description: request.body.description,
+            due_time: request.body.due_time,
+            user_id: request.body.user_id,
+            status: request.body.status
+        };
+
+        if (!data.title || !data.description || !data.due_time || !data.user_id || !data.status) {
+            response.send('{"msg": "internal server error"}');
+            return;
+        }
+        query.createTodo(response, data, db);
     });
 
     router.get('/:id', (request, response) => {
         const id = request.params.id;
 
+        if (isNaN(id)) {
+            response.send('{"msg": "internal server error"}');
+            return;
+        }
         query.sendTodoInfosFromId(response, id, db);
     });
 
     router.put('/:id', (request, response) => {
-        const id = request.params.id;
+        const data = {
+            title: request.body.title,
+            description:  request.body.description,
+            due_time: request.body.due_time,
+            user_id: request.body.user_id,
+            status: request.body.status,
+            id: request.params.id
+        };
 
-        if (isNaN(id)) {
+        if (!data.title || !data.description || !data.due_time || !data.user_id || !data.status || isNaN(data.id)) {
+            response.send('{"msg": "internal server error"}');
             return;
         }
-        query.updateTodoInfos(id, request, response, db);
+        query.updateTodoInfos(response, data, db);
     });
 
     router.delete('/:id', (request, response) => {
         const id = request.params.id;
 
         if (isNaN(id)) {
+            response.send('{"msg": "internal server error"}');
             return;
         }
-        query.deleteTodo(id, response, db);
+        query.deleteTodo(response, id, db);
     });
 
     return (router);

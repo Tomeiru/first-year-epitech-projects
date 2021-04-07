@@ -4,10 +4,8 @@ function getUserIdFromEmail(email, db) {
     const sql = "SELECT id FROM user WHERE email = ?";
 
     db.query(sql, [email], (err, result) => {
-        if (err) {
-            response.send('{"msg": "internal server error"}');
-            return;
-        }
+        if (err)
+            return (undefined);
         return (result[0].id);
     });
 }
@@ -43,6 +41,9 @@ function sendUserInfosFromId(response, id, db) {
         if (err) {
             response.send('{"msg": "internal server error"}');
             throw err;
+        } else if (result[0] == undefined) {
+            response.send('{"msg": "Not found"}');
+            return;
         }
         response.send(JSON.stringify({
             id: result[0].id,
@@ -62,6 +63,9 @@ function sendUserInfosFromEmail(response, email, db) {
         if (err) {
             response.send('{"msg": "internal server error"}');
             throw err;
+        } else if (result[0] == undefined) {
+            response.send('{"msg": "Not found"}');
+            return;
         }
         response.send(JSON.stringify({
             id: result[0].id,
@@ -98,26 +102,23 @@ function sendUserTodos(response, id, db) {
     });
 }
 
-function updateUserInfos(id, request, response, db) {
-    const email = request.body.email;
-    const password = request.body.password;
-    const created_at = request.body.created_at;
-    const name = request.body.name;
-    const firstname = request.body.firstname;
-
+function updateUserInfos(response, data, db) {
     const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(password, salt);
+    const hash = bcrypt.hashSync(data.password, salt);
 
     const sql = "UPDATE user SET email = ?, password = ?, created_at = ?, name = ?, firstname = ? WHERE id = ?";
-    const args = [email, hash, created_at, name, firstname, id];
+    const args = [data.email, hash, data.created_at, data.name, data.firstname, data.id];
 
-    db.query(sql, args, (err, result) => {
+    db.query(sql, args, (err) => {
         if (err) {
             response.send('{"msg": "internal server error"}');
             return;
+        } else if (result.affectedRows == 0) {
+            response.send('{"msg": "Not found"}');
+            return;
         }
         response.send(JSON.stringify({
-            id: id,
+            id: data.id,
             email: args[0],
             password: args[1],
             created_at: args[2],
@@ -127,12 +128,15 @@ function updateUserInfos(id, request, response, db) {
     });
 }
 
-function deleteUser(id, response, db) {
+function deleteUser(response, id, db) {
     const sql = "DELETE FROM user WHERE id = ?";
 
     db.query(sql, [id], (err) => {
         if (err) {
             response.send('{"msg": "internal server error"}');
+            return;
+        } else if (result.affectedRows == 0) {
+            response.send('{"msg": "Not found"}');
             return;
         }
         response.send(`{"msg": "successfully deleted record number: ${id}"}`);

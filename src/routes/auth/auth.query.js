@@ -1,18 +1,13 @@
 const bcrypt = require('bcryptjs');
 const { generateToken } = require('../../token.js');
 
-function registerUser(request, response, db) {
-    const email = request.body.email;
-    const name = request.body.name;
-    const firstname = request.body.firstname;
-    const password = request.body.password;
-
+function registerUser(response, data, db) {
     const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(password, salt);
+    const hash = bcrypt.hashSync(data.password, salt);
 
     const sql = "INSERT INTO user (email,name,firstname,password) VALUES (?,?,?,?)";
 
-    db.query(sql, [email, name, firstname, hash], (err, result) => {
+    db.query(sql, [data.email, data.name, data.firstname, hash], (err, result) => {
         if (err) {
             if (err.code == "ER_DUP_ENTRY") {
                 response.send('{"msg": "account already exists"}');
@@ -22,26 +17,23 @@ function registerUser(request, response, db) {
                 throw err;
             }
         }
-        response.send(`{"token": "${generateToken(email)}"}`);
-        console.log(`Create user ${email}`);
+        response.send(`{"token": "${generateToken(data.email)}"}`);
+        console.log(`Create user ${data.email}`);
     });
 }
 
-function loginUser(request, response, db) {
-    const email = request.body.email;
-    const password = request.body.password;
-
+function loginUser(response, data, db) {
     const sql = "SELECT password FROM user WHERE email = ?";
 
-    db.query(sql, [email], (err, result) => {
-        const hash = result[0].password;
+    db.query(sql, [data.email], (err, result) => {
+        const hash = result != undefined ? result[0].password : undefined;
 
         if (err) {
             response.send('{"msg": "internal server error"}');
             throw err;
         }
-        if (hash != undefined && bcrypt.compareSync(password, hash))
-            response.send(`{"token": "${generateToken(email)}"}`);
+        if (hash != undefined && bcrypt.compareSync(data.password, hash))
+            response.send(`{"token": "${generateToken(data.email)}"}`);
         else
             response.send('{"msg": "Invalid Credentials"}')
     });

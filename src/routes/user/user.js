@@ -15,6 +15,10 @@ module.exports = function userRoute(db) {
         const email = request.user.email;
         const id = query.getUserIdFromEmail(email, db);
 
+        if (id == undefined) {
+            response.send('{"msg": "Not found"}');
+            return;
+        }
         query.sendUserTodos(response, id, db);
     });
 
@@ -28,9 +32,17 @@ module.exports = function userRoute(db) {
     });
 
     router.put('/:id', (request, response) => {
-        const id = request.params.id;
+        const data = {
+            email: request.body.email,
+            password: request.body.password,
+            created_at: request.body.created_at,
+            name: request.body.name,
+            firstname: request.body.firstname,
+            id: request.params.id
+        };
 
-        if (isNaN(id)) {
+        if (!data.email || !data.password || !data.created_at || !data.name || !data.firstname || isNaN(data.id)) {
+            response.send('{"msg": "internal server error"}');
             return;
         }
         query.updateUserInfos(id, request, response, db);
@@ -40,9 +52,10 @@ module.exports = function userRoute(db) {
         const id = request.params.id;
 
         if (isNaN(id)) {
+            response.send('{"msg": "internal server error"}');
             return;
         }
-        query.deleteUser(id, response, db);
+        query.deleteUser(response, id, db);
     });
 
     return (router);

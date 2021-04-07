@@ -32,6 +32,9 @@ function sendTodoInfosFromId(response, id, db) {
         if (err) {
             response.send('{"msg": "internal server error"}');
             throw err;
+        } else if (result[0] == undefined) {
+            response.send('{"msg": "Not found"}');
+            return;
         }
         response.send(JSON.stringify({
             id: result[0].id,
@@ -45,45 +48,29 @@ function sendTodoInfosFromId(response, id, db) {
     });
 }
 
-function createTodo(request, response, db, id) {
-    const title = request.body.title;
-    const description = request.body.description;
-    const due_time = request.body.due_time;
-    const user_id = request.body.user_id;
-    const status = request.body.status;
-
-    const sql = "UPDATE todo SET title = ?, description = ?, due_time = ?, user_id = ?, status = ?";
-    const args = [title, description, due_time, user_id, status];
-
-    db.query(sql, args, (err) => {
-        if (err) {
-            response.send('{"msg": "internal server error"}');
-            throw err;
-        }
-        response.send(JSON.stringify({
-            id: id,
-            title: args[0],
-            description: args[1],
-            due_time: args[2],
-            user_id: args[3],
-            status: args[4]
-        }));
-    });
-}
-
-function updateTodoInfos(id, request, response, db) {
-    const title = request.body.title;
-    const description = request.body.description;
-    const due_time = request.body.due_time;
-    const user_id = request.body.user_id;
-    const status = request.body.status;
-
-    const sql = "UPDATE todo SET title = ?, description = ?, due_time = ?, user_id = ?, status = ?";
-    const args = [title, description, due_time, user_id, status];
+function createTodo(response, data, db) {
+    const sql = "INSERT INTO todo (title,description,due_time,user_id,status) VALUES (?,?,?,?,?)";
+    const args = [data.title, data.description, data.due_time, data.user_id, data.status];
 
     db.query(sql, args, (err, result) => {
         if (err) {
             response.send('{"msg": "internal server error"}');
+            throw err;
+        }
+        sendTodoInfosFromId(response, result.insertId, db);
+    });
+}
+
+function updateTodoInfos(response, data, db) {
+    const sql = "UPDATE todo SET title = ?, description = ?, due_time = ?, user_id = ?, status = ? WHERE id = ?";
+    const args = [data.title, data.description, data.due_time, data.user_id, data.status, data.id];
+
+    db.query(sql, args, (err) => {
+        if (err) {
+            response.send('{"msg": "internal server error"}');
+            return;
+        } else if (result.affectedRows == 0) {
+            response.send('{"msg": "Not found"}');
             return;
         }
         response.send(JSON.stringify({
@@ -96,12 +83,15 @@ function updateTodoInfos(id, request, response, db) {
     });
 }
 
-function deleteTodo(id, response, db) {
+function deleteTodo(response, id, db) {
     const sql = "DELETE FROM todo WHERE id = ?";
 
     db.query(sql, [id], (err) => {
         if (err) {
             response.send('{"msg": "internal server error"}');
+            return;
+        } else if (result.affectedRows == 0) {
+            response.send('{"msg": "Not found"}');
             return;
         }
         response.send(`{"msg": "successfully deleted record number: ${id}"}`);
