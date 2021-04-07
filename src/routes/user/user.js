@@ -45,7 +45,7 @@ module.exports = function userRoute(db) {
             response.status(400).send('{"msg": "Bad request"}');
             return;
         }
-        query.updateUserInfos(id, request, response, db);
+        query.updateUserInfos(request, data, db);
     });
 
     router.delete('/:id', (request, response) => {
