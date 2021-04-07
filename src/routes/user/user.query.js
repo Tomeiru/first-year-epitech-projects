@@ -1,12 +1,17 @@
 const bcrypt = require('bcryptjs');
 
-function getUserIdFromEmail(email, db) {
+function queryUsingUserId(email, response, db, next) {
     const sql = "SELECT id FROM user WHERE email = ?";
 
     db.query(sql, [email], (err, result) => {
-        if (err)
-            return (undefined);
-        return (result[0].id);
+        if (err) {
+            response.status(500).send('{"msg": "internal server error"}');
+            throw err;
+        } else if (result[0] == undefined) {
+            response.status(404).send('{"msg": "Not found"}');
+            return;
+        }
+        next(response, result[0].id, db);
     });
 }
 
@@ -89,13 +94,13 @@ function sendUserTodos(response, id, db) {
         }
         for (let i = 0; i < results.length; i++) {
             array.push({
-                id: result[i].id,
-                title: result[i].title,
-                description: result[i].description,
-                created_at: result[i].created_at,
-                due_time: result[i].due_time,
-                status: result[i].status,
-                user_id: result[i].user_id
+                id: results[i].id,
+                title: results[i].title,
+                description: results[i].description,
+                created_at: results[i].created_at,
+                due_time: results[i].due_time,
+                status: results[i].status,
+                user_id: results[i].user_id
             });
         }
         response.send(JSON.stringify(array));
@@ -144,7 +149,7 @@ function deleteUser(response, id, db) {
 }
 
 module.exports = {
-    getUserIdFromEmail,
+    queryUsingUserId,
     sendAllUsersInfo,
     sendUserInfosFromId,
     sendUserInfosFromEmail,

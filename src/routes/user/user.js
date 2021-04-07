@@ -13,13 +13,8 @@ module.exports = function userRoute(db) {
 
     router.get('/todos', (request, response) => {
         const email = request.user.email;
-        const id = query.getUserIdFromEmail(email, db);
 
-        if (id == undefined) {
-            response.status(404).send('{"msg": "Not found"}');
-            return;
-        }
-        query.sendUserTodos(response, id, db);
+        query.queryUsingUserId(email, response, db, query.sendUserTodos);
     });
 
     router.get('/:value', (request, response) => {
