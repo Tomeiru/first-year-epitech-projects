@@ -38,4 +38,6 @@ module.exports = function todosRoute(db) {
         }
         query.deleteTodo(id, response, db);
     });
+
+    return (router);
 }
