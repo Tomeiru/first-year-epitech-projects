@@ -17,7 +17,7 @@ module.exports = function authRoute(db) {
         };
 
         if (!data.email || !data.name || !data.firstname || !data.password) {
-            response.send('{"msg": "internal server error"}');
+            response.status(400).send('{"msg": "Bad request"}');
             return;
         }
         query.registerUser(response, data, db);
@@ -30,7 +30,7 @@ module.exports = function authRoute(db) {
         };
 
         if (!data.email || !data.password) {
-            response.send('{"msg": "internal server error"}');
+            response.status(400).send('{"msg": "Bad request"}');
             return;
         }
         query.loginUser(response, data, db);

@@ -6,8 +6,8 @@ function sendAllTodosInfo(response, db) {
 
     db.query(sql, (err, results) => {
         if (err) {
-            response.send('{"msg": "internal server error"}');
-            return;
+            response.status(500).send('{"msg": "internal server error"}');
+            throw err;
         }
         for (let i = 0; i < results.length; i++) {
             result = results[i];
@@ -30,10 +30,10 @@ function sendTodoInfosFromId(response, id, db) {
 
     db.query(sql, [id], (err, result) => {
         if (err) {
-            response.send('{"msg": "internal server error"}');
+            response.status(500).send('{"msg": "internal server error"}');
             throw err;
         } else if (result[0] == undefined) {
-            response.send('{"msg": "Not found"}');
+            response.status(404).send('{"msg": "Not found"}');
             return;
         }
         response.send(JSON.stringify({
@@ -54,7 +54,7 @@ function createTodo(response, data, db) {
 
     db.query(sql, args, (err, result) => {
         if (err) {
-            response.send('{"msg": "internal server error"}');
+            response.status(500).send('{"msg": "internal server error"}');
             throw err;
         }
         sendTodoInfosFromId(response, result.insertId, db);
@@ -67,10 +67,10 @@ function updateTodoInfos(response, data, db) {
 
     db.query(sql, args, (err) => {
         if (err) {
-            response.send('{"msg": "internal server error"}');
-            return;
+            response.status(500).send('{"msg": "internal server error"}');
+            throw err;
         } else if (result.affectedRows == 0) {
-            response.send('{"msg": "Not found"}');
+            response.status(404).send('{"msg": "Not found"}');
             return;
         }
         response.send(JSON.stringify({
@@ -88,10 +88,10 @@ function deleteTodo(response, id, db) {
 
     db.query(sql, [id], (err) => {
         if (err) {
-            response.send('{"msg": "internal server error"}');
-            return;
+            response.status(500).send('{"msg": "internal server error"}');
+            throw err;
         } else if (result.affectedRows == 0) {
-            response.send('{"msg": "Not found"}');
+            response.status(404).send('{"msg": "Not found"}');
             return;
         }
         response.send(`{"msg": "successfully deleted record number: ${id}"}`);

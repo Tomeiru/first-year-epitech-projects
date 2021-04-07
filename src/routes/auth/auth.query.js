@@ -10,10 +10,10 @@ function registerUser(response, data, db) {
     db.query(sql, [data.email, data.name, data.firstname, hash], (err, result) => {
         if (err) {
             if (err.code == "ER_DUP_ENTRY") {
-                response.send('{"msg": "account already exists"}');
+                response.status(409).send('{"msg": "account already exists"}');
                 return;
             } else {
-                response.send('{"msg": "internal server error"}');
+                response.status(500).send('{"msg": "internal server error"}');
                 throw err;
             }
         }
@@ -29,13 +29,13 @@ function loginUser(response, data, db) {
         const hash = result != undefined ? result[0].password : undefined;
 
         if (err) {
-            response.send('{"msg": "internal server error"}');
+            response.status(500).send('{"msg": "internal server error"}');
             throw err;
         }
         if (hash != undefined && bcrypt.compareSync(data.password, hash))
             response.send(`{"token": "${generateToken(data.email)}"}`);
         else
-            response.send('{"msg": "Invalid Credentials"}')
+            response.status(401).send('{"msg": "Invalid Credentials"}')
     });
 }
 

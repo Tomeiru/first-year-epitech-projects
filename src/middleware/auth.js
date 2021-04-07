@@ -15,5 +15,5 @@ module.exports = function auth(request, response, next) {
             next();
         });
     } else
-        response.send('{"msg":"No token, authorization denied"}');
+        response.status(401).send('{"msg":"No token, authorization denied"}');
 }

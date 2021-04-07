@@ -21,7 +21,7 @@ module.exports = function todosRoute(db) {
         };
 
         if (!data.title || !data.description || !data.due_time || !data.user_id || !data.status) {
-            response.send('{"msg": "internal server error"}');
+            response.status(400).send('{"msg": "Bad request"}');
             return;
         }
         query.createTodo(response, data, db);
@@ -31,7 +31,7 @@ module.exports = function todosRoute(db) {
         const id = request.params.id;
 
         if (isNaN(id)) {
-            response.send('{"msg": "internal server error"}');
+            response.status(400).send('{"msg": "Bad request"}');
             return;
         }
         query.sendTodoInfosFromId(response, id, db);
@@ -48,7 +48,7 @@ module.exports = function todosRoute(db) {
         };
 
         if (!data.title || !data.description || !data.due_time || !data.user_id || !data.status || isNaN(data.id)) {
-            response.send('{"msg": "internal server error"}');
+            response.status(400).send('{"msg": "Bad request"}');
             return;
         }
         query.updateTodoInfos(response, data, db);
@@ -58,7 +58,7 @@ module.exports = function todosRoute(db) {
         const id = request.params.id;
 
         if (isNaN(id)) {
-            response.send('{"msg": "internal server error"}');
+            response.status(400).send('{"msg": "Bad request"}');
             return;
         }
         query.deleteTodo(response, id, db);

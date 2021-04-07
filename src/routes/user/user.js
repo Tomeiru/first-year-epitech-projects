@@ -16,7 +16,7 @@ module.exports = function userRoute(db) {
         const id = query.getUserIdFromEmail(email, db);
 
         if (id == undefined) {
-            response.send('{"msg": "Not found"}');
+            response.status(404).send('{"msg": "Not found"}');
             return;
         }
         query.sendUserTodos(response, id, db);
@@ -42,7 +42,7 @@ module.exports = function userRoute(db) {
         };
 
         if (!data.email || !data.password || !data.created_at || !data.name || !data.firstname || isNaN(data.id)) {
-            response.send('{"msg": "internal server error"}');
+            response.status(400).send('{"msg": "Bad request"}');
             return;
         }
         query.updateUserInfos(id, request, response, db);
@@ -52,7 +52,7 @@ module.exports = function userRoute(db) {
         const id = request.params.id;
 
         if (isNaN(id)) {
-            response.send('{"msg": "internal server error"}');
+            response.status(400).send('{"msg": "Bad request"}');
             return;
         }
         query.deleteUser(response, id, db);
