@@ -9,7 +9,7 @@ module.exports = function auth(request, response, next) {
 
         jwt.verify(token, process.env.SECRET, (err, user) => {
             if (err) {
-                response.status(401).send('{"msg":"Token is not valid"}');
+                response.status(400).send('{"msg":"Token is not valid"}');
                 return;
             }
             request.user = user;
