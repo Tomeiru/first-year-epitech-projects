@@ -19,17 +19,16 @@ db.connect((err) => {
     console.log("Connected to the database");
 });
 
-const register = require('./register.js');
-const login = require('./login.js');
-const auth = require('./middleware/auth.js');
+const authRoute = require('./routes/auth/auth.js');
 const userRoute = require('./routes/user/user.js');
 const todoRoute = require('./routes/todos/todos.js');
 
+const authVerif = require('./middleware/auth.js');
+
 app.use(bodyParser.json());
 
-app.post('/register', (request, response) => register(request, response, db));
-app.post('/login', (request, response) => login(request, response, db));
-app.use(auth);
+app.use('/', authRoute(db));
+app.use(authVerif);
 app.use('/user', userRoute(db));
 app.use('/todos', todoRoute(db));
 
