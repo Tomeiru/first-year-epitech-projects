@@ -11,15 +11,16 @@ module.exports = function todosRoute(db) {
         query.sendAllTodosInfo(response, db);
     });
 
-    router.get('/:value', (request, response) => {
-        const value = request.params.value;
-        query.sendTodoInfosFromId(response, value, db);
-    });
-
     router.post('/', (request, response) => {
         query.createTodo(request, response, db, id);
     });
-    
+
+    router.get('/:id', (request, response) => {
+        const id = request.params.id;
+
+        query.sendTodoInfosFromId(response, id, db);
+    });
+
     router.put('/:id', (request, response) => {
         const id = request.params.id;
 

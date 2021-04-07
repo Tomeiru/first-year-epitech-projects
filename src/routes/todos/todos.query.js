@@ -55,14 +55,20 @@ function createTodo(request, response, db, id) {
     const sql = "UPDATE todo SET title = ?, description = ?, due_time = ?, user_id = ?, status = ?";
     const args = [title, description, due_time, user_id, status];
 
-    response.send(JSON.stringify({
-        id: id,
-        title: args[0],
-        description: args[1],
-        due_time: args[2],
-        user_id: args[3],
-        status: args[4]
-    }));
+    db.query(sql, args, (err) => {
+        if (err) {
+            response.send('{"msg": "internal server error"}');
+            throw err;
+        }
+        response.send(JSON.stringify({
+            id: id,
+            title: args[0],
+            description: args[1],
+            due_time: args[2],
+            user_id: args[3],
+            status: args[4]
+        }));
+    });
 }
 
 function updateTodoInfos(id, request, response, db) {
@@ -105,6 +111,7 @@ function deleteTodo(id, response, db) {
 module.exports = {
     sendAllTodosInfo,
     sendTodoInfosFromId,
+    createTodo,
     updateTodoInfos,
     deleteTodo,
 };
