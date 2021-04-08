@@ -24,7 +24,7 @@ typedef struct image_s {
     set_infos_element_fct_t set_infos;
     destroy_element_fct_t destroy;
     sfVector2i size;
-    sfVector2i text_pos;
+    sfVector2i texture_pos;
 } image_t;
 
 image_t *image_create(infos_t *infos, texture_t texture,
