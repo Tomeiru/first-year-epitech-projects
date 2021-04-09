@@ -20,7 +20,6 @@ map_t *map_create(char *path);
 char map_collision(map_t *map, sfIntRect hb);
 void map_destroy(map_t *map);
 
-void prior_map_collision(sfVector2f *move,
-sfIntRect hb, float speed, map_t *map);
+void prior_map_collision(sfVector2f *move, sfIntRect hb, map_t *map);
 
 #endif /* !MAP_H_ */
