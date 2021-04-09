@@ -20,7 +20,7 @@ int world_scene_init(world_scene_t *world_scene, infos_t *infos)
     world_scene->player = player;
     world_scene->pause = pause;
     world_scene->inventory = inventory;
-    scene_add_element((scene_t*) world_scene, player, 1);
+    scene_add_element((scene_t*) world_scene, (element_t*) player, 1);
     create_list(&(world_scene->subwindows), pause);
     create_list(&(world_scene->subwindows), inventory);
     return (0);
@@ -45,6 +45,7 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
 {
     world_scene_t *world_scene = (world_scene_t*) scene;
 
+    update_hover(infos);
     if (world_scene->pause->pause) {
         world_scene->pause->update((subwindow_t*)
         world_scene->pause, infos, elapsed);
