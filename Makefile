@@ -46,7 +46,9 @@ SCENE_SRC		=	src/scene/scene.c											\
 
 UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/origins.c											\
-					src/utils/elements_interact.c
+					src/utils/elements_interact.c								\
+					src/utils/math.c											\
+					src/utils/physics.c
 
 LIB_DIR		=	./mylib
 INC_DIR		=	./include

@@ -8,13 +8,19 @@
 #ifndef MAP_H_
 #define MAP_H_
 
+#include <SFML/Graphics.h>
+
 typedef struct map_s {
     sfTexture *map_texture;
-    sfImage *map_img;
+    sfImage *mask_img;
     sfVector2u map_size;
 } map_t;
 
 map_t *map_create(char *path);
+char map_collision(map_t *map, sfIntRect hb);
 void map_destroy(map_t *map);
+
+void prior_map_collision(sfVector2f *move,
+sfIntRect hb, float speed, map_t *map);
 
 #endif /* !MAP_H_ */

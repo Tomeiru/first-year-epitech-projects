@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include <math.h>
 #include "elements/element.h"
 
 void default_element_move(element_t *element, sfVector2f pos)
@@ -13,8 +14,8 @@ void default_element_move(element_t *element, sfVector2f pos)
     sfVector2f origin = sfSprite_getOrigin(element->sprite);
 
     element->pos = pos;
-    element->hitbox.left = pos.x - origin.x;
-    element->hitbox.top = pos.y - origin.y;
+    element->hitbox.left = ceil(pos.x - origin.x);
+    element->hitbox.top = ceil(pos.y - origin.y);
     sfSprite_setPosition(element->sprite, pos);
 }
 

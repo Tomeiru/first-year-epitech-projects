@@ -66,4 +66,6 @@ void update_hover(infos_t *infos);
 void sprite_set_origin_center(sfSprite *sprite);
 void text_set_origin_center(sfText *text);
 
+sfVector2f vector_normalize(sfVector2f vec);
+
 #endif /* !MY_DEFENDER_H_ */

@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include <math.h>
 #include "my_rpg.h"
 #include "elements/element.h"
 
@@ -31,8 +32,8 @@ element_type_t type, sfVector2f pos)
 
 void element_set_hitbox(element_t *element, sfFloatRect global_bounds)
 {
-    element->hitbox.width = (int) global_bounds.width;
-    element->hitbox.height = (int) global_bounds.height;
+    element->hitbox.width = ceil(global_bounds.width);
+    element->hitbox.height = ceil(global_bounds.height);
 }
 
 char element_point_hit(element_t *element, sfVector2f pos)

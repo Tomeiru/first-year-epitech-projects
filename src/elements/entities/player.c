@@ -41,6 +41,9 @@ void player_update(entity_t *entity, infos_t *infos, float elapsed)
         move.y = sfKeyboard_isKeyPressed(sfKeyZ) ? -speed : speed;
     if (sfKeyboard_isKeyPressed(sfKeyQ) ^ sfKeyboard_isKeyPressed(sfKeyD))
         move.x = sfKeyboard_isKeyPressed(sfKeyQ) ? -speed : speed;
+    prior_map_collision(&move, player->hitbox, speed, world_scene->map);
+    if (move.x == 0 && move.y == 0)
+        return;
     player->move((element_t*) player, (sfVector2f)
     {player->pos.x + move.x, player->pos.y + move.y});
 }
