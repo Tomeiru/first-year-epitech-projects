@@ -47,6 +47,7 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
 {
     world_scene_t *world_scene = (world_scene_t*) scene;
 
+    update_hover(infos);
     if (world_scene->pause->pause) {
         world_scene->pause->update((subwindow_t*)
         world_scene->pause, infos, elapsed);

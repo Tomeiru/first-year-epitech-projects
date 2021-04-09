@@ -45,6 +45,5 @@ void scene_default_draw(scene_t *scene, infos_t *infos)
         subwindow = (subwindow_t*) list->data;
         subwindow->draw(subwindow, infos->window);
     }
-    sfRenderWindow_drawText(infos->window, infos->hover_infos->text, 0);
     sfRenderWindow_display(infos->window);
 }

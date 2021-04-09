@@ -14,9 +14,9 @@ infos_t *infos, sfMouseButton button_type)
 {
     button_t *button = (button_t*) element;
 
-    if (infos->fps > 30)
-        infos->fps -= 5;
-    sfRenderWindow_setFramerateLimit(infos->window, infos->fps);
+    if (infos->settings.fps > 30)
+        infos->settings.fps -= 5;
+    sfRenderWindow_setFramerateLimit(infos->window, infos->settings.fps);
     button_set_clicked(button, 1, infos);
     return (0);
 }
@@ -26,8 +26,8 @@ infos_t *infos, sfMouseButton button_type)
 {
     button_t *button = (button_t*) element;
 
-    infos->fps += 5;
-    sfRenderWindow_setFramerateLimit(infos->window, infos->fps);
+    infos->settings.fps += 5;
+    sfRenderWindow_setFramerateLimit(infos->window, infos->settings.fps);
     button_set_clicked(button, 1, infos);
     return (0);
 }
@@ -37,8 +37,8 @@ infos_t *infos, sfMouseButton button_type)
 {
     button_t *button = (button_t*) element;
 
-    if (infos->sound_level > 0)
-        infos->sound_level -= 5;
+    if (infos->settings.sound_level > 0)
+        infos->settings.sound_level -= 5;
     sound_set_volume(infos);
     button_set_clicked(button, 1, infos);
     return (0);
@@ -49,8 +49,8 @@ infos_t *infos, sfMouseButton button_type)
 {
     button_t *button = (button_t*) element;
 
-    if (infos->sound_level < 100)
-        infos->sound_level += 5;
+    if (infos->settings.sound_level < 100)
+        infos->settings.sound_level += 5;
     sound_set_volume(infos);
     button_set_clicked(button, 1, infos);
     return (0);

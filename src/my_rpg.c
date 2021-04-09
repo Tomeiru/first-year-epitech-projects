@@ -39,7 +39,6 @@ static int run_game(infos_t *infos)
         if (execute_action(infos, update_action ? update_action : user_action))
             return (84);
         user_action = poll_events(infos);
-        update_hover(infos);
         elapsed = sfClock_restart(clock).microseconds / FPS;
         update_action = infos->scene->update(infos->scene, infos, elapsed);
         infos->scene->draw(infos->scene, infos);
