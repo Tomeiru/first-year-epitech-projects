@@ -14,6 +14,7 @@ MAIN_SRC		=	src/main.c													\
 					src/graphics/default_subwindow_fcts.c						\
 					src/graphics/pause.c										\
 					src/graphics/pause_fcts.c									\
+					src/graphics/effects.c										\
 					src/sounds/sounds.c
 
 ELEMENTS_SRC	=	src/elements/element.c										\

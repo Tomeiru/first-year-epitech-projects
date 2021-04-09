@@ -9,6 +9,7 @@
 #define PLAYER_H_
 
 #include "elements/entities/entity.h"
+#include "map.h"
 
 typedef struct player_s {
     element_type_t type;
@@ -28,5 +29,6 @@ typedef struct player_s {
 
 player_t *player_create(infos_t *infos);
 void player_update(entity_t *entity, infos_t *infos, float elapsed);
+void player_move_update(player_t *player, map_t *map, float elapsed);
 
 #endif /* !PLAYER_H_ */

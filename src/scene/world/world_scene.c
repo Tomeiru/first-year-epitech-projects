@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 #include "scene/world_scene.h"
+#include "actions.h"
 
 int world_scene_init(world_scene_t *world_scene, infos_t *infos)
 {
@@ -38,7 +39,7 @@ scene_t *world_scene_create(infos_t *infos)
     world_scene->background = background;
     world_scene->event = &world_scene_event;
     world_scene->map = NULL;
-    if (world_load(world_scene, "assets/maps/default/"))
+    if (world_load(world_scene, 0, 0))
         return (NULL);
     return (scene);
 }
@@ -48,6 +49,8 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
     world_scene_t *world_scene = (world_scene_t*) scene;
 
     update_hover(infos);
+    if (check_world_load(world_scene))
+        return (QUIT_GAME_ACTION);
     if (world_scene->pause->pause) {
         world_scene->pause->update((subwindow_t*)
         world_scene->pause, infos, elapsed);

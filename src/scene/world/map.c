@@ -27,18 +27,19 @@ map_t *map_create(char *path)
     return (map);
 }
 
-char map_collision(map_t *map, sfIntRect hb)
+sfColor map_check_mask(map_t *map, sfIntRect hb, unsigned char r_value)
 {
     sfImage *mask = map->mask_img;
+    sfColor color;
 
     for (int y = hb.top; y < hb.top + hb.height; y++) {
         for (int x = hb.left; x < hb.left + hb.width; x++) {
-            if (sfImage_getPixel(mask, x, y).r == 255)
-                return (1);
+            color = sfImage_getPixel(mask, x, y);
+            if (color.r == r_value)
+                return (color);
         }
     }
-
-    return (0);
+    return (sfBlack);
 }
 
 void map_destroy(map_t *map)
