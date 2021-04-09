@@ -59,7 +59,7 @@ void destroy_sounds(list_t *sounds)
 {
     list_t *tmp;
     sfSound *sound;
-    sfSoundBuffer *buffer;
+    const sfSoundBuffer *buffer;
 
     while (sounds) {
         tmp = sounds->next;
