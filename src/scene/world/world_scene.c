@@ -20,7 +20,7 @@ int world_scene_init(world_scene_t *world_scene, infos_t *infos)
     world_scene->player = player;
     world_scene->pause = pause;
     world_scene->inventory = inventory;
-    scene_add_element((scene_t*) world_scene, player, 1);
+    scene_add_element((scene_t*) world_scene, (element_t*) player, 1);
     create_list(&(world_scene->subwindows), pause);
     create_list(&(world_scene->subwindows), inventory);
     return (0);
@@ -37,7 +37,9 @@ scene_t *world_scene_create(infos_t *infos)
         return (NULL);
     world_scene->background = background;
     world_scene->event = &world_scene_event;
-    world_load(world_scene, infos);
+    world_scene->map = NULL;
+    if (world_load(world_scene, "assets/maps/default/"))
+        return (NULL);
     return (scene);
 }
 
@@ -50,7 +52,7 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
         world_scene->pause, infos, elapsed);
         return (0);
     }
-    world_move(world_scene, infos, elapsed);
+    camera_move(world_scene, infos, elapsed);
     scene_update_elements(scene, infos, elapsed);
     return (0);
 }
@@ -75,6 +77,7 @@ void world_scene_destroy(scene_t *scene)
     world_scene_t *world_scene = (world_scene_t*) scene;
     list_t *next;
 
+    map_destroy(world_scene->map);
     for (list_t *list = scene->subwindows; list; list = next) {
         next = list->next;
         ((subwindow_t*) list->data)->destroy((subwindow_t*) list->data);

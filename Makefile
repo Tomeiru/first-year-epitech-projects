@@ -40,7 +40,9 @@ SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/settings/button_settings_res_actions.c			\
 					src/scene/world/world_scene.c								\
 					src/scene/world/world.c										\
-					src/scene/world/inventory.c
+					src/scene/world/inventory.c									\
+					src/scene/world/camera.c									\
+					src/scene/world/map.c
 
 UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/origins.c											\
