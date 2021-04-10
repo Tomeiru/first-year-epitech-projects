@@ -56,6 +56,7 @@ int my_rpg(sfRenderWindow *window)
         return (84);
     sfTexture_setRepeated(get_texture(&infos, HOWTOPLAY_IMG_TEXT), 1);
     ret = run_game(&infos);
-    delete_infos(&infos);
+    if (!ret)
+        delete_infos(&infos);
     return (ret);
 }
