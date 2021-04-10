@@ -26,4 +26,6 @@ void prior_map_collision(sfVector2f *move, sfIntRect hb, map_t *map)
         move->y = 0;
         return;
     }
+    move->x = 0;
+    move->y = 0;
 }
