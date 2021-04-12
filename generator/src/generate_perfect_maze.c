@@ -41,8 +41,8 @@ void generate_perfect_maze(info_t *info_struct)
     while (info_struct->cell_visited != info_struct->total_cell) {
         number_dir = check_possible_direction(info_struct);
         if (number_dir == 0) {
-            //remove_last_node(&info_struct->head);
-            //update_current_coord(info_struct, &info_struct->head, number_dir);
+            remove_last_node(&info_struct->head);
+            update_current_coord(info_struct, &info_struct->head);
             continue;
         } direction = get_random_dir(info_struct, number_dir);
         apply_direction(info_struct, direction);

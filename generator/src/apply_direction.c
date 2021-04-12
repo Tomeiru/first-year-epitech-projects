@@ -50,5 +50,6 @@ void apply_direction(info_t *info_struct, int direction)
     };
 
     apply_dir[direction](info_struct);
+    add_end(info_struct, &info_struct->head);
     info_struct->cell_visited += 1;
 }
