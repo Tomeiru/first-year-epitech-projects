@@ -33,7 +33,7 @@ typedef struct element_s {
     void (*rotate)(struct element_s *element, float rot);
     void (*draw)(struct element_s *element, sfRenderWindow *window);
     int (*on_click)(struct element_s *element, infos_t *infos, sfMouseButton);
-    void (*set_infos)(struct element_s *element, infos_t *infos);
+    void (*get_infos)(struct element_s *element, char *str, int size);
     void (*destroy)(struct element_s *element);
 } element_t;
 
@@ -42,7 +42,7 @@ typedef void (*rotate_element_fct_t)(element_t *element, float rot);
 typedef void (*draw_element_fct_t)(element_t *element, sfRenderWindow *window);
 typedef int (*on_click_fct_t)(element_t *element,
 infos_t *infos, sfMouseButton);
-typedef void (*set_infos_element_fct_t)(element_t *element, infos_t *infos);
+typedef void (*get_infos_element_fct_t)(element_t *element, char *str, int size);
 typedef void (*destroy_element_fct_t)(element_t *element);
 
 element_t *element_create_default(size_t size,

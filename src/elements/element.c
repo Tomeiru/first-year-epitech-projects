@@ -25,7 +25,7 @@ element_type_t type, sfVector2f pos)
     element->rotate = &default_element_rotate;
     element->draw = &default_element_draw;
     element->on_click = NULL;
-    element->set_infos = NULL;
+    element->get_infos = NULL;
     element->destroy = &default_element_destroy;
     return (element);
 }
