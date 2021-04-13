@@ -9,9 +9,10 @@ SRC =	src/generator.c	\
 		src/error.c	\
 		src/create_struct.c	\
 		src/generate_perfect_maze.c	\
+		src/generate_imperfect_maze.c	\
 		src/check_possible_direction.c	\
 		src/apply_direction.c	\
-		src/linked_list_func.c
+		src/linked_list_func.c	\
 
 MAIN =	src/main.c
 

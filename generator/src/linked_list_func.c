@@ -7,47 +7,38 @@
 
 #include "generator.h"
 
-/*void add_end(info_t *info_struct, node_t **last)
+void add_end(info_t *info_struct, node_t **last)
 {
     node_t *new_node = malloc(sizeof(node_t));
 
     new_node->x = info_struct->current_x;
     new_node->y = info_struct->current_y;
     new_node->next = NULL;
-    *last->next = new_node;
+    new_node->prev = *last;
+    (*last)->next = new_node;
+    *last = (*last)->next;
+}
+
+void add_end_first(info_t *info_struct, node_t **head, node_t **last)
+{
+    node_t *new_node = malloc(sizeof(node_t));
+
+    new_node->x = info_struct->current_x;
+    new_node->y = info_struct->current_y;
+    new_node->next = NULL;
+    new_node->prev = *head;
     *last = new_node;
-}*/
-
-void add_end(info_t *info_struct, node_t **head)
-{
-    node_t *new_node = malloc(sizeof(node_t));
-    node_t *backup = *head;
-
-    new_node->x = info_struct->current_x;
-    new_node->y = info_struct->current_y;
-    new_node->next = NULL;
-    for ( ; backup->next != NULL; backup = backup->next);
-    backup->next = new_node;
+    (*head)->next = *last;
 }
 
-void update_current_coord(info_t *info_struct, node_t **head)
+void update_current_coord(info_t *info_struct, node_t **last)
 {
-    node_t *backup = *head;
-
-    for ( ; backup->next != NULL; backup = backup->next);
-    info_struct->current_x = backup->x;
-    info_struct->current_y = backup->y;
+    info_struct->current_x = (*last)->x;
+    info_struct->current_y = (*last)->y;
 }
 
-void remove_last_node(node_t **head)
+void remove_last_node(node_t **last)
 {
-    node_t *backup = *head;
-    node_t *backup_bef = *head;
-    int i = 0;
-
-    for ( ; backup->next != NULL; backup = backup->next) {
-        if (i != 0)
-            backup_bef = backup_bef->next;
-        i++;
-    }backup_bef->next = NULL;
+    *last = (*last)->prev;
+    (*last)->next = NULL;
 }

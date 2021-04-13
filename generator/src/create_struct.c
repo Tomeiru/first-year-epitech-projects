@@ -62,6 +62,7 @@ static node_t *init_stack(void)
     head->x = 0;
     head->y = 0;
     head->next = NULL;
+    head->prev = NULL;
     return (head);
 }
 
@@ -84,5 +85,6 @@ info_t *create_and_fill_struct(int ac, char **av)
     info_struct->cell_visited = 1;
     info_struct->total_cell = get_total_cell(info_struct->x, info_struct->y);
     info_struct->head = init_stack();
+    info_struct->last = NULL;
     return (info_struct);
 }

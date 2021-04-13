@@ -17,6 +17,7 @@ typedef struct node_s {
     int x;
     int y;
     struct node_s *next;
+    struct node_s *prev;
 } node_t;
 
 typedef struct info_s {
@@ -30,6 +31,7 @@ typedef struct info_s {
     int cell_visited;
     int total_cell;
     node_t *head;
+    node_t *last;
 } info_t;
 
 void generator(info_t *info_struct);
