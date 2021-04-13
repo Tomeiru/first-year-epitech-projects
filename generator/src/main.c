@@ -15,4 +15,5 @@ int main(int ac, char **av)
     info_struct = create_and_fill_struct(ac, av);
     srand(time(NULL));
     generator(info_struct);
+    return (0);
 }
