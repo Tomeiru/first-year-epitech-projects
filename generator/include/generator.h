@@ -40,5 +40,10 @@ info_t *create_and_fill_struct(int ac, char **av);
 void apply_direction(info_t *info_struct, int direction);
 int check_possible_direction(info_t *info_struct);
 void generate_perfect_maze(info_t *info_struct);
+void generate_imperfect_maze(info_t *info_struct);
+void add_end(info_t *info_struct, node_t **last);
+void add_end_first(info_t *info_struct, node_t **head, node_t **last);
+void update_current_coord(info_t *info_struct, node_t **last);
+void remove_last_node(node_t **last);
 
 #endif /* !GENERATOR_H_ */
