@@ -48,10 +48,4 @@ void generate_perfect_maze(info_t *info_struct)
         apply_direction(info_struct, direction);
     }
     add_escape(info_struct);
-    for (int i = 0; info_struct->maze[i]; i++) {
-        if (info_struct->maze[i + 1] == NULL)
-            printf("%s", info_struct->maze[i]);
-        else
-            printf("%s\n", info_struct->maze[i]);
-    }
 }
