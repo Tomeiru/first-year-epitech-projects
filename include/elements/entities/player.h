@@ -24,6 +24,9 @@ typedef struct player_s {
     get_infos_element_fct_t get_infos;
     destroy_element_fct_t destroy;
     update_entity_fct_t update;
+    float health;
+    float max_health;
+    float speed;
     char can_move;
 } player_t;
 

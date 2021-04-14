@@ -16,6 +16,7 @@ typedef enum element_type_e {
     ENEMY,
     PLAYER,
     PARTICLE,
+    BAR,
     BUTTON,
     TEXT,
     BUFFER

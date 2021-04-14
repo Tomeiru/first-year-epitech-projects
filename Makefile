@@ -19,6 +19,8 @@ MAIN_SRC		=	src/main.c													\
 
 ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/default_element_fcts.c							\
+					src/elements/bar.c											\
+					src/elements/bar_fcts.c										\
 					src/elements/image.c										\
 					src/elements/entities/buffer.c								\
 					src/elements/entities/player.c								\
@@ -43,6 +45,7 @@ SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/world/world_scene.c								\
 					src/scene/world/world.c										\
 					src/scene/world/inventory.c									\
+					src/scene/world/hud.c										\
 					src/scene/world/camera.c									\
 					src/scene/world/map.c
 
