@@ -6,7 +6,13 @@
 ##
 
 SRC =	solver.c	\
-		error.c
+		error.c	\
+		file_reader.c	\
+		create_struct.c	\
+		get_xy_value.c	\
+		check_possible_direction.c	\
+		linked_list_func.c	\
+		apply_direction.c
 
 MAIN =	main.c
 

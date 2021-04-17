@@ -7,10 +7,10 @@
 
 #include "solver.h"
 
-void check_char(char *map)
+void check_char(char *maze)
 {
-    for (int i = 0; map[i]; i++)
-        if (!(map[i] == '*' || map[i] == 'X' || map[i] == '\n'))
+    for (int i = 0; maze[i]; i++)
+        if (!(maze[i] == '*' || maze[i] == 'X' || maze[i] == '\n'))
             exit(84);
 }
 
@@ -20,7 +20,18 @@ void error_arg(int ac)
         exit (84);
 }
 
-void error_map(char *map)
+void check_form(int len, int x, int y)
 {
-    check_char(map);
+    if ((len + 1) % (x + 1) != 0)
+        exit(84);
+}
+
+void error_maze(char *maze, int len, int x, int y)
+{
+    check_char(maze);
+    check_form(len, x, y);
+    if (maze[0] == 'X' || maze[len - 1] == 'X') {
+        write(1, "no solution found", 17);
+        exit(0);
+    }
 }

@@ -7,45 +7,17 @@
 
 #include "solver.h"
 
-char *file_reader(char *filepath, int *len)
-{
-    int fd = open(filepath, O_RDONLY);
-    struct stat stats;
-    char *file;
-
-    printf("LULR\n");
-    if (fd == -1)
-        exit(84);
-    printf("LULR\n");
-    if (stat(filepath, &stats) != 0)
-        exit(84);
-    printf("LULR\n");
-    if (stats.st_size == 0)
-        exit(84);
-    printf("LULR\n");
-    file = malloc(sizeof(char) * (stats.st_size + 1));
-    if (file == NULL)
-        exit(84);
-    printf("LULR\n");
-    if (read(fd, file, stats.st_size) == -1)
-        exit(84);
-    printf("LULR\n");
-    file[stats.st_size] = '\0';
-    *len = stats.st_size;
-    close(fd);
-    return (file);
-}
-
 int main(int ac, char **av)
 {
-    char *map;
-    int len;
+    info_t *info_struct;
+    char *maze_str;
+    int len = 0;
 
     error_arg(ac);
-    printf("LUL\n");
-    map = file_reader(av[2], &len);
-    printf("LUL\n");
-    error_map(map);
-    printf("LUL\n");
-    return (solver(map, len));
+    maze_str = file_reader(av[1], &len);
+    info_struct = create_and_fill_struct(maze_str, len);
+    srand(time(NULL));
+    info_struct->maze[0][0] = 'o';
+    solver(info_struct);
+    return (0);
 }
