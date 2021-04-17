@@ -24,6 +24,8 @@ void check_form(int len, int x, int y)
 {
     if ((len + 1) % (x + 1) != 0)
         exit(84);
+    if ((x + 1) * y != len + 1)
+        exit(84);
 }
 
 void error_maze(char *maze, int len, int x, int y)
