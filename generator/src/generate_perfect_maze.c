@@ -7,7 +7,7 @@
 
 #include "generator.h"
 
-int get_random_dir(info_t *info_struct, int number_dir)
+static int get_random_dir(info_t *info_struct, int number_dir)
 {
     int rand_num = 0;
     int direction = 0;
@@ -23,7 +23,7 @@ int get_random_dir(info_t *info_struct, int number_dir)
     }return (0);
 }
 
-void add_escape(info_t *info_struct)
+static void add_escape(info_t *info_struct)
 {
     int x_odd = info_struct->x % 2;
     int y_odd = info_struct->y % 2;
