@@ -33,7 +33,7 @@ void error_maze(char *maze, int len, int x, int y)
     check_char(maze);
     check_form(len, x, y);
     if (maze[0] == 'X' || maze[len - 1] == 'X') {
-        write(1, "no solution found\n", 17);
+        write(1, "no solution found", 17);
         exit(0);
     }
 }

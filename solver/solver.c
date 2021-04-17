@@ -47,16 +47,16 @@ static void check_unsolvable(info_t *info_struct)
         return;
     if (info_struct->x == 1) {
         if (info_struct->maze[1][0] != '*') {
-            printf("no solution found\n");
+            printf("no solution found");
             exit(0);
         }return;
     }if (info_struct->y == 1) {
         if (info_struct->maze[0][1] != '*') {
-            printf("no solution found\n");
+            printf("no solution found");
             exit(0);
         }return;
     }if (info_struct->maze[1][0] != '*' && info_struct->maze[0][1] != '*') {
-        printf("no solution found\n");
+        printf("no solution found");
         exit(0);
     }
 }
