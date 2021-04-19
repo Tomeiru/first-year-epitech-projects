@@ -25,6 +25,7 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/entities/buffer.c								\
 					src/elements/entities/player.c								\
 					src/elements/entities/particle.c							\
+					src/elements/entities/interactable.c						\
 					src/elements/entities/text.c								\
 					src/elements/entities/text_update_fcts.c					\
 					src/elements/entities/buttons/button.c						\
