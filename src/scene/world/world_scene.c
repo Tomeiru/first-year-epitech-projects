@@ -7,8 +7,9 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
-#include "scene/world_scene.h"
 #include "actions.h"
+#include "rpgsh/rpgsh.h"
+#include "scene/world_scene.h"
 
 scene_t *world_scene_create(infos_t *infos)
 {
@@ -42,6 +43,7 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
     create_list(&(scene->subwindows), pause);
     create_list(&(scene->subwindows), inventory);
     world_load(world_scene, 0, 0);
+    execute_rpgsh(world_scene->map->script, infos, NULL);
 }
 
 int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
