@@ -24,6 +24,7 @@ update_scene_fct_t update, destroy_scene_fct_t destroy)
     scene->entities = NULL;
     scene->subwindows = NULL;
     scene->subwindows = NULL;
+    scene->post_init = NULL;
     scene->update = update;
     scene->draw = &scene_default_draw;
     scene->event = NULL;
