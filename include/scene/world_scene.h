@@ -20,6 +20,7 @@ typedef struct world_scene_s {
     list_t *elements;
     list_t *entities;
     list_t *subwindows;
+    post_init_fct_t post_init;
     update_scene_fct_t update;
     draw_scene_fct_t draw;
     event_scene_fct_t event;
@@ -31,6 +32,7 @@ typedef struct world_scene_s {
 } world_scene_t;
 
 scene_t *world_scene_create(infos_t *infos);
+void world_scene_post_init(scene_t *scene, infos_t *infos);
 int world_scene_update(scene_t *scene, infos_t *infos, float elapsed);
 int world_scene_event(scene_t *scene, infos_t *infos, sfEvent *event);
 void world_scene_destroy(scene_t *scene);
