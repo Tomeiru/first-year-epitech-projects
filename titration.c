@@ -105,4 +105,5 @@ void titration(char *file)
     first_derivation(info_struct);
     second_derivation(info_struct);
     printf("\n");
+    return (0);
 }
