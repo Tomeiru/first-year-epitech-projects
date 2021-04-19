@@ -25,10 +25,10 @@ typedef struct interactable_s {
     destroy_element_fct_t destroy;
     update_entity_fct_t update;
     char action[15];
-    sfIntRect rect;
 } interactable_t;
 
-interactable_t *interactable_create(sfVector2f pos, float rot,
-sfTexture *texture);
+interactable_t *interactable_create(sfVector2f pos,
+sfTexture *texture, char *action, element_type_t type);
+void interactable_update(element_t *element, infos_t *infos, float elapsed);
 
 #endif /* !NPC_H_ */
