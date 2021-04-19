@@ -47,7 +47,14 @@ SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/world/camera.c									\
 					src/scene/world/map.c
 
+RPGSH_SCR		=	src/rpgsh/rpgsh.c											\
+					src/rpgsh/file.c											\
+					src/rpgsh/args.c											\
+					src/rpgsh/commands.c										\
+					src/rpgsh/conditions.c
+
 UTILS_SRC		=	src/utils/utils.c											\
+					src/utils/int_str.c											\
 					src/utils/origins.c											\
 					src/utils/elements_interact.c								\
 					src/utils/math.c											\
@@ -60,7 +67,7 @@ SFML_LIB	=	-lcsfml-system -lcsfml-window -lcsfml-graphics -lcsfml-audio
 
 CFLAGS		+=	-W -Wall -I$(INC_DIR)
 
-OBJ			=	$(MAIN_SRC:.c=.o) $(ELEMENTS_SRC:.c=.o) $(SCENE_SRC:.c=.o) $(UTILS_SRC:.c=.o)
+OBJ			=	$(MAIN_SRC:.c=.o) $(ELEMENTS_SRC:.c=.o) $(SCENE_SRC:.c=.o) $(RPGSH_SCR:.c=.o) $(UTILS_SRC:.c=.o)
 
 NAME		=	my_rpg
 

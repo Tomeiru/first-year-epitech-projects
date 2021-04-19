@@ -59,9 +59,11 @@ int on_hover_interact(list_t *list, infos_t *infos, sfVector2f pos);
 
 float get_distance(sfVector2f pos1, sfVector2f pos2);
 int cmp_element_type(void *data1, void *data2);
-void int_to_str(int value, char *buff, int buff_len);
 int cmp_lb_entries(void *data1, void *data2);
 void update_hover(infos_t *infos);
+
+void int_to_str(int value, char *buff, int buff_len);
+int str_to_int(char *str);
 
 void sprite_set_origin_center(sfSprite *sprite);
 void text_set_origin_center(sfText *text);
