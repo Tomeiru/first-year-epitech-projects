@@ -98,7 +98,7 @@ void second_derivation(info_t *info_struct)
         printf("%.1f ml -> %.2f\n", info_struct->volume[i + 2], info_struct->second[i]);
 }
 
-void titration(char *file)
+int titration(char *file)
 {
     info_t *info_struct = fill_struct(file);
 
