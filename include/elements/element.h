@@ -14,11 +14,12 @@ typedef enum element_type_e {
     BACKGROUND,
     IMAGE,
     ENEMY,
+    INTERACTABLE,
     PLAYER,
     PARTICLE,
     BUTTON,
     TEXT,
-    BUFFER
+    BUFFER,
 } element_type_t;
 
 typedef struct infos_s infos_t;
