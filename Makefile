@@ -51,6 +51,7 @@ RPGSH_SCR		=	src/rpgsh/rpgsh.c											\
 					src/rpgsh/file.c											\
 					src/rpgsh/args.c											\
 					src/rpgsh/commands.c										\
+					src/rpgsh/execute.c											\
 					src/rpgsh/conditions.c
 
 UTILS_SRC		=	src/utils/utils.c											\

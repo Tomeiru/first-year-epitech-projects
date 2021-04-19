@@ -9,11 +9,19 @@
 #define RPGSH_H_
 
 typedef struct infos_s infos_t;
+typedef struct element_s element_t;
 
-void execute_rpgsh(char **script, infos_t *infos);
-void execute_instruction(char ***line, char **args, infos_t *infos);
-void execute_condition(char ***line, char **args, infos_t *infos);
-void execute_command(char **args, char *cmd, int len, infos_t *infos);
+void execute_rpgsh(char **script, infos_t *infos,
+element_t *element);
+void execute_rpgsh_single_instruction(char **script,
+int *instruction, infos_t *infos, element_t *element);
+
+void execute_instruction(char ***line, char **args,
+infos_t *infos, element_t *element);
+void execute_condition(char ***line, char **args,
+infos_t *infos, element_t *element);
+void execute_command(char **args,
+infos_t *infos, element_t *element);
 void skip_condition(char ***line);
 
 char **open_rpgsh_file(char *filename);
