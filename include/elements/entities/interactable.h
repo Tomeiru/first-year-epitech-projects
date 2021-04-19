@@ -21,14 +21,19 @@ typedef struct interactable_s {
     rotate_element_fct_t rotate;
     draw_element_fct_t draw;
     on_click_fct_t on_click;
-    set_infos_element_fct_t set_infos;
+    get_infos_element_fct_t get_infos;
     destroy_element_fct_t destroy;
     update_entity_fct_t update;
-    char action[15];
+    void (*action)(struct interactable_s *interactable, infos_t *infos);
+    char action_name[16];
 } interactable_t;
 
-interactable_t *interactable_create(sfVector2f pos,
-sfTexture *texture, char *action, element_type_t type);
-void interactable_update(element_t *element, infos_t *infos, float elapsed);
+typedef void (*interactable_action_fct_t)(interactable_t
+*interactable, infos_t *infos);
+
+interactable_t *interactable_create(sfVector2f pos, sfTexture *texture,
+interactable_action_fct_t action, char *action_name);
+void interactable_update(entity_t *entity, infos_t *infos, float elapsed);
+void interactable_get_infos(element_t *element, char *str, int size);
 
 #endif /* !NPC_H_ */
