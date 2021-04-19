@@ -25,6 +25,7 @@ typedef struct world_scene_s {
     draw_scene_fct_t draw;
     event_scene_fct_t event;
     destroy_scene_fct_t destroy;
+    char world_pause;
     map_t *map;
     pause_t *pause;
     inventory_t *inventory;

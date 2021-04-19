@@ -36,6 +36,7 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
 
     if (!pause || !player || !inventory)
         return;
+    world_scene->world_pause = 0;
     world_scene->player = player;
     world_scene->pause = pause;
     world_scene->inventory = inventory;
@@ -52,13 +53,10 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
     update_hover(infos);
     if (check_world_load(world_scene, infos))
         return (QUIT_GAME_ACTION);
-    if (world_scene->pause->pause) {
-        world_scene->pause->update((subwindow_t*)
-        world_scene->pause, infos, elapsed);
-        return (0);
-    }
     camera_move(world_scene, infos, elapsed);
-    scene_update_elements(scene, infos, elapsed);
+    if (!world_scene->world_pause)
+        scene_update_elements(scene, infos, elapsed);
+    scene_update_subwindows(scene, infos, elapsed);
     return (0);
 }
 
