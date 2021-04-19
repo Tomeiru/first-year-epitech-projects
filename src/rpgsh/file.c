@@ -17,10 +17,13 @@ char **open_rpgsh_file(char *filename)
     FILE *file = fopen(filename, "r");
     char *line = NULL;
     size_t n = 0;
+    ssize_t len = 0;
 
     if (!file)
         return (NULL);
-    while (getline(&line, &n, file) > -1) {
+    while ((len = getline(&line, &n, file)) > -1) {
+        if (line[len - 1] == '\n')
+            line[len - 1] = 0;
         add_line(&lines, line, size);
         size++;
         line = NULL;
@@ -36,7 +39,7 @@ void add_line(char ***lines, char *line, int size)
     if (!newlines)
         return;
     for (int i = 0; i < size; i++)
-        newlines[i] = *(lines[i]);
+        newlines[i] = (*lines)[i];
     newlines[size] = line;
     newlines[size + 1] = NULL;
     if (*lines)

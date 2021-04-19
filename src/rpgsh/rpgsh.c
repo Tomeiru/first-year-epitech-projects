@@ -23,6 +23,8 @@ void execute_rpgsh(char **script, infos_t *infos)
             continue;
         execute_instruction(&line, args, infos);
         free_args(args);
+        if (!*line)
+            break;
     }
 }
 

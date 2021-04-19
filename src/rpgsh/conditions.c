@@ -9,5 +9,5 @@
 
 int item_rpgsh_condition(char **args, infos_t *infos)
 {
-    return (0);
+    return (1);
 }
