@@ -23,7 +23,8 @@ int load_scene(infos_t *infos, int action)
     if (infos->scene == NULL)
         return (1);
     if (action == LOAD_WORLD_SCENE_ACTION)
-        execute_rpgsh(((world_scene_t*) infos->scene)->map->script, infos, NULL);
+        execute_rpgsh(((world_scene_t*) infos->scene)->map->script,
+        infos, NULL);
     sfView_setCenter(view, (sfVector2f) {WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2});
     sfRenderWindow_setView(infos->window, view);
     return (0);
