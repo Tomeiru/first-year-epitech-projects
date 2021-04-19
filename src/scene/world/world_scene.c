@@ -42,8 +42,7 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
     scene_add_element(scene, (element_t*) player, 1);
     create_list(&(scene->subwindows), pause);
     create_list(&(scene->subwindows), inventory);
-    world_load(world_scene, 0, 0);
-    execute_rpgsh(world_scene->map->script, infos, NULL);
+    world_load(world_scene, 0, 0, infos);
 }
 
 int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
@@ -51,7 +50,7 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
     world_scene_t *world_scene = (world_scene_t*) scene;
 
     update_hover(infos);
-    if (check_world_load(world_scene))
+    if (check_world_load(world_scene, infos))
         return (QUIT_GAME_ACTION);
     if (world_scene->pause->pause) {
         world_scene->pause->update((subwindow_t*)
