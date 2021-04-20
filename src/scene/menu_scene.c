@@ -60,8 +60,8 @@ void menu_scene_destroy(scene_t *scene)
 
 int menu_scene_update(scene_t *scene, infos_t *infos, float elapsed)
 {
-    scene = scene;
-    elapsed = elapsed;
+    UNUSED(scene);
+    UNUSED(elapsed);
     update_hover(infos);
     return (0);
 }

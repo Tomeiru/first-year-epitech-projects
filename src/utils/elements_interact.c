@@ -30,7 +30,7 @@ int on_hover_interact(list_t *list, infos_t *infos, sfVector2f pos)
     button_t *button;
     char hover;
 
-    infos = infos;
+    UNUSED(infos);
     for (; list; list = list->next) {
         element = (element_t*) list->data;
         hover = element_point_hit(element, pos);
