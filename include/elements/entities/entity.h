@@ -20,7 +20,7 @@ typedef struct entity_s {
     rotate_element_fct_t rotate;
     draw_element_fct_t draw;
     on_click_fct_t on_click;
-    set_infos_element_fct_t set_infos;
+    get_infos_element_fct_t get_infos;
     destroy_element_fct_t destroy;
     void (*update)(struct entity_s *entity, infos_t *infos, float elapsed);
 } entity_t;

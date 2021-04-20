@@ -15,6 +15,7 @@ typedef struct howtoplay_scene_s {
     list_t *elements;
     list_t *entities;
     list_t *subwindows;
+    post_init_fct_t post_init;
     update_scene_fct_t update;
     draw_scene_fct_t draw;
     event_scene_fct_t event;

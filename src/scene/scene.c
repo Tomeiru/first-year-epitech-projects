@@ -24,6 +24,7 @@ update_scene_fct_t update, destroy_scene_fct_t destroy)
     scene->entities = NULL;
     scene->subwindows = NULL;
     scene->subwindows = NULL;
+    scene->post_init = NULL;
     scene->update = update;
     scene->draw = &scene_default_draw;
     scene->event = NULL;
@@ -36,6 +37,7 @@ void scene_default_draw(scene_t *scene, infos_t *infos)
     element_t *element;
     subwindow_t *subwindow;
 
+    sfRenderWindow_clear(infos->window, sfBlack);
     sfRenderWindow_drawSprite(infos->window, scene->background, NULL);
     for (list_t *list = scene->elements; list; list = list->next) {
         element = (element_t*) list->data;

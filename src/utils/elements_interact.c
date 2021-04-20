@@ -33,8 +33,6 @@ int on_hover_interact(list_t *list, infos_t *infos, sfVector2f pos)
     for (; list; list = list->next) {
         element = (element_t*) list->data;
         hover = element_point_hit(element, pos);
-        if (hover && element->set_infos)
-            element->set_infos(element, infos);
         if (element->type == BUTTON) {
             button = (button_t*) element;
             if (!button->is_hover && hover)
