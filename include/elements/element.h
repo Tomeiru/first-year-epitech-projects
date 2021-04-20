@@ -13,6 +13,7 @@
 typedef enum element_type_e {
     BACKGROUND,
     IMAGE,
+    INV_SLOT,
     ENEMY,
     PLAYER,
     PARTICLE,

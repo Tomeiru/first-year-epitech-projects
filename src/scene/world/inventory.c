@@ -10,16 +10,35 @@
 #include "inventory.h"
 #include "scene/world_scene.h"
 
+int inventory_init(inventory_t *inv, infos_t *infos)
+{
+    sfSprite *sprite;
+    element_t *element;
+
+    for (int i = 0; i < INVENTORY_SIZE; i++) {
+        element = element_create_default(sizeof(element_t), INV_SLOT, (sfVector2f) {, });
+        sprite = sfSprite_create();
+        if (!element || !sprite)
+            return (1);
+        sfSprite_setTexture(sprite, get_texture(infos, PLAYER_TEXT), 0);
+        element->sprite = sprite;
+        subwindow_add_element((subwindow_t*) inv, element, 0);
+    }
+    return (0);
+}
+
 inventory_t *inventory_create(infos_t *infos)
 {
     inventory_t *inventory = (inventory_t*) subwindow_create(
     sizeof(inventory_t), infos, (sfVector2f) {1921, 200}, INVENTORY_TEXT);
 
-    if (!inventory)
+    if (!inventory || inventory_init(inventory, infos))
         return (NULL);
     inventory->update = &inventory_update;
     inventory->show = 0;
     inventory->anim = 0;
+    for (int i = 0; i < INVENTORY_SIZE; i++)
+        inventory->items[i] = EMPTY;
     return (inventory);
 }
 

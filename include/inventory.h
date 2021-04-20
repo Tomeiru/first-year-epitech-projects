@@ -11,6 +11,11 @@
 #include "graphics/subwindow.h"
 
 #define INVENTORY_SPEED 50
+#define INVENTORY_SIZE 24
+
+typedef enum item_e {
+    EMPTY = 0,
+} item_t;
 
 typedef struct inventory_s {
     sfSprite *background;
@@ -23,7 +28,8 @@ typedef struct inventory_s {
     subwindow_destroy_fct_t destroy;
     char show;
     char anim;
-    char items[16];
+    unsigned char items[24];
+
 } inventory_t;
 
 inventory_t *inventory_create(infos_t *infos);
