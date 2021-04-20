@@ -17,6 +17,7 @@ scene_t *world_scene_create(infos_t *infos)
     sfSprite *background = sfSprite_create();
     world_scene_t *world_scene = (world_scene_t*) scene;
 
+    infos = infos;
     if (!scene || !background)
         return (NULL);
     world_scene->background = background;

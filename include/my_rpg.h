@@ -27,6 +27,8 @@
 
 #define FPS (float)(1.0 / 60.0 * 1000000)
 
+#define UNCONST(type, var) (*(type*)&(var))
+
 typedef enum game_state_e {
     MAIN_MENU,
     HOWTOPLAY,

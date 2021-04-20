@@ -32,7 +32,9 @@ interactable_action_fct_t action, char *action_name)
 
 void interactable_update(entity_t *entity, infos_t *infos, float elapsed)
 {
-
+    entity = entity;
+    infos = infos;
+    elapsed = elapsed;
 }
 
 void interactable_get_infos(element_t *element, char *str, int size)
