@@ -32,6 +32,13 @@ void player_update(entity_t *entity, infos_t *infos, float elapsed)
 {
     player_t *player = (player_t*) entity;
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
+
+    player_move_update(player, world_scene->map, elapsed);
+    element_behind_wall((element_t*) player, world_scene->map);
+}
+
+void player_move_update(player_t *player, map_t *map, float elapsed)
+{
     sfVector2f move = {0, 0};
     float speed = 5 * elapsed;
 
@@ -41,6 +48,9 @@ void player_update(entity_t *entity, infos_t *infos, float elapsed)
         move.y = sfKeyboard_isKeyPressed(sfKeyZ) ? -speed : speed;
     if (sfKeyboard_isKeyPressed(sfKeyQ) ^ sfKeyboard_isKeyPressed(sfKeyD))
         move.x = sfKeyboard_isKeyPressed(sfKeyQ) ? -speed : speed;
+    prior_map_collision(&move, player->hitbox, map);
+    if (move.x == 0 && move.y == 0)
+        return;
     player->move((element_t*) player, (sfVector2f)
     {player->pos.x + move.x, player->pos.y + move.y});
 }
