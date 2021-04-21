@@ -16,16 +16,18 @@ infos_t *infos, sfMouseButton button_type)
     button_t *button = (button_t*) element;
     image_t *img;
 
-    for (list_t *list = infos->scene->elements; list; list = list->next) {
-        if (((element_t*) list->data)->type == IMAGE) {
-            img = (image_t*) list->data;
-            break;
+    if (button_type == sfMouseLeft) {
+        for (list_t *list = infos->scene->elements; list; list = list->next) {
+            if (((element_t*) list->data)->type == IMAGE) {
+                img = (image_t*) list->data;
+                break;
+            }
         }
+        if (!img)
+            return (0);
+        image_add_texture_pos(img, -1, 0);
+        button_set_clicked(button, 1, infos);
     }
-    if (!img)
-        return (0);
-    image_add_texture_pos(img, -1, 0);
-    button_set_clicked(button, 1, infos);
     return (0);
 }
 
@@ -35,15 +37,17 @@ infos_t *infos, sfMouseButton button_type)
     button_t *button = (button_t*) element;
     image_t *img;
 
-    for (list_t *list = infos->scene->elements; list; list = list->next) {
-        if (((element_t*) list->data)->type == IMAGE) {
-            img = (image_t*) list->data;
-            break;
+    if (button_type == sfMouseLeft) {
+        for (list_t *list = infos->scene->elements; list; list = list->next) {
+            if (((element_t*) list->data)->type == IMAGE) {
+                img = (image_t*) list->data;
+                break;
+            }
         }
+        if (!img)
+            return (0);
+        image_add_texture_pos(img, 1, 0);
+        button_set_clicked(button, 1, infos);
     }
-    if (!img)
-        return (0);
-    image_add_texture_pos(img, 1, 0);
-    button_set_clicked(button, 1, infos);
     return (0);
 }

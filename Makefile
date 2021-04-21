@@ -66,7 +66,7 @@ INC_DIR		=	./include
 
 SFML_LIB	=	-lcsfml-system -lcsfml-window -lcsfml-graphics -lcsfml-audio
 
-CFLAGS		+=	-W -Wall -I$(INC_DIR)
+CFLAGS		+=	-W -Wall -Werror -I$(INC_DIR)
 
 OBJ			=	$(MAIN_SRC:.c=.o) $(ELEMENTS_SRC:.c=.o) $(SCENE_SRC:.c=.o) $(RPGSH_SCR:.c=.o) $(UTILS_SRC:.c=.o)
 

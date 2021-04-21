@@ -14,8 +14,11 @@ infos_t *infos, sfMouseButton button_type)
 {
     button_t *button = (button_t*) element;
 
-    button_set_clicked(button, 1, infos);
-    return (QUIT_GAME_ACTION);
+    if (button_type == sfMouseLeft) {
+        button_set_clicked(button, 1, infos);
+        return (QUIT_GAME_ACTION);
+    }
+    return (0);
 }
 
 int button_load_menu_scene(element_t *element,
@@ -23,8 +26,11 @@ infos_t *infos, sfMouseButton button_type)
 {
     button_t *button = (button_t*) element;
 
-    button_set_clicked(button, 1, infos);
-    return (LOAD_MENU_SCENE_ACTION);
+    if (button_type == sfMouseLeft) {
+        button_set_clicked(button, 1, infos);
+        return (LOAD_MENU_SCENE_ACTION);
+    }
+    return (0);
 }
 
 int button_load_settings_scene(element_t *element,
@@ -32,8 +38,11 @@ infos_t *infos, sfMouseButton button_type)
 {
     button_t *button = (button_t*) element;
 
-    button_set_clicked(button, 1, infos);
-    return (LOAD_SETTINGS_SCENE_ACTION);
+    if (button_type == sfMouseLeft) {
+        button_set_clicked(button, 1, infos);
+        return (LOAD_SETTINGS_SCENE_ACTION);
+    }
+    return (0);
 }
 
 int button_load_howtoplay_scene(element_t *element,
@@ -41,8 +50,11 @@ infos_t *infos, sfMouseButton button_type)
 {
     button_t *button = (button_t*) element;
 
-    button_set_clicked(button, 1, infos);
-    return (LOAD_HOWTOPLAY_SCENE_ACTION);
+    if (button_type == sfMouseLeft) {
+        button_set_clicked(button, 1, infos);
+        return (LOAD_HOWTOPLAY_SCENE_ACTION);
+    }
+    return (0);
 }
 
 int button_load_world_scene(element_t *element,
@@ -50,6 +62,9 @@ infos_t *infos, sfMouseButton button_type)
 {
     button_t *button = (button_t*) element;
 
-    button_set_clicked(button, 1, infos);
-    return (LOAD_WORLD_SCENE_ACTION);
+    if (button_type == sfMouseLeft) {
+        button_set_clicked(button, 1, infos);
+        return (LOAD_WORLD_SCENE_ACTION);
+    }
+    return (0);
 }
