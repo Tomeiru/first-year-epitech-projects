@@ -20,7 +20,7 @@ infos_t *infos, element_t *element)
     if (!my_strcmp(cmd, "IF")) {
         execute_condition(line, args, infos, element);
     } else
-        execute_command(args, infos, element);
+        execute_command(line, args, infos, element);
 }
 
 void execute_condition(char ***line, char **args,
@@ -31,13 +31,13 @@ infos_t *infos, element_t *element)
 
     for (int i = 0; i < NB_CONDITIONS; i++) {
         if (CONDITION_LENGTH[i] == len && !my_strcmp(CONDITION_STR[i], cond)) {
-            if (!CONDITION_FCT[i](args, infos, element))
+            if (!CONDITION_FCT[i](line, args, infos, element))
                 skip_condition(line);
         }
     }
 }
 
-void execute_command(char **args,
+void execute_command(char ***line, char **args,
 infos_t *infos, element_t *element)
 {
     char *cmd = args[0];
@@ -45,7 +45,7 @@ infos_t *infos, element_t *element)
 
     for (int i = 0; i < NB_COMMANDS; i++) {
         if (COMMAND_LENGTH[i] == len && !my_strcmp(COMMAND_STR[i], cmd)) {
-            COMMAND_FCT[i](args, infos, element);
+            COMMAND_FCT[i](line, args, infos, element);
             break;
         }
     }

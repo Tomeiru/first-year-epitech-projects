@@ -36,5 +36,12 @@ int *instruction, infos_t *infos, element_t *element)
         return;
     args = split_into_args(*line);
     execute_instruction(&line, args, infos, element);
-    *instruction = (int) (line - cpy);
+    free_args(args);
+    line++;
+    args = split_into_args(*line);
+    if (!my_strcmp(args[0], "END"))
+        *instruction = 0;
+    else
+        *instruction += (int) (line - cpy);
+    free_args(args);
 }

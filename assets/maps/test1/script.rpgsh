@@ -1,4 +1,14 @@
 ADD 100 100
+    UPDATE
+        MOVE 200 200
+        MOVE 100 100
+    END
+
 IF HAS_ITEM
-    ADD 200 200
+    ADD 350 350
+        UPDATE
+            MOVE 350 450
+            MOVE 450 450
+            MOVE 250 450
+        END
 FI

@@ -6,17 +6,35 @@
 */
 
 #include "my_rpg.h"
-#include "elements/entities/text.h"
+#include "rpgsh/rpgsh.h"
+#include "elements/entities/npc.h"
 
-void add_rpgsh_command(char **args, infos_t *infos, element_t *element)
+void add_rpgsh_command(char ***line,
+char **args, infos_t *infos, element_t *element)
 {
-    scene_t *scene = infos->scene;
-    sfVector2f pos = {str_to_int(args[1]), str_to_int(args[2])};
-    element_t *new_elem = (element_t*)
-    text_create("TEST", infos->font, pos, 100);
+    npc_t *npc;
+    sfVector2f pos;
 
     UNUSED(element);
-    if (!new_elem)
+    if (!args[1] || !args[2])
         return;
-    scene_add_element(scene, new_elem, 0);
+    pos = (sfVector2f) {str_to_int(args[1]), str_to_int(args[2])};
+    if (!(npc = npc_create(pos, get_texture(infos, PLAYER_TEXT))))
+        return;
+    rpgsh_attach_script((interactable_t*) npc, line);
+    scene_add_element(infos->scene, (element_t*) npc, 1);
+}
+
+void move_rpgsh_command(char ***line,
+char **args, infos_t *infos, element_t *element)
+{
+    npc_t *npc = (npc_t*) element;
+    sfVector2f pos;
+
+    UNUSED(line);
+    UNUSED(infos);
+    if (!args[1] || !args[2] || !npc)
+        return;
+    pos = (sfVector2f) {str_to_int(args[1]), str_to_int(args[2])};
+    npc->mov_target = pos;
 }

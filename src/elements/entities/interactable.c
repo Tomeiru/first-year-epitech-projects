@@ -8,12 +8,13 @@
 #include "my_rpg.h"
 #include "graphics/texture.h"
 #include "elements/entities/interactable.h"
+#include "rpgsh/rpgsh.h"
 
-interactable_t *interactable_create(sfVector2f pos, sfTexture *texture,
-interactable_action_fct_t action, char *action_name)
+interactable_t *interactable_create(size_t size,
+sfVector2f pos, sfTexture *texture)
 {
     interactable_t *interactable = (interactable_t*)
-    element_create_default(sizeof(interactable_t), INTERACTABLE, pos);
+    element_create_default(size, INTERACTABLE, pos);
     sfSprite *sprite = sfSprite_create();
 
     if (!interactable || !sprite)
@@ -25,16 +26,36 @@ interactable_action_fct_t action, char *action_name)
     interactable->sprite = sprite;
     interactable->update = &interactable_update;
     interactable->get_infos = &interactable_get_infos;
-    interactable->action = action;
-    my_strcpy(interactable->action_name, action_name);
+    interactable->action = &interactable_default_action;
+    interactable->action_script = NULL;
+    interactable->action_instruction = 0;
+    interactable->update_script = NULL;
+    interactable->update_instruction = 0;
     return (interactable);
 }
 
 void interactable_update(entity_t *entity, infos_t *infos, float elapsed)
 {
-    UNUSED(entity);
-    UNUSED(infos);
+    interactable_t *interactable = (interactable_t*) entity;
+    char **action_script = interactable->action_script;
+    char **update_script = interactable->update_script;
+
     UNUSED(elapsed);
+    if (action_script && interactable->action_instruction)
+        execute_rpgsh_single_instruction(action_script,
+        &(interactable->action_instruction), infos, (element_t*) interactable);
+    else if (update_script)
+        execute_rpgsh_single_instruction(update_script,
+        &(interactable->update_instruction), infos, (element_t*) interactable);
+}
+
+void interactable_default_action(interactable_t *interactable, infos_t *infos)
+{
+    char **action_script = interactable->action_script;
+
+    if (action_script)
+        execute_rpgsh_single_instruction(action_script,
+        &(interactable->action_instruction), infos, (element_t*) interactable);
 }
 
 void interactable_get_infos(element_t *element, char *str, int size)

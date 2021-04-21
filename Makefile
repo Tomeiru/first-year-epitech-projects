@@ -24,6 +24,7 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/entities/player.c								\
 					src/elements/entities/particle.c							\
 					src/elements/entities/interactable.c						\
+					src/elements/entities/npc.c									\
 					src/elements/entities/text.c								\
 					src/elements/entities/text_update_fcts.c					\
 					src/elements/entities/buttons/button.c						\
@@ -52,7 +53,8 @@ RPGSH_SCR		=	src/rpgsh/rpgsh.c											\
 					src/rpgsh/args.c											\
 					src/rpgsh/commands.c										\
 					src/rpgsh/execute.c											\
-					src/rpgsh/conditions.c
+					src/rpgsh/conditions.c										\
+					src/rpgsh/attach.c
 
 UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/int_str.c											\
