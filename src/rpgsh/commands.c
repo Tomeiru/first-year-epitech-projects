@@ -15,6 +15,7 @@ void add_rpgsh_command(char **args, infos_t *infos, element_t *element)
     element_t *new_elem = (element_t*)
     text_create("TEST", infos->font, pos, 100);
 
+    UNUSED(element);
     if (!new_elem)
         return;
     scene_add_element(scene, new_elem, 0);

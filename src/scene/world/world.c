@@ -6,9 +6,10 @@
 */
 
 #include "my_rpg.h"
+#include "maps.h"
 #include "scene/world_scene.h"
 #include "graphics/texture.h"
-#include "maps.h"
+#include "rpgsh/rpgsh.h"
 
 int world_load(world_scene_t *world_scene,
 int map_id, int spawn_id, infos_t *infos)
