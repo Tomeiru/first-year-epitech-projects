@@ -53,15 +53,20 @@ infos_t *infos, element_t *element)
 
 void skip_condition(char ***line)
 {
-    int if_nb = 1;
+    int if_nb = 0;
+    char **args;
 
     for (; **line; *line += 1) {
-        if (!my_strcmp(**line, "IF"))
+        args = split_into_args(**line);
+        if (!my_strcmp(args[0], "IF"))
             if_nb++;
-        else if (!my_strcmp(**line, "FI"))
+        else if (!my_strcmp(args[0], "FI"))
             if_nb--;
-        if ((!my_strcmp(**line, "ELSE") && if_nb == 1) ||
-        if_nb == 0)
+        if ((!my_strcmp(args[0], "ELSE") && if_nb == 1) ||
+        if_nb == 0) {
+            free_args(args);
             break;
+        }
+        free_args(args);
     }
 }

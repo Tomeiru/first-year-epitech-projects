@@ -38,6 +38,10 @@ int *instruction, infos_t *infos, element_t *element)
     execute_instruction(&line, args, infos, element);
     free_args(args);
     line++;
+    if (!*line) {
+        *instruction = 0;
+        return;
+    }
     args = split_into_args(*line);
     if (!my_strcmp(args[0], "END"))
         *instruction = 0;

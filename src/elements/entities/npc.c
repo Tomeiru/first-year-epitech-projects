@@ -19,6 +19,9 @@ npc_t *npc_create(sfVector2f pos, sfTexture *texture)
     npc->update = &npc_update;
     npc->speed = 1;
     npc->mov_target = (sfVector2f) {-1, -1};
+    sprite_set_origin_center(npc->sprite);
+    element_set_hitbox((element_t*) npc,
+    sfSprite_getGlobalBounds(npc->sprite));
     return (npc);
 }
 
