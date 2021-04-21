@@ -39,7 +39,6 @@ static int run_game(infos_t *infos)
         if (execute_action(infos, update_action ? update_action : user_action))
             return (84);
         user_action = poll_events(infos);
-        update_hover(infos);
         elapsed = sfClock_restart(clock).microseconds / FPS;
         update_action = infos->scene->update(infos->scene, infos, elapsed);
         infos->scene->draw(infos->scene, infos);
@@ -57,6 +56,7 @@ int my_rpg(sfRenderWindow *window)
         return (84);
     sfTexture_setRepeated(get_texture(&infos, HOWTOPLAY_IMG_TEXT), 1);
     ret = run_game(&infos);
-    delete_infos(&infos);
+    if (!ret)
+        delete_infos(&infos);
     return (ret);
 }

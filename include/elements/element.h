@@ -17,7 +17,8 @@ typedef enum element_type_e {
     PLAYER,
     PARTICLE,
     BUTTON,
-    TEXT
+    TEXT,
+    BUFFER
 } element_type_t;
 
 typedef struct infos_s infos_t;

@@ -18,6 +18,8 @@
 #include "elements/entities/entity.h"
 #include "elements/entities/text.h"
 
+#include "settings.h"
+
 #define WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080
 
@@ -40,9 +42,7 @@ typedef struct infos_s {
     list_t *textures;
     sfFont *font;
     sfMusic *music;
-    text_t *hover_infos;
-    int sound_level;
-    int fps;
+    settings_t settings;
 } infos_t;
 
 sfRenderWindow *create_window(int width, int height);

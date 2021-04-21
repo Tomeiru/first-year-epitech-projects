@@ -50,16 +50,16 @@ void play_sound(infos_t *infos, sound_t id)
 
 void sound_set_volume(infos_t *infos)
 {
-    sfMusic_setVolume(infos->music, infos->sound_level);
+    sfMusic_setVolume(infos->music, infos->settings.sound_level);
     for (list_t *list = infos->sounds; list; list = list->next)
-        sfSound_setVolume((sfSound*) list->data, infos->sound_level);
+        sfSound_setVolume((sfSound*) list->data, infos->settings.sound_level);
 }
 
 void destroy_sounds(list_t *sounds)
 {
     list_t *tmp;
     sfSound *sound;
-    sfSoundBuffer *buffer;
+    const sfSoundBuffer *buffer;
 
     while (sounds) {
         tmp = sounds->next;

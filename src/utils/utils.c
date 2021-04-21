@@ -67,7 +67,6 @@ void update_hover(infos_t *infos)
     scene_t *scene = infos->scene;
     int ret;
 
-    sfText_setString(infos->hover_infos->text, "");
     for (list_t *list = scene->subwindows; list; list = list->next) {
         ret = on_hover_interact(((subwindow_t*)
         list->data)->elements, infos, pos);
