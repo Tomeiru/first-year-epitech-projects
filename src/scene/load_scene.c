@@ -11,7 +11,8 @@
 
 int load_scene(infos_t *infos, int action)
 {
-    const sfView *view = sfRenderWindow_getView(infos->window);
+    const sfView *view_const = sfRenderWindow_getView(infos->window);
+    sfView *view = UNCONST(sfView*, view_const);
 
     for (int i = 0; i < NB_SCENES; i++) {
         if (LOAD_ACTION[i] == action) {
@@ -20,8 +21,10 @@ int load_scene(infos_t *infos, int action)
             break;
         }
     }
-    if (infos->scene == NULL)
+    if (!infos->scene)
         return (1);
+    else if (infos->scene->post_init)
+        infos->scene->post_init(infos->scene, infos);
     sfView_setCenter(view, (sfVector2f) {WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2});
     sfRenderWindow_setView(infos->window, view);
     return (0);

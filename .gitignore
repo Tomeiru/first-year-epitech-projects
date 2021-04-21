@@ -2,3 +2,4 @@ my_rpg
 **/*.o
 libmy.a
 vgcore*
+*.xcf

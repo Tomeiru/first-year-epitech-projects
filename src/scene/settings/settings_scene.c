@@ -49,6 +49,7 @@ int settings_scene_update(scene_t *scene, infos_t *infos, float elapsed)
     entity_t *entity;
     subwindow_t *subwindow;
 
+    update_hover(infos);
     for (list_t *list = scene->entities; list; list = list->next) {
         entity = (entity_t*) list->data;
         entity->update(entity, infos, elapsed);

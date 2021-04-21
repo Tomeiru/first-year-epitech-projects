@@ -51,7 +51,7 @@ void pause_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
     const sfView *view = sfRenderWindow_getView(infos->window);
 
     if (pause->pause && pause->anim)
-        pause_anim_move(pause, view, 0, elapsed);
+        pause_anim_move(pause, view, -16, elapsed);
     else if (!pause->pause && pause->anim)
         pause_anim_move(pause, view, 1081, elapsed);
 }

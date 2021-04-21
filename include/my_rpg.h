@@ -18,12 +18,17 @@
 #include "elements/entities/entity.h"
 #include "elements/entities/text.h"
 
+#include "settings.h"
+
 #define WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080
 
 #define WINDOW_TITLE "my_rpg"
 
 #define FPS (float)(1.0 / 60.0 * 1000000)
+
+#define UNUSED(var) (void)(var)
+#define UNCONST(type, var) (*(type*)&(var))
 
 typedef enum game_state_e {
     MAIN_MENU,
@@ -40,9 +45,7 @@ typedef struct infos_s {
     list_t *textures;
     sfFont *font;
     sfMusic *music;
-    text_t *hover_infos;
-    int sound_level;
-    int fps;
+    settings_t settings;
 } infos_t;
 
 sfRenderWindow *create_window(int width, int height);
@@ -65,5 +68,7 @@ void update_hover(infos_t *infos);
 
 void sprite_set_origin_center(sfSprite *sprite);
 void text_set_origin_center(sfText *text);
+
+sfVector2f vector_normalize(sfVector2f vec);
 
 #endif /* !MY_DEFENDER_H_ */

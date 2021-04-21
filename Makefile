@@ -14,13 +14,16 @@ MAIN_SRC		=	src/main.c													\
 					src/graphics/default_subwindow_fcts.c						\
 					src/graphics/pause.c										\
 					src/graphics/pause_fcts.c									\
+					src/graphics/effects.c										\
 					src/sounds/sounds.c
 
 ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/default_element_fcts.c							\
 					src/elements/image.c										\
+					src/elements/entities/buffer.c								\
 					src/elements/entities/player.c								\
 					src/elements/entities/particle.c							\
+					src/elements/entities/interactable.c						\
 					src/elements/entities/text.c								\
 					src/elements/entities/text_update_fcts.c					\
 					src/elements/entities/buttons/button.c						\
@@ -40,18 +43,22 @@ SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/settings/button_settings_res_actions.c			\
 					src/scene/world/world_scene.c								\
 					src/scene/world/world.c										\
-					src/scene/world/inventory.c
+					src/scene/world/inventory.c									\
+					src/scene/world/camera.c									\
+					src/scene/world/map.c
 
 UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/origins.c											\
-					src/utils/elements_interact.c
+					src/utils/elements_interact.c								\
+					src/utils/math.c											\
+					src/utils/physics.c
 
 LIB_DIR		=	./mylib
 INC_DIR		=	./include
 
 SFML_LIB	=	-lcsfml-system -lcsfml-window -lcsfml-graphics -lcsfml-audio
 
-CFLAGS		+=	-W -Wall -I$(INC_DIR)
+CFLAGS		+=	-W -Wall -Werror -I$(INC_DIR)
 
 OBJ			=	$(MAIN_SRC:.c=.o) $(ELEMENTS_SRC:.c=.o) $(SCENE_SRC:.c=.o) $(UTILS_SRC:.c=.o)
 

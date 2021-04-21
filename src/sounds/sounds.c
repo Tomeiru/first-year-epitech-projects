@@ -13,12 +13,15 @@
 
 static int load_sound(list_t **sounds, const char *path)
 {
-    sfSoundBuffer *buffer = sfSoundBuffer_createFromFile(path);
-    sfSound *sound = sfSound_create();
+    sound_couple_t *sound = malloc(sizeof(sound_couple_t));
+    sfSoundBuffer *buffer_sfml = sfSoundBuffer_createFromFile(path);
+    sfSound *sound_sfml = sfSound_create();
 
-    if (!buffer || !sound)
+    if (!sound || !buffer_sfml || !sound_sfml)
         return (1);
-    sfSound_setBuffer(sound, buffer);
+    sound->buffer = buffer_sfml;
+    sound->sound = sound_sfml;
+    sfSound_setBuffer(sound_sfml, buffer_sfml);
     create_list(sounds, sound);
     return (0);
 }
@@ -45,29 +48,28 @@ void play_sound(infos_t *infos, sound_t id)
     list_t *list = infos->sounds;
 
     for (int i = 0; i < (int) id; i++, list = list->next);
-    sfSound_play((sfSound*) list->data);
+    sfSound_play(((sound_couple_t*) list->data)->sound);
 }
 
 void sound_set_volume(infos_t *infos)
 {
-    sfMusic_setVolume(infos->music, infos->sound_level);
+    sfMusic_setVolume(infos->music, infos->settings.sound_level);
     for (list_t *list = infos->sounds; list; list = list->next)
-        sfSound_setVolume((sfSound*) list->data, infos->sound_level);
+        sfSound_setVolume((sfSound*) list->data, infos->settings.sound_level);
 }
 
 void destroy_sounds(list_t *sounds)
 {
     list_t *tmp;
-    sfSound *sound;
-    sfSoundBuffer *buffer;
+    sound_couple_t *sound;
 
     while (sounds) {
         tmp = sounds->next;
         if (sounds->data) {
-            sound = (sfSound*) sounds->data;
-            buffer = sfSound_getBuffer(sound);
-            sfSound_destroy(sound);
-            sfSoundBuffer_destroy(buffer);
+            sound = (sound_couple_t*) sounds->data;
+            sfSound_destroy(sound->sound);
+            sfSoundBuffer_destroy(sound->buffer);
+            free(sound);
         }
         free(sounds);
         sounds = tmp;
