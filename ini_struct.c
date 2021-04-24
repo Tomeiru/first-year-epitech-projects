@@ -7,7 +7,15 @@
 
 #include "my_sokoban.h"
 
-void set_heigth_and_width(struct game_struct *game)
+void check_form(int len, int x, int y)
+{
+    if ((len) % (x + 1) != 0)
+        exit(84);
+    if ((x + 1) * y != len)
+        exit(84);
+}
+
+void set_heigth_and_width(struct game_struct *game, int len)
 {
     int width = 0;
     int height = 0;
@@ -21,6 +29,7 @@ void set_heigth_and_width(struct game_struct *game)
             width++;
     }game->width_map = width;
     game->height_map = height;
+    check_form(len, width, height);
 }
 
 void init_p(struct game_struct *game, int y, int x)

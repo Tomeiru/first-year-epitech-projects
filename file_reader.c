@@ -7,7 +7,7 @@
 
 #include "my_sokoban.h"
 
-char *file_reader(char *filepath)
+char *file_reader(char *filepath, int *len)
 {
     int fd = open(filepath, O_RDONLY);
     struct stat stats;
@@ -25,6 +25,7 @@ char *file_reader(char *filepath)
     if (read(fd, file, stats.st_size) == -1)
         return ("!");
     file[stats.st_size] = '\0';
+    *len = stats.st_size;
     close(fd);
     return (file);
 }

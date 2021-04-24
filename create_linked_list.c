@@ -54,7 +54,7 @@ struct node *create_storage_linked_list(struct game_struct *game)
     struct node *head_storages = malloc(sizeof(struct node));
     struct node *back_up = head_storages;
     int idx = 1;
-    
+
     head_storages->idx = idx++;
     assign_storage_coord(head_storages, head_storages->idx, game->map_arr);
     for (int i = 1; i < game->nb_of_boxes; i++) {
@@ -71,7 +71,7 @@ struct node *create_box_linked_list(struct game_struct *game)
     struct node *head_boxes = malloc(sizeof(struct node));
     struct node *back_up = head_boxes;
     int idx = 1;
-    
+
     head_boxes->idx = idx++;
     assign_box_coord(head_boxes, head_boxes->idx, game->map_arr);
     for (int i = 1; i < game->nb_of_boxes; i++) {
