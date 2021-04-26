@@ -10,7 +10,7 @@
 #include "inventory.h"
 #include "scene/world_scene.h"
 #include "elements/entities/button.h"
-#include <stdio.h>
+#include <unistd.h>
 
 //faire un button rajouter un autre button
 //button type créer un texte vide
@@ -21,9 +21,9 @@ infos_t *infos, sfMouseButton button_type)
     button_t *button = (button_t*) element;
 
     if (button_type == sfMouseLeft)
-        printf("LEFT\n");
+        write(1, "LEFT\n", 5);
     if (button_type == sfMouseRight)
-        printf("RIGHT\n");
+        write(1, "RIGHT\n", 6);
     button_set_clicked(button, 1, infos);
     return (0);
 }
