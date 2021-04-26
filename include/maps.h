@@ -8,7 +8,7 @@
 #ifndef MAPS_H_
 #define MAPS_H_
 
-const char *MAPS_PATH[] = {
+char *MAPS_PATH[] = {
     "assets/maps/test1/",
     "assets/maps/test2/"
 };

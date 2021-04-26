@@ -12,7 +12,8 @@
 
 void camera_move(world_scene_t *world_scene, infos_t *infos, float elapsed)
 {
-    const sfView *view = sfRenderWindow_getView(infos->window);
+    const sfView *view_const = sfRenderWindow_getView(infos->window);
+    sfView *view = UNCONST(sfView*, view_const);
     sfVector2f player_pos = world_scene->player->pos;
     sfVector2f center = sfView_getCenter(view);
     float dist = get_distance(center, player_pos);

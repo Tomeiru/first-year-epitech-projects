@@ -18,9 +18,11 @@ infos_t *infos, sfMouseButton button_type)
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
     button_t *button = (button_t*) element;
 
-    pause_set_pause(world_scene->pause, infos);
-    button_set_clicked(button, 1, infos);
-    sfMusic_play(infos->music);
+    if (button_type == sfMouseLeft) {
+        pause_set_pause(world_scene->pause, infos);
+        button_set_clicked(button, 1, infos);
+        sfMusic_play(infos->music);
+    }
     return (0);
 }
 

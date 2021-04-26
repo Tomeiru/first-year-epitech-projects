@@ -12,7 +12,7 @@
 
 int world_load(world_scene_t *world_scene, int map_id, int spawn_id)
 {
-    const char *path = MAPS_PATH[map_id];
+    char *path = MAPS_PATH[map_id];
     const sfVector2f spawn = MAPS_SPAWN[map_id][spawn_id];
     map_t *map = map_create(path);
 

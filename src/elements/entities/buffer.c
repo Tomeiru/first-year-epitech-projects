@@ -32,7 +32,7 @@ buffer_t *buffer_create(sfVector2f pos, sfVector2u size)
 
 void buffer_put_pixel(buffer_t *buffer, sfColor color, sfVector2u pos)
 {
-    int index = (pos.x + buffer->size.x * pos.y) * 4;
+    unsigned int index = (pos.x + buffer->size.x * pos.y) * 4;
 
     if (index >= (buffer->size.x * buffer->size.y * 4 - 4))
         return;
