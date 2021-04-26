@@ -10,6 +10,7 @@
 #include "inventory.h"
 #include "scene/world_scene.h"
 #include "elements/entities/button.h"
+#include <stdio.h>
 
 //faire un button rajouter un autre button
 //button type créer un texte vide
@@ -29,7 +30,7 @@ infos_t *infos, sfMouseButton button_type)
 
 static int inv_items_init(inventory_t *inv, infos_t *infos)
 {
-    element_t *element;
+    button_t *element;
     int x_pos = 0;
     int y_pos = 0;
 
@@ -42,7 +43,7 @@ static int inv_items_init(inventory_t *inv, infos_t *infos)
             y_pos += SHIFT_VALUE;
         }if (!element)
             return (1);
-        subwindow_add_element((subwindow_t*) inv, element, 0);
+        subwindow_add_element((subwindow_t*) inv, (element_t*)element, 0);
     }
     return (0);
 }
@@ -72,4 +73,5 @@ int inventory_init(inventory_t *inv, infos_t *infos)
 {
     if (inv_items_init(inv, infos) || inv_keybind_init(inv, infos))
         return (1);
+    return (0);
 }

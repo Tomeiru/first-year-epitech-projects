@@ -40,5 +40,6 @@ void inventory_update(subwindow_t *subwindow, infos_t *infos, float elapsed);
 void inventory_anim_move(inventory_t *inventory,
 const sfView *view, int target, float elapsed);
 void inventory_show(inventory_t *inventory);
+int inventory_init(inventory_t *inv, infos_t *infos);
 
 #endif /* !INVENTORY_H_ */
