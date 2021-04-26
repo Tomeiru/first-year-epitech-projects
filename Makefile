@@ -59,7 +59,7 @@ INC_DIR		=	./include
 
 SFML_LIB	=	-lcsfml-system -lcsfml-window -lcsfml-graphics -lcsfml-audio
 
-CFLAGS		+=	-W -Wall -I$(INC_DIR)
+CFLAGS		+=	-W -Wall -Werror -I$(INC_DIR)
 
 OBJ			=	$(MAIN_SRC:.c=.o) $(ELEMENTS_SRC:.c=.o) $(SCENE_SRC:.c=.o) $(UTILS_SRC:.c=.o)
 
@@ -69,12 +69,12 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	make -C $(LIB_DIR)
-	gcc -o $(NAME) $(OBJ) -I$(INC_DIR) -L$(LIB_DIR) $(SFML_LIB) -lm -lmy
+	gcc $(CFLAGS) -o $(NAME) $(OBJ) -L$(LIB_DIR) $(SFML_LIB) -lm -lmy
 
 debug:	CFLAGS += -g
-debug: 	$(OBJ)
+debug: 	fclean $(OBJ)
 	make -C $(LIB_DIR) debug
-	gcc -g -o $(NAME) $(OBJ) -I$(INC_DIR) -L$(LIB_DIR) $(SFML_LIB) -lm -lmy
+	gcc $(CFLAGS) -o $(NAME) $(OBJ) -L$(LIB_DIR) $(SFML_LIB) -lm -lmy
 
 clean:
 	make -C $(LIB_DIR) clean

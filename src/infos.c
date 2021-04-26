@@ -28,6 +28,8 @@ int setup_infos(infos_t *infos, sfRenderWindow *window)
 void delete_infos(infos_t *infos)
 {
     destroy_textures(infos->textures);
+    destroy_sounds(infos->sounds);
+    sfMusic_destroy(infos->music);
     sfFont_destroy(infos->font);
     if (infos->scene)
         infos->scene->destroy(infos->scene);
