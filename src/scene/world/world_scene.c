@@ -10,6 +10,7 @@
 #include "scene/world_scene.h"
 #include "actions.h"
 
+<<<<<<< HEAD
 int world_scene_init(world_scene_t *world_scene, infos_t *infos)
 {
     player_t *player = player_create(infos);
@@ -30,6 +31,8 @@ int world_scene_init(world_scene_t *world_scene, infos_t *infos)
     return (0);
 }
 
+=======
+>>>>>>> master
 scene_t *world_scene_create(infos_t *infos)
 {
     scene_t *scene = scene_create_default(sizeof(world_scene_t),
@@ -37,14 +40,32 @@ scene_t *world_scene_create(infos_t *infos)
     sfSprite *background = sfSprite_create();
     world_scene_t *world_scene = (world_scene_t*) scene;
 
-    if (!scene || !background || world_scene_init(world_scene, infos))
+    UNUSED(infos);
+    if (!scene || !background)
         return (NULL);
     world_scene->background = background;
+    world_scene->post_init = &world_scene_post_init;
     world_scene->event = &world_scene_event;
     world_scene->map = NULL;
-    if (world_load(world_scene, 0, 0))
-        return (NULL);
     return (scene);
+}
+
+void world_scene_post_init(scene_t *scene, infos_t *infos)
+{
+    world_scene_t *world_scene = (world_scene_t*) scene;
+    player_t *player = player_create(infos);
+    pause_t *pause = pause_create(infos);
+    inventory_t *inventory = inventory_create(infos);
+
+    if (!pause || !player || !inventory)
+        return;
+    world_scene->player = player;
+    world_scene->pause = pause;
+    world_scene->inventory = inventory;
+    scene_add_element(scene, (element_t*) player, 1);
+    create_list(&(scene->subwindows), pause);
+    create_list(&(scene->subwindows), inventory);
+    world_load(world_scene, 0, 0);
 }
 
 int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)

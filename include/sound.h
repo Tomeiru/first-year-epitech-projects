@@ -14,6 +14,11 @@ typedef enum sound_e {
     CLICK_SOUND,
 } sound_t;
 
+typedef struct sound_couple_s {
+    sfSoundBuffer *buffer;
+    sfSound *sound;
+} sound_couple_t;
+
 list_t *load_sounds(void);
 void play_sound(infos_t *infos, sound_t id);
 void destroy_sounds(list_t *sounds);
