@@ -11,11 +11,8 @@
 typedef struct timestamp_s {
     long seconds;
     long nanoseconds;
-} timestamp_s;
+} timestamp_t;
 
-/* API */
-void send_command(char *cmd, int len);
-unsigned int get_response_int(void);
-float get_response_float(void);
+void set_timestamp_from_str(timestamp_t *timestamp, char *str);
 
 #endif /* !NEED4STEK_H_ */

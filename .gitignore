@@ -4,3 +4,6 @@ n4s_buffer
 pipes.sh
 CoppeliaSim/
 coppeliaSim
+ai
+example
+**/*.o

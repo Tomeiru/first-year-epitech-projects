@@ -5,7 +5,11 @@
 ## makefile
 ##
 
-SRC			=	src/main.c
+SRC			=	src/main.c					\
+				src/timestamp.c				\
+				src/api/comms.c				\
+				src/api/response.c			\
+				src/api/read_data.c
 
 INC_DIR		=	./include
 
