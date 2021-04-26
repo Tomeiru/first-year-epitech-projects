@@ -33,15 +33,18 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
     player_t *player = player_create(infos);
     pause_t *pause = pause_create(infos);
     inventory_t *inventory = inventory_create(infos);
+    hud_t *hud = hud_create(infos);
 
-    if (!pause || !player || !inventory)
+    if (!pause || !player || !inventory || !hud)
         return;
     world_scene->player = player;
     world_scene->pause = pause;
     world_scene->inventory = inventory;
+    world_scene->hud = hud;
     scene_add_element(scene, (element_t*) player, 1);
     create_list(&(scene->subwindows), pause);
     create_list(&(scene->subwindows), inventory);
+    create_list(&(scene->subwindows), hud);
     world_load(world_scene, 0, 0);
 }
 

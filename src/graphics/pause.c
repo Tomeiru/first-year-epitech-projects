@@ -13,6 +13,8 @@
 
 static int pause_create_buttons(pause_t *pause, infos_t *infos)
 {
+    text_t *text = text_create("Pause", infos->font,
+    (sfVector2f) {783, 85}, 160);
     button_t *resume = text_button_create(infos,
     "Reprendre", (sfVector2f) {865, 350}, GREEN_BUTTON);
     button_t *menu =
@@ -20,11 +22,12 @@ static int pause_create_buttons(pause_t *pause, infos_t *infos)
     button_t *leave =
     text_button_create(infos, "Quitter", (sfVector2f) {865, 650}, RED_BUTTON);
 
-    if (!resume || !menu || !leave)
+    if (!text || !resume || !menu || !leave)
         return (1);
     resume->on_click = &button_pause_resume;
     menu->on_click = &button_load_menu_scene;
     leave->on_click = &button_close_game;
+    subwindow_add_element((subwindow_t*) pause, (element_t*) text, 0);
     subwindow_add_element((subwindow_t*) pause, (element_t*) resume, 1);
     subwindow_add_element((subwindow_t*) pause, (element_t*) menu, 1);
     subwindow_add_element((subwindow_t*) pause, (element_t*) leave, 1);
@@ -34,7 +37,7 @@ static int pause_create_buttons(pause_t *pause, infos_t *infos)
 pause_t *pause_create(infos_t *infos)
 {
     pause_t *pause = (pause_t*) subwindow_create(sizeof(pause_t),
-    infos, (sfVector2f) {0, 1081}, PAUSE_BACKGROUND_TEXT);
+    infos, (sfVector2f) {0, 1081}, DARK_BACKGROUND_TEXT);
 
     if (!pause || pause_create_buttons(pause, infos))
         return (NULL);
