@@ -34,6 +34,9 @@ sfColor map_check_mask(map_t *map, sfIntRect hb, unsigned char r_value)
 
     for (int y = hb.top; y < hb.top + hb.height; y++) {
         for (int x = hb.left; x < hb.left + hb.width; x++) {
+            if (x < 0 || x >= (int) map->map_size.x ||
+            y < 0 || y >= (int) map->map_size.y)
+                continue;
             color = sfImage_getPixel(mask, x, y);
             if (color.r == r_value)
                 return (color);
