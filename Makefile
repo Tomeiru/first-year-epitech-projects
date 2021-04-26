@@ -44,6 +44,7 @@ SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/world/world_scene.c								\
 					src/scene/world/world.c										\
 					src/scene/world/inventory.c									\
+					src/scene/world/inventory_init.c							\
 					src/scene/world/camera.c									\
 					src/scene/world/map.c
 

@@ -11,10 +11,13 @@
 #include "graphics/subwindow.h"
 
 #define INVENTORY_SPEED 50
-#define INVENTORY_SIZE 24
+#define INVENTORY_SIZE 21
+#define INV_KEYB_NB 3
+#define SHIFT_VALUE 50
 
 typedef enum item_e {
     EMPTY = 0,
+    HEALTH_POTION
 } item_t;
 
 typedef struct inventory_s {

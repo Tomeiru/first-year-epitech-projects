@@ -14,6 +14,7 @@ typedef enum element_type_e {
     BACKGROUND,
     IMAGE,
     INV_SLOT,
+    INV_KEYB,
     ENEMY,
     INTERACTABLE,
     PLAYER,
