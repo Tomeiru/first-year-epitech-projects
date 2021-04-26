@@ -29,7 +29,7 @@ typedef struct buffer_s {
     char edited;
 } buffer_t;
 
-buffer_t *buffer_create(sfVector2f pos, sfVector2u size);
+buffer_t *buffer_create(size_t memsize, sfVector2f pos, sfVector2u size);
 void buffer_put_pixel(buffer_t *buffer, sfColor color, sfVector2u pos);
 void buffer_clear(buffer_t *buffer);
 void buffer_draw(element_t *element, sfRenderWindow *window);

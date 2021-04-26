@@ -13,8 +13,8 @@
 hud_t *hud_create(infos_t *infos)
 {
     hud_t *hud = (hud_t*) subwindow_create(sizeof(hud_t),
-    infos, (sfVector2f) {10, 10}, -1);
-    bar_t *health_bar = bar_create(infos, (sfIntRect) {5, 5, 200, 50}, 100);
+    infos, (sfVector2f) {0, 0}, -1);
+    bar_t *health_bar = bar_create(infos, (sfIntRect) {15, 15, 200, 50}, 100);
 
     if (!hud || !health_bar)
         return (NULL);

@@ -5,15 +5,17 @@
 ** buffer
 */
 
+#include <stdio.h>
+
 #include <stdlib.h>
 #include <string.h>
 #include "elements/entities/buffer.h"
 
-buffer_t *buffer_create(sfVector2f pos, sfVector2u size)
+buffer_t *buffer_create(size_t memsize, sfVector2f pos, sfVector2u size)
 {
     buffer_t *buffer = (buffer_t*)
-    element_create_default(sizeof(buffer_t), BUFFER, pos);
-    sfUint8 *pixels = malloc(sizeof(sfUint8) * (size.x * size.y + 1));
+    element_create_default(memsize, BUFFER, pos);
+    sfUint8 *pixels = malloc(sizeof(sfUint8) * (size.x * size.y) * 4);
     sfTexture *texture = sfTexture_create(size.x, size.y);
     sfSprite *sprite = sfSprite_create();
 
@@ -45,8 +47,7 @@ void buffer_put_pixel(buffer_t *buffer, sfColor color, sfVector2u pos)
 
 void buffer_clear(buffer_t *buffer)
 {
-    memset(buffer->pixels, 0,
-    buffer->size.x * buffer->size.y * sizeof(sfUint8));
+    memset(buffer->pixels, 0, buffer->size.x * buffer->size.y * 4);
     buffer->edited = 1;
 }
 
