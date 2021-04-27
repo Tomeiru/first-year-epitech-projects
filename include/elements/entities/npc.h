@@ -33,7 +33,12 @@ typedef struct npc_s {
     sfVector2f mov_target;
 } npc_t;
 
-npc_t *npc_create(sfVector2f pos, sfTexture *texture);
+npc_t *npc_create(sfVector2f pos, sfTexture *texture,
+char *action);
 void npc_update(entity_t *entity, infos_t *infos, float elapsed);
+
+npc_t *trigger_create(sfVector2f pos, char *action);
+void trigger_move(element_t *element, sfVector2f pos);
+void trigger_draw(element_t *element, sfRenderWindow *window);
 
 #endif /* !NPC_H_ */

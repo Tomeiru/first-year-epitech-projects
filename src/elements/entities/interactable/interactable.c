@@ -15,15 +15,12 @@ sfVector2f pos, sfTexture *texture)
 {
     interactable_t *interactable = (interactable_t*)
     element_create_default(size, INTERACTABLE, pos);
-    sfSprite *sprite = sfSprite_create();
+    sfSprite *sprite = texture != NULL ? sfSprite_create() : NULL;
 
-    if (!interactable || !sprite)
+    if (!interactable || (texture != NULL && !sprite))
         return (NULL);
-    sfSprite_setTexture(sprite, texture, 0);
-    sfSprite_setTextureRect(sprite, (sfIntRect) {0, 0, 64, 64});
-    sfSprite_setPosition(sprite, pos);
+    interactable_create_sprite(interactable, sprite, texture, pos);
     interactable->hitbox = (sfIntRect) {pos.x, pos.y, 64, 64};
-    interactable->sprite = sprite;
     interactable->update = &interactable_update;
     interactable->get_infos = &interactable_get_infos;
     interactable->action = &interactable_default_action;
@@ -32,6 +29,17 @@ sfVector2f pos, sfTexture *texture)
     interactable->update_script = NULL;
     interactable->update_instruction = 0;
     return (interactable);
+}
+
+void interactable_create_sprite(interactable_t *interactable,
+sfSprite *sprite, sfTexture *texture, sfVector2f pos)
+{
+    if (!texture)
+        return;
+    sfSprite_setTexture(sprite, texture, 0);
+    sfSprite_setTextureRect(sprite, (sfIntRect) {0, 0, 64, 64});
+    sfSprite_setPosition(sprite, pos);
+    interactable->sprite = sprite;
 }
 
 void interactable_update(entity_t *entity, infos_t *infos, float elapsed)

@@ -23,13 +23,14 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/entities/buffer.c								\
 					src/elements/entities/player.c								\
 					src/elements/entities/particle.c							\
-					src/elements/entities/interactable.c						\
-					src/elements/entities/npc.c									\
 					src/elements/entities/text.c								\
 					src/elements/entities/text_update_fcts.c					\
 					src/elements/entities/buttons/button.c						\
 					src/elements/entities/buttons/button_default_fcts.c			\
-					src/elements/entities/buttons/button_types.c
+					src/elements/entities/buttons/button_types.c				\
+					src/elements/entities/interactable/interactable.c			\
+					src/elements/entities/interactable/npc.c					\
+					src/elements/entities/interactable/trigger.c
 
 SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/scene_elements.c									\

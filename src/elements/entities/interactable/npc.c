@@ -9,13 +9,13 @@
 #include "my_rpg.h"
 #include "elements/entities/npc.h"
 
-npc_t *npc_create(sfVector2f pos, sfTexture *texture)
+npc_t *npc_create(sfVector2f pos, sfTexture *texture, char *action)
 {
     npc_t *npc = (npc_t*) interactable_create(sizeof(npc_t), pos, texture);
 
     if (!npc)
         return (NULL);
-    my_strcpy(npc->action_name, "Parler\0");
+    my_strcpy(npc->action_name, action);
     npc->update = &npc_update;
     npc->speed = 1;
     npc->mov_target = (sfVector2f) {-1, -1};
