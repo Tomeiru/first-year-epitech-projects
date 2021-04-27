@@ -67,6 +67,7 @@ void update_hover(infos_t *infos);
 
 void int_to_str(int value, char *buff, int buff_len);
 int str_to_int(char *str);
+float str_to_float(char *str);
 
 void sprite_set_origin_center(sfSprite *sprite);
 void text_set_origin_center(sfText *text);

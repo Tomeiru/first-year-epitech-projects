@@ -42,7 +42,7 @@ char **args, infos_t *infos, element_t *element)
         return;
     pos = (sfVector2f) {str_to_int(args[1]), str_to_int(args[2])};
     if (args[3])
-        npc->speed = str_to_int(args[3]);
+        npc->speed = str_to_float(args[3]);
     npc->mov_target = pos;
 }
 

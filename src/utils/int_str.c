@@ -37,3 +37,19 @@ int str_to_int(char *str)
         value *= -1;
     return (value);
 }
+
+float str_to_float(char *str)
+{
+    char *cpy = str;
+    float value = 0;
+
+    for (; *cpy && *cpy != '.'; cpy++);
+    if (!*cpy)
+        return (str_to_int(str));
+    *cpy = 0;
+    value = str_to_int(str);
+    cpy++;
+    for (float fact = 0.1; *cpy; cpy++, fact *= 0.1)
+        value += (*cpy - '0') * fact;
+    return (value);
+}

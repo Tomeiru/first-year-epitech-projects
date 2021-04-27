@@ -9,9 +9,9 @@ ADD TRIGGER 1550 1650 Activer
         IF PLAYER_IN_RANGE 100
             SET_PLAYER_MOVE 0
             CAM_TARGET
-            MOVE 630 630 4
-            MOVE 660 660 1
-            MOVE 630 630 1
+            MOVE 649 649 4
+            MOVE 650 650 0.02
+            MOVE 649 649 0.02
             MOVE 1550 1650 4
             CAM_TARGET PLAYER
             SET_PLAYER_MOVE 1
