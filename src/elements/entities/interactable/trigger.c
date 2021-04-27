@@ -6,6 +6,7 @@
 */
 
 #include <math.h>
+#include <stdlib.h>
 #include "my_rpg.h"
 #include "elements/entities/npc.h"
 
@@ -18,6 +19,7 @@ npc_t *trigger_create(sfVector2f pos, char *action)
     my_strcpy(npc->action_name, action);
     npc->move = &trigger_move;
     npc->draw = &trigger_draw;
+    npc->destroy = &trigger_destroy;
     npc->update = &npc_update;
     npc->speed = 1;
     npc->mov_target = (sfVector2f) {-1, -1};
@@ -35,4 +37,9 @@ void trigger_draw(element_t *element, sfRenderWindow *window)
 {
     UNUSED(element);
     UNUSED(window);
+}
+
+void trigger_destroy(element_t *element)
+{
+    free(element);
 }

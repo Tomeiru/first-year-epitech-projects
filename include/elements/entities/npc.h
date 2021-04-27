@@ -40,5 +40,6 @@ void npc_update(entity_t *entity, infos_t *infos, float elapsed);
 npc_t *trigger_create(sfVector2f pos, char *action);
 void trigger_move(element_t *element, sfVector2f pos);
 void trigger_draw(element_t *element, sfRenderWindow *window);
+void trigger_destroy(element_t *element);
 
 #endif /* !NPC_H_ */

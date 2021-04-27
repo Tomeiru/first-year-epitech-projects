@@ -1,20 +1,20 @@
-ADD NPC 100 100 Parler
+ADD NPC 600 600 Parler
     UPDATE
-        MOVE 200 200
-        MOVE 100 100
+        MOVE 600 600
+        MOVE 700 700
     END
 
-IF HAS_ITEM
-    ADD TRIGGER 1000 700 Activer
-        UPDATE
-            IF PLAYER_IN_RANGE 100
-                SET_PLAYER_MOVE 0
-                CAM_TARGET
-                MOVE 1000 900
-                MOVE 1000 700
-                CAM_TARGET PLAYER
-                SET_PLAYER_MOVE 1
-                DESTROY
-            FI
-        END
-FI
+ADD TRIGGER 1550 1650 Activer
+    UPDATE
+        IF PLAYER_IN_RANGE 100
+            SET_PLAYER_MOVE 0
+            CAM_TARGET
+            MOVE 630 630 4
+            MOVE 660 660 1
+            MOVE 630 630 1
+            MOVE 1550 1650 4
+            CAM_TARGET PLAYER
+            SET_PLAYER_MOVE 1
+            DESTROY
+        FI
+    END
