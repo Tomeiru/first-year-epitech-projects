@@ -5,13 +5,13 @@ ADD 100 100
     END
 
 IF HAS_ITEM
-    ADD 500 500
+    ADD 1000 700
         UPDATE
             IF PLAYER_IN_RANGE 200
-                MOVE 500 650
-            FI
-            IF PLAYER_IN_RANGE 20
-                MOVE 500 500
+                CAM_TARGET
+                MOVE 1000 900
+                MOVE 1000 700
+                CAM_TARGET PLAYER
             FI
         END
 FI

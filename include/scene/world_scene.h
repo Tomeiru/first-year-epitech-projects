@@ -30,6 +30,7 @@ typedef struct world_scene_s {
     pause_t *pause;
     inventory_t *inventory;
     player_t *player;
+    element_t *cam_target;
 } world_scene_t;
 
 scene_t *world_scene_create(infos_t *infos);
@@ -45,5 +46,7 @@ int check_world_load(world_scene_t *world_scene, infos_t *infos);
 void camera_move(world_scene_t *world_scene, infos_t *infos, float elapsed);
 void camera_move_limits(sfVector2f *move, const sfView *view,
 world_scene_t *world_scene);
+void camera_move_view(sfView *view, sfVector2f move,
+world_scene_t *world_scene, infos_t *infos);
 
 #endif /* !WORLD_SCENE_H_ */

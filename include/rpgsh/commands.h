@@ -13,26 +13,31 @@ typedef struct element_s element_t;
 typedef void (*rpgsh_command_fct_t)(char ***line,
 char **args, infos_t *infos, element_t *element);
 
-#define NB_COMMANDS 2
+#define NB_COMMANDS 3
 
 void add_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
 void move_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
+void cam_target_rpgsh_command(char ***line,
+char **args, infos_t *infos, element_t *element);
 
 const char *COMMAND_STR[] = {
     "ADD",
-    "MOVE"
+    "MOVE",
+    "CAM_TARGET"
 };
 
 const int COMMAND_LENGTH[] = {
     3,
-    4
+    4,
+    10
 };
 
 const rpgsh_command_fct_t COMMAND_FCT[] = {
     &add_rpgsh_command,
-    &move_rpgsh_command
+    &move_rpgsh_command,
+    &cam_target_rpgsh_command
 };
 
 #endif /* !COMMANDS_H_ */

@@ -41,6 +41,7 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
     world_scene->player = player;
     world_scene->pause = pause;
     world_scene->inventory = inventory;
+    world_scene->cam_target = (element_t*) player;
     scene_add_element(scene, (element_t*) player, 1);
     create_list(&(scene->subwindows), pause);
     create_list(&(scene->subwindows), inventory);
