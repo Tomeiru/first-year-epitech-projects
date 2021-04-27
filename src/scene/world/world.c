@@ -21,7 +21,7 @@ int map_id, int spawn_id, infos_t *infos)
     if (!map)
         return (1);
     if (world_scene->map)
-        map_destroy(world_scene->map);
+        map_destroy(world_scene->map, world_scene);
     world_scene->map = map;
     sfSprite_setTexture(world_scene->background, map->map_texture, 0);
     world_scene->player->move((element_t*) world_scene->player, spawn);

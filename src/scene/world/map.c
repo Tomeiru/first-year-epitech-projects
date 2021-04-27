@@ -10,6 +10,7 @@
 #include "my_rpg.h"
 #include "map.h"
 #include "rpgsh/rpgsh.h"
+#include "scene/world_scene.h"
 
 map_t *map_create(char *path)
 {
@@ -27,6 +28,8 @@ map_t *map_create(char *path)
         return (NULL);
     map->map_size = sfTexture_getSize(map->map_texture);
     free(bkgd_path);
+    free(mask_path);
+    free(script_path);
     return (map);
 }
 
@@ -48,8 +51,15 @@ sfColor map_check_mask(map_t *map, sfIntRect hb, unsigned char r_value)
     return (sfBlack);
 }
 
-void map_destroy(map_t *map)
+void map_destroy(map_t *map, world_scene_t *world_scene)
 {
+    element_t *element;
+
+    for (list_t *list = world_scene->entities; list; list = list->next) {
+        element = (element_t*) list->data;
+        if (element->type == INTERACTABLE)
+            scene_remove_element((scene_t*) world_scene, element, 1);
+    }
     for (char **line = map->script; *line; line++)
         free(*line);
     free(map->script);

@@ -82,7 +82,7 @@ void world_scene_destroy(scene_t *scene)
     world_scene_t *world_scene = (world_scene_t*) scene;
     list_t *next;
 
-    map_destroy(world_scene->map);
+    map_destroy(world_scene->map, world_scene);
     for (list_t *list = scene->subwindows; list; list = next) {
         next = list->next;
         ((subwindow_t*) list->data)->destroy((subwindow_t*) list->data);

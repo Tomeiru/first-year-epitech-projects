@@ -24,10 +24,12 @@ char **open_rpgsh_file(char *filename)
     while ((len = getline(&line, &n, file)) > -1) {
         if (line[len - 1] == '\n')
             line[len - 1] = 0;
-        add_line(&lines, line, size);
-        size++;
+        add_line(&lines, line, size++);
         line = NULL;
-        n = 0;
+    }
+    if (lines == NULL) {
+        lines = malloc(sizeof(char*));
+        lines[0] = NULL;
     }
     return (lines);
 }
