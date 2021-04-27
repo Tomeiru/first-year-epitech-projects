@@ -18,6 +18,7 @@ typedef struct map_s {
     sfTexture *map_texture;
     sfImage *mask_img;
     sfVector2u map_size;
+    char **script;
 } map_t;
 
 map_t *map_create(char *path);

@@ -7,8 +7,9 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
-#include "scene/world_scene.h"
 #include "actions.h"
+#include "rpgsh/rpgsh.h"
+#include "scene/world_scene.h"
 
 scene_t *world_scene_create(infos_t *infos)
 {
@@ -36,13 +37,14 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
 
     if (!pause || !player || !inventory)
         return;
+    world_scene->world_pause = 0;
     world_scene->player = player;
     world_scene->pause = pause;
     world_scene->inventory = inventory;
     scene_add_element(scene, (element_t*) player, 1);
     create_list(&(scene->subwindows), pause);
     create_list(&(scene->subwindows), inventory);
-    world_load(world_scene, 0, 0);
+    world_load(world_scene, 0, 0, infos);
 }
 
 int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
@@ -50,15 +52,12 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
     world_scene_t *world_scene = (world_scene_t*) scene;
 
     update_hover(infos);
-    if (check_world_load(world_scene))
+    if (check_world_load(world_scene, infos))
         return (QUIT_GAME_ACTION);
-    if (world_scene->pause->pause) {
-        world_scene->pause->update((subwindow_t*)
-        world_scene->pause, infos, elapsed);
-        return (0);
-    }
     camera_move(world_scene, infos, elapsed);
-    scene_update_elements(scene, infos, elapsed);
+    if (!world_scene->world_pause)
+        scene_update_elements(scene, infos, elapsed);
+    scene_update_subwindows(scene, infos, elapsed);
     return (0);
 }
 

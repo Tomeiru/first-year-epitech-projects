@@ -6,11 +6,13 @@
 */
 
 #include "my_rpg.h"
+#include "maps.h"
 #include "scene/world_scene.h"
 #include "graphics/texture.h"
-#include "maps.h"
+#include "rpgsh/rpgsh.h"
 
-int world_load(world_scene_t *world_scene, int map_id, int spawn_id)
+int world_load(world_scene_t *world_scene,
+int map_id, int spawn_id, infos_t *infos)
 {
     char *path = MAPS_PATH[map_id];
     const sfVector2f spawn = MAPS_SPAWN[map_id][spawn_id];
@@ -23,10 +25,11 @@ int world_load(world_scene_t *world_scene, int map_id, int spawn_id)
     world_scene->map = map;
     sfSprite_setTexture(world_scene->background, map->map_texture, 0);
     world_scene->player->move((element_t*) world_scene->player, spawn);
+    execute_rpgsh(world_scene->map->script, infos, NULL);
     return (0);
 }
 
-int check_world_load(world_scene_t *world_scene)
+int check_world_load(world_scene_t *world_scene, infos_t *infos)
 {
     player_t *player = world_scene->player;
     sfColor color = map_check_mask(world_scene->map,
@@ -34,5 +37,5 @@ int check_world_load(world_scene_t *world_scene)
 
     if (!color.r)
         return (0);
-    return (world_load(world_scene, color.g, color.b));
+    return (world_load(world_scene, color.g, color.b, infos));
 }

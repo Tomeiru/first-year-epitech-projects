@@ -1,0 +1,17 @@
+ADD 100 100
+    UPDATE
+        MOVE 200 200
+        MOVE 100 100
+    END
+
+IF HAS_ITEM
+    ADD 500 500
+        UPDATE
+            IF PLAYER_IN_RANGE 200
+                MOVE 500 650
+            FI
+            IF PLAYER_IN_RANGE 20
+                MOVE 500 500
+            FI
+        END
+FI
