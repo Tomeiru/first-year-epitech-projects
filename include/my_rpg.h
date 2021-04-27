@@ -18,8 +18,6 @@
 #include "elements/entities/entity.h"
 #include "elements/entities/text.h"
 
-#include "settings.h"
-
 #define WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080
 
@@ -36,6 +34,11 @@ typedef enum game_state_e {
     SETTINGS,
     WORLD
 } game_state_t;
+
+typedef struct settings_s {
+    int sound_level;
+    int fps;
+} settings_t;
 
 typedef struct infos_s {
     sfRenderWindow *window;
