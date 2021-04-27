@@ -35,4 +35,8 @@ void buffer_clear(buffer_t *buffer);
 void buffer_draw(element_t *element, sfRenderWindow *window);
 void buffer_destroy(element_t *element);
 
+void buffer_square(buffer_t *buffer, sfIntRect rect, sfColor color);
+void buffer_circle(buffer_t *buffer, sfVector2f pos,
+int radius, sfColor color);
+
 #endif /* !BUFFER_H_ */

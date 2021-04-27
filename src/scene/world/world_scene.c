@@ -24,6 +24,7 @@ scene_t *world_scene_create(infos_t *infos)
     world_scene->post_init = &world_scene_post_init;
     world_scene->event = &world_scene_event;
     world_scene->map = NULL;
+    world_scene->time = 0;
     return (scene);
 }
 
@@ -60,6 +61,7 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
         world_scene->pause, infos, elapsed);
         return (0);
     }
+    world_scene->time += elapsed;
     bar_set_value(world_scene->hud->health_bar, world_scene->hud->health_bar->value - 0.1);
     camera_move(world_scene, infos, elapsed);
     scene_update_elements(scene, infos, elapsed);

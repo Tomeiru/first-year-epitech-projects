@@ -31,6 +31,7 @@ typedef struct world_scene_s {
     inventory_t *inventory;
     hud_t *hud;
     player_t *player;
+    float time;
 } world_scene_t;
 
 scene_t *world_scene_create(infos_t *infos);

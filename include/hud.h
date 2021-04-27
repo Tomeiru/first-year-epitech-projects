@@ -10,6 +10,7 @@
 
 #include "graphics/subwindow.h"
 #include "elements/bar.h"
+#include "elements/entities/particles/meteo.h"
 
 typedef struct hud_s {
     sfSprite *background;
@@ -21,6 +22,7 @@ typedef struct hud_s {
     subwindow_draw_fct_t draw;
     subwindow_destroy_fct_t destroy;
     bar_t *health_bar;
+    buffer_t *meteo;
 } hud_t;
 
 hud_t *hud_create(infos_t *infos);

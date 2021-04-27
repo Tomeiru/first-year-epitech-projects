@@ -31,7 +31,9 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/entities/buttons/button.c						\
 					src/elements/entities/buttons/button_default_fcts.c			\
 					src/elements/entities/buttons/button_types.c				\
-					src/elements/entities/particles/falling_particle.c
+					src/elements/entities/particles/falling_particle.c			\
+					src/elements/entities/particles/meteo.c						\
+					src/elements/entities/particles/meteo_effects.c
 
 SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/scene_elements.c									\
