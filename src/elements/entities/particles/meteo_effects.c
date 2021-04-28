@@ -45,7 +45,7 @@ sfVector2f top_left, sfVector2f player_pos, float darkness)
                 (player_screen_pos.x + x) / BUFFER_SCALE,
                 (player_screen_pos.y + y) / BUFFER_SCALE};
             if (buffer_pos.x >= buffer->size.x ||
-            buffer_pos.y >= buffer->pos.y)
+            buffer_pos.y >= buffer->size.y)
                 continue;
             buffer_put_pixel(buffer, light, buffer_pos);
         }
