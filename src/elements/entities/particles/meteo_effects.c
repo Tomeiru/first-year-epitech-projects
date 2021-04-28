@@ -39,13 +39,15 @@ sfVector2f top_left, sfVector2f player_pos, float darkness)
         return;
     for (int y = -NIGHT_VIEW; y <= NIGHT_VIEW; y += BUFFER_SCALE) {
         for (int x = -NIGHT_VIEW; x <= NIGHT_VIEW; x += BUFFER_SCALE) {
-            if (x * x + y * y <= NIGHT_VIEW * NIGHT_VIEW) {
-                buffer_pos = (sfVector2u) {
-                    (player_screen_pos.x + x) / BUFFER_SCALE,
-                    (player_screen_pos.y + y) / BUFFER_SCALE
-                };
-                buffer_put_pixel(buffer, light, buffer_pos);
-            }
+            if (x * x + y * y > NIGHT_VIEW * NIGHT_VIEW)
+                continue;
+            buffer_pos = (sfVector2u) {
+                (player_screen_pos.x + x) / BUFFER_SCALE,
+                (player_screen_pos.y + y) / BUFFER_SCALE};
+            if (buffer_pos.x >= buffer->size.x ||
+            buffer_pos.y >= buffer->pos.y)
+                continue;
+            buffer_put_pixel(buffer, light, buffer_pos);
         }
     }
 }
