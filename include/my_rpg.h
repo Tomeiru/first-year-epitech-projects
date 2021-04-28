@@ -71,4 +71,7 @@ void text_set_origin_center(sfText *text);
 
 sfVector2f vector_normalize(sfVector2f vec);
 
+void living_walk_animation(sfSprite *sprite,
+sfVector2f move, float *anim, float speed);
+
 #endif /* !MY_DEFENDER_H_ */

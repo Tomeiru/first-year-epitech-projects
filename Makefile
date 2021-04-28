@@ -56,7 +56,8 @@ UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/origins.c											\
 					src/utils/elements_interact.c								\
 					src/utils/math.c											\
-					src/utils/physics.c
+					src/utils/physics.c											\
+					src/utils/animation.c
 
 LIB_DIR		=	./mylib
 INC_DIR		=	./include

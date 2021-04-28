@@ -20,6 +20,7 @@ player_t *player_create(infos_t *infos)
     if (!player || !sprite)
         return (NULL);
     sfSprite_setTexture(sprite, get_texture(infos, PLAYER_TEXT), 0);
+    sfSprite_setTextureRect(sprite, (sfIntRect) {0, 0, 64, 64});
     player->sprite = sprite;
     player->update = &player_update;
     player->health = 50;
@@ -56,4 +57,6 @@ void player_move_update(player_t *player, map_t *map, float elapsed)
         return;
     player->move((element_t*) player, (sfVector2f)
     {player->pos.x + move.x, player->pos.y + move.y});
+    living_walk_animation(player->sprite, move,
+    &(player->anim), speed * elapsed);
 }
