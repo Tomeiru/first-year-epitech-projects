@@ -10,28 +10,31 @@
 #include "elements/entities/particles/meteo.h"
 #include "scene/world_scene.h"
 
-void night_effect(buffer_t *buffer, infos_t *infos)
+void night_effect(buffer_t *buffer, infos_t *infos, float darkness)
 {
-    sfColor dark = {0, 0, 0, 140};
+    world_scene_t *world_scene = (world_scene_t*) infos->scene;
     const sfView *view = sfRenderWindow_getView(infos->window);
     sfVector2f center = sfView_getCenter(view);
     sfVector2f top_left = {center.x - WINDOW_WIDTH / 2,
     center.y - WINDOW_HEIGHT / 2};
-    sfVector2f player_pos = ((world_scene_t*) infos->scene)->player->pos;
+    sfVector2f player_pos = world_scene->player->pos;
+    sfColor color = {0, 0, 0, darkness * 140};
 
     for (int y = 0; y < WINDOW_HEIGHT; y++) {
         for (int x = 0; x < WINDOW_WIDTH; x++)
-            buffer_put_pixel(buffer, dark, (sfVector2u) {x, y});
+            buffer_put_pixel(buffer, color, (sfVector2u) {x, y});
     }
-    night_effect_player_view(buffer, top_left, player_pos);
+    night_effect_player_view(buffer, top_left, player_pos, darkness);
 }
 
-void night_effect_player_view(buffer_t *buffer,
-sfVector2f top_left, sfVector2f player_pos)
+void night_effect_player_view(buffer_t *buffer, sfVector2f top_left,
+sfVector2f player_pos, float darkness)
 {
-    sfColor light = {0, 0, 0, 10};
+    sfColor light = {0, 0, 0, darkness * 80};
     sfVector2u pos;
 
+    if (darkness < 0.25)
+        return;
     for (int y = -NIGHT_VIEW; y <= NIGHT_VIEW; y++) {
         for (int x = -NIGHT_VIEW; x <= NIGHT_VIEW; x++) {
             if (x * x + y * y <= NIGHT_VIEW * NIGHT_VIEW) {
