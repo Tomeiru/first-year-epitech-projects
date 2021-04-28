@@ -54,21 +54,26 @@ sfVector2f top_left, sfVector2f player_pos, float darkness)
 
 void rain_effect(buffer_t *buffer, float time)
 {
-    int offset = 0;
-    int x_offset = 0;
+    int x_pos = 0;
+    int y_pos = 0;
+    int size = 0;
+    int speed = 0;
     int y_offset = 0;
 
-    offset = ceil(time) * 10;
-    x_offset = offset % (RAIN_LENGTH * 2);
-    y_offset = offset % RAIN_LENGTH;
-    for (unsigned int y = y_offset; y < buffer->size.y; y += RAIN_SPACE) {
-        for (unsigned int x = x_offset; x < buffer->size.x; x += RAIN_SPACE * 2)
-            draw_rain_drop(buffer, x, y);
+    for (int i = 0; i < RAIN_DROPLET; i++) {
+        size = RAIN_SIZE_BASE + RAIN_SIZE_BONUS * cos(i) * cos(i);
+        speed = RAIN_SPEED_BASE + RAIN_SPEED_BONUS * sin(i) * sin(i);
+        y_offset = sin(i) * sin(i) * 648;
+        x_pos = buffer->size.x * cos(i * i);
+        y_pos = (((int) time) * speed + y_offset) % buffer->size.y;
+        draw_rain_drop(buffer, x_pos, y_pos, size);
     }
 }
 
-void draw_rain_drop(buffer_t *buffer, int x, int y)
+void draw_rain_drop(buffer_t *buffer, int x, int y, unsigned int size)
 {
-    for (int i = 0; i < RAIN_LENGTH; i++)
-        buffer_put_pixel(buffer, RAIN_COLOR, (sfVector2u) {x + i, y + i});
+    for (unsigned int i = 0; i < size; i++) {
+        if (y + i < buffer->size.y)
+            buffer_put_pixel(buffer, RAIN_COLOR, (sfVector2u) {x, y + i});
+    }
 }

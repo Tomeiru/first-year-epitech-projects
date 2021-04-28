@@ -10,9 +10,12 @@
 
 #define BUFFER_SCALE 4
 
-#define RAIN_LENGTH 30
-#define RAIN_SPACE 50
+#define RAIN_DROPLET 40
 #define RAIN_COLOR (sfColor){39,115,175,100}
+#define RAIN_SIZE_BASE 15
+#define RAIN_SIZE_BONUS 10
+#define RAIN_SPEED_BASE 7
+#define RAIN_SPEED_BONUS 3
 
 #define NIGHT_VIEW 200
 
@@ -25,6 +28,6 @@ void night_effect(buffer_t *meteo, infos_t *infos, float darkness);
 void night_effect_player_view(buffer_t *buffer, sfVector2f top_left,
 sfVector2f player_pos, float darkness);
 void rain_effect(buffer_t *meteo, float time);
-void draw_rain_drop(buffer_t *meteo, int x, int y);
+void draw_rain_drop(buffer_t *buffer, int x, int y, unsigned int size);
 
 #endif /* !METEO_H_ */
