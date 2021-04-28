@@ -8,8 +8,10 @@
 #ifndef METEO_H_
 #define METEO_H_
 
-#define RAIN_LENGTH 60
-#define RAIN_SPACE 90
+#define BUFFER_SCALE 4
+
+#define RAIN_LENGTH 30
+#define RAIN_SPACE 50
 #define RAIN_COLOR (sfColor){39,115,175,100}
 
 #define NIGHT_VIEW 200

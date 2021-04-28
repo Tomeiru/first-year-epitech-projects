@@ -20,29 +20,31 @@ void night_effect(buffer_t *buffer, infos_t *infos, float darkness)
     sfVector2f player_pos = world_scene->player->pos;
     sfColor color = {0, 0, 0, darkness * 140};
 
-    for (int y = 0; y < WINDOW_HEIGHT; y++) {
-        for (int x = 0; x < WINDOW_WIDTH; x++)
+    for (unsigned int y = 0; y < buffer->size.y; y++) {
+        for (unsigned int x = 0; x < buffer->size.x; x++)
             buffer_put_pixel(buffer, color, (sfVector2u) {x, y});
     }
     night_effect_player_view(buffer, top_left, player_pos, darkness);
 }
 
-void night_effect_player_view(buffer_t *buffer, sfVector2f top_left,
-sfVector2f player_pos, float darkness)
+void night_effect_player_view(buffer_t *buffer,
+sfVector2f top_left, sfVector2f player_pos, float darkness)
 {
     sfColor light = {0, 0, 0, darkness * 80};
-    sfVector2u pos;
+    sfVector2f player_screen_pos = {player_pos.x - top_left.x,
+    player_pos.y - top_left.y};
+    sfVector2u buffer_pos;
 
     if (darkness < 0.25)
         return;
-    for (int y = -NIGHT_VIEW; y <= NIGHT_VIEW; y++) {
-        for (int x = -NIGHT_VIEW; x <= NIGHT_VIEW; x++) {
+    for (int y = -NIGHT_VIEW; y <= NIGHT_VIEW; y += BUFFER_SCALE) {
+        for (int x = -NIGHT_VIEW; x <= NIGHT_VIEW; x += BUFFER_SCALE) {
             if (x * x + y * y <= NIGHT_VIEW * NIGHT_VIEW) {
-                pos = (sfVector2u) {player_pos.x - top_left.x + x,
-                player_pos.y - top_left.y + y};
-                if (pos.x >= WINDOW_WIDTH || pos.y >= WINDOW_HEIGHT)
-                    continue;
-                buffer_put_pixel(buffer, light, pos);
+                buffer_pos = (sfVector2u) {
+                    (player_screen_pos.x + x) / BUFFER_SCALE,
+                    (player_screen_pos.y + y) / BUFFER_SCALE
+                };
+                buffer_put_pixel(buffer, light, buffer_pos);
             }
         }
     }
@@ -57,8 +59,8 @@ void rain_effect(buffer_t *buffer, float time)
     offset = ceil(time) * 10;
     x_offset = offset % (RAIN_LENGTH * 2);
     y_offset = offset % RAIN_LENGTH;
-    for (int y = y_offset; y < WINDOW_HEIGHT; y += RAIN_SPACE) {
-        for (int x = x_offset; x < WINDOW_WIDTH; x += RAIN_SPACE * 2)
+    for (unsigned int y = y_offset; y < buffer->size.y; y += RAIN_SPACE) {
+        for (unsigned int x = x_offset; x < buffer->size.x; x += RAIN_SPACE * 2)
             draw_rain_drop(buffer, x, y);
     }
 }

@@ -15,10 +15,13 @@
 buffer_t *meteo_create(void)
 {
     buffer_t *buffer = buffer_create(sizeof(buffer_t),
-    (sfVector2f) {0, 0}, (sfVector2u) {WINDOW_WIDTH, WINDOW_HEIGHT});
+    (sfVector2f) {0, 0}, (sfVector2u)
+    {WINDOW_WIDTH / BUFFER_SCALE, WINDOW_HEIGHT / BUFFER_SCALE});
 
     if (!buffer)
         return (NULL);
+    sfSprite_setScale(buffer->sprite,
+    (sfVector2f) {BUFFER_SCALE, BUFFER_SCALE});
     buffer->update = &meteo_update;
     return (buffer);
 }
