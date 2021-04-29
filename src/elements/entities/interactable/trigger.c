@@ -17,6 +17,7 @@ npc_t *trigger_create(sfVector2f pos, char *action)
     if (!npc)
         return (NULL);
     my_strcpy(npc->action_name, action);
+    npc->hitbox = (sfIntRect) {pos.x, pos.y, 0, 0};
     npc->move = &trigger_move;
     npc->draw = &trigger_draw;
     npc->destroy = &trigger_destroy;

@@ -27,6 +27,8 @@ player_t *player_create(infos_t *infos)
     player->max_health = 6;
     player->speed = 3;
     player->can_move = 1;
+    player->anim = 0;
+    player->dir = NORTH;
     sprite_set_origin_center(sprite);
     element_set_hitbox(element, sfSprite_getGlobalBounds(sprite));
     return (player);
@@ -37,12 +39,13 @@ void player_update(entity_t *entity, infos_t *infos, float elapsed)
     player_t *player = (player_t*) entity;
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
 
-    player_move_update(player, world_scene->map, elapsed);
+    player_move_update(player, world_scene->map, infos, elapsed);
     element_behind_wall((element_t*) player, world_scene->map);
     living_walk_sprite_anim(player->sprite, player->dir, player->anim);
 }
 
-void player_move_update(player_t *player, map_t *map, float elapsed)
+void player_move_update(player_t *player,
+map_t *map, infos_t *infos, float elapsed)
 {
     sfVector2f move = {0, 0};
     float speed = player->speed * elapsed;
@@ -55,9 +58,11 @@ void player_move_update(player_t *player, map_t *map, float elapsed)
         move.y = sfKeyboard_isKeyPressed(sfKeyZ) ? -speed : speed;
     if (sfKeyboard_isKeyPressed(sfKeyQ) ^ sfKeyboard_isKeyPressed(sfKeyD))
         move.x = sfKeyboard_isKeyPressed(sfKeyQ) ? -speed : speed;
-    prior_map_collision(&move, player->hitbox, map);
     walk_animation_set_anim_and_dir(&(player->anim),
     &(player->dir), move, speed);
+    prior_map_collision(&move, player->hitbox, map);
+    prior_element_collision((element_t*) player,
+    &move, player->hitbox, infos);
     if (move.x == 0 && move.y == 0)
         return;
     player->move((element_t*) player, (sfVector2f)

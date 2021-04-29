@@ -35,6 +35,7 @@ typedef struct player_s {
 
 player_t *player_create(infos_t *infos);
 void player_update(entity_t *entity, infos_t *infos, float elapsed);
-void player_move_update(player_t *player, map_t *map, float elapsed);
+void player_move_update(player_t *player,
+map_t *map, infos_t *infos, float elapsed);
 
 #endif /* !PLAYER_H_ */

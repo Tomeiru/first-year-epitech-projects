@@ -61,7 +61,7 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
     if (check_world_load(world_scene, infos))
         return (QUIT_GAME_ACTION);
     world_scene->time += elapsed;
-    if (!world_scene->world_pause)
+    if (!world_scene->world_pause && !world_scene->pause->pause)
         scene_update_elements(scene, infos, elapsed);
     camera_move(world_scene, infos, elapsed);
     scene_update_subwindows(scene, infos, elapsed);
