@@ -18,6 +18,7 @@ buffer_t *meteo_create(void)
 
     if (!buffer)
         return (NULL);
+    buffer->type = BACKGROUND;
     sfSprite_setScale(buffer->sprite,
     (sfVector2f) {BUFFER_SCALE, BUFFER_SCALE});
     buffer->update = &meteo_update;

@@ -26,7 +26,7 @@ hud_t *hud_create(infos_t *infos)
     hud->meteo = meteo;
     hud->action_text = action_text;
     subwindow_add_element((subwindow_t*) hud, (element_t*) health_bar, 0);
-    subwindow_add_element((subwindow_t*) hud, (element_t*) meteo, 1);
     subwindow_add_element((subwindow_t*) hud, (element_t*) action_text, 0);
+    subwindow_add_element((subwindow_t*) hud, (element_t*) meteo, 1);
     return (hud);
 }
