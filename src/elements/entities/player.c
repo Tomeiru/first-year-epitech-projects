@@ -25,7 +25,7 @@ player_t *player_create(infos_t *infos)
     player->update = &player_update;
     player->health = 50;
     player->max_health = 50;
-    player->speed = 5;
+    player->speed = 3;
     player->can_move = 1;
     sprite_set_origin_center(sprite);
     element_set_hitbox(element, sfSprite_getGlobalBounds(sprite));
@@ -49,6 +49,8 @@ void player_move_update(player_t *player, map_t *map, float elapsed)
 
     if (!player->can_move)
         return;
+    if (sfKeyboard_isKeyPressed(sfKeyLShift))
+        speed *= 1.5;
     if (sfKeyboard_isKeyPressed(sfKeyZ) ^ sfKeyboard_isKeyPressed(sfKeyS))
         move.y = sfKeyboard_isKeyPressed(sfKeyZ) ? -speed : speed;
     if (sfKeyboard_isKeyPressed(sfKeyQ) ^ sfKeyboard_isKeyPressed(sfKeyD))
