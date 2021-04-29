@@ -41,7 +41,8 @@ void scene_default_draw(scene_t *scene, infos_t *infos)
     sfRenderWindow_drawSprite(infos->window, scene->background, NULL);
     for (list_t *list = scene->elements; list; list = list->next) {
         element = (element_t*) list->data;
-        element->draw(element, infos->window);
+        if (element->draw)
+            element->draw(element, infos->window);
     }
     for (list_t *list = scene->subwindows; list; list = list->next) {
         subwindow = (subwindow_t*) list->data;
