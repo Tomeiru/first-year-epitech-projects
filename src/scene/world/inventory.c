@@ -15,13 +15,13 @@ inventory_t *inventory_create(infos_t *infos)
     inventory_t *inventory = (inventory_t*) subwindow_create(
     sizeof(inventory_t), infos, (sfVector2f) {1921, 200}, INVENTORY_TEXT);
 
+    for (int i = 0; i < INVENTORY_SIZE; i++)
+        inventory->items[i] = EMPTY;
     if (!inventory || inventory_init(inventory, infos))
         return (NULL);
     inventory->update = &inventory_update;
     inventory->show = 0;
     inventory->anim = 0;
-    for (int i = 0; i < INVENTORY_SIZE; i++)
-        inventory->items[i] = EMPTY;
     return (inventory);
 }
 

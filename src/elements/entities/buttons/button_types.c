@@ -14,8 +14,8 @@ sfVector2f pos, int texture_height_offset)
     button_t *button = button_create_default(sizeof(button_t),
     infos, text_str, pos);
 
-    button->width = 32;
-    button->height = 32;
+    button->width = 35;
+    button->height = 34;
     button->texture_height_offset = texture_height_offset;
     sfSprite_setTexture(button->sprite,
     get_texture(infos, INV_SLOT_TEXT), 0);
