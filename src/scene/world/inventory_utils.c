@@ -9,7 +9,7 @@
 #include "my_rpg.h"
 #include "inventory.h"
 #include "scene/world_scene.h"
-
+/*
 int add_item_to_inventory(inventory_t *inv, list_t **elements,
 unsigned char item_id)
 {
@@ -45,4 +45,4 @@ int slot)
     sfSprite_setTextureRect(element->sprite, (sfIntRect)
     {0, 0, 32, 32});
     return (0);
-}
+}*/

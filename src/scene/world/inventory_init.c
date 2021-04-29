@@ -11,24 +11,21 @@
 #include "scene/world_scene.h"
 #include "elements/entities/button.h"
 #include <unistd.h>
+
 int add_item_to_inventory(inventory_t *inv, list_t **elements, unsigned char item_id);
 int remove_item_from_inventory(inventory_t *inv, list_t **elements,
 int slot);
-
 
 int button_inv_slot_click(element_t *element,
 infos_t *infos, sfMouseButton button_type)
 {
     button_t *button = (button_t*) element;
 
-    if (button_type == sfMouseLeft)
-        write(1, "LEFT\n", 5);
-    if (button_type == sfMouseRight)
-        write(1, "RIGHT\n", 6);
+    UNUSED(button_type);
     button_set_clicked(button, 1, infos);
     return (0);
 }
-
+/*
 static int inv_slots_init(inventory_t *inv, infos_t *infos)
 {
     button_t *element;
@@ -46,8 +43,8 @@ static int inv_slots_init(inventory_t *inv, infos_t *infos)
         subwindow_add_element((subwindow_t*) inv, (element_t*)element, 0);
     }
     return (0);
-}
-
+}*/
+/*
 static int inv_items_init(inventory_t *inv, infos_t *infos)
 {
     sfSprite *sprite;
@@ -92,13 +89,37 @@ static int inv_keybind_init(inventory_t *inv, infos_t *infos)
     }
     return (0);
 }
+*/
+
+static int inventory_create_slots(inventory_t *inv, infos_t *infos)
+{
+    slot_button_t *button;
+    sfVector2f pos;
+
+    for (int i = 0; i < INVENTORY_SIZE; i++) {
+        if (i < 3)
+            pos = (sfVector2f) {63 + i * SHIFT_VALUE * 3, 10};
+        else
+            pos = (sfVector2f) {9 + ((i - 3) % 9) * SHIFT_VALUE,
+            60 + (i - 3) / 9 * 36};
+        button = slot_button_create(infos, pos);
+        if (!button)
+            return (1);
+        button->on_click = &button_inv_slot_click;
+        inv->slots[i] = button;
+        subwindow_add_element((subwindow_t*) inv, (element_t*) button, 1);
+    }
+    return (0);
+}
 
 int inventory_init(inventory_t *inv, infos_t *infos)
 {
-    if (inv_items_init(inv, infos) || inv_slots_init(inv, infos)
-    || inv_keybind_init(inv, infos))
+    /*if (inv_items_init(inv, infos) || inv_slots_init(inv, infos))
         return (1);
     add_item_to_inventory(inv, &inv->elements, 1);
-    remove_item_from_inventory(inv, &inv->elements, 0);
+    remove_item_from_inventory(inv, &inv->elements, 0);*/
+    if (inventory_create_slots(inv, infos))
+        return (1);
+    slot_button_set_item(inv->slots[5], 1);
     return (0);
 }

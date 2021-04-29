@@ -9,6 +9,7 @@
 #define INVENTORY_H_
 
 #include "graphics/subwindow.h"
+#include "elements/entities/slot_button.h"
 
 #define INVENTORY_SPEED 50
 #define INVENTORY_SIZE 21
@@ -31,8 +32,8 @@ typedef struct inventory_s {
     subwindow_destroy_fct_t destroy;
     char show;
     char anim;
-    unsigned char items[24];
-
+    //unsigned char items[24];
+    slot_button_t *slots[24];
 } inventory_t;
 
 inventory_t *inventory_create(infos_t *infos);
