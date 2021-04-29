@@ -39,6 +39,7 @@ void player_update(entity_t *entity, infos_t *infos, float elapsed)
 
     player_move_update(player, world_scene->map, elapsed);
     element_behind_wall((element_t*) player, world_scene->map);
+    living_walk_sprite_anim(player->sprite, player->dir, player->anim);
 }
 
 void player_move_update(player_t *player, map_t *map, float elapsed)
@@ -53,10 +54,10 @@ void player_move_update(player_t *player, map_t *map, float elapsed)
     if (sfKeyboard_isKeyPressed(sfKeyQ) ^ sfKeyboard_isKeyPressed(sfKeyD))
         move.x = sfKeyboard_isKeyPressed(sfKeyQ) ? -speed : speed;
     prior_map_collision(&move, player->hitbox, map);
+    walk_animation_set_anim_and_dir(&(player->anim),
+    &(player->dir), move, speed);
     if (move.x == 0 && move.y == 0)
         return;
     player->move((element_t*) player, (sfVector2f)
     {player->pos.x + move.x, player->pos.y + move.y});
-    living_walk_animation(player->sprite, move,
-    &(player->anim), speed * elapsed);
 }

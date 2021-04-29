@@ -27,6 +27,7 @@ typedef struct player_s {
     float health;
     float max_health;
     float speed;
+    direction_t dir;
     float anim;
     char can_move;
 } player_t;
