@@ -17,6 +17,7 @@ typedef enum element_type_e {
     INTERACTABLE,
     PLAYER,
     PARTICLE,
+    BAR,
     BUTTON,
     TEXT,
     BUFFER,

@@ -12,6 +12,7 @@
 #include "scene/scene.h"
 #include "map.h"
 #include "inventory.h"
+#include "hud.h"
 #include "graphics/pause.h"
 #include "elements/entities/player.h"
 
@@ -28,6 +29,7 @@ typedef struct world_scene_s {
     map_t *map;
     pause_t *pause;
     inventory_t *inventory;
+    hud_t *hud;
     player_t *player;
 } world_scene_t;
 

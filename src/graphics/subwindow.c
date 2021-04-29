@@ -12,12 +12,14 @@ subwindow_t *subwindow_create(size_t size, infos_t *infos,
 sfVector2f pos, texture_t texture)
 {
     subwindow_t *subwindow = malloc(size);
-    sfSprite *sprite = sfSprite_create();
+    sfSprite *sprite = texture != NULL_TEXT ? sfSprite_create() : NULL;
 
-    if (!subwindow)
+    if (!subwindow || (texture != NULL_TEXT && !sprite))
         return (NULL);
-    sfSprite_setTexture(sprite, get_texture(infos, texture), 0);
-    sfSprite_setPosition(sprite, pos);
+    if (sprite) {
+        sfSprite_setTexture(sprite, get_texture(infos, texture), 0);
+        sfSprite_setPosition(sprite, pos);
+    }
     subwindow->background = sprite;
     subwindow->pos = pos;
     subwindow->elements = NULL;

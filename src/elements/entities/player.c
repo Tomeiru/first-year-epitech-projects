@@ -22,6 +22,9 @@ player_t *player_create(infos_t *infos)
     sfSprite_setTexture(sprite, get_texture(infos, PLAYER_TEXT), 0);
     player->sprite = sprite;
     player->update = &player_update;
+    player->health = 50;
+    player->max_health = 50;
+    player->speed = 5;
     player->can_move = 1;
     sprite_set_origin_center(sprite);
     element_set_hitbox(element, sfSprite_getGlobalBounds(sprite));
@@ -40,7 +43,7 @@ void player_update(entity_t *entity, infos_t *infos, float elapsed)
 void player_move_update(player_t *player, map_t *map, float elapsed)
 {
     sfVector2f move = {0, 0};
-    float speed = 5 * elapsed;
+    float speed = player->speed * elapsed;
 
     if (!player->can_move)
         return;

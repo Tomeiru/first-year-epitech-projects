@@ -2,16 +2,15 @@
 ** EPITECH PROJECT, 2021
 ** my_rpg
 ** File description:
-** player
+** dialogue.h
 */
 
-#ifndef PLAYER_H_
-#define PLAYER_H_
+#ifndef DIALOGUE_H_
+#define DIALOGUE_H_
 
 #include "elements/entities/entity.h"
-#include "map.h"
 
-typedef struct player_s {
+typedef struct dialogue_s {
     element_type_t type;
     sfVector2f pos;
     float rot;
@@ -24,14 +23,11 @@ typedef struct player_s {
     get_infos_element_fct_t get_infos;
     destroy_element_fct_t destroy;
     update_entity_fct_t update;
-    float health;
-    float max_health;
-    float speed;
-    char can_move;
-} player_t;
+    sfText *text;
+    float time;
+    char *text_str;
+    int end;
+    char temp;
+} dialogue_t;
 
-player_t *player_create(infos_t *infos);
-void player_update(entity_t *entity, infos_t *infos, float elapsed);
-void player_move_update(player_t *player, map_t *map, float elapsed);
-
-#endif /* !PLAYER_H_ */
+#endif /* !DIALOGUE_H_ */

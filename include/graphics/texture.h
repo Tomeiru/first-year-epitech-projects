@@ -14,6 +14,7 @@
 typedef struct infos_s infos_t;
 
 typedef enum texture_e {
+    NULL_TEXT = -1,
     BUTTONS_TEXT,
     MENU_BACKGROUND_TEXT,
     SETTINGS_BACKGROUND_TEXT,
@@ -22,7 +23,8 @@ typedef enum texture_e {
     SETTINGS_SUBWINDOW_TEXT,
     HOWTOPLAY_IMG_TEXT,
     INVENTORY_TEXT,
-    PLAYER_TEXT
+    PLAYER_TEXT,
+    HUD_TEXT
 } texture_t;
 
 list_t *load_textures(void);
