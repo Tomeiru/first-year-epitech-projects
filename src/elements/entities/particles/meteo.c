@@ -5,8 +5,6 @@
 ** meteo
 */
 
-#include <stdio.h>
-
 #include <math.h>
 #include "my_rpg.h"
 #include "elements/entities/particles/meteo.h"

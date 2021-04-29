@@ -7,6 +7,7 @@
 
 #include "my_rpg.h"
 #include "graphics/texture.h"
+#include "scene/world_scene.h"
 #include "elements/entities/interactable.h"
 
 interactable_t *interactable_create(sfVector2f pos, sfTexture *texture,
@@ -44,4 +45,34 @@ void interactable_get_infos(element_t *element, char *str, int size)
     if (size < 16)
         return;
     my_strcpy(str, interactable->action_name);
+}
+
+void interactable_show_closest(infos_t *infos, hud_t *hud, player_t *player)
+{
+    interactable_t *interactable = (interactable_t*)
+    element_get_closest(infos, player->pos, INTERACTABLE);
+    float dist = 0;
+
+    if (!interactable) {
+        sfText_setString(hud->action_text->text, "");
+        return;
+    }
+    dist = get_distance(player->pos, interactable->pos);
+    if (dist <= PLAYER_ACTION_RANGE)
+        sfText_setString(hud->action_text->text, interactable->action_name);
+    else
+        sfText_setString(hud->action_text->text, "");
+}
+
+void interactable_execute_closest(infos_t *infos, player_t *player)
+{
+    interactable_t *interactable = (interactable_t*)
+    element_get_closest(infos, player->pos, INTERACTABLE);
+    float dist = 0;
+
+    if (!interactable)
+        return;
+    dist = get_distance(player->pos, interactable->pos);
+    if (dist <= PLAYER_ACTION_RANGE)
+        interactable->action(interactable, infos);
 }

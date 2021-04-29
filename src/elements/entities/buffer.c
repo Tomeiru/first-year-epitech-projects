@@ -5,8 +5,6 @@
 ** buffer
 */
 
-#include <stdio.h>
-
 #include <stdlib.h>
 #include <string.h>
 #include "elements/entities/buffer.h"

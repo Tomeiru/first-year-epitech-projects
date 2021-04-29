@@ -11,6 +11,8 @@
 #include "graphics/texture.h"
 #include "elements/element.h"
 
+#define PLAYER_ACTION_RANGE 100
+
 typedef struct interactable_s {
     element_type_t type;
     sfVector2f pos;
@@ -35,5 +37,7 @@ interactable_t *interactable_create(sfVector2f pos, sfTexture *texture,
 interactable_action_fct_t action, char *action_name);
 void interactable_update(entity_t *entity, infos_t *infos, float elapsed);
 void interactable_get_infos(element_t *element, char *str, int size);
+void interactable_show_closest(infos_t *infos, hud_t *hud, player_t *player);
+void interactable_execute_closest(infos_t *infos, player_t *player);
 
 #endif /* !NPC_H_ */

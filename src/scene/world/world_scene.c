@@ -7,8 +7,9 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
-#include "scene/world_scene.h"
 #include "actions.h"
+#include "scene/world_scene.h"
+#include "elements/entities/interactable.h"
 
 scene_t *world_scene_create(infos_t *infos)
 {
@@ -65,20 +66,29 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
     bar_set_value(world_scene->hud->health_bar, world_scene->hud->health_bar->value - 0.1);
     camera_move(world_scene, infos, elapsed);
     scene_update_elements(scene, infos, elapsed);
+    interactable_show_closest(infos, world_scene->hud, world_scene->player);
     return (0);
 }
 
 int world_scene_event(scene_t *scene, infos_t *infos, sfEvent *event)
 {
     world_scene_t *world_scene = (world_scene_t*) scene;
-    sfKeyEvent keyEv = event->key;
 
     if (event->type == sfEvtKeyPressed) {
-        if (keyEv.code == sfKeyTab) {
-            world_scene->player->can_move = 0;
-            inventory_show(world_scene->inventory);
-        } else if (keyEv.code == sfKeyEscape)
-            pause_set_pause(world_scene->pause, infos);
+        switch (event->key.code) {
+            case sfKeyTab:
+                world_scene->player->can_move = 0;
+                inventory_show(world_scene->inventory);
+                return (0);
+            case sfKeyEscape:
+                pause_set_pause(world_scene->pause, infos);
+                return (0);
+            case sfKeyE:
+                interactable_execute_closest(infos, world_scene->player);
+                return (0);
+            default:
+                return (0);
+        }
     }
     return (0);
 }
