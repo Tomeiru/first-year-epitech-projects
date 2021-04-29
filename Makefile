@@ -21,6 +21,7 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/default_element_fcts.c							\
 					src/elements/image.c										\
 					src/elements/entities/buffer.c								\
+					src/elements/entities/enemy.c								\
 					src/elements/entities/player.c								\
 					src/elements/entities/particle.c							\
 					src/elements/entities/interactable.c						\
