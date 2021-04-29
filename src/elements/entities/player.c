@@ -23,8 +23,8 @@ player_t *player_create(infos_t *infos)
     sfSprite_setTextureRect(sprite, (sfIntRect) {0, 0, 64, 64});
     player->sprite = sprite;
     player->update = &player_update;
-    player->health = 50;
-    player->max_health = 50;
+    player->health = 6;
+    player->max_health = 6;
     player->speed = 3;
     player->can_move = 1;
     sprite_set_origin_center(sprite);

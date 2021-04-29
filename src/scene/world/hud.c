@@ -14,7 +14,8 @@ hud_t *hud_create(infos_t *infos)
 {
     hud_t *hud = (hud_t*) subwindow_create(sizeof(hud_t),
     infos, (sfVector2f) {0, 0}, -1);
-    bar_t *health_bar = bar_create(infos, (sfIntRect) {15, 15, 200, 50}, 100);
+    health_bar_t *health_bar =
+    health_bar_create(infos, (sfVector2f) {15, 15}, 6, 6);
     buffer_t *meteo = meteo_create();
     text_t *action_text = text_create("", infos->font,
     (sfVector2f) {10, 1000}, 60);

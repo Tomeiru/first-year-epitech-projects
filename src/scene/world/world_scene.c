@@ -63,9 +63,9 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
         return (0);
     }
     world_scene->time += elapsed;
-    bar_set_value(world_scene->hud->health_bar, world_scene->hud->health_bar->value - 0.1);
-    camera_move(world_scene, infos, elapsed);
     scene_update_elements(scene, infos, elapsed);
+    camera_move(world_scene, infos, elapsed);
+    health_bar_set_value(world_scene->hud->health_bar, world_scene->player->health);
     interactable_show_closest(infos, world_scene->hud, world_scene->player);
     return (0);
 }
