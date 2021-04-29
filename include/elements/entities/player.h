@@ -8,6 +8,7 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
+#include "my_rpg.h"
 #include "elements/entities/entity.h"
 #include "map.h"
 

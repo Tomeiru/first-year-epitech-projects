@@ -26,23 +26,6 @@ int cmp_element_type(void *data1, void *data2)
     return (elem1->type - elem2->type);
 }
 
-void int_to_str(int value, char *buff, int buff_len)
-{
-    int pos = 0;
-    char c;
-
-    if (value == 0)
-        *buff = '0';
-    while (value > 0 && pos < buff_len) {
-        c = value % 10 + '0';
-        for (int i = pos; i >= 0; i--)
-            buff[i + 1] = buff[i];
-        buff[0] = c;
-        pos++;
-        value /= 10;
-    }
-}
-
 int cmp_lb_entries(void *data1, void *data2)
 {
     char *str1 = (char*) data1 + 18;

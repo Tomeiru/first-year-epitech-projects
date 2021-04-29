@@ -40,6 +40,7 @@ void scene_default_draw(scene_t *scene, infos_t *infos);
 void scene_add_element(scene_t *scene, element_t *element, char entity);
 void scene_remove_element(scene_t *scene, element_t *element, char entity);
 void scene_update_elements(scene_t *scene, infos_t *infos, float elapsed);
+void scene_update_subwindows(scene_t *scene, infos_t *infos, float elapsed);
 void scene_destroy_all_elements(scene_t *scene);
 
 int load_scene(infos_t *infos, int action);

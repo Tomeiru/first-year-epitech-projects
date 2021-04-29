@@ -2,14 +2,15 @@
 ** EPITECH PROJECT, 2021
 ** my_rpg
 ** File description:
-** npc.h
+** interactable
 */
 
-#ifndef NPC_H_
-#define NPC_H_
+#ifndef INTERACTABLE_H_
+#define INTERACTABLE_H_
 
 #include "graphics/texture.h"
-#include "elements/element.h"
+#include "elements/entities/entity.h"
+#include "scene/world_scene.h"
 
 #define PLAYER_ACTION_RANGE 100
 
@@ -28,16 +29,24 @@ typedef struct interactable_s {
     update_entity_fct_t update;
     void (*action)(struct interactable_s *interactable, infos_t *infos);
     char action_name[16];
+    char **action_script;
+    int action_instruction;
+    char **update_script;
+    int update_instruction;
 } interactable_t;
 
 typedef void (*interactable_action_fct_t)(interactable_t
 *interactable, infos_t *infos);
 
-interactable_t *interactable_create(sfVector2f pos, sfTexture *texture,
-interactable_action_fct_t action, char *action_name);
+interactable_t *interactable_create(size_t size,
+sfVector2f pos, sfTexture *texture);
+void interactable_create_sprite(interactable_t *interactable,
+sfSprite *sprite, sfTexture *texture, sfVector2f pos);
 void interactable_update(entity_t *entity, infos_t *infos, float elapsed);
 void interactable_get_infos(element_t *element, char *str, int size);
+
 void interactable_show_closest(infos_t *infos, hud_t *hud, player_t *player);
 void interactable_execute_closest(infos_t *infos, player_t *player);
+void interactable_default_action(interactable_t *interactable, infos_t *infos);
 
-#endif /* !NPC_H_ */
+#endif /* !INTERACTABLE_H_ */

@@ -8,8 +8,9 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 #include "actions.h"
-#include "scene/world_scene.h"
+#include "rpgsh/rpgsh.h"
 #include "elements/entities/interactable.h"
+#include "scene/world_scene.h"
 
 scene_t *world_scene_create(infos_t *infos)
 {
@@ -39,15 +40,17 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
 
     if (!pause || !player || !inventory || !hud)
         return;
+    world_scene->world_pause = 0;
     world_scene->player = player;
     world_scene->pause = pause;
     world_scene->inventory = inventory;
     world_scene->hud = hud;
+    world_scene->cam_target = (element_t*) player;
     scene_add_element(scene, (element_t*) player, 1);
     create_list(&(scene->subwindows), pause);
     create_list(&(scene->subwindows), inventory);
     create_list(&(scene->subwindows), hud);
-    world_load(world_scene, 0, 0);
+    world_load(world_scene, 0, 0, infos);
 }
 
 int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
@@ -55,17 +58,13 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
     world_scene_t *world_scene = (world_scene_t*) scene;
 
     update_hover(infos);
-    if (check_world_load(world_scene))
+    if (check_world_load(world_scene, infos))
         return (QUIT_GAME_ACTION);
-    if (world_scene->pause->pause) {
-        world_scene->pause->update((subwindow_t*)
-        world_scene->pause, infos, elapsed);
-        return (0);
-    }
     world_scene->time += elapsed;
-    scene_update_elements(scene, infos, elapsed);
+    if (!world_scene->world_pause)
+        scene_update_elements(scene, infos, elapsed);
     camera_move(world_scene, infos, elapsed);
-    health_bar_set_value(world_scene->hud->health_bar, world_scene->player->health);
+    scene_update_subwindows(scene, infos, elapsed);
     interactable_show_closest(infos, world_scene->hud, world_scene->player);
     return (0);
 }
@@ -98,7 +97,7 @@ void world_scene_destroy(scene_t *scene)
     world_scene_t *world_scene = (world_scene_t*) scene;
     list_t *next;
 
-    map_destroy(world_scene->map);
+    map_destroy(world_scene->map, world_scene);
     for (list_t *list = scene->subwindows; list; list = next) {
         next = list->next;
         ((subwindow_t*) list->data)->destroy((subwindow_t*) list->data);

@@ -18,8 +18,6 @@
 #include "elements/entities/entity.h"
 #include "elements/entities/text.h"
 
-#include "settings.h"
-
 #define WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080
 
@@ -43,6 +41,11 @@ typedef enum direction_s {
     EAST,
     WEST
 } direction_t;
+
+typedef struct settings_s {
+    int sound_level;
+    int fps;
+} settings_t;
 
 typedef struct infos_s {
     sfRenderWindow *window;
@@ -69,9 +72,12 @@ int on_hover_interact(list_t *list, infos_t *infos, sfVector2f pos);
 
 float get_distance(sfVector2f pos1, sfVector2f pos2);
 int cmp_element_type(void *data1, void *data2);
-void int_to_str(int value, char *buff, int buff_len);
 int cmp_lb_entries(void *data1, void *data2);
 void update_hover(infos_t *infos);
+
+void int_to_str(int value, char *buff, int buff_len);
+int str_to_int(char *str);
+float str_to_float(char *str);
 
 void sprite_set_origin_center(sfSprite *sprite);
 void text_set_origin_center(sfText *text);
