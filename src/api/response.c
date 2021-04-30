@@ -20,6 +20,7 @@ response_t *create_basic_response(char **array, int size)
         return (NULL);
     response->value_id = atoi(array[0]);
     response->status = !strcmp(array[1], "OK") ? OK : KO;
+    response->data = NULL;
     set_course_status(response, array, size);
     return (response);
 }
@@ -45,11 +46,12 @@ char **split_response(char *response, int *array_size)
     int size = 0;
 
     while (part) {
-        array = realloc(array, sizeof(char*) * (size++));
+        size++;
+        array = realloc(array, sizeof(char*) * (size));
         if (!array)
             return (NULL);
         array[size - 1] = part;
-        part = strtok(response, ":");
+        part = strtok(NULL, ":");
     }
     *array_size = size;
     return (array);
@@ -72,4 +74,10 @@ void set_course_status(response_t *response, char **array, int size)
     response->course.id = atoi(infos);
     for (; *infos && *infos != '['; infos++);
     set_timestamp_from_str(&(response->course.timestamp), infos);
+}
+
+void response_destroy(response_t *response)
+{
+    free(response->data);
+    free(response);
 }

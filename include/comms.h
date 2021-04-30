@@ -62,13 +62,14 @@ typedef struct response_s {
     course_info_t course;
 } response_t;
 
-void send_command(char *cmd);
+response_t *send_command(char *cmd, int response_type);
 response_t *get_response(int type);
 
 response_t *create_basic_response(char **array, int size);
 char *get_response_str(void);
 char **split_response(char *response, int *array_size);
 void set_course_status(response_t *response, char **array, int size);
+void response_destroy(response_t *response);
 
 float *read_data_2(char **args);
 float *read_data_3(char **args);

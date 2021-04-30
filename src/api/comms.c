@@ -10,12 +10,13 @@
 #include <string.h>
 #include "comms.h"
 
-void send_command(char *cmd)
+response_t *send_command(char *cmd, int response_type)
 {
     int len = strlen(cmd);
 
     write(1, cmd, len);
     write(1, "\n", 1);
+    return (get_response(response_type));
 }
 
 response_t *get_response(int type)
@@ -28,11 +29,16 @@ response_t *get_response(int type)
     if (!str || !(args = split_response(str, &args_nb)) ||
     !(response = create_basic_response(args, args_nb)))
         return (NULL);
-    if (type == 2)
-        response->data = read_data_2(args);
-    else if (type == 3)
-        response->data = read_data_3(args);
-    else
-        response->data = read_data_4(args);
+    switch(type) {
+        case 2:
+            response->data = read_data_2(args);
+            break;
+        case 3:
+            response->data = read_data_3(args);
+            break;
+        case 4:
+            response->data = read_data_4(args);
+            break;
+    }
     return (response);
 }
