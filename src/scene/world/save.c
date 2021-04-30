@@ -37,7 +37,7 @@ void save_game(world_scene_t *world_scene)
 
 void load_save(world_scene_t *world_scene, infos_t *infos)
 {
-    int fd = open("./savefile", O_RDONLY | O_CREAT, 0644);
+    int fd = open("./savefile", O_RDONLY, 0644);
     int map_id;
     int spawn_id;
 
