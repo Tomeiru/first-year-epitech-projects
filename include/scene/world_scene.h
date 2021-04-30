@@ -52,4 +52,10 @@ world_scene_t *world_scene);
 void camera_move_view(sfView *view, sfVector2f move,
 world_scene_t *world_scene, infos_t *infos);
 
+int does_savefile_exists(void);
+void save_game(world_scene_t *world_scene);
+void load_save(world_scene_t *world_scene, infos_t *infos);
+int read_int(int fd);
+float read_float(int fd);
+
 #endif /* !WORLD_SCENE_H_ */

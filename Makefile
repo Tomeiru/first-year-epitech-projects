@@ -54,7 +54,8 @@ SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/world/inventory.c									\
 					src/scene/world/hud.c										\
 					src/scene/world/camera.c									\
-					src/scene/world/map.c
+					src/scene/world/map.c										\
+					src/scene/world/save.c
 
 RPGSH_SCR		=	src/rpgsh/rpgsh.c											\
 					src/rpgsh/file.c											\

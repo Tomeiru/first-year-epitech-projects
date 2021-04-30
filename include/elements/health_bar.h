@@ -13,6 +13,8 @@
 #define HEART_SIZE 64
 #define MAX_HEARTS 10
 
+typedef struct player_s player_t;
+
 typedef struct health_bar_s {
     element_type_t type;
     sfVector2f pos;
@@ -32,6 +34,7 @@ typedef struct health_bar_s {
 
 health_bar_t *health_bar_create(infos_t *infos, sfVector2f pos,
 float value, int max_value);
+void health_bar_update_values(health_bar_t *health_bar, player_t *player);
 void health_bar_set_value(health_bar_t *health_bar, float value);
 void health_bar_draw_hearts(health_bar_t *health_bar, int nb, int type);
 void health_bar_destroy(element_t *element);

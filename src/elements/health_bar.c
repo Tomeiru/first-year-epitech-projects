@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include "graphics/texture.h"
 #include "elements/health_bar.h"
+#include "elements/entities/player.h"
 
 health_bar_t *health_bar_create(infos_t *infos, sfVector2f pos,
 float value, int max_value)
@@ -34,6 +35,12 @@ float value, int max_value)
     health_bar->max_value = max_value;
     health_bar_set_value(health_bar, value);
     return (health_bar);
+}
+
+void health_bar_update_values(health_bar_t *health_bar, player_t *player)
+{
+    health_bar->max_value = player->max_health;
+    health_bar_set_value(health_bar, player->health);
 }
 
 void health_bar_set_value(health_bar_t *health_bar, float value)
