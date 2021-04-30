@@ -30,6 +30,29 @@ void prior_map_collision(sfVector2f *move, sfIntRect hb, map_t *map)
     move->y = 0;
 }
 
+void player_prior_element_collision(element_t *element,
+sfVector2f *move, sfIntRect hb, infos_t *infos)
+{
+    hb.left += move->x;
+    hb.top += move->y;
+    if ((move->x == 0 && move->y == 0) ||
+    !element_collision(element, hb, infos->scene->elements))
+        return;
+    hb.left -= move->x;
+    if (!element_collision(element, hb, infos->scene->elements)) {
+        move->x = 0;
+        return;
+    }
+    hb.left += move->x;
+    hb.top -= move->y;
+    if (!element_collision(element, hb, infos->scene->elements)) {
+        move->y = 0;
+        return;
+    }
+    move->x = 0;
+    move->y = 0;
+}
+
 void prior_element_collision(element_t *element,
 sfVector2f *move, sfIntRect hb, infos_t *infos)
 {

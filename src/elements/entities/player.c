@@ -61,7 +61,7 @@ map_t *map, infos_t *infos, float elapsed)
     walk_animation_set_anim_and_dir(&(player->anim),
     &(player->dir), move, speed);
     prior_map_collision(&move, player->hitbox, map);
-    prior_element_collision((element_t*) player,
+    player_prior_element_collision((element_t*) player,
     &move, player->hitbox, infos);
     if (move.x == 0 && move.y == 0)
         return;
