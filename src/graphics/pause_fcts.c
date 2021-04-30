@@ -26,6 +26,19 @@ infos_t *infos, sfMouseButton button_type)
     return (0);
 }
 
+int button_save(element_t *element,
+infos_t *infos, sfMouseButton button_type)
+{
+    world_scene_t *world_scene = (world_scene_t*) infos->scene;
+    button_t *button = (button_t*) element;
+
+    if (button_type == sfMouseLeft) {
+        save_game(world_scene);
+        button_set_clicked(button, 1, infos);
+    }
+    return (0);
+}
+
 void pause_set_pause(pause_t *pause, infos_t *infos)
 {
     pause->pause = !pause->pause;
