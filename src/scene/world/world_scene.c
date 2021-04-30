@@ -50,10 +50,7 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
     create_list(&(scene->subwindows), pause);
     create_list(&(scene->subwindows), inventory);
     create_list(&(scene->subwindows), hud);
-    if (does_savefile_exists())
-        load_save(world_scene, infos);
-    else
-        world_load(world_scene, 0, 0, infos);
+    world_load_save(world_scene, infos);
 }
 
 int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)

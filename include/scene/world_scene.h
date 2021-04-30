@@ -45,6 +45,7 @@ void world_scene_destroy(scene_t *scene);
 int world_load(world_scene_t *world_scene,
 int map_id, int spawn_id, infos_t *infos);
 int check_world_load(world_scene_t *world_scene, infos_t *infos);
+void world_load_save(world_scene_t *world_scene, infos_t *infos);
 
 void camera_move(world_scene_t *world_scene, infos_t *infos, float elapsed);
 void camera_move_limits(sfVector2f *move, const sfView *view,

@@ -45,3 +45,11 @@ int check_world_load(world_scene_t *world_scene, infos_t *infos)
         save_game(world_scene);
     return (ret);
 }
+
+void world_load_save(world_scene_t *world_scene, infos_t *infos)
+{
+    if (does_savefile_exists())
+        load_save(world_scene, infos);
+    else
+        world_load(world_scene, 0, 0, infos);
+}
