@@ -20,9 +20,10 @@ typedef struct enemy_s {
     rotate_element_fct_t rotate;
     draw_element_fct_t draw;
     on_click_fct_t on_click;
-    set_infos_element_fct_t set_infos;
+    get_infos_element_fct_t get_infos;
     destroy_element_fct_t destroy;
     update_entity_fct_t update;
+    int health;
 } enemy_t;
 
 enemy_t *enemy_create(infos_t *infos);
