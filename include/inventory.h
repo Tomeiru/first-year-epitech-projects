@@ -32,7 +32,7 @@ typedef struct inventory_s {
     subwindow_destroy_fct_t destroy;
     char show;
     char anim;
-    //unsigned char items[24];
+    slot_button_t *slot_ptr;
     slot_button_t *slots[24];
 } inventory_t;
 

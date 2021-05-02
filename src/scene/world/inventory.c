@@ -19,6 +19,7 @@ inventory_t *inventory_create(infos_t *infos)
         return (NULL);
     add_item_to_inventory(inventory, 1);
     add_item_to_inventory(inventory, 2);
+    inventory->slot_ptr = NULL;
     inventory->update = &inventory_update;
     inventory->show = 0;
     inventory->anim = 0;
@@ -65,4 +66,5 @@ void inventory_show(inventory_t *inventory)
         return;
     inventory->show = !inventory->show;
     inventory->anim = 1;
+    inventory->slot_ptr = NULL;
 }

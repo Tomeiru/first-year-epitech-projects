@@ -52,9 +52,21 @@ int remove_item_from_inventory(inventory_t *inv, int slot)
 int button_inv_slot_click(element_t *element,
 infos_t *infos, sfMouseButton button_type)
 {
-    button_t *button = (button_t*) element;
+    inventory_t *inv = ((world_scene_t*) infos->scene)->inventory;
+    slot_button_t *button = (slot_button_t*) element;
+    unsigned char temp;
 
     UNUSED(button_type);
-    button_set_clicked(button, 1, infos);
+    button_set_clicked((button_t *)button, 1, infos);
+    if (inv->slot_ptr == NULL)
+        inv->slot_ptr = button;
+    else {
+        temp = inv->slot_ptr->item;
+        inv->slot_ptr->item = button->item;
+        button->item = temp;
+        slot_button_set_item(inv->slot_ptr, inv->slot_ptr->item);
+        slot_button_set_item(button, button->item);
+        inv->slot_ptr = NULL;
+    }
     return (0);
 }
