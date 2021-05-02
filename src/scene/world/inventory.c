@@ -15,8 +15,10 @@ inventory_t *inventory_create(infos_t *infos)
     inventory_t *inventory = (inventory_t*) subwindow_create(
     sizeof(inventory_t), infos, (sfVector2f) {1921, 200}, INVENTORY_TEXT);
 
-    if (!inventory)
+    if (!inventory || inventory_create_slots(inventory, infos))
         return (NULL);
+    add_item_to_inventory(inventory, 1);
+    add_item_to_inventory(inventory, 2);
     inventory->update = &inventory_update;
     inventory->show = 0;
     inventory->anim = 0;
