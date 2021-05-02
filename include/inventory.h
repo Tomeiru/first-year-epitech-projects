@@ -41,6 +41,11 @@ void inventory_update(subwindow_t *subwindow, infos_t *infos, float elapsed);
 void inventory_anim_move(inventory_t *inventory,
 const sfView *view, int target, float elapsed);
 void inventory_show(inventory_t *inventory);
-int inventory_init(inventory_t *inv, infos_t *infos);
+
+int inventory_create_slots(inventory_t *inv, infos_t *infos);
+int add_item_to_inventory(inventory_t *inv, unsigned char item_id);
+int remove_item_from_inventory(inventory_t *inv, int slot);
+int button_inv_slot_click(element_t *element,
+infos_t *infos, sfMouseButton button_type);
 
 #endif /* !INVENTORY_H_ */

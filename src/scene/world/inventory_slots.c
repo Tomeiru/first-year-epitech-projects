@@ -2,30 +2,16 @@
 ** EPITECH PROJECT, 2021
 ** my_rpg
 ** File description:
-** inventory
+** inventory_utils
 */
 
 #include <stdlib.h>
 #include "my_rpg.h"
 #include "inventory.h"
+#include "elements/entities/slot_button.h"
 #include "scene/world_scene.h"
-#include "elements/entities/button.h"
-#include <unistd.h>
 
-int add_item_to_inventory(inventory_t *inv, unsigned char item_id);
-int remove_item_from_inventory(inventory_t *inv, int slot);
-
-int button_inv_slot_click(element_t *element,
-infos_t *infos, sfMouseButton button_type)
-{
-    button_t *button = (button_t*) element;
-
-    UNUSED(button_type);
-    button_set_clicked(button, 1, infos);
-    return (0);
-}
-
-static int inventory_create_slots(inventory_t *inv, infos_t *infos)
+int inventory_create_slots(inventory_t *inv, infos_t *infos)
 {
     slot_button_t *button;
     sfVector2f pos;
@@ -46,9 +32,29 @@ static int inventory_create_slots(inventory_t *inv, infos_t *infos)
     return (0);
 }
 
-int inventory_init(inventory_t *inv, infos_t *infos)
+int add_item_to_inventory(inventory_t *inv, unsigned char item_id)
 {
-    if (inventory_create_slots(inv, infos))
+    int i = 2;
+
+    for (; i < INVENTORY_SIZE && inv->slots[i]->item != 0; i++);
+    if (i == INVENTORY_SIZE)
         return (1);
+    slot_button_set_item(inv->slots[i], item_id);
+    return (0);
+}
+
+int remove_item_from_inventory(inventory_t *inv, int slot)
+{
+    slot_button_set_item(inv->slots[slot], 0);
+    return (0);
+}
+
+int button_inv_slot_click(element_t *element,
+infos_t *infos, sfMouseButton button_type)
+{
+    button_t *button = (button_t*) element;
+
+    UNUSED(button_type);
+    button_set_clicked(button, 1, infos);
     return (0);
 }
