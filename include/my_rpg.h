@@ -89,4 +89,6 @@ direction_t *direction, sfVector2f move, float speed);
 void living_walk_sprite_anim(sfSprite *sprite,
 direction_t direction, float anim);
 
+void get_knockback_move(sfVector2f *move, direction_t dir, float speed);
+
 #endif /* !MY_DEFENDER_H_ */

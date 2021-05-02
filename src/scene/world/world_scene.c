@@ -85,6 +85,9 @@ int world_scene_event(scene_t *scene, infos_t *infos, sfEvent *event)
             case sfKeyE:
                 interactable_execute_closest(infos, world_scene->player);
                 return (0);
+            case sfKeyA:
+                player_damage(world_scene->player, 1, infos);
+                return (0);
             default:
                 return (0);
         }

@@ -84,3 +84,21 @@ int element_collision(element_t *element, sfIntRect hb, list_t *elements)
     }
     return (0);
 }
+
+void get_knockback_move(sfVector2f *move, direction_t dir, float speed)
+{
+    switch (dir) {
+        case NORTH:
+            *move = (sfVector2f) {0, speed};
+            break;
+        case SOUTH:
+            *move = (sfVector2f) {0, -speed};
+            break;
+        case EAST:
+            *move = (sfVector2f) {speed, 0};
+            break;
+        case WEST:
+            *move = (sfVector2f) {-speed, 0};
+            break;
+    }
+}
