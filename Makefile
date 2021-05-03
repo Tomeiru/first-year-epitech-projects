@@ -21,17 +21,25 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/default_element_fcts.c							\
 					src/elements/bar.c											\
 					src/elements/bar_fcts.c										\
+					src/elements/health_bar.c									\
 					src/elements/image.c										\
 					src/elements/entities/buffer.c								\
 					src/elements/entities/player.c								\
-					src/elements/entities/particle.c							\
-					src/elements/entities/interactable.c						\
 					src/elements/entities/text.c								\
 					src/elements/entities/text_update_fcts.c					\
 					src/elements/entities/dialogue.c							\
 					src/elements/entities/buttons/button.c						\
+					src/elements/entities/buttons/slot_button.c					\
+					src/elements/entities/buttons/slot_button_fcts.c			\
 					src/elements/entities/buttons/button_default_fcts.c			\
-					src/elements/entities/buttons/button_types.c
+					src/elements/entities/buttons/button_types.c				\
+					src/elements/entities/particles/falling_particle.c			\
+					src/elements/entities/particles/meteo.c						\
+					src/elements/entities/particles/meteo_effects.c				\
+					src/elements/entities/interactable/interactable.c			\
+					src/elements/entities/interactable/interactable_fcts.c		\
+					src/elements/entities/interactable/npc.c					\
+					src/elements/entities/interactable/trigger.c
 
 SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/scene_elements.c									\
@@ -46,16 +54,28 @@ SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/settings/button_settings_res_actions.c			\
 					src/scene/world/world_scene.c								\
 					src/scene/world/world.c										\
-					src/scene/world/inventory.c									\
 					src/scene/world/hud.c										\
+					src/scene/world/inventory.c									\
+					src/scene/world/inventory_slots.c							\
 					src/scene/world/camera.c									\
-					src/scene/world/map.c
+					src/scene/world/map.c										\
+					src/scene/world/save.c
+
+RPGSH_SCR		=	src/rpgsh/rpgsh.c											\
+					src/rpgsh/file.c											\
+					src/rpgsh/args.c											\
+					src/rpgsh/commands.c										\
+					src/rpgsh/execute.c											\
+					src/rpgsh/conditions.c										\
+					src/rpgsh/attach.c
 
 UTILS_SRC		=	src/utils/utils.c											\
+					src/utils/int_str.c											\
 					src/utils/origins.c											\
 					src/utils/elements_interact.c								\
 					src/utils/math.c											\
-					src/utils/physics.c
+					src/utils/physics.c											\
+					src/utils/animation.c
 
 LIB_DIR		=	./mylib
 INC_DIR		=	./include
@@ -64,7 +84,7 @@ SFML_LIB	=	-lcsfml-system -lcsfml-window -lcsfml-graphics -lcsfml-audio
 
 CFLAGS		+=	-W -Wall -Werror -I$(INC_DIR)
 
-OBJ			=	$(MAIN_SRC:.c=.o) $(ELEMENTS_SRC:.c=.o) $(SCENE_SRC:.c=.o) $(UTILS_SRC:.c=.o)
+OBJ			=	$(MAIN_SRC:.c=.o) $(ELEMENTS_SRC:.c=.o) $(SCENE_SRC:.c=.o) $(RPGSH_SCR:.c=.o) $(UTILS_SRC:.c=.o)
 
 NAME		=	my_rpg
 

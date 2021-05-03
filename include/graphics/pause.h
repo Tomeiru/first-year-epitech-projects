@@ -34,6 +34,8 @@ void pause_draw(subwindow_t *subwindow, sfRenderWindow *window);
 
 int button_pause_resume(element_t *element,
 infos_t *infos, sfMouseButton button_type);
+int button_save(element_t *element,
+infos_t *infos, sfMouseButton button_type);
 void pause_anim_move(pause_t *pause,
 const sfView *view, int target, float elapsed);
 void pause_set_pause(pause_t *pause, infos_t *infos);

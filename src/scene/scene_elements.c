@@ -36,12 +36,17 @@ void scene_remove_element(scene_t *scene, element_t *element, char entity)
 void scene_update_elements(scene_t *scene, infos_t *infos, float elapsed)
 {
     entity_t *entity;
-    subwindow_t *subwindow;
 
     for (list_t *list = scene->entities; list; list = list->next) {
         entity = (entity_t*) list->data;
         entity->update(entity, infos, elapsed);
     }
+}
+
+void scene_update_subwindows(scene_t *scene, infos_t *infos, float elapsed)
+{
+    subwindow_t *subwindow;
+
     for (list_t *list = scene->subwindows; list; list = list->next) {
         subwindow = (subwindow_t*) list->data;
         subwindow->update(subwindow, infos, elapsed);
