@@ -8,7 +8,7 @@
 #ifndef DIALOGUE_H_
 #define DIALOGUE_H_
 
-#include "elements/entities/entity.h"
+#include "elements/entities/text.h"
 
 typedef struct dialogue_s {
     element_type_t type;
@@ -25,9 +25,9 @@ typedef struct dialogue_s {
     update_entity_fct_t update;
     sfText *text;
     float time;
-    char *text_str;
-    int end;
-    char temp;
+    int pos;
+    char *str;
+    int len;
 } dialogue_t;
 
 #endif /* !DIALOGUE_H_ */
