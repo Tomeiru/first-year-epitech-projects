@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "my.h"
 #include "elements/entities/dialogue.h"
+#include "graphics/texture_list.h"
 
 void dialogue_update(dialogue_t *dialogue, infos_t *infos, float elapsed)
 {
@@ -33,20 +34,32 @@ void dialogue_set_fcts(dialogue_t *dialogue)
     dialogue->update = &dialogue_update;
 }
 
+sfSprite *dialogue_set_sprite(char *path, sfVector2f pos)
+{
+    sfSprite *sprite = sfSprite_create();
+    sfTexture *texture = sfTexture_createFromFile(path, NULL);
+
+    sfSprite_setTexture(sprite, texture, sfFalse);
+    sfSprite_setPosition(sprite, pos);
+    return (sprite);
+}
+
 dialogue_t *dialogue_create(char *text_str, sfFont *font, sfVector2f pos,
 int size)
 {
     dialogue_t *dialogue = (dialogue_t*)
     element_create_default(sizeof(dialogue_t), TEXT, (sfVector2f) {0, 0});
     sfText *text_sfml = sfText_create();
+    sfTexture *texture = sfTexture_createFromFile("assets/textures/textbox.png", NULL);
 
     if (!dialogue || !text_sfml)
         return (NULL);
     sfText_setString(text_sfml, text_str);
     sfText_setFont(text_sfml, font);
     sfText_setCharacterSize(text_sfml, size);
-    dialogue->sprite = NULL;
+    dialogue->sprite = dialogue_set_sprite(TEXTURES_PATH[10], pos);
     dialogue->text = text_sfml;
+    dialogue_set_fcts(dialogue);
     dialogue->time = 0;
     dialogue->pos = 1;
     dialogue->str = my_strdup(text_str);
