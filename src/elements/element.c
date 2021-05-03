@@ -52,7 +52,7 @@ sfVector2f pos, element_type_t type)
     float dist = 1000000;
     float elem_dist = 0;
 
-    for (list_t *list = infos->scene->entities; list; list = list->next) {
+    for (list_t *list = infos->scene->elements; list; list = list->next) {
         element = (element_t*) list->data;
         if (element->type != type)
             continue;

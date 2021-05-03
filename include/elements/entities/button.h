@@ -82,5 +82,7 @@ infos_t *infos, sfMouseButton button_type);
 
 button_t *text_button_create(infos_t *infos, char *text_str,
 sfVector2f pos, int texture_height_offset);
+button_t *inv_slot_create(infos_t *infos, char *text_str,
+sfVector2f pos, int texture_height_offset);
 
 #endif /* !BUTTON_H_ */

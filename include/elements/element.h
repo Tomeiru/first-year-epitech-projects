@@ -9,10 +9,13 @@
 #define ELEMENT_H_
 
 #include <SFML/Graphics.h>
+#include "my_list.h"
 
 typedef enum element_type_e {
     BACKGROUND,
     IMAGE,
+    INV_SLOT,
+    INV_KEYB,
     ENEMY,
     INTERACTABLE,
     PLAYER,
@@ -50,15 +53,22 @@ typedef void (*destroy_element_fct_t)(element_t *element);
 element_t *element_create_default(size_t size,
 element_type_t type, sfVector2f pos);
 
+void default_element_move(element_t *element, sfVector2f pos);
+void default_element_rotate(element_t *element, float rot);
+void default_element_draw(element_t *element, sfRenderWindow *window);
+void default_element_destroy(element_t *element);
+
 char element_point_hit(element_t *element, sfVector2f pos);
 void element_set_hitbox(element_t *element, sfFloatRect global_bounds);
 
 element_t *element_get_closest(infos_t *infos,
 sfVector2f pos, element_type_t type);
 
-void default_element_move(element_t *element, sfVector2f pos);
-void default_element_rotate(element_t *element, float rot);
-void default_element_draw(element_t *element, sfRenderWindow *window);
-void default_element_destroy(element_t *element);
+void prior_element_collision(element_t *element,
+sfVector2f *move, sfIntRect hb, infos_t *infos);
+void player_prior_element_collision(element_t *element,
+sfVector2f *move, sfIntRect hb, infos_t *infos);
+int element_collision(element_t *element,
+sfIntRect hb, list_t *elements);
 
 #endif /* !ELEMENT_H_ */
