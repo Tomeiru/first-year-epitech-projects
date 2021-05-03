@@ -14,10 +14,12 @@ void dialogue_update(dialogue_t *dialogue, infos_t *infos, float elapsed)
 {
     char temp;
 
-    if (dialogue)
+    if (dialogue->str == NULL)
+        return;
     temp = dialogue->str[dialogue->pos]
     dialogue->str[dialogue->pos] = '\0';
     sfText_setString(dialogue->text, dialogue->str);
+    sfSprite_draw()
     text_draw(dialogue, infos->window);
     dialogue->str[dialogue->pos] = temp;
     if (dialogue->pos != dialogue->len){
@@ -53,17 +55,15 @@ sfSprite *dialogue_set_sprite(char *path, sfVector2f pos)
     return (sprite);
 }
 
-dialogue_t *dialogue_create(char *text_str, sfFont *font, sfVector2f pos,
-int size)
+dialogue_t *dialogue_create(sfFont *font, sfVector2f pos, int size)
 {
     dialogue_t *dialogue = (dialogue_t*)
     element_create_default(sizeof(dialogue_t), TEXT, (sfVector2f) {0, 0});
     sfText *text_sfml = sfText_create();
-    sfTexture *texture = sfTexture_createFromFile("assets/textures/textbox.png", NULL);
 
     if (!dialogue || !text_sfml)
         return (NULL);
-    sfText_setString(text_sfml, text_str);
+    sfText_setString(text_sfml, "");
     sfText_setFont(text_sfml, font);
     sfText_setCharacterSize(text_sfml, size);
     dialogue->sprite = dialogue_set_sprite(TEXTURES_PATH[10], pos);
