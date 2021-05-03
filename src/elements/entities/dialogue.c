@@ -12,8 +12,10 @@
 
 void dialogue_update(dialogue_t *dialogue, infos_t *infos, float elapsed)
 {
-    char temp = dialogue->str[dialogue->pos];
+    char temp;
 
+    if (dialogue)
+    temp = dialogue->str[dialogue->pos]
     dialogue->str[dialogue->pos] = '\0';
     sfText_setString(dialogue->text, dialogue->str);
     text_draw(dialogue, infos->window);
@@ -23,6 +25,13 @@ void dialogue_update(dialogue_t *dialogue, infos_t *infos, float elapsed)
         if (dialogue.pos > dialogue->len)
             dialogue->pos = dialogue->len;
     }
+}
+
+void dialogue_set_str(dialogue_t *dialogue, char *new_str)
+{
+    dialogue->pos = 1;
+    dialogue->str = new_str;
+    dialogue->len = my_strlen(new_str);
 }
 
 void dialogue_set_fcts(dialogue_t *dialogue)
@@ -62,8 +71,8 @@ int size)
     dialogue_set_fcts(dialogue);
     dialogue->time = 0;
     dialogue->pos = 1;
-    dialogue->str = my_strdup(text_str);
-    dialogue->len = my_strlen(text_str);
+    dialogue->str = NULL;
+    dialogue->len = 0;
     element_set_hitbox((element_t*) dialogue, sfText_getGlobalBounds(text_sfml));
     text_move((element_t*) dialogue, pos);
     return (dialogue);
