@@ -26,6 +26,7 @@ typedef struct enemy_s {
     sfVector2f pos_start;
     int health;
     int move_status;
+    void (*attack)(struct enemy_s *enemy, infos_t *infos);
 } enemy_t;
 
 enemy_t *enemy_create(size_t size, infos_t *infos, sfVector2f pos);

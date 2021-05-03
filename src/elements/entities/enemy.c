@@ -9,6 +9,33 @@
 #include "elements/entities/enemy.h"
 #include "graphics/texture.h"
 #include "scene/world_scene.h"
+#include "math.h"
+
+void enemy_ranged_attack(enemy_t *enemy, infos_t *infos)
+{
+    world_scene_t *world_scene = (world_scene_t*) infos->scene;
+    float distance = fabs(enemy->pos.x - world_scene->player->pos.x) +
+        fabs(enemy->pos.y - world_scene->player->pos.y);
+
+    if (distance <= 10) {
+        enemy->move_status = 0;
+        //player takes damage
+    } else
+        enemy->move_status = 1;
+}
+
+void enemy_close_attack(enemy_t *enemy, infos_t *infos)
+{
+    world_scene_t *world_scene = (world_scene_t*) infos->scene;
+    float distance = fabs(enemy->pos.x - world_scene->player->pos.x) +
+        fabs(enemy->pos.y - world_scene->player->pos.y);
+
+    if (distance <= 3) {
+        enemy->move_status = 0;
+        //player takes damage
+    } else
+        enemy->move_status = 1;
+}
 
 void enemy_take_damage(enemy_t *enemy, int damage)
 {
@@ -24,7 +51,7 @@ void enemy_default_update(entity_t *entity, infos_t *infos, float elapsed)
 
     move = enemy->pos;
     enemy->move((element_t *) enemy, move);
-    UNUSED(infos);
+    enemy->attack(enemy, infos);
     UNUSED(elapsed);
 }
 
