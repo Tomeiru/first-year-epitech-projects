@@ -20,8 +20,8 @@ const char *TEXTURES_PATH[] = {
     "assets/textures/howtoplay_img.png",
     "assets/textures/inventory.png",
     "assets/textures/player.png",
-    "assets/textures/hud.png"
-    "assets/textures/textbox.png"
+    "assets/textures/hud.png",
+    "assets/textures/textbox.png",
 };
 
 #endif /* !TEXTURES_LIST_H_ */

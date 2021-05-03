@@ -25,16 +25,17 @@ typedef struct dialogue_s {
     update_entity_fct_t update;
     sfText *text;
     float time;
-    int pos;
+    int cursor;
     char *str;
     int len;
 } dialogue_t;
 
-dialogue_t *dialogue_create(char *text_str, sfFont *font, sfVector2f pos,
-int size);
-sfSprite *dialogue_set_sprite(char *path, sfVector2f pos);
-void dialogue_set_fcts(dialogue_t *dialogue);
-void dialogue_set_str(dialogue_t *dialogue, char *new_str);
+
+dialogue_t *dialogue_create(sfFont *font,
+sfVector2f pos, sfTexture *texture, int size);
+int dialogue_init(dialogue_t *dialogue,
+sfVector2f pos, sfFont *font, int size);
 void dialogue_update(entity_t *entity, infos_t *infos, float elapsed);
+void dialogue_set_str(dialogue_t *dialogue, char *new_str);
 
 #endif /* !DIALOGUE_H_ */

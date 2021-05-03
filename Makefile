@@ -28,6 +28,7 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/entities/interactable.c						\
 					src/elements/entities/text.c								\
 					src/elements/entities/text_update_fcts.c					\
+					src/elements/entities/dialogue.c							\
 					src/elements/entities/buttons/button.c						\
 					src/elements/entities/buttons/button_default_fcts.c			\
 					src/elements/entities/buttons/button_types.c
