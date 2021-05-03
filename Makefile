@@ -24,6 +24,7 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/entities/enemy.c								\
 					src/elements/entities/enemy_patterns.c						\
 					src/elements/entities/player.c								\
+					src/elements/entities/projectile.c							\
 					src/elements/entities/particle.c							\
 					src/elements/entities/text.c								\
 					src/elements/entities/text_update_fcts.c					\

@@ -16,6 +16,7 @@ typedef enum element_type_e {
     ENEMY,
     INTERACTABLE,
     PLAYER,
+    PROJECTILE,
     PARTICLE,
     BUTTON,
     TEXT,
