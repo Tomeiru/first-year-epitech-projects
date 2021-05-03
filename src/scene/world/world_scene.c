@@ -10,29 +10,6 @@
 #include "scene/world_scene.h"
 #include "actions.h"
 
-<<<<<<< HEAD
-=======
-int world_scene_init(world_scene_t *world_scene, infos_t *infos)
-{
-    player_t *player = player_create(infos);
-    pause_t *pause = pause_create(infos);
-    inventory_t *inventory = inventory_create(infos);
-    hud_t *hud = hud_create(infos);
-
-    if (!pause || !player || !inventory)
-        return (1);
-    world_scene->player = player;
-    world_scene->pause = pause;
-    world_scene->inventory = inventory;
-    world_scene->hud = hud;
-    scene_add_element((scene_t*) world_scene, (element_t*) player, 1);
-    create_list(&(world_scene->subwindows), pause);
-    create_list(&(world_scene->subwindows), inventory);
-    create_list(&(world_scene->subwindows), hud);
-    return (0);
-}
-
->>>>>>> origin/player
 scene_t *world_scene_create(infos_t *infos)
 {
     scene_t *scene = scene_create_default(sizeof(world_scene_t),
