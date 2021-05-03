@@ -33,6 +33,7 @@ typedef struct dialogue_s {
 dialogue_t *dialogue_create(infos_t *infos, sfVector2f pos);
 int dialogue_init(dialogue_t *dialogue, infos_t *infos, sfVector2f pos);
 void dialogue_update(entity_t *entity, infos_t *infos, float elapsed);
-void dialogue_set_str(dialogue_t *dialogue, char *new_str);
+void dialogue_draw(element_t *element, sfRenderWindow *window);
+void dialogue_set_str(dialogue_t *dialogue, infos_t *infos, char *new_str);
 
 #endif /* !DIALOGUE_H_ */

@@ -64,10 +64,11 @@ SCENE_SRC		=	src/scene/scene.c											\
 RPGSH_SCR		=	src/rpgsh/rpgsh.c											\
 					src/rpgsh/file.c											\
 					src/rpgsh/args.c											\
-					src/rpgsh/commands.c										\
 					src/rpgsh/execute.c											\
 					src/rpgsh/conditions.c										\
-					src/rpgsh/attach.c
+					src/rpgsh/attach.c											\
+					src/rpgsh/commands/commands.c								\
+					src/rpgsh/commands/npc_commands.c
 
 UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/int_str.c											\

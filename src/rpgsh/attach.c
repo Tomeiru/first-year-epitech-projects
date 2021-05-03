@@ -28,8 +28,14 @@ void rpgsh_attach_script(interactable_t *interactable, char ***script)
 
 void rpgsh_reach_end(char ***script)
 {
+    char **args = NULL;
+
     for (; **script; *script += 1) {
-        if (my_strcmp(**script, "END"))
+        args = split_into_args(**script);
+        if (!my_strcmp(args[0], "END")) {
+            free_args(args);
             break;
+        }
+        free_args(args);
     }
 }

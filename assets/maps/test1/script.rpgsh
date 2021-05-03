@@ -1,4 +1,7 @@
 ADD NPC 600 600 Parler
+    ACTION
+        DIALOGUE
+    END
     UPDATE
         MOVE 600 600
         MOVE 700 700
