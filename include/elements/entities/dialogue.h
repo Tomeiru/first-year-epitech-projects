@@ -30,11 +30,8 @@ typedef struct dialogue_s {
     int len;
 } dialogue_t;
 
-
-dialogue_t *dialogue_create(sfFont *font,
-sfVector2f pos, sfTexture *texture, int size);
-int dialogue_init(dialogue_t *dialogue,
-sfVector2f pos, sfFont *font, int size);
+dialogue_t *dialogue_create(infos_t *infos, sfVector2f pos);
+int dialogue_init(dialogue_t *dialogue, infos_t *infos, sfVector2f pos);
 void dialogue_update(entity_t *entity, infos_t *infos, float elapsed);
 void dialogue_set_str(dialogue_t *dialogue, char *new_str);
 

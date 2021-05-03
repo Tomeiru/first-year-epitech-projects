@@ -11,15 +11,13 @@
 #include "graphics/texture.h"
 #include "elements/entities/dialogue.h"
 
-dialogue_t *dialogue_create(sfFont *font,
-sfVector2f pos, sfTexture *texture, int size)
+dialogue_t *dialogue_create(infos_t *infos, sfVector2f pos)
 {
     dialogue_t *dialogue = (dialogue_t*)
     element_create_default(sizeof(dialogue_t), TEXT, (sfVector2f) {0, 0});
 
-    if (!dialogue || dialogue_init(dialogue, pos, font, size))
+    if (!dialogue || dialogue_init(dialogue, infos, pos))
         return (NULL);
-    sfSprite_setTexture(dialogue->sprite, texture, 0);
     dialogue->move = &text_move;
     dialogue->rotate = &text_rotate;
     dialogue->draw = &text_draw;
@@ -32,8 +30,7 @@ sfVector2f pos, sfTexture *texture, int size)
     return (dialogue);
 }
 
-int dialogue_init(dialogue_t *dialogue,
-sfVector2f pos, sfFont *font, int size)
+int dialogue_init(dialogue_t *dialogue, infos_t *infos, sfVector2f pos)
 {
     sfSprite *sprite = sfSprite_create();
     sfText *text_sfml = sfText_create();
@@ -43,9 +40,10 @@ sfVector2f pos, sfFont *font, int size)
     dialogue->sprite = sprite;
     dialogue->text = text_sfml;
     sfText_setString(text_sfml, "");
-    sfText_setFont(text_sfml, font);
-    sfText_setCharacterSize(text_sfml, size);
+    sfText_setFont(text_sfml, infos->font);
+    sfText_setCharacterSize(text_sfml, 40);
     sfSprite_setPosition(sprite, pos);
+    sfSprite_setTexture(dialogue->sprite, get_texture(infos, TEXTBOX_TEXT), 0);
     text_move((element_t*) dialogue, pos);
     element_set_hitbox((element_t*) dialogue, sfText_getGlobalBounds(text_sfml));
     return (0);
