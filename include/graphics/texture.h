@@ -24,7 +24,8 @@ typedef enum texture_e {
     HOWTOPLAY_IMG_TEXT,
     INVENTORY_TEXT,
     PLAYER_TEXT,
-    HUD_TEXT
+    HUD_TEXT,
+    BOX_TEXT
 } texture_t;
 
 list_t *load_textures(void);
