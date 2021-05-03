@@ -17,25 +17,20 @@ void enemy_take_damage(enemy_t *enemy, int damage)
         enemy->destroy((element_t *)enemy);
 }
 
-void enemy_update(entity_t *entity, infos_t *infos, float elapsed)
+void enemy_default_update(entity_t *entity, infos_t *infos, float elapsed)
 {
     enemy_t *enemy = (enemy_t *) entity;
-    world_scene_t *world_scene = (world_scene_t *) infos->scene;
-    sfVector2f move = {0, 0};
-    float speed = 5 * elapsed;
+    sfVector2f move;
 
-    speed = speed;
-    world_scene = world_scene;
-    enemy->pos.x = 500;
-    enemy->pos.y = 500;
-    enemy->move((element_t *) enemy, (sfVector2f)
-    {enemy->pos.x + move.x, enemy->pos.y + move.y});
+    move = enemy->pos;
+    enemy->move((element_t *) enemy, move);
+    UNUSED(infos);
+    UNUSED(elapsed);
 }
 
-enemy_t *enemy_create(infos_t *infos)
+enemy_t *enemy_create(size_t size, infos_t *infos, sfVector2f pos)
 {
-    element_t *element = element_create_default(sizeof(enemy_t), ENEMY,
-    (sfVector2f){0, 0});
+    element_t *element = element_create_default(size, ENEMY, pos);
     enemy_t *enemy = (enemy_t *) element;
     sfSprite *sprite = sfSprite_create();
 
@@ -43,9 +38,11 @@ enemy_t *enemy_create(infos_t *infos)
         return(NULL);
     sfSprite_setTexture(sprite, get_texture(infos, PLAYER_TEXT), 0);
     enemy->sprite = sprite;
-    enemy->update = &enemy_update;
+    enemy->update = &enemy_default_update;
     sprite_set_origin_center(sprite);
     element_set_hitbox(element, sfSprite_getGlobalBounds(sprite));
     enemy->health = 1;
+    enemy->pos_start = enemy->pos;
+    enemy->move_status = 1;
     return (enemy);
 }

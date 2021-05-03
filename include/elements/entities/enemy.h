@@ -23,9 +23,14 @@ typedef struct enemy_s {
     get_infos_element_fct_t get_infos;
     destroy_element_fct_t destroy;
     update_entity_fct_t update;
+    sfVector2f pos_start;
     int health;
+    int move_status;
 } enemy_t;
 
-enemy_t *enemy_create(infos_t *infos);
+enemy_t *enemy_create(size_t size, infos_t *infos, sfVector2f pos);
+void enemy_horizontal_update(entity_t *entity, infos_t *infos, float elapsed);
+void enemy_vertical_update(entity_t *entity, infos_t *infos, float elapsed);
+
 
 #endif /* !ENEMY_H_ */
