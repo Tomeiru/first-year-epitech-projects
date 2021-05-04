@@ -27,6 +27,7 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/image.c										\
 					src/elements/entities/buffer.c								\
 					src/elements/entities/player.c								\
+					src/elements/entities/player_fcts.c							\
 					src/elements/entities/text.c								\
 					src/elements/entities/text_update_fcts.c					\
 					src/elements/entities/dialogue.c							\
