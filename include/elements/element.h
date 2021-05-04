@@ -69,7 +69,7 @@ void prior_element_collision(element_t *element,
 sfVector2f *move, sfIntRect hb, infos_t *infos);
 void player_prior_element_collision(element_t *element,
 sfVector2f *move, sfIntRect hb, infos_t *infos);
-int element_collision(element_t *element,
+element_t *element_collision(element_t *element,
 sfIntRect hb, list_t *elements);
 
 #endif /* !ELEMENT_H_ */
