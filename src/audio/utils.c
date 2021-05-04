@@ -20,7 +20,7 @@ void audio_set_volume(infos_t *infos)
         sfSound_setVolume(sound_couple->sound, infos->settings.sound_level);
     }
     for (list_t *list = infos->music->musics; list; list = list->next)
-        sfSound_play(((sound_couple_t*) list->data)->sound);
+        sfMusic_setVolume((sfMusic*) list->data, infos->settings.sound_level);
 }
 
 void music_pause(music_struct_t *music)
