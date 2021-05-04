@@ -38,7 +38,7 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
     pause_t *pause = pause_create(infos);
     inventory_t *inventory = inventory_create(infos);
     hud_t *hud = hud_create(infos);
-    enemy_t *enemy = enemy_create(sizeof(enemy_t), infos, (sfVector2f){600, 500});
+    enemy_t *enemy = enemy_create(sizeof(enemy_t), infos, (sfVector2f) {1000, 500});
 
     if (!pause || !player || !inventory || !hud)
         return;
