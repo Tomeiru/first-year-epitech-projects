@@ -34,8 +34,10 @@ sfVector2f pos, sfTexture *texture)
 void interactable_create_sprite(interactable_t *interactable,
 sfSprite *sprite, sfTexture *texture, sfVector2f pos)
 {
-    if (!texture)
+    if (!texture) {
+        interactable->sprite = NULL;
         return;
+    }
     sfSprite_setTexture(sprite, texture, 0);
     sfSprite_setTextureRect(sprite, (sfIntRect) {0, 0, 64, 64});
     sfSprite_setPosition(sprite, pos);

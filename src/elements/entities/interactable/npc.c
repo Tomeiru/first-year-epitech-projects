@@ -35,7 +35,8 @@ void npc_update(entity_t *entity, infos_t *infos, float elapsed)
         interactable_update(entity, infos, elapsed);
     else {
         npc_movement(npc, infos, elapsed);
-        living_walk_sprite_anim(npc->sprite, npc->dir, npc->anim);
+        if (npc->sprite)
+            living_walk_sprite_anim(npc->sprite, npc->dir, npc->anim);
     }
 }
 

@@ -27,6 +27,8 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/entities/player.c								\
 					src/elements/entities/text.c								\
 					src/elements/entities/text_update_fcts.c					\
+					src/elements/entities/dialogue.c							\
+					src/elements/entities/dialogue_fcts.c						\
 					src/elements/entities/buttons/button.c						\
 					src/elements/entities/buttons/slot_button.c					\
 					src/elements/entities/buttons/slot_button_fcts.c			\
@@ -63,10 +65,11 @@ SCENE_SRC		=	src/scene/scene.c											\
 RPGSH_SCR		=	src/rpgsh/rpgsh.c											\
 					src/rpgsh/file.c											\
 					src/rpgsh/args.c											\
-					src/rpgsh/commands.c										\
 					src/rpgsh/execute.c											\
 					src/rpgsh/conditions.c										\
-					src/rpgsh/attach.c
+					src/rpgsh/attach.c											\
+					src/rpgsh/commands/commands.c								\
+					src/rpgsh/commands/npc_commands.c
 
 UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/int_str.c											\
@@ -74,7 +77,8 @@ UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/elements_interact.c								\
 					src/utils/math.c											\
 					src/utils/physics.c											\
-					src/utils/animation.c
+					src/utils/animation.c										\
+					src/utils/text_loader.c
 
 LIB_DIR		=	./mylib
 INC_DIR		=	./include
