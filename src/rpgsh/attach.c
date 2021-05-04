@@ -17,6 +17,8 @@ void rpgsh_attach_script(interactable_t *interactable, char ***script)
         interactable->action_script = *script + 2;
         rpgsh_reach_end(script);
         free_args(args);
+        if (!**script || !*(*script + 1))
+            return;
         args = split_into_args(*(*script + 1));
     }
     if (!my_strcmp(args[0], "UPDATE")) {

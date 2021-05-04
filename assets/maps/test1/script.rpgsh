@@ -8,16 +8,14 @@ ADD NPC 600 600 Parler
     END
 
 ADD TRIGGER 1550 1650 Activer
-    UPDATE
-        IF PLAYER_IN_RANGE 10
-            SET_PLAYER_MOVE 0
-            CAM_TARGET
-            MOVE 649 649 4
-            MOVE 650 650 0.02
-            MOVE 649 649 0.02
-            MOVE 1550 1650 4
-            CAM_TARGET PLAYER
-            SET_PLAYER_MOVE 1
-            DESTROY
-        FI
+    ACTION
+        SET_PLAYER_MOVE 0
+        CAM_TARGET
+        MOVE 649 649 4
+        MOVE 650 650 0.02
+        MOVE 649 649 0.02
+        MOVE 1550 1650 4
+        CAM_TARGET PLAYER
+        SET_PLAYER_MOVE 1
+        DESTROY
     END
