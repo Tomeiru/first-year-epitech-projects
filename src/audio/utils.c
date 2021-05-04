@@ -51,4 +51,5 @@ void music_stop(music_struct_t *music)
         return;
     for (int i = 0; i < (int) music->actual_music; i++, list = list->next);
     sfMusic_stop((sfMusic*) list->data);
+    music->actual_music = NONE;
 }
