@@ -27,11 +27,13 @@ typedef struct enemy_s {
     int health;
     int move_status;
     void (*attack)(struct enemy_s *enemy, infos_t *infos);
+    float attack_cooldown;
 } enemy_t;
 
 enemy_t *enemy_create(size_t size, infos_t *infos, sfVector2f pos);
 void enemy_horizontal_update(entity_t *entity, infos_t *infos, float elapsed);
 void enemy_vertical_update(entity_t *entity, infos_t *infos, float elapsed);
-
+void enemy_ranged_attack(enemy_t *enemy, infos_t *infos);
+void enemy_close_attack(enemy_t *enemy, infos_t *infos);
 
 #endif /* !ENEMY_H_ */

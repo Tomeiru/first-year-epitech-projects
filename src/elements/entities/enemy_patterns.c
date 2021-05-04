@@ -37,21 +37,25 @@ void enemy_horizontal_move(enemy_t *enemy, sfVector2f *move, int speed)
 void enemy_horizontal_update(entity_t *entity, infos_t *infos, float elapsed)
 {
     enemy_t *enemy = (enemy_t *) entity;
-    sfVector2f move;
+    sfVector2f move = (sfVector2f){0, 0};
 
     enemy_horizontal_move(enemy, &move, elapsed * 2);
     enemy->move((element_t *) enemy, (sfVector2f){enemy->pos.x + move.x,
         enemy->pos.y + move.y});
-    UNUSED(infos);
+    enemy->attack(enemy, infos);
+    if (enemy->attack_cooldown >= 0)
+        enemy->attack_cooldown -= elapsed;
 }
 
 void enemy_vertical_update(entity_t *entity, infos_t *infos, float elapsed)
 {
     enemy_t *enemy = (enemy_t *) entity;
-    sfVector2f move;
+    sfVector2f move = (sfVector2f){0, 0};
 
     enemy_vertical_move(enemy, &move, elapsed * 2);
     enemy->move((element_t *) enemy, (sfVector2f){enemy->pos.x + move.x,
         enemy->pos.y + move.y});
-    UNUSED(infos);
+    enemy->attack(enemy, infos);
+    if (enemy->attack_cooldown >= 0)
+        enemy->attack_cooldown -= elapsed;
 }
