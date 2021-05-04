@@ -17,7 +17,8 @@ void subwindow_default_move(subwindow_t *subwindow, sfVector2f new_pos)
     element_t *element;
 
     subwindow->pos = new_pos;
-    sfSprite_setPosition(subwindow->background, new_pos);
+    if (subwindow->background)
+        sfSprite_setPosition(subwindow->background, new_pos);
     for (list_t *list = subwindow->elements; list; list = list->next) {
         element = (element_t*) list->data;
         element_pos = (sfVector2f)
@@ -40,7 +41,8 @@ void subwindow_default_draw(subwindow_t *subwindow, sfRenderWindow *window)
 {
     element_t *element;
 
-    sfRenderWindow_drawSprite(window, subwindow->background, NULL);
+    if (subwindow->background)
+        sfRenderWindow_drawSprite(window, subwindow->background, NULL);
     for (list_t *list = subwindow->elements; list; list = list->next) {
         element = (element_t*) list->data;
         element->draw(element, window);
@@ -52,7 +54,8 @@ void subwindow_default_destroy(subwindow_t *subwindow)
     element_t *element;
     list_t *next;
 
-    sfSprite_destroy(subwindow->background);
+    if (subwindow->background)
+        sfSprite_destroy(subwindow->background);
     for (list_t *list = subwindow->elements; list; list = next) {
         next = list->next;
         element = (element_t*) list->data;

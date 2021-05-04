@@ -57,15 +57,6 @@ void interactable_update(entity_t *entity, infos_t *infos, float elapsed)
         &(interactable->update_instruction), infos, (element_t*) interactable);
 }
 
-void interactable_default_action(interactable_t *interactable, infos_t *infos)
-{
-    char **action_script = interactable->action_script;
-
-    if (action_script)
-        execute_rpgsh_single_instruction(action_script,
-        &(interactable->action_instruction), infos, (element_t*) interactable);
-}
-
 void interactable_get_infos(element_t *element, char *str, int size)
 {
     interactable_t *interactable = (interactable_t*) element;

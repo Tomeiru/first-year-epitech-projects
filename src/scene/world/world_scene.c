@@ -9,6 +9,7 @@
 #include "my_rpg.h"
 #include "actions.h"
 #include "rpgsh/rpgsh.h"
+#include "elements/entities/interactable.h"
 #include "scene/world_scene.h"
 
 scene_t *world_scene_create(infos_t *infos)
@@ -25,6 +26,7 @@ scene_t *world_scene_create(infos_t *infos)
     world_scene->post_init = &world_scene_post_init;
     world_scene->event = &world_scene_event;
     world_scene->map = NULL;
+    world_scene->time = 0;
     return (scene);
 }
 
@@ -34,18 +36,21 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
     player_t *player = player_create(infos);
     pause_t *pause = pause_create(infos);
     inventory_t *inventory = inventory_create(infos);
+    hud_t *hud = hud_create(infos);
 
-    if (!pause || !player || !inventory)
+    if (!pause || !player || !inventory || !hud)
         return;
     world_scene->world_pause = 0;
     world_scene->player = player;
     world_scene->pause = pause;
     world_scene->inventory = inventory;
+    world_scene->hud = hud;
     world_scene->cam_target = (element_t*) player;
     scene_add_element(scene, (element_t*) player, 1);
     create_list(&(scene->subwindows), pause);
     create_list(&(scene->subwindows), inventory);
-    world_load(world_scene, 0, 0, infos);
+    create_list(&(scene->subwindows), hud);
+    world_load_save(world_scene, infos);
 }
 
 int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
@@ -55,24 +60,37 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
     update_hover(infos);
     if (check_world_load(world_scene, infos))
         return (QUIT_GAME_ACTION);
-    camera_move(world_scene, infos, elapsed);
-    if (!world_scene->world_pause)
+    world_scene->time += elapsed;
+    if (!world_scene->world_pause && !world_scene->pause->pause)
         scene_update_elements(scene, infos, elapsed);
+    camera_move(world_scene, infos, elapsed);
     scene_update_subwindows(scene, infos, elapsed);
+    interactable_show_closest(infos, world_scene->hud, world_scene->player);
     return (0);
 }
 
 int world_scene_event(scene_t *scene, infos_t *infos, sfEvent *event)
 {
     world_scene_t *world_scene = (world_scene_t*) scene;
-    sfKeyEvent keyEv = event->key;
 
     if (event->type == sfEvtKeyPressed) {
-        if (keyEv.code == sfKeyTab) {
-            world_scene->player->can_move = 0;
-            inventory_show(world_scene->inventory);
-        } else if (keyEv.code == sfKeyEscape)
-            pause_set_pause(world_scene->pause, infos);
+        switch (event->key.code) {
+            case sfKeyTab:
+                world_scene->player->can_move = 0;
+                inventory_show(world_scene->inventory);
+                return (0);
+            case sfKeyEscape:
+                pause_set_pause(world_scene->pause, infos);
+                return (0);
+            case sfKeyE:
+                interactable_execute_closest(infos, world_scene->player);
+                return (0);
+            case sfKeyA:
+                player_damage(world_scene->player, 1, infos);
+                return (0);
+            default:
+                return (0);
+        }
     }
     return (0);
 }

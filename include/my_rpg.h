@@ -35,6 +35,13 @@ typedef enum game_state_e {
     WORLD
 } game_state_t;
 
+typedef enum direction_s {
+    NORTH,
+    SOUTH,
+    EAST,
+    WEST
+} direction_t;
+
 typedef struct settings_s {
     int sound_level;
     int fps;
@@ -76,5 +83,12 @@ void sprite_set_origin_center(sfSprite *sprite);
 void text_set_origin_center(sfText *text);
 
 sfVector2f vector_normalize(sfVector2f vec);
+
+void walk_animation_set_anim_and_dir(float *anim,
+direction_t *direction, sfVector2f move, float speed);
+void living_walk_sprite_anim(sfSprite *sprite,
+direction_t direction, float anim);
+
+void get_knockback_move(sfVector2f *move, direction_t dir, float speed);
 
 #endif /* !MY_DEFENDER_H_ */

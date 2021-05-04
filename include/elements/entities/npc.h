@@ -8,6 +8,7 @@
 #ifndef NPC_H_
 #define NPC_H_
 
+#include "my_rpg.h"
 #include "elements/entities/interactable.h"
 
 typedef struct npc_s {
@@ -31,11 +32,14 @@ typedef struct npc_s {
     int update_instruction;
     float speed;
     sfVector2f mov_target;
+    direction_t dir;
+    float anim;
 } npc_t;
 
 npc_t *npc_create(sfVector2f pos, sfTexture *texture,
 char *action);
 void npc_update(entity_t *entity, infos_t *infos, float elapsed);
+void npc_movement(npc_t *npc, infos_t *infos, float elapsed);
 
 npc_t *trigger_create(sfVector2f pos, char *action);
 void trigger_move(element_t *element, sfVector2f pos);

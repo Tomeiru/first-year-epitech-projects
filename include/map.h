@@ -21,6 +21,8 @@ typedef struct map_s {
     sfImage *mask_img;
     sfVector2u map_size;
     char **script;
+    int map_id;
+    int spawn_id;
 } map_t;
 
 map_t *map_create(char *path);

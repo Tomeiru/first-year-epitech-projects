@@ -12,6 +12,7 @@
 #include "scene/scene.h"
 #include "map.h"
 #include "inventory.h"
+#include "hud.h"
 #include "graphics/pause.h"
 #include "elements/entities/player.h"
 
@@ -29,8 +30,10 @@ typedef struct world_scene_s {
     map_t *map;
     pause_t *pause;
     inventory_t *inventory;
+    hud_t *hud;
     player_t *player;
     element_t *cam_target;
+    float time;
 } world_scene_t;
 
 scene_t *world_scene_create(infos_t *infos);
@@ -42,11 +45,18 @@ void world_scene_destroy(scene_t *scene);
 int world_load(world_scene_t *world_scene,
 int map_id, int spawn_id, infos_t *infos);
 int check_world_load(world_scene_t *world_scene, infos_t *infos);
+void world_load_save(world_scene_t *world_scene, infos_t *infos);
 
 void camera_move(world_scene_t *world_scene, infos_t *infos, float elapsed);
 void camera_move_limits(sfVector2f *move, const sfView *view,
 world_scene_t *world_scene);
 void camera_move_view(sfView *view, sfVector2f move,
 world_scene_t *world_scene, infos_t *infos);
+
+int does_savefile_exists(void);
+void save_game(world_scene_t *world_scene);
+void load_save(world_scene_t *world_scene, infos_t *infos);
+int read_int(int fd);
+float read_float(int fd);
 
 #endif /* !WORLD_SCENE_H_ */
