@@ -19,14 +19,14 @@ typedef struct scene_s {
     list_t *elements;
     list_t *entities;
     list_t *subwindows;
-    void (*post_init)(struct scene_s *scene, infos_t *infos);
+    int (*post_init)(struct scene_s *scene, infos_t *infos);
     int (*update)(struct scene_s *scene, infos_t *infos, float elapsed);
     void (*draw)(struct scene_s *scene, infos_t *infos);
     int (*event)(struct scene_s *scene, infos_t *infos, sfEvent *event);
     void (*destroy)(struct scene_s *scene);
 } scene_t;
 
-typedef void (*post_init_fct_t)(scene_t *scene, infos_t *infos);
+typedef int (*post_init_fct_t)(scene_t *scene, infos_t *infos);
 typedef int (*update_scene_fct_t)(scene_t *scene, infos_t *, float elapsed);
 typedef void (*draw_scene_fct_t)(scene_t *scene, infos_t *infos);
 typedef int (*event_scene_fct_t)(struct scene_s *scene,

@@ -48,11 +48,13 @@ void dialogue_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element)
 {
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
+    int id;
 
     UNUSED(line);
-    UNUSED(args);
     UNUSED(element);
-    dialogue_set_str(world_scene->hud->dialogue, infos,
-    my_strdup("Ceci est un dialogue de test.\nCeci est un dialogue " \
-    "de test.\nCeci est un dialogue de test."));
+    if (!args[1])
+        return;
+    id = str_to_int(args[1]);
+    dialogue_set_str(world_scene->hud->dialogue,
+    infos, world_scene->map->text[id]);
 }

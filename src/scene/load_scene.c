@@ -23,8 +23,10 @@ int load_scene(infos_t *infos, int action)
     }
     if (!infos->scene)
         return (1);
-    else if (infos->scene->post_init)
-        infos->scene->post_init(infos->scene, infos);
+    else if (infos->scene->post_init) {
+        if (infos->scene->post_init(infos->scene, infos))
+            return (1);
+    }
     sfView_setCenter(view, (sfVector2f) {WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2});
     sfRenderWindow_setView(infos->window, view);
     return (0);

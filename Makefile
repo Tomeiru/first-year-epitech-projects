@@ -77,7 +77,8 @@ UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/elements_interact.c								\
 					src/utils/math.c											\
 					src/utils/physics.c											\
-					src/utils/animation.c
+					src/utils/animation.c										\
+					src/utils/text_loader.c
 
 LIB_DIR		=	./mylib
 INC_DIR		=	./include

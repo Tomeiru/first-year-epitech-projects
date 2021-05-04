@@ -91,4 +91,6 @@ direction_t direction, float anim);
 
 void get_knockback_move(sfVector2f *move, direction_t dir, float speed);
 
+char **load_text(char *filepath);
+
 #endif /* !MY_DEFENDER_H_ */
