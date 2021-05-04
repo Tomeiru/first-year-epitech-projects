@@ -31,7 +31,14 @@ void inventory_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
     inventory_t *inventory = (inventory_t*) subwindow;
     const sfView *view = sfRenderWindow_getView(infos->window);
+    sfVector2f pos =
+    sfRenderWindow_mapPixelToCoords(infos->window, 
+    sfMouse_getPosition((sfWindow *)infos->window), sfRenderWindow_getView(infos->window));
 
+    pos.x -= 16;
+    pos.y -= 16;
+    if (world_scene->inventory->slot_ptr)
+        sfSprite_setPosition(world_scene->inventory->slot_ptr->icon, pos);
     if (inventory->show && inventory->anim)
         inventory_anim_move(inventory, view, 500, elapsed);
     else if (!inventory->show && inventory->anim) {
