@@ -11,6 +11,7 @@
 #include "rpgsh/rpgsh.h"
 #include "elements/entities/interactable.h"
 #include "scene/world_scene.h"
+#include "elements/entities/enemy.h"
 
 scene_t *world_scene_create(infos_t *infos)
 {
@@ -37,6 +38,7 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
     pause_t *pause = pause_create(infos);
     inventory_t *inventory = inventory_create(infos);
     hud_t *hud = hud_create(infos);
+    enemy_t *enemy = enemy_create(sizeof(enemy_t), infos, (sfVector2f){600, 500});
 
     if (!pause || !player || !inventory || !hud)
         return;
@@ -46,6 +48,9 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
     world_scene->inventory = inventory;
     world_scene->hud = hud;
     world_scene->cam_target = (element_t*) player;
+    enemy->update = enemy_vertical_update;
+    enemy->attack = enemy_ranged_attack;
+    scene_add_element(scene, (element_t*)enemy, 1);
     scene_add_element(scene, (element_t*) player, 1);
     create_list(&(scene->subwindows), pause);
     create_list(&(scene->subwindows), inventory);

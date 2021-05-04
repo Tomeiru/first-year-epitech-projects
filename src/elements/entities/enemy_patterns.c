@@ -38,24 +38,38 @@ void enemy_horizontal_update(entity_t *entity, infos_t *infos, float elapsed)
 {
     enemy_t *enemy = (enemy_t *) entity;
     sfVector2f move = (sfVector2f){0, 0};
+    float speed = elapsed * 2;
 
-    enemy_horizontal_move(enemy, &move, elapsed * 2);
-    enemy->move((element_t *) enemy, (sfVector2f){enemy->pos.x + move.x,
-        enemy->pos.y + move.y});
-    enemy->attack(enemy, infos);
     if (enemy->attack_cooldown >= 0)
         enemy->attack_cooldown -= elapsed;
+    if (enemy->damage_time > 0) {
+        enemy->damage_time -= elapsed;
+        get_knockback_move(&move, enemy->dir, speed);
+    } else
+        enemy_horizontal_move(enemy, &move, speed);
+    enemy->move((element_t *) enemy, (sfVector2f){enemy->pos.x + move.x,
+        enemy->pos.y + move.y});
+    walk_animation_set_anim_and_dir(&(enemy->anim), &enemy->dir, move, speed);
+    living_walk_sprite_anim(enemy->sprite, enemy->dir, enemy->anim);
+    enemy->attack(enemy, infos);
 }
 
 void enemy_vertical_update(entity_t *entity, infos_t *infos, float elapsed)
 {
     enemy_t *enemy = (enemy_t *) entity;
     sfVector2f move = (sfVector2f){0, 0};
+    float speed = elapsed * 2;
 
-    enemy_vertical_move(enemy, &move, elapsed * 2);
-    enemy->move((element_t *) enemy, (sfVector2f){enemy->pos.x + move.x,
-        enemy->pos.y + move.y});
-    enemy->attack(enemy, infos);
     if (enemy->attack_cooldown >= 0)
         enemy->attack_cooldown -= elapsed;
+    if (enemy->damage_time > 0) {
+        enemy->damage_time -= elapsed;
+        get_knockback_move(&move, enemy->dir, speed);
+    } else
+        enemy_vertical_move(enemy, &move, speed);
+    enemy->move((element_t *) enemy, (sfVector2f){enemy->pos.x + move.x,
+        enemy->pos.y + move.y});
+    walk_animation_set_anim_and_dir(&(enemy->anim), &enemy->dir, move, speed);
+    living_walk_sprite_anim(enemy->sprite, enemy->dir, enemy->anim);
+    enemy->attack(enemy, infos);
 }
