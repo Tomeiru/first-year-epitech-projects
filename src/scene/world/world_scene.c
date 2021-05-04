@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 #include "actions.h"
+#include "audio/music.h"
 #include "rpgsh/rpgsh.h"
 #include "elements/entities/interactable.h"
 #include "scene/world_scene.h"
@@ -50,6 +51,7 @@ int world_scene_post_init(scene_t *scene, infos_t *infos)
     create_list(&(scene->subwindows), pause);
     create_list(&(scene->subwindows), inventory);
     create_list(&(scene->subwindows), hud);
+    play_music(infos, CITY);
     return (world_load_save(world_scene, infos));
 }
 

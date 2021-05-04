@@ -11,6 +11,7 @@
 #include "actions.h"
 #include "elements/entities/button.h"
 #include "scene/world_scene.h"
+#include "audio/music.h"
 
 int button_pause_resume(element_t *element,
 infos_t *infos, sfMouseButton button_type)
@@ -21,7 +22,6 @@ infos_t *infos, sfMouseButton button_type)
     if (button_type == sfMouseLeft) {
         pause_set_pause(world_scene->pause, infos);
         button_set_clicked(button, 1, infos);
-        sfMusic_play(infos->music);
     }
     return (0);
 }
@@ -43,7 +43,10 @@ void pause_set_pause(pause_t *pause, infos_t *infos)
 {
     pause->pause = !pause->pause;
     pause->anim = 1;
-    sfMusic_pause(infos->music);
+    if (pause->pause)
+        music_pause(infos->music);
+    else
+        music_continue(infos->music);
 }
 
 void pause_anim_move(pause_t *pause,

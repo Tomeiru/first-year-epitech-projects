@@ -6,7 +6,6 @@
 */
 
 #include "my_rpg.h"
-#include "sound.h"
 #include "elements/entities/button.h"
 
 int button_fps_minus(element_t *element,
@@ -44,7 +43,7 @@ infos_t *infos, sfMouseButton button_type)
     if (button_type == sfMouseLeft) {
         if (infos->settings.sound_level > 0)
             infos->settings.sound_level -= 5;
-        sound_set_volume(infos);
+        audio_set_volume(infos);
         button_set_clicked(button, 1, infos);
     }
     return (0);
@@ -58,7 +57,7 @@ infos_t *infos, sfMouseButton button_type)
     if (button_type == sfMouseLeft) {
         if (infos->settings.sound_level < 100)
             infos->settings.sound_level += 5;
-        sound_set_volume(infos);
+        audio_set_volume(infos);
         button_set_clicked(button, 1, infos);
     }
     return (0);

@@ -15,7 +15,9 @@ MAIN_SRC		=	src/main.c													\
 					src/graphics/pause.c										\
 					src/graphics/pause_fcts.c									\
 					src/graphics/effects.c										\
-					src/sounds/sounds.c
+					src/audio/sounds.c											\
+					src/audio/music.c											\
+					src/audio/utils.c
 
 ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/default_element_fcts.c							\
