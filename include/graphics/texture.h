@@ -29,6 +29,11 @@ typedef enum texture_e {
     HEART_TEXT,
     INV_SLOT_TEXT,
     TEXTBOX_TEXT,
+    DANDY_TEXT,
+    FAT_TEXT,
+    GUARD_TEXT,
+    NURSE_TEXT,
+    VILLAIN_TEXT,
 } texture_t;
 
 list_t *load_textures(void);

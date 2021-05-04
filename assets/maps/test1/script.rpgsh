@@ -1,4 +1,4 @@
-ADD NPC 600 600 Parler
+ADD_NPC FAT 600 600 Parler
     ACTION
         DIALOGUE 0
     END
@@ -7,7 +7,7 @@ ADD NPC 600 600 Parler
         MOVE 700 700
     END
 
-ADD TRIGGER 1550 1650 Activer
+ADD_TRIGGER 1550 1650 Activer
     ACTION
         SET_PLAYER_MOVE 0
         CAM_TARGET
