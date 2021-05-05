@@ -6,6 +6,8 @@
 ##
 
 SRC			=	src/main.c					\
+				src/commands.c				\
+				src/utils.c					\
 				src/timestamp.c				\
 				src/api/comms.c				\
 				src/api/response.c			\
