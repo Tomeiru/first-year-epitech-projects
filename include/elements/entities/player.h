@@ -33,13 +33,15 @@ typedef struct player_s {
     char can_move;
     float damage_time;
     float stamina;
+    float attack_cooldown;
 } player_t;
 
 player_t *player_create(infos_t *infos);
 void player_update(entity_t *entity, infos_t *infos, float elapsed);
-
 void player_move_update(player_t *player,
 map_t *map, infos_t *infos, float elapsed);
+
+void player_attack(player_t *player, infos_t *infos);
 void player_damage(player_t *player, float damage, infos_t *infos);
 void player_get_move_from_keyboard(player_t *player,
 sfVector2f *move, float *speed);

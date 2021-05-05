@@ -10,25 +10,22 @@
 #include "scene/world_scene.h"
 #include "graphics/texture.h"
 
-void player_move_update(player_t *player,
-map_t *map, infos_t *infos, float elapsed)
+void player_attack(player_t *player, infos_t *infos)
 {
-    sfVector2f move = {0, 0};
-    float speed = player->speed * elapsed;
+    world_scene_t *world_scene = (world_scene_t*) infos->scene;
+    sfIntRect hit_hb = get_hit_hitbox(player->pos, player->dir);
+    element_t *element;
 
-    if (!player->can_move)
+    if (player->attack_cooldown > 0)
         return;
-    if (player->damage_time > 0)
-        get_knockback_move(&move, player->dir, speed);
-    else
-        player_get_move_from_keyboard(player, &move, &speed);
-    prior_map_collision(&move, player->hitbox, map);
-    player_prior_element_collision((element_t*) player,
-    &move, player->hitbox, infos);
-    if (move.x == 0 && move.y == 0)
+    player->can_move = 1;
+    player->anim = 120;
+    player->attack_cooldown = 10;
+    element = element_collision((element_t*) player,
+    hit_hb, world_scene->entities);
+    if (!element || element->type != ENEMY)
         return;
-    player->move((element_t*) player, (sfVector2f)
-    {player->pos.x + move.x, player->pos.y + move.y});
+    scene_remove_element(infos->scene, element, 1);
 }
 
 void player_damage(player_t *player, float damage, infos_t *infos)

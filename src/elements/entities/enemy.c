@@ -59,20 +59,20 @@ void enemy_default_update(entity_t *entity, infos_t *infos, float elapsed)
 {
     enemy_t *enemy = (enemy_t *) entity;
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
-    sfVector2f move;
-    float speed = elapsed * 2;
+    sfVector2f move = (sfVector2f) {0, 0};
+    float speed = enemy->speed * 2;
 
     if (enemy->attack_cooldown >= 0)
         enemy->attack_cooldown -= elapsed;
-    if (enemy->damage_time > 0) {
+    if (enemy->damage_time > 0)
         enemy->damage_time -= elapsed;
-        get_knockback_move(&move, enemy->dir, elapsed * 2);
-    } else
-        move = enemy->pos;
+    else
+        enemy->pattern(enemy, &move, infos, elapsed);
     prior_map_collision(&move, enemy->hitbox, world_scene->map);
     prior_element_collision((element_t*) enemy, &move, enemy->hitbox, infos);
     walk_animation_set_anim_and_dir(&(enemy->anim), &enemy->dir, move, speed);
-    enemy->move((element_t *) enemy, move);
+    enemy->move((element_t *) enemy,
+    (sfVector2f) {enemy->pos.x + move.x, enemy->pos.y + move.y});
     living_walk_sprite_anim(enemy->sprite, enemy->dir, enemy->anim);
     enemy->attack(enemy, infos);
 }
@@ -85,14 +85,14 @@ enemy_t *enemy_create(size_t size, infos_t *infos, sfVector2f pos)
 
     if (!enemy || !sprite)
         return(NULL);
-    sfSprite_setTexture(sprite, get_texture(infos, PLAYER_TEXT), 0);
+    sfSprite_setTexture(sprite, get_texture(infos, VILLAIN_TEXT), 0);
     sfSprite_setTextureRect(sprite, (sfIntRect) {0, 0, 64, 64});
     enemy->sprite = sprite;
     enemy->update = &enemy_default_update;
     enemy->health = 1;
+    enemy->speed = 2;
     enemy->pos_start = enemy->pos;
     enemy->move_status = 1;
-    enemy->attack = enemy_close_attack;
     enemy->attack_cooldown = 0;
     enemy->dir = SOUTH;
     enemy->anim = 0;
