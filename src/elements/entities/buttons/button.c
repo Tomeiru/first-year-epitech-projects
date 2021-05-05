@@ -6,7 +6,7 @@
 */
 
 #include "my_rpg.h"
-#include "sound.h"
+#include "audio/sound.h"
 #include "graphics/texture.h"
 #include "elements/entities/text.h"
 #include "elements/entities/button.h"

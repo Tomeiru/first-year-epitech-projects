@@ -37,7 +37,7 @@ typedef struct world_scene_s {
 } world_scene_t;
 
 scene_t *world_scene_create(infos_t *infos);
-void world_scene_post_init(scene_t *scene, infos_t *infos);
+int world_scene_post_init(scene_t *scene, infos_t *infos);
 int world_scene_update(scene_t *scene, infos_t *infos, float elapsed);
 int world_scene_event(scene_t *scene, infos_t *infos, sfEvent *event);
 void world_scene_destroy(scene_t *scene);
@@ -45,7 +45,7 @@ void world_scene_destroy(scene_t *scene);
 int world_load(world_scene_t *world_scene,
 int map_id, int spawn_id, infos_t *infos);
 int check_world_load(world_scene_t *world_scene, infos_t *infos);
-void world_load_save(world_scene_t *world_scene, infos_t *infos);
+int world_load_save(world_scene_t *world_scene, infos_t *infos);
 
 void camera_move(world_scene_t *world_scene, infos_t *infos, float elapsed);
 void camera_move_limits(sfVector2f *move, const sfView *view,
@@ -55,7 +55,7 @@ world_scene_t *world_scene, infos_t *infos);
 
 int does_savefile_exists(void);
 void save_game(world_scene_t *world_scene);
-void load_save(world_scene_t *world_scene, infos_t *infos);
+int load_save(world_scene_t *world_scene, infos_t *infos);
 int read_int(int fd);
 float read_float(int fd);
 

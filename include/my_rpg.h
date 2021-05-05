@@ -14,6 +14,7 @@
 #include "my_list.h"
 
 #include "scene/scene.h"
+#include "audio/music.h"
 #include "elements/element.h"
 #include "elements/entities/entity.h"
 #include "elements/entities/text.h"
@@ -52,9 +53,9 @@ typedef struct infos_s {
     game_state_t state;
     scene_t *scene;
     list_t *sounds;
+    music_struct_t *music;
     list_t *textures;
     sfFont *font;
-    sfMusic *music;
     settings_t settings;
 } infos_t;
 
@@ -90,5 +91,9 @@ void living_walk_sprite_anim(sfSprite *sprite,
 direction_t direction, float anim);
 
 void get_knockback_move(sfVector2f *move, direction_t dir, float speed);
+
+char **load_text(char *filepath);
+
+void audio_set_volume(infos_t *infos);
 
 #endif /* !MY_DEFENDER_H_ */

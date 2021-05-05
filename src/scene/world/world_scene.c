@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 #include "actions.h"
+#include "audio/music.h"
 #include "rpgsh/rpgsh.h"
 #include "elements/entities/interactable.h"
 #include "scene/world_scene.h"
@@ -31,7 +32,7 @@ scene_t *world_scene_create(infos_t *infos)
     return (scene);
 }
 
-void world_scene_post_init(scene_t *scene, infos_t *infos)
+int world_scene_post_init(scene_t *scene, infos_t *infos)
 {
     world_scene_t *world_scene = (world_scene_t*) scene;
     player_t *player = player_create(infos);
@@ -41,7 +42,7 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
     enemy_t *enemy = enemy_create(sizeof(enemy_t), infos, (sfVector2f) {1000, 500});
 
     if (!pause || !player || !inventory || !hud)
-        return;
+        return (1);
     world_scene->world_pause = 0;
     world_scene->player = player;
     world_scene->pause = pause;
@@ -55,7 +56,8 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
     create_list(&(scene->subwindows), pause);
     create_list(&(scene->subwindows), inventory);
     create_list(&(scene->subwindows), hud);
-    world_load_save(world_scene, infos);
+    play_music(infos, CITY);
+    return (world_load_save(world_scene, infos));
 }
 
 int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)

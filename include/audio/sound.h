@@ -22,6 +22,5 @@ typedef struct sound_couple_s {
 list_t *load_sounds(void);
 void play_sound(infos_t *infos, sound_t id);
 void destroy_sounds(list_t *sounds);
-void sound_set_volume(infos_t *infos);
 
 #endif /* !SOUND_H_ */

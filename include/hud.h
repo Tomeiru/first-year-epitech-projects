@@ -10,8 +10,10 @@
 
 #include "graphics/subwindow.h"
 #include "elements/health_bar.h"
+#include "elements/bar.h"
 #include "elements/entities/particles/meteo.h"
 #include "elements/entities/text.h"
+#include "elements/entities/dialogue.h"
 
 typedef struct hud_s {
     sfSprite *background;
@@ -23,7 +25,9 @@ typedef struct hud_s {
     subwindow_draw_fct_t draw;
     subwindow_destroy_fct_t destroy;
     health_bar_t *health_bar;
+    bar_t *stamina_bar;
     buffer_t *meteo;
+    dialogue_t *dialogue;
     text_t *action_text;
 } hud_t;
 

@@ -8,8 +8,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "my_rpg.h"
-#include "sound.h"
-#include "sound_list.h"
+#include "audio/sound.h"
+#include "audio/sound_list.h"
 
 static int load_sound(list_t **sounds, const char *path)
 {
@@ -49,13 +49,6 @@ void play_sound(infos_t *infos, sound_t id)
 
     for (int i = 0; i < (int) id; i++, list = list->next);
     sfSound_play(((sound_couple_t*) list->data)->sound);
-}
-
-void sound_set_volume(infos_t *infos)
-{
-    sfMusic_setVolume(infos->music, infos->settings.sound_level);
-    for (list_t *list = infos->sounds; list; list = list->next)
-        sfSound_setVolume((sfSound*) list->data, infos->settings.sound_level);
 }
 
 void destroy_sounds(list_t *sounds)
