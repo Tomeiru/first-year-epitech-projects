@@ -38,6 +38,7 @@ void player_damage(player_t *player, float damage, infos_t *infos)
     player->damage_time = 15;
     player->health -= damage;
     health_bar_set_value(world_scene->hud->health_bar, player->health);
+    sfSprite_setColor(player->sprite, (sfColor) {255, 127, 127, 255});
 }
 
 void player_get_move_from_keyboard(player_t *player,

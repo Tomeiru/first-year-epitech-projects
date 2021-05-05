@@ -46,8 +46,11 @@ void player_update(entity_t *entity, infos_t *infos, float elapsed)
     player_t *player = (player_t*) entity;
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
 
-    if (player->damage_time > 0)
+    if (player->damage_time > 0) {
         player->damage_time -= elapsed;
+        if (player->damage_time <= 0)
+            sfSprite_setColor(player->sprite, (sfColor) {255, 255, 255, 255});
+    }
     player_stamina(player, infos, elapsed);
     player_move_update(player, world_scene->map, infos, elapsed);
     element_behind_wall((element_t*) player, world_scene->map);
