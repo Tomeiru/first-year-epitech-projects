@@ -49,7 +49,7 @@ void world_scene_post_init(scene_t *scene, infos_t *infos)
     world_scene->hud = hud;
     world_scene->cam_target = (element_t*) player;
     enemy->update = enemy_vertical_update;
-    enemy->attack = enemy_ranged_attack;
+    enemy->attack = enemy_close_attack;
     scene_add_element(scene, (element_t*)enemy, 1);
     scene_add_element(scene, (element_t*) player, 1);
     create_list(&(scene->subwindows), pause);

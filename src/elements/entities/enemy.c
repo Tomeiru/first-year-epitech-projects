@@ -38,10 +38,11 @@ void enemy_close_attack(enemy_t *enemy, infos_t *infos)
     sfVector2f player_pos = world_scene->player->pos;
     float distance = get_distance(enemy->pos, player_pos);
 
-    if (distance <= 50 && enemy->attack_cooldown <= 0) {
-        enemy->attack_cooldown = 20;
+    if (distance <= 100 && enemy->attack_cooldown <= 0) {
+        enemy->attack_cooldown = 100;
         enemy->move_status = 0;
-        //player takes damage
+        player_damage(world_scene->player, 1, infos);
+        //rotate to player
     } else if (distance > 50 && enemy->move_status == 0)
         enemy->move_status = 1;
 }
