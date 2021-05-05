@@ -21,7 +21,6 @@ static int execute_action(infos_t *infos, int action)
             return (0);
         default:
             infos->scene->destroy(infos->scene);
-            sfMusic_stop(infos->music);
             return (load_scene(infos, action));
     }
 }

@@ -15,7 +15,9 @@ MAIN_SRC		=	src/main.c													\
 					src/graphics/pause.c										\
 					src/graphics/pause_fcts.c									\
 					src/graphics/effects.c										\
-					src/sounds/sounds.c
+					src/audio/sounds.c											\
+					src/audio/music.c											\
+					src/audio/utils.c
 
 ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/default_element_fcts.c							\
@@ -25,6 +27,7 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/image.c										\
 					src/elements/entities/buffer.c								\
 					src/elements/entities/player.c								\
+					src/elements/entities/player_fcts.c							\
 					src/elements/entities/text.c								\
 					src/elements/entities/text_update_fcts.c					\
 					src/elements/entities/dialogue.c							\
