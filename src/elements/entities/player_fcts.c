@@ -6,9 +6,10 @@
 */
 
 #include "my_rpg.h"
-#include "elements/entities/player.h"
-#include "scene/world_scene.h"
 #include "graphics/texture.h"
+#include "scene/world_scene.h"
+#include "elements/entities/player.h"
+#include "elements/entities/particles/hit_particle.h"
 
 void player_attack(player_t *player, infos_t *infos)
 {
@@ -31,11 +32,14 @@ void player_attack(player_t *player, infos_t *infos)
 void player_damage(player_t *player, float damage, infos_t *infos)
 {
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
+    hit_particle_t *hit_particle = hit_particle_create((element_t*) player);
 
     player->damage_time = 15;
     player->health -= damage;
     health_bar_set_value(world_scene->hud->health_bar, player->health);
     sfSprite_setColor(player->sprite, (sfColor) {255, 127, 127, 255});
+    if (hit_particle)
+        scene_add_element(infos->scene, (element_t*) hit_particle, 1);
 }
 
 void player_get_move_from_keyboard(player_t *player,

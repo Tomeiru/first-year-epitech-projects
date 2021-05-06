@@ -43,6 +43,7 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/entities/particles/falling_particle.c			\
 					src/elements/entities/particles/meteo.c						\
 					src/elements/entities/particles/meteo_effects.c				\
+					src/elements/entities/particles/hit_particle.c				\
 					src/elements/entities/interactable/interactable.c			\
 					src/elements/entities/interactable/interactable_fcts.c		\
 					src/elements/entities/interactable/npc.c					\
