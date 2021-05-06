@@ -39,7 +39,7 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/entities/buttons/button.c						\
 					src/elements/entities/buttons/slot_button.c					\
 					src/elements/entities/buttons/slot_button_fcts.c			\
-					src/elements/entities/buttons/button_default_fcts.c			\
+					src/elements/entities/buttons/button_fcts.c					\
 					src/elements/entities/buttons/button_types.c				\
 					src/elements/entities/particles/falling_particle.c			\
 					src/elements/entities/particles/meteo.c						\
@@ -62,6 +62,7 @@ SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/settings/button_settings_actions.c				\
 					src/scene/settings/button_settings_res_actions.c			\
 					src/scene/world/world_scene.c								\
+					src/scene/world/world_scene_fcts.c							\
 					src/scene/world/world.c										\
 					src/scene/world/hud.c										\
 					src/scene/world/inventory.c									\

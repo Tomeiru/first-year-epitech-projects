@@ -36,11 +36,17 @@ typedef struct world_scene_s {
     float time;
 } world_scene_t;
 
-scene_t *world_scene_create(infos_t *infos);
-int world_scene_post_init(scene_t *scene, infos_t *infos);
+scene_t *world_scene_create_new(infos_t *infos);
+scene_t *world_scene_create_save(infos_t *infos);
 int world_scene_update(scene_t *scene, infos_t *infos, float elapsed);
-int world_scene_event(scene_t *scene, infos_t *infos, sfEvent *event);
 void world_scene_destroy(scene_t *scene);
+
+int world_scene_post_init_common(world_scene_t *world_scene, infos_t *infos);
+int world_scene_post_init_new(scene_t *scene, infos_t *infos);
+int world_scene_post_init_save(scene_t *scene, infos_t *infos);
+int world_scene_event(scene_t *scene, infos_t *infos, sfEvent *event);
+void world_scene_keyboard_event(world_scene_t *world_scene,
+sfKeyCode code, infos_t *infos);
 
 int world_load(world_scene_t *world_scene,
 int map_id, int spawn_id, infos_t *infos);
