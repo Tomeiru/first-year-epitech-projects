@@ -77,7 +77,5 @@ sfIntRect get_hit_hitbox(sfVector2f pos, direction_t dir)
             top_left.x += 64;
             break;
     }
-    #include <stdio.h>
-    printf("(%f / %f) -> (%f/ %f)\n", pos.x - 32, pos.y - 32, top_left.x, top_left.y);
     return ((sfIntRect) {top_left.x, top_left.y, 64, 64});
 }
