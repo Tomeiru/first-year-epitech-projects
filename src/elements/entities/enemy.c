@@ -19,6 +19,7 @@ static void enemy_init(enemy_t *enemy)
     enemy->health = 2;
     enemy->speed = 2;
     enemy->pos_start = enemy->pos;
+    enemy->dist = 100;
     enemy->move_status = 1;
     enemy->attack_cooldown = 0;
     enemy->dir = SOUTH;

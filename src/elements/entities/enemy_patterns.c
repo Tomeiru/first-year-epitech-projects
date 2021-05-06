@@ -14,7 +14,8 @@ void enemy_vertical_pattern(enemy_t *enemy,
 sfVector2f *move, infos_t *infos, float speed)
 {
     UNUSED(infos);
-    if (enemy->move_status == 1 && enemy->pos.y > enemy->pos_start.y + 200)
+    if (enemy->move_status == 1
+    && enemy->pos.y > enemy->pos_start.y + enemy->dist)
         enemy->move_status = 2;
     if (enemy->move_status == 2 && enemy->pos.y < enemy->pos_start.y)
         enemy->move_status = 1;
@@ -28,7 +29,8 @@ void enemy_horizonthal_pattern(enemy_t *enemy,
 sfVector2f *move, infos_t *infos, float speed)
 {
     UNUSED(infos);
-    if (enemy->move_status == 1 && enemy->pos.x > enemy->pos_start.x + 200)
+    if (enemy->move_status == 1
+    && enemy->pos.x > enemy->pos_start.x + enemy->dist)
         enemy->move_status = 2;
     if (enemy->move_status == 2 && enemy->pos.x < enemy->pos_start.x)
         enemy->move_status = 1;

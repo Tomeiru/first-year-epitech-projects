@@ -27,6 +27,7 @@ typedef struct enemy_s {
     void (*pattern)(struct enemy_s *enemy,
     sfVector2f *move, infos_t *infos, float speed);
     sfVector2f pos_start;
+    int dist;
     float health;
     float speed;
     int move_status;
