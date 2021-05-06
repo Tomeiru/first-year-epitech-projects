@@ -30,6 +30,9 @@ float rot, float speed, sfTexture *texture)
     projectile->rot = rot;
     projectile->update = &projectile_update;
     projectile->speed = speed;
+    sprite_set_origin_center(sprite);
+    element_set_hitbox((element_t*) projectile,
+    sfSprite_getGlobalBounds(sprite));
     return (projectile);
 }
 
@@ -41,8 +44,8 @@ void projectile_update(entity_t *entity, infos_t *infos, float elapsed)
     float rad = projectile->rot * 3.14 / 180;
     float speed = projectile->speed * elapsed;
     sfVector2f new_pos = projectile->pos;
-    element_t *collision = element_collision((element_t*)projectile, projectile->hitbox,
-        world_scene->entities);
+    element_t *collision = element_collision((element_t*)projectile,
+    projectile->hitbox, world_scene->entities);
 
     new_pos.x += cos(rad) * speed;
     new_pos.y += sin(rad) * speed;
