@@ -61,21 +61,23 @@ void update_hover(infos_t *infos)
 
 sfIntRect get_hit_hitbox(sfVector2f pos, direction_t dir)
 {
-    sfVector2f center = pos;
+    sfVector2f top_left = {pos.x - 32, pos.y - 32};
 
     switch (dir) {
         case NORTH:
-            pos.y -= 96;
+            top_left.y -= 64;
             break;
         case SOUTH:
-            pos.y += 96;
+            top_left.y += 64;
             break;
         case EAST:
-            pos.x -= 96;
+            top_left.x -= 64;
             break;
         case WEST:
-            pos.x += 96;
+            top_left.x += 64;
             break;
     }
-    return ((sfIntRect) {center.x - 32, center.y - 32, 96, 96});
+    #include <stdio.h>
+    printf("(%f / %f) -> (%f/ %f)\n", pos.x - 32, pos.y - 32, top_left.x, top_left.y);
+    return ((sfIntRect) {top_left.x, top_left.y, 64, 64});
 }
