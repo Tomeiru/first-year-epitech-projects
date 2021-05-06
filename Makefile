@@ -55,6 +55,7 @@ SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/load_scene.c										\
 					src/scene/button_load_actions.c								\
 					src/scene/menu_scene.c										\
+					src/scene/gameover_scene.c									\
 					src/scene/howtoplay/howtoplay_scene.c						\
 					src/scene/howtoplay/button_htp_actions.c					\
 					src/scene/settings/settings_scene.c							\

@@ -8,7 +8,7 @@
 #ifndef TEXTURES_LIST_H_
 #define TEXTURES_LIST_H_
 
-#define TEXTURES_NB 20
+#define TEXTURES_NB 21
 
 const char *TEXTURES_PATH[] = {
     "assets/textures/buttons.png",
@@ -16,6 +16,7 @@ const char *TEXTURES_PATH[] = {
     "assets/textures/menu_background.png",
     "assets/textures/settings_background.png",
     "assets/textures/howtoplay_background.png",
+    "assets/textures/gameover_background.png",
     "assets/textures/settings_subwindow.png",
     "assets/textures/howtoplay_img.png",
     "assets/textures/inventory.png",

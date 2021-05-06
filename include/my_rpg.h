@@ -33,7 +33,8 @@ typedef enum game_state_e {
     MAIN_MENU,
     HOWTOPLAY,
     SETTINGS,
-    WORLD
+    WORLD,
+    GAMEOVER,
 } game_state_t;
 
 typedef enum direction_s {

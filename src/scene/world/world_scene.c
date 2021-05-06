@@ -63,6 +63,8 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
     camera_move(world_scene, infos, elapsed);
     scene_update_subwindows(scene, infos, elapsed);
     interactable_show_closest(infos, world_scene->hud, world_scene->player);
+    if (world_scene->player->health <= 0)
+        return (LOAD_GAMEOVER_SCENE_ACTION);
     return (0);
 }
 
