@@ -44,7 +44,7 @@ map_t *map, infos_t *infos, float elapsed);
 void player_attack(player_t *player, infos_t *infos);
 void player_damage(player_t *player, float damage, infos_t *infos);
 void player_get_move_from_keyboard(player_t *player,
-sfVector2f *move, float *speed);
-void player_stamina(player_t *player, infos_t *infos, float elapsed);
+sfVector2f *move, float *speed, float elapsed);
+void player_stamina(player_t *player, infos_t *infos);
 
 #endif /* !PLAYER_H_ */

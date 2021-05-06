@@ -59,7 +59,7 @@ void player_update(entity_t *entity, infos_t *infos, float elapsed)
         else
             player->can_move = 0;
     }
-    player_stamina(player, infos, elapsed);
+    player_stamina(player, infos);
     player_move_update(player, world_scene->map, infos, elapsed);
     element_behind_wall((element_t*) player, world_scene->map);
     living_walk_sprite_anim(player->sprite, player->dir, player->anim);
@@ -76,7 +76,7 @@ map_t *map, infos_t *infos, float elapsed)
     if (player->damage_time > 0)
         get_knockback_move(&move, player->dir, speed);
     else
-        player_get_move_from_keyboard(player, &move, &speed);
+        player_get_move_from_keyboard(player, &move, &speed, elapsed);
     prior_map_collision(&move, player->hitbox, map);
     player_prior_element_collision((element_t*) player,
     &move, player->hitbox, infos);

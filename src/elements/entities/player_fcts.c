@@ -44,10 +44,12 @@ void player_damage(player_t *player, float damage, infos_t *infos)
 }
 
 void player_get_move_from_keyboard(player_t *player,
-sfVector2f *move, float *speed)
+sfVector2f *move, float *speed, float elapsed)
 {
-    if (sfKeyboard_isKeyPressed(sfKeyLShift) && player->stamina > 0)
+    if (sfKeyboard_isKeyPressed(sfKeyLShift) && player->stamina > 0) {
         *speed *= 1.5;
+        player->stamina -= elapsed;
+    }
     if (sfKeyboard_isKeyPressed(sfKeyZ) ^ sfKeyboard_isKeyPressed(sfKeyS))
         move->y = sfKeyboard_isKeyPressed(sfKeyZ) ? -*speed : *speed;
     if (sfKeyboard_isKeyPressed(sfKeyQ) ^ sfKeyboard_isKeyPressed(sfKeyD))
@@ -56,26 +58,24 @@ sfVector2f *move, float *speed)
     &(player->dir), *move, *speed);
 }
 
-void player_stamina(player_t *player, infos_t *infos, float elapsed)
+void player_stamina(player_t *player, infos_t *infos)
 {
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
 
-    if (sfKeyboard_isKeyPressed(sfKeyLShift) && player->stamina > 0) {
-        player->stamina -= elapsed;
-        bar_set_value(world_scene->hud->stamina_bar, player->stamina);
+    if (player->stamina <= 0) {
+        player->stamina -= 0.5;
+        if (player->stamina <= -20)
+            player->stamina = -player->stamina;
     } else {
-        if (player->stamina <= 0) {
-            player->stamina -= 0.5;
-            if (player->stamina <= -20) {
-                player->stamina = -player->stamina;
-                bar_set_value(world_scene->hud->stamina_bar, player->stamina);
-            } else
-                bar_set_value(world_scene->hud->stamina_bar, -player->stamina);
-        } else {
-            player->stamina += 0.5;
-            if (player->stamina > 100)
-                player->stamina = 100;
-            bar_set_value(world_scene->hud->stamina_bar, player->stamina);
-        }
+        player->stamina += 0.5;
+        if (player->stamina > 100)
+            player->stamina = 100;
+    }
+    if (player->stamina < 0) {
+        bar_set_value(world_scene->hud->stamina_bar, -player->stamina);
+        bar_set_color(world_scene->hud->stamina_bar, RED_BAR);
+    } else {
+        bar_set_value(world_scene->hud->stamina_bar, player->stamina);
+        bar_set_color(world_scene->hud->stamina_bar, GREEN_BAR);
     }
 }
