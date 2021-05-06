@@ -27,6 +27,7 @@ scene_t *world_scene_create_new(infos_t *infos)
     world_scene->background = background;
     world_scene->post_init = &world_scene_post_init_new;
     world_scene->event = &world_scene_event;
+    world_scene->world_type = VILLAGE;
     world_scene->map = NULL;
     world_scene->time = 0;
     return (scene);

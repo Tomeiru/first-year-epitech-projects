@@ -79,7 +79,8 @@ RPGSH_SCR		=	src/rpgsh/rpgsh.c											\
 					src/rpgsh/conditions.c										\
 					src/rpgsh/attach.c											\
 					src/rpgsh/commands/commands.c								\
-					src/rpgsh/commands/npc_commands.c
+					src/rpgsh/commands/npc_commands.c							\
+					src/rpgsh/commands/world_commands.c
 
 UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/int_str.c											\

@@ -13,7 +13,7 @@ typedef struct element_s element_t;
 typedef void (*rpgsh_command_fct_t)(char ***line,
 char **args, infos_t *infos, element_t *element);
 
-#define NB_COMMANDS 8
+#define NB_COMMANDS 10
 
 void cam_target_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
@@ -33,6 +33,11 @@ char **args, infos_t *infos, element_t *element);
 void move_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
 
+void world_type_rpgsh_command(char ***line,
+char **args, infos_t *infos, element_t *element);
+void play_music_rpgsh_command(char ***line,
+char **args, infos_t *infos, element_t *element);
+
 const char *COMMAND_STR[] = {
     "MOVE",
     "CAM_TARGET",
@@ -42,6 +47,8 @@ const char *COMMAND_STR[] = {
     "ADD_NPC",
     "ADD_TRIGGER",
     "ADD_ENEMY",
+    "SET_WORLD_TYPE",
+    "PLAY_MUSIC",
 };
 
 const int COMMAND_LENGTH[] = {
@@ -53,6 +60,8 @@ const int COMMAND_LENGTH[] = {
     7,
     11,
     9,
+    14,
+    10,
 };
 
 const rpgsh_command_fct_t COMMAND_FCT[] = {
@@ -64,6 +73,8 @@ const rpgsh_command_fct_t COMMAND_FCT[] = {
     &add_npc_rpgsh_command,
     &add_trigger_rpgsh_command,
     &add_enemy_rpgsh_command,
+    &world_type_rpgsh_command,
+    &play_music_rpgsh_command,
 };
 
 #endif /* !COMMANDS_H_ */

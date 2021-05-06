@@ -49,7 +49,9 @@ void play_music(infos_t *infos, music_t id)
     music_struct_t *music = infos->music;
     list_t *list = music->musics;
 
-    if (music->actual_music > -1)
+    if (music->actual_music == id)
+        return;
+    else if (music->actual_music > -1)
         music_stop(music);
     for (int i = 0; i < (int) id; i++, list = list->next);
     sfMusic_play((sfMusic*) list->data);
