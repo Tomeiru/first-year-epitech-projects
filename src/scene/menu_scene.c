@@ -37,7 +37,8 @@ static int init_menu_scene_buttons(menu_scene_t *menu_scene, infos_t *infos)
     button_t *leave =
     text_button_create(infos, "Quitter", (sfVector2f) {864, 850}, RED_BUTTON);
 
-    if (init_menu_scene_play_buttons(menu_scene, infos) || !settings || !leave)
+    if (init_menu_scene_play_buttons(menu_scene, infos)
+    || !settings || !howtoplay || !leave)
         return (1);
     settings->on_click = &button_load_settings_scene;
     howtoplay->on_click = &button_load_howtoplay_scene;
