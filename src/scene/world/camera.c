@@ -48,6 +48,7 @@ void camera_move_view(sfView *view, sfVector2f move,
 world_scene_t *world_scene, infos_t *infos)
 {
     subwindow_t *subwindow;
+    sfVector2f center;
 
     sfView_move(view, move);
     for (list_t *list = world_scene->subwindows; list; list = list->next) {
@@ -56,4 +57,10 @@ world_scene_t *world_scene, infos_t *infos)
         {subwindow->pos.x + move.x, subwindow->pos.y + move.y});
     }
     sfRenderWindow_setView(infos->window, view);
+    center = sfView_getCenter(view);
+    sfSprite_setPosition(world_scene->background,
+    (sfVector2f) {center.x - WINDOW_WIDTH / 2, center.y - WINDOW_HEIGHT / 2});
+    sfSprite_setTextureRect(world_scene->background, (sfIntRect)
+    {center.x - WINDOW_WIDTH / 2, center.y - WINDOW_HEIGHT / 2,
+    WINDOW_WIDTH, WINDOW_HEIGHT});
 }
