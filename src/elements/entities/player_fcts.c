@@ -8,6 +8,7 @@
 #include "my_rpg.h"
 #include "graphics/texture.h"
 #include "scene/world_scene.h"
+#include "elements/entities/enemy.h"
 #include "elements/entities/player.h"
 #include "elements/entities/particles/hit_particle.h"
 
@@ -26,7 +27,7 @@ void player_attack(player_t *player, infos_t *infos)
     hit_hb, world_scene->entities);
     if (!element || element->type != ENEMY)
         return;
-    scene_remove_element(infos->scene, element, 1);
+    enemy_take_damage((enemy_t*) element, 1, infos);
 }
 
 void player_damage(player_t *player, float damage, infos_t *infos)

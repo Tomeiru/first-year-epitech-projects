@@ -41,8 +41,9 @@ typedef void (*pattern_enemy_fct_t)(enemy_t *enemy,
 sfVector2f *move, infos_t *infos, float speed);
 
 enemy_t *enemy_create(size_t size, infos_t *infos, sfVector2f pos);
-void enemy_horizontal_update(entity_t *entity, infos_t *infos, float elapsed);
-void enemy_vertical_update(entity_t *entity, infos_t *infos, float elapsed);
+void enemy_default_update(entity_t *entity, infos_t *infos, float elapsed);
+void enemy_take_damage(enemy_t *enemy, int damage, infos_t *infos);
+
 void enemy_ranged_attack(enemy_t *enemy, infos_t *infos);
 void enemy_close_attack(enemy_t *enemy, infos_t *infos);
 
