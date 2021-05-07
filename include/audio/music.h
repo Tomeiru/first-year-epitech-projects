@@ -11,6 +11,7 @@
 typedef enum music_e {
     NONE = -1,
     VILLAGE_MUSIC,
+    GAMEOVER_MUSIC,
 } music_t;
 
 typedef struct music_s {

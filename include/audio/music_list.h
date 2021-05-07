@@ -8,10 +8,11 @@
 #ifndef MUSIC_LIST_H_
 #define MUSIC_LIST_H_
 
-#define MUSICS_NB 1
+#define MUSICS_NB 2
 
 const char *MUSICS_PATH[] = {
-    "./assets/sounds/music.ogg",
+    "./assets/sounds/village.ogg",
+    "./assets/sounds/gameover.ogg",
 };
 
 #endif /* !MUSIC_LIST_H_ */

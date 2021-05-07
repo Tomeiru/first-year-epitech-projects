@@ -5,13 +5,12 @@
 ** gameover
 */
 
-
-
 #include <stdlib.h>
 #include "my_rpg.h"
+#include "audio/music.h"
+#include "graphics/texture.h"
 #include "scene/gameover_scene.h"
 #include "elements/entities/button.h"
-#include "graphics/texture.h"
 
 static int init_gameover_scene_buttons(gameover_scene_t *gameover_scene, infos_t *infos)
 {
@@ -46,6 +45,7 @@ scene_t *gameover_scene_create(infos_t *infos)
     sfSprite_setTexture(background,
     get_texture(infos, GAMEOVER_BACKGROUND_TEXT), 0);
     gameover_scene->background = background;
+    play_music(infos, GAMEOVER_MUSIC);
     return (scene);
 }
 
