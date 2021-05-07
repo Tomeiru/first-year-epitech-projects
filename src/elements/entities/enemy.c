@@ -69,15 +69,34 @@ void enemy_default_update(entity_t *entity, infos_t *infos, float elapsed)
     enemy->attack(enemy, infos);
 }
 
+static void level_up(infos_t *infos)
+{
+    bar_t *exp_bar = ((world_scene_t*) infos->scene)->inventory->exp_bar;
+    health_bar_t *health_bar = ((world_scene_t*) infos->scene)->hud->health_bar;
+    player_t *player = ((world_scene_t*) infos->scene)->player;
+
+    exp_bar->max *= 2;
+    bar_set_value(exp_bar, 0);
+    player->max_health += 2;
+    player->health = player->max_health;
+    health_bar_update_values(health_bar, player);
+}
+
 void enemy_take_damage(enemy_t *enemy, int damage, infos_t *infos)
 {
     hit_particle_t *hit_particle = hit_particle_create((element_t*) enemy);
+    bar_t *exp_bar = ((world_scene_t*) infos->scene)->inventory->exp_bar;
 
     enemy->damage_time = 15;
     enemy->health -= damage;
     sfSprite_setColor(enemy->sprite, (sfColor) {255, 127, 127, 255});
     if (hit_particle)
         scene_add_element(infos->scene, (element_t*) hit_particle, 1);
-    if (enemy->health <= 0)
+    if (enemy->health <= 0) {
         scene_remove_element(infos->scene, (element_t*) enemy, 1);
+        bar_set_value(exp_bar, exp_bar->value + 10);
+        if (exp_bar->value == exp_bar->max) {
+            level_up(infos);
+        }
+    }
 }
