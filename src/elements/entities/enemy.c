@@ -27,7 +27,8 @@ static void enemy_init(enemy_t *enemy)
     enemy->damage_time = 0;
 }
 
-enemy_t *enemy_create(size_t size, infos_t *infos, sfVector2f pos)
+enemy_t *enemy_create(size_t size,
+infos_t *infos, sfVector2f pos, texture_t texture)
 {
     element_t *element = element_create_default(size, ENEMY, pos);
     enemy_t *enemy = (enemy_t *) element;
@@ -35,7 +36,7 @@ enemy_t *enemy_create(size_t size, infos_t *infos, sfVector2f pos)
 
     if (!enemy || !sprite)
         return(NULL);
-    sfSprite_setTexture(sprite, get_texture(infos, VILLAIN_TEXT), 0);
+    sfSprite_setTexture(sprite, get_texture(infos, texture), 0);
     sfSprite_setTextureRect(sprite, (sfIntRect) {0, 0, 64, 64});
     enemy->sprite = sprite;
     enemy_init(enemy);

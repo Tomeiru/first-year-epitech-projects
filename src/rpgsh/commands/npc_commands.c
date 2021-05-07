@@ -57,13 +57,15 @@ char **args, infos_t *infos, element_t *element)
 {
     enemy_t *enemy;
     sfVector2f pos = {0, 0};
+    texture_t texture;
 
     UNUSED(line);
     UNUSED(element);
     if (!args[1] || !args[2] || !args[3] || !args[4] || !args[5])
         return;
     pos = (sfVector2f) {str_to_int(args[4]), str_to_int(args[5])};
-    enemy = enemy_create(sizeof(enemy_t), infos, pos);
+    texture = !my_strcmp(args[1], "CLOSE") ? LEEVER_TEXT : OCTOROK_TEXT;
+    enemy = enemy_create(sizeof(enemy_t), infos, pos, texture);
     enemy->attack = !my_strcmp(args[1], "CLOSE") ?
     &enemy_close_attack : enemy_ranged_attack;
     enemy->pattern = !my_strcmp(args[2], "VERTICAL") ?

@@ -25,7 +25,7 @@ void enemy_ranged_attack(enemy_t *enemy, infos_t *infos)
         player_pos.x - enemy->pos.x) * (180 /  3.141592);
         enemy->attack_cooldown = 100;
         projectile =  projectile_create(enemy->pos,
-        angle, 2, get_texture(infos, ARROW_TEXT));
+        angle, 6, get_texture(infos, ROCK_TEXT));
         scene_add_element((scene_t*) world_scene, (element_t*) projectile, 1);
     }
 }
