@@ -61,8 +61,14 @@ int world_scene_event(scene_t *scene, infos_t *infos, sfEvent *event)
     if (event->type == sfEvtKeyPressed)
         world_scene_keyboard_event(world_scene, event->key.code, infos);
     else if (event->type == sfEvtMouseButtonPressed) {
-        if (event->mouseButton.button == sfMouseLeft)
-            player_attack(world_scene->player, infos);
+        if (event->mouseButton.button == sfMouseLeft) {
+            if (world_scene->hud->dialogue->end) {
+                    world_scene->hud->dialogue->end = 0;
+                    world_scene->hud->dialogue->str = NULL;
+                    world_scene->world_pause = 0;
+            } else
+                player_attack(world_scene->player, infos);
+        }
     }
     return (0);
 }

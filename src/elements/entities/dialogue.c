@@ -28,6 +28,7 @@ dialogue_t *dialogue_create(infos_t *infos, sfVector2f pos)
     dialogue->cursor = 1;
     dialogue->str = NULL;
     dialogue->len = 0;
+    dialogue->end = 0;
     return (dialogue);
 }
 
