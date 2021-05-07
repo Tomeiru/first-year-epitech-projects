@@ -15,6 +15,10 @@ inventory_t *inventory_create(infos_t *infos)
     inventory_t *inventory = (inventory_t*) subwindow_create(
     sizeof(inventory_t), infos, (sfVector2f) {1921, 200}, INVENTORY_TEXT);
 
+    inventory->exp_bar = bar_create(infos, (sfIntRect) {80, 280, 560, 80}, 100);
+    bar_set_color(inventory->exp_bar, 1);
+    bar_set_value(inventory->exp_bar, 0);
+    subwindow_add_element((subwindow_t*) inventory, (element_t*) inventory->exp_bar, 1);
     if (!inventory || inventory_create_slots(inventory, infos))
         return (NULL);
     add_item_to_inventory(inventory, 1);
@@ -33,7 +37,8 @@ void inventory_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
     const sfView *view = sfRenderWindow_getView(infos->window);
     sfVector2f pos =
     sfRenderWindow_mapPixelToCoords(infos->window, 
-    sfMouse_getPosition((sfWindow *)infos->window), sfRenderWindow_getView(infos->window));
+    sfMouse_getPosition((sfWindow *)infos->window),
+    sfRenderWindow_getView(infos->window));
 
     pos.x -= 16;
     pos.y -= 16;
