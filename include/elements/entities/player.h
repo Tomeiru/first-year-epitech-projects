@@ -12,6 +12,8 @@
 #include "elements/entities/entity.h"
 #include "map.h"
 
+#define MAX_HEALTH 20
+
 typedef struct player_s {
     element_type_t type;
     sfVector2f pos;

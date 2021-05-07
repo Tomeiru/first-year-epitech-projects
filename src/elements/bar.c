@@ -56,8 +56,6 @@ void bar_set_value(bar_t *bar, float value)
     sfVector2f size = {bar->size.x * factor, bar->size.y};
     sfIntRect rect = {0, 50 + bar->color_id * 50, factor * 200, 50};
 
-    if (value < 0 || value > bar->max)
-        return;
     sfRectangleShape_setSize(bar->bar, size);
     sfRectangleShape_setTextureRect(bar->bar, rect);
     bar->value = value;

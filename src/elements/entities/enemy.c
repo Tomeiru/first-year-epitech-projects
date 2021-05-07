@@ -82,8 +82,8 @@ void enemy_take_damage(enemy_t *enemy, int damage, infos_t *infos)
         scene_add_element(infos->scene, (element_t*) hit_particle, 1);
     if (enemy->health <= 0) {
         scene_remove_element(infos->scene, (element_t*) enemy, 1);
-        bar_set_value(exp_bar, exp_bar->value + 10);
-        if (exp_bar->value == exp_bar->max)
+        bar_set_value(exp_bar, exp_bar->value + 20);
+        if (exp_bar->value >= exp_bar->max)
             player_level_up(world_scene->player, infos);
     }
 }
