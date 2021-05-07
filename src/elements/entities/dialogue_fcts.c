@@ -39,11 +39,10 @@ void dialogue_update(entity_t *entity, infos_t *infos, float elapsed)
     char temp;
 
     UNUSED(infos);
-    if (!dialogue->str)
+    if (!dialogue->str || dialogue->end)
         return;
     else if (dialogue->cursor == dialogue->len) {
-        ((world_scene_t*) infos->scene)->world_pause = 0;
-        dialogue->str = NULL;
+        dialogue->end = 1;
         return;
     }
     temp = dialogue->str[dialogue->cursor];

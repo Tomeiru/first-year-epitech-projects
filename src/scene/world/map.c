@@ -60,7 +60,8 @@ void map_destroy(map_t *map, world_scene_t *world_scene)
 
     for (list_t *list = world_scene->entities; list; list = list->next) {
         element = (element_t*) list->data;
-        if (element->type == INTERACTABLE)
+        if (element->type == INTERACTABLE
+        || element->type == ENEMY || element->type == PROJECTILE)
             scene_remove_element((scene_t*) world_scene, element, 1);
     }
     for (char **line = map->script; *line; line++)

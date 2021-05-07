@@ -9,18 +9,6 @@
 #include "elements/entities/button.h"
 #include "actions.h"
 
-int button_close_game(element_t *element,
-infos_t *infos, sfMouseButton button_type)
-{
-    button_t *button = (button_t*) element;
-
-    if (button_type == sfMouseLeft) {
-        button_set_clicked(button, 1, infos);
-        return (QUIT_GAME_ACTION);
-    }
-    return (0);
-}
-
 int button_load_menu_scene(element_t *element,
 infos_t *infos, sfMouseButton button_type)
 {
@@ -57,14 +45,26 @@ infos_t *infos, sfMouseButton button_type)
     return (0);
 }
 
-int button_load_world_scene(element_t *element,
+int button_load_world_scene_new(element_t *element,
 infos_t *infos, sfMouseButton button_type)
 {
     button_t *button = (button_t*) element;
 
     if (button_type == sfMouseLeft) {
         button_set_clicked(button, 1, infos);
-        return (LOAD_WORLD_SCENE_ACTION);
+        return (LOAD_WORLD_SCENE_NEW_ACTION);
+    }
+    return (0);
+}
+
+int button_load_world_scene_save(element_t *element,
+infos_t *infos, sfMouseButton button_type)
+{
+    button_t *button = (button_t*) element;
+
+    if (button_type == sfMouseLeft) {
+        button_set_clicked(button, 1, infos);
+        return (LOAD_WORLD_SCENE_SAVE_ACTION);
     }
     return (0);
 }

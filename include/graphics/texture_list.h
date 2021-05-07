@@ -8,7 +8,7 @@
 #ifndef TEXTURES_LIST_H_
 #define TEXTURES_LIST_H_
 
-#define TEXTURES_NB 18
+#define TEXTURES_NB 23
 
 const char *TEXTURES_PATH[] = {
     "assets/textures/buttons.png",
@@ -16,10 +16,12 @@ const char *TEXTURES_PATH[] = {
     "assets/textures/menu_background.png",
     "assets/textures/settings_background.png",
     "assets/textures/howtoplay_background.png",
+    "assets/textures/gameover_background.png",
     "assets/textures/settings_subwindow.png",
     "assets/textures/howtoplay_img.png",
     "assets/textures/inventory.png",
     "assets/textures/player.png",
+    "assets/textures/rock.png",
     "assets/textures/hud.png",
     "assets/textures/items.png",
     "assets/textures/heart.png",
@@ -30,6 +32,8 @@ const char *TEXTURES_PATH[] = {
     "assets/textures/guard.png",
     "assets/textures/nurse.png",
     "assets/textures/villain.png",
+    "assets/textures/octorok.png",
+    "assets/textures/leever.png",
 };
 
 #endif /* !TEXTURES_LIST_H_ */

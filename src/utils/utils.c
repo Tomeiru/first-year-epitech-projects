@@ -58,3 +58,24 @@ void update_hover(infos_t *infos)
     }
     on_hover_interact(infos->scene->elements, infos, pos);
 }
+
+sfIntRect get_hit_hitbox(sfVector2f pos, direction_t dir)
+{
+    sfVector2f top_left = {pos.x - 32, pos.y - 32};
+
+    switch (dir) {
+        case NORTH:
+            top_left.y -= 64;
+            break;
+        case SOUTH:
+            top_left.y += 64;
+            break;
+        case EAST:
+            top_left.x -= 64;
+            break;
+        case WEST:
+            top_left.x += 64;
+            break;
+    }
+    return ((sfIntRect) {top_left.x, top_left.y, 64, 64});
+}

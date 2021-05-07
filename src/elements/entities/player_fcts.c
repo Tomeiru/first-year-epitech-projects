@@ -6,45 +6,50 @@
 */
 
 #include "my_rpg.h"
-#include "elements/entities/player.h"
-#include "scene/world_scene.h"
 #include "graphics/texture.h"
+#include "scene/world_scene.h"
+#include "elements/entities/enemy.h"
+#include "elements/entities/player.h"
+#include "elements/entities/particles/hit_particle.h"
 
-void player_move_update(player_t *player,
-map_t *map, infos_t *infos, float elapsed)
+void player_attack(player_t *player, infos_t *infos)
 {
-    sfVector2f move = {0, 0};
-    float speed = player->speed * elapsed;
+    world_scene_t *world_scene = (world_scene_t*) infos->scene;
+    sfIntRect hit_hb = get_hit_hitbox(player->pos, player->dir);
+    element_t *element;
 
-    if (!player->can_move)
+    if (player->attack_cooldown > 0)
         return;
-    if (player->damage_time > 0)
-        get_knockback_move(&move, player->dir, speed);
-    else
-        player_get_move_from_keyboard(player, &move, &speed);
-    prior_map_collision(&move, player->hitbox, map);
-    player_prior_element_collision((element_t*) player,
-    &move, player->hitbox, infos);
-    if (move.x == 0 && move.y == 0)
+    player->can_move = 1;
+    player->anim = 120;
+    player->attack_cooldown = 10;
+    element = element_collision((element_t*) player,
+    hit_hb, world_scene->entities);
+    if (!element || element->type != ENEMY)
         return;
-    player->move((element_t*) player, (sfVector2f)
-    {player->pos.x + move.x, player->pos.y + move.y});
+    enemy_take_damage((enemy_t*) element, 1, infos);
 }
 
 void player_damage(player_t *player, float damage, infos_t *infos)
 {
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
+    hit_particle_t *hit_particle = hit_particle_create((element_t*) player);
 
     player->damage_time = 15;
     player->health -= damage;
     health_bar_set_value(world_scene->hud->health_bar, player->health);
+    sfSprite_setColor(player->sprite, (sfColor) {255, 127, 127, 255});
+    if (hit_particle)
+        scene_add_element(infos->scene, (element_t*) hit_particle, 1);
 }
 
 void player_get_move_from_keyboard(player_t *player,
-sfVector2f *move, float *speed)
+sfVector2f *move, float *speed, float elapsed)
 {
-    if (sfKeyboard_isKeyPressed(sfKeyLShift) && player->stamina > 0)
+    if (sfKeyboard_isKeyPressed(sfKeyLShift) && player->stamina > 0) {
         *speed *= 1.5;
+        player->stamina -= elapsed;
+    }
     if (sfKeyboard_isKeyPressed(sfKeyZ) ^ sfKeyboard_isKeyPressed(sfKeyS))
         move->y = sfKeyboard_isKeyPressed(sfKeyZ) ? -*speed : *speed;
     if (sfKeyboard_isKeyPressed(sfKeyQ) ^ sfKeyboard_isKeyPressed(sfKeyD))
@@ -53,26 +58,24 @@ sfVector2f *move, float *speed)
     &(player->dir), *move, *speed);
 }
 
-void player_stamina(player_t *player, infos_t *infos, float elapsed)
+void player_stamina(player_t *player, infos_t *infos)
 {
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
 
-    if (sfKeyboard_isKeyPressed(sfKeyLShift) && player->stamina > 0) {
-        player->stamina -= elapsed;
-        bar_set_value(world_scene->hud->stamina_bar, player->stamina);
+    if (player->stamina <= 0) {
+        player->stamina -= 0.5;
+        if (player->stamina <= -20)
+            player->stamina = -player->stamina;
     } else {
-        if (player->stamina <= 0) {
-            player->stamina -= 0.5;
-            if (player->stamina <= -20) {
-                player->stamina = -player->stamina;
-                bar_set_value(world_scene->hud->stamina_bar, player->stamina);
-            } else
-                bar_set_value(world_scene->hud->stamina_bar, -player->stamina);
-        } else {
-            player->stamina += 0.5;
-            if (player->stamina > 100)
-                player->stamina = 100;
-            bar_set_value(world_scene->hud->stamina_bar, player->stamina);
-        }
+        player->stamina += 0.5;
+        if (player->stamina > 100)
+            player->stamina = 100;
+    }
+    if (player->stamina < 0) {
+        bar_set_value(world_scene->hud->stamina_bar, -player->stamina);
+        bar_set_color(world_scene->hud->stamina_bar, RED_BAR);
+    } else {
+        bar_set_value(world_scene->hud->stamina_bar, player->stamina);
+        bar_set_color(world_scene->hud->stamina_bar, GREEN_BAR);
     }
 }

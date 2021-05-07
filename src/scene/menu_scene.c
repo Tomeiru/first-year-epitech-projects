@@ -11,24 +11,38 @@
 #include "elements/entities/button.h"
 #include "graphics/texture.h"
 
+static int init_menu_scene_play_buttons(menu_scene_t *menu_scene,
+infos_t *infos)
+{
+    button_t *new = text_button_create(infos, "Nouvelle partie",
+    (sfVector2f) {864, 430}, GREEN_BUTTON);
+    button_t *save = text_button_create(infos, "Continuer",
+    (sfVector2f) {864, 530}, GREEN_BUTTON);
+
+    if (!new || !save)
+        return (1);
+    new->on_click = &button_load_world_scene_new;
+    save->on_click = &button_load_world_scene_save;
+    scene_add_element((scene_t*) menu_scene, (element_t*) new, 0);
+    scene_add_element((scene_t*) menu_scene, (element_t*) save, 0);
+    return (0);
+}
+
 static int init_menu_scene_buttons(menu_scene_t *menu_scene, infos_t *infos)
 {
-    button_t *game =
-    text_button_create(infos, "Jeu", (sfVector2f) {864, 500}, GREEN_BUTTON);
     button_t *settings =
-    text_button_create(infos, "Parametres", (sfVector2f) {864, 600}, 0);
+    text_button_create(infos, "Parametres", (sfVector2f) {864, 650}, 0);
     button_t *howtoplay =
-    text_button_create(infos, "Explications", (sfVector2f) {864, 700}, 3);
+    text_button_create(infos, "Explications", (sfVector2f) {864, 750}, 3);
     button_t *leave =
-    text_button_create(infos, "Quitter", (sfVector2f) {864, 800}, RED_BUTTON);
+    text_button_create(infos, "Quitter", (sfVector2f) {864, 850}, RED_BUTTON);
 
-    if (!game || !settings || !leave)
+    if (init_menu_scene_play_buttons(menu_scene, infos)
+    || !settings || !howtoplay || !leave)
         return (1);
-    game->on_click = &button_load_world_scene;
     settings->on_click = &button_load_settings_scene;
     howtoplay->on_click = &button_load_howtoplay_scene;
     leave->on_click = &button_close_game;
-    scene_add_element((scene_t*) menu_scene, (element_t*) game, 0);
     scene_add_element((scene_t*) menu_scene, (element_t*) settings, 0);
     scene_add_element((scene_t*) menu_scene, (element_t*) howtoplay, 0);
     scene_add_element((scene_t*) menu_scene, (element_t*) leave, 0);

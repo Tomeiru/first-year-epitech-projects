@@ -10,6 +10,9 @@
 
 #include "elements/element.h"
 
+#define RED_BAR 0
+#define GREEN_BAR 1
+
 typedef struct bar_s {
     element_type_t type;
     sfVector2f pos;
@@ -27,10 +30,13 @@ typedef struct bar_s {
     sfVector2f size;
     float value;
     float max;
+    int color_id;
 } bar_t;
 
 bar_t *bar_create(infos_t *infos, sfIntRect rect, float max_value);
 void bar_set_value(bar_t *bar, float value);
+void bar_set_color(bar_t *bar, unsigned int color_id);
+
 void bar_move(element_t *element, sfVector2f pos);
 void bar_draw(element_t *element, sfRenderWindow *window);
 void bar_destroy(element_t *element);

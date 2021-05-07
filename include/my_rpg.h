@@ -33,7 +33,8 @@ typedef enum game_state_e {
     MAIN_MENU,
     HOWTOPLAY,
     SETTINGS,
-    WORLD
+    WORLD,
+    GAMEOVER,
 } game_state_t;
 
 typedef enum direction_s {
@@ -75,6 +76,7 @@ float get_distance(sfVector2f pos1, sfVector2f pos2);
 int cmp_element_type(void *data1, void *data2);
 int cmp_lb_entries(void *data1, void *data2);
 void update_hover(infos_t *infos);
+sfIntRect get_hit_hitbox(sfVector2f pos, direction_t dir);
 
 void int_to_str(int value, char *buff, int buff_len);
 int str_to_int(char *str);

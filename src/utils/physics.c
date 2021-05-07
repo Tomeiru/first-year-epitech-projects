@@ -65,7 +65,8 @@ sfVector2f *move, sfIntRect hb, infos_t *infos)
     move->y = 0;
 }
 
-int element_collision(element_t *element, sfIntRect hb, list_t *elements)
+element_t *element_collision(element_t *element,
+sfIntRect hb, list_t *elements)
 {
     element_t *elem;
     sfIntRect elem_hb;
@@ -80,9 +81,9 @@ int element_collision(element_t *element, sfIntRect hb, list_t *elements)
         || (elem_hb.top > hb.top + hb.height)
         || (elem_hb.top + elem_hb.height < hb.top))
             continue;
-        return (1);
+        return (elem);
     }
-    return (0);
+    return (NULL);
 }
 
 void get_knockback_move(sfVector2f *move, direction_t dir, float speed)

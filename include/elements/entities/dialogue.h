@@ -28,6 +28,7 @@ typedef struct dialogue_s {
     int cursor;
     char *str;
     int len;
+    char end;
 } dialogue_t;
 
 dialogue_t *dialogue_create(infos_t *infos, sfVector2f pos);

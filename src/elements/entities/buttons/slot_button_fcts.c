@@ -13,9 +13,10 @@
 void slot_button_move(element_t *element, sfVector2f pos)
 {
     slot_button_t *button = (slot_button_t*) element;
+    sfVector2f icon_pos = {pos.x + 8, pos.y + 8};
 
     default_element_move(element, pos);
-    sfSprite_setPosition(button->icon, pos);
+    sfSprite_setPosition(button->icon, icon_pos);
 }
 
 void slot_button_draw(element_t *element, sfRenderWindow *window)

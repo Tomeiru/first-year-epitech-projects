@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include "actions.h"
 #include "elements/entities/button.h"
 
 void button_move(element_t *element, sfVector2f pos)
@@ -36,4 +37,16 @@ void button_update(entity_t *entity, infos_t *infos, float elapsed)
             button->press_time = -1;
         }
     }
+}
+
+int button_close_game(element_t *element,
+infos_t *infos, sfMouseButton button_type)
+{
+    button_t *button = (button_t*) element;
+
+    if (button_type == sfMouseLeft) {
+        button_set_clicked(button, 1, infos);
+        return (QUIT_GAME_ACTION);
+    }
+    return (0);
 }

@@ -50,13 +50,16 @@ void button_update(entity_t *entity, infos_t *infos, float elapsed);
 
 int button_close_game(element_t *element,
 infos_t *infos, sfMouseButton button_type);
+
 int button_load_menu_scene(element_t *element,
 infos_t *infos, sfMouseButton button_type);
 int button_load_settings_scene(element_t *element,
 infos_t *infos, sfMouseButton button_type);
 int button_load_howtoplay_scene(element_t *element,
 infos_t *infos, sfMouseButton button_type);
-int button_load_world_scene(element_t *element,
+int button_load_world_scene_new(element_t *element,
+infos_t *infos, sfMouseButton button_type);
+int button_load_world_scene_save(element_t *element,
 infos_t *infos, sfMouseButton button_type);
 
 int button_fps_minus(element_t *element,

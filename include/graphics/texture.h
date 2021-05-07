@@ -20,10 +20,12 @@ typedef enum texture_e {
     MENU_BACKGROUND_TEXT,
     SETTINGS_BACKGROUND_TEXT,
     HOWTOPLAY_BACKGROUND_TEXT,
+    GAMEOVER_BACKGROUND_TEXT,
     SETTINGS_SUBWINDOW_TEXT,
     HOWTOPLAY_IMG_TEXT,
     INVENTORY_TEXT,
     PLAYER_TEXT,
+    ROCK_TEXT,
     HUD_TEXT,
     ITEMS_TEXT,
     HEART_TEXT,
@@ -34,6 +36,8 @@ typedef enum texture_e {
     GUARD_TEXT,
     NURSE_TEXT,
     VILLAIN_TEXT,
+    OCTOROK_TEXT,
+    LEEVER_TEXT,
 } texture_t;
 
 list_t *load_textures(void);

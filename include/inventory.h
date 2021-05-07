@@ -14,7 +14,7 @@
 #define INVENTORY_SPEED 50
 #define INVENTORY_SIZE 21
 #define INV_KEYB_NB 3
-#define SHIFT_VALUE 36
+#define SHIFT_VALUE 80
 
 typedef enum item_e {
     EMPTY = 0,

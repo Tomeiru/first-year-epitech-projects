@@ -26,7 +26,11 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/health_bar.c									\
 					src/elements/image.c										\
 					src/elements/entities/buffer.c								\
+					src/elements/entities/enemy.c								\
+					src/elements/entities/enemy_patterns.c						\
+					src/elements/entities/enemy_attacks.c						\
 					src/elements/entities/player.c								\
+					src/elements/entities/projectile.c							\
 					src/elements/entities/player_fcts.c							\
 					src/elements/entities/text.c								\
 					src/elements/entities/text_update_fcts.c					\
@@ -35,11 +39,12 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/entities/buttons/button.c						\
 					src/elements/entities/buttons/slot_button.c					\
 					src/elements/entities/buttons/slot_button_fcts.c			\
-					src/elements/entities/buttons/button_default_fcts.c			\
+					src/elements/entities/buttons/button_fcts.c					\
 					src/elements/entities/buttons/button_types.c				\
 					src/elements/entities/particles/falling_particle.c			\
 					src/elements/entities/particles/meteo.c						\
 					src/elements/entities/particles/meteo_effects.c				\
+					src/elements/entities/particles/hit_particle.c				\
 					src/elements/entities/interactable/interactable.c			\
 					src/elements/entities/interactable/interactable_fcts.c		\
 					src/elements/entities/interactable/npc.c					\
@@ -50,6 +55,7 @@ SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/load_scene.c										\
 					src/scene/button_load_actions.c								\
 					src/scene/menu_scene.c										\
+					src/scene/gameover_scene.c									\
 					src/scene/howtoplay/howtoplay_scene.c						\
 					src/scene/howtoplay/button_htp_actions.c					\
 					src/scene/settings/settings_scene.c							\
@@ -57,6 +63,7 @@ SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/settings/button_settings_actions.c				\
 					src/scene/settings/button_settings_res_actions.c			\
 					src/scene/world/world_scene.c								\
+					src/scene/world/world_scene_fcts.c							\
 					src/scene/world/world.c										\
 					src/scene/world/hud.c										\
 					src/scene/world/inventory.c									\
@@ -72,7 +79,8 @@ RPGSH_SCR		=	src/rpgsh/rpgsh.c											\
 					src/rpgsh/conditions.c										\
 					src/rpgsh/attach.c											\
 					src/rpgsh/commands/commands.c								\
-					src/rpgsh/commands/npc_commands.c
+					src/rpgsh/commands/npc_commands.c							\
+					src/rpgsh/commands/world_commands.c
 
 UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/int_str.c											\
