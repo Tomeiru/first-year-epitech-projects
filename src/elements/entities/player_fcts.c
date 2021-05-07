@@ -79,3 +79,16 @@ void player_stamina(player_t *player, infos_t *infos)
         bar_set_value(world_scene->hud->stamina_bar, player->stamina);
     }
 }
+
+void player_level_up(player_t *player, infos_t *infos)
+{
+    world_scene_t *world_scene = (world_scene_t*) infos->scene;
+    bar_t *exp_bar = world_scene->inventory->exp_bar;
+    health_bar_t *health_bar = world_scene->hud->health_bar;
+
+    exp_bar->max *= 2;
+    bar_set_value(exp_bar, 0);
+    player->max_health += 2;
+    player->health = player->max_health;
+    health_bar_update_values(health_bar, player);
+}
