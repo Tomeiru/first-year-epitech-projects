@@ -10,46 +10,38 @@
 #include "inventory.h"
 #include "scene/world_scene.h"
 
-void inventory_draw(subwindow_t *subwindow, sfRenderWindow *window)
-{
-    element_t *element;
-    slot_button_t *slots;
-    list_t *list = subwindow->elements;
-
-    if (subwindow->background)
-        sfRenderWindow_drawSprite(window, subwindow->background, NULL);
-    for ( ; list->next; list = list->next) {
-        slots = (slot_button_t*) list->data;
-        sfRenderWindow_drawSprite(window, slots->sprite, NULL);
-    }
-    element = (element_t*) list->data;
-    element->draw(element, window);
-    list = subwindow->elements;
-    for ( ; list->next; list = list->next) {
-        slots = (slot_button_t*) list->data;
-        sfRenderWindow_drawSprite(window, slots->icon, NULL);
-    }
-}
-
 inventory_t *inventory_create(infos_t *infos)
 {
     inventory_t *inventory = (inventory_t*) subwindow_create(
     sizeof(inventory_t), infos, (sfVector2f) {1921, 200}, INVENTORY_TEXT);
+    bar_t *exp_bar = bar_create(infos, (sfIntRect) {80, 280, 560, 80}, 100);;
 
-    inventory->exp_bar = bar_create(infos, (sfIntRect) {80, 280, 560, 80}, 100);
-    bar_set_color(inventory->exp_bar, 1);
-    bar_set_value(inventory->exp_bar, 0);
-    subwindow_add_element((subwindow_t*) inventory, (element_t*) inventory->exp_bar, 1);
-    if (!inventory || inventory_create_slots(inventory, infos))
+    if (!inventory || !exp_bar || inventory_create_slots(inventory, infos))
         return (NULL);
     add_item_to_inventory(inventory, 1);
     add_item_to_inventory(inventory, 2);
-    inventory->slot_ptr = NULL;
+    bar_set_color(exp_bar, 1);
+    bar_set_value(exp_bar, 0);
     inventory->update = &inventory_update;
     inventory->draw = &inventory_draw;
     inventory->show = 0;
     inventory->anim = 0;
+    inventory->exp_bar = exp_bar;
+    inventory->slot_ptr = NULL;
+    subwindow_add_element((subwindow_t*) inventory, (element_t*) exp_bar, 1);
     return (inventory);
+}
+
+void inventory_draw(subwindow_t *subwindow, sfRenderWindow *window)
+{
+    inventory_t *inv = (inventory_t*) subwindow;
+
+    sfRenderWindow_drawSprite(window, subwindow->background, NULL);
+    inv->exp_bar->draw((element_t*) inv->exp_bar, window);
+    for (int i = 0; i < INVENTORY_SIZE; i++)
+        sfRenderWindow_drawSprite(window, inv->slots[i]->sprite, NULL);
+    for (int i = 0; i < INVENTORY_SIZE; i++)
+        sfRenderWindow_drawSprite(window, inv->slots[i]->icon, NULL);
 }
 
 void inventory_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
@@ -58,7 +50,7 @@ void inventory_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
     inventory_t *inventory = (inventory_t*) subwindow;
     const sfView *view = sfRenderWindow_getView(infos->window);
     sfVector2f pos =
-    sfRenderWindow_mapPixelToCoords(infos->window, 
+    sfRenderWindow_mapPixelToCoords(infos->window,
     sfMouse_getPosition((sfWindow *)infos->window),
     sfRenderWindow_getView(infos->window));
 

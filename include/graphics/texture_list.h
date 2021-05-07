@@ -8,7 +8,7 @@
 #ifndef TEXTURES_LIST_H_
 #define TEXTURES_LIST_H_
 
-#define TEXTURES_NB 23
+#define TEXTURES_NB 24
 
 const char *TEXTURES_PATH[] = {
     "assets/textures/buttons.png",
