@@ -10,18 +10,20 @@
 
 #include "scene/world_scene.h"
 
-#define WORLD_TYPE_NB 3
+#define WORLD_TYPE_NB 4
 
 const char *WORLD_TYPE_NAME[] = {
     "VILLAGE",
     "FOREST",
     "RIVER",
+    "MONTAINS",
 };
 
 const world_type_t WORLD_TYPE[] = {
     VILLAGE,
     FOREST,
     RIVER,
+    MONTAINS,
 };
 
 #endif /* !WORLD_TYPE_LIST_H_ */

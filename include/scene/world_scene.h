@@ -20,6 +20,7 @@ typedef enum world_type_e {
     VILLAGE,
     FOREST,
     RIVER,
+    MONTAINS,
 } world_type_t;
 
 typedef struct world_scene_s {

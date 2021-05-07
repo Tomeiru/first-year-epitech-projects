@@ -32,8 +32,17 @@ void meteo_update(entity_t *entity, infos_t *infos, float elapsed)
 
     UNUSED(elapsed);
     buffer_clear(buffer);
-    if (world_scene->world_type == FOREST)
-        night_effect(buffer, infos, 1);
-    else if (world_scene->world_type == RIVER)
-        rain_effect(buffer, world_scene->time);
+    switch (world_scene->world_type) {
+        case FOREST:
+            night_effect(buffer, infos, 0.8);
+            break;
+        case RIVER:
+            rain_effect(buffer, world_scene->time);
+            break;
+        case MONTAINS:
+            snow_effect(buffer, world_scene->time);
+            break;
+        default:
+            break;
+    }
 }
