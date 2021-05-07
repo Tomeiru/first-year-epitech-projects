@@ -43,10 +43,14 @@ int add_item_to_inventory(inventory_t *inv, unsigned char item_id)
     return (0);
 }
 
-int remove_item_from_inventory(inventory_t *inv, int slot)
+void remove_item_from_inventory(inventory_t *inv, int slot)
 {
     slot_button_set_item(inv->slots[slot], 0);
-    return (0);
+}
+
+void set_item_to_inventory(inventory_t *inv, unsigned int item_id, int slot)
+{
+    slot_button_set_item(inv->slots[slot], item_id);
 }
 
 int button_inv_slot_click(element_t *element,
