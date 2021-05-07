@@ -42,10 +42,14 @@ void save_game(world_scene_t *world_scene)
 int load_save(world_scene_t *world_scene, infos_t *infos)
 {
     int fd = open("./savefile", O_RDONLY, 0644);
+    int map_id;
+    int spawn_id;
 
     if (fd == -1)
         return (1);
-    if (world_load(world_scene, read_int(fd), read_int(fd), infos))
+    map_id = read_int(fd);
+    spawn_id = read_int(fd);
+    if (world_load(world_scene, map_id, spawn_id, infos))
         return (1);
     world_scene->player->max_health = read_float(fd);
     world_scene->player->health = read_float(fd);
