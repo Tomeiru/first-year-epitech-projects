@@ -10,7 +10,7 @@
 #include "graphics/texture.h"
 #include "audio/sound.h"
 #include "audio/music.h"
-#include "scene/menu_scene.h"
+#include "scene/intro_scene.h"
 
 int setup_infos(infos_t *infos, sfRenderWindow *window)
 {
@@ -20,7 +20,7 @@ int setup_infos(infos_t *infos, sfRenderWindow *window)
     !(infos->sounds = load_sounds()) ||
     !(infos->music = load_musics()) ||
     !(infos->font = sfFont_createFromFile("./assets/fonts/1st-sortie.ttf")) ||
-    !(infos->scene = menu_scene_create(infos)))
+    !(infos->scene = intro_scene_create(infos)))
         return (1);
     return (0);
 }

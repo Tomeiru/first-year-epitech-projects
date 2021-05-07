@@ -17,6 +17,7 @@ const char *TEXTURES_PATH[] = {
     "assets/textures/settings_background.png",
     "assets/textures/howtoplay_background.png",
     "assets/textures/gameover_background.png",
+    "assets/textures/introduction.png",
     "assets/textures/settings_subwindow.png",
     "assets/textures/howtoplay_img.png",
     "assets/textures/inventory.png",
