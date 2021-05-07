@@ -25,7 +25,7 @@ float rot, float speed, sfTexture *texture)
     sfSprite_setTexture(sprite, texture, 0);
     sprite_set_origin_center(sprite);
     sfSprite_setPosition(sprite, pos);
-    sfSprite_setRotation(sprite, rot + 45);
+    sfSprite_setRotation(sprite, rot);
     projectile->sprite = sprite;
     projectile->rot = rot;
     projectile->update = &projectile_update;
