@@ -10,7 +10,7 @@
 
 #include "elements/entities/buffer.h"
 
-#define HIT_COLOR (sfColor) {170, 120, 90, 255}
+#define HIT_COLOR sfRed
 
 typedef struct hit_particle_s {
     element_type_t type;
