@@ -10,6 +10,27 @@
 #include "inventory.h"
 #include "scene/world_scene.h"
 
+void inventory_draw(subwindow_t *subwindow, sfRenderWindow *window)
+{
+    element_t *element;
+    slot_button_t *slots;
+    list_t *list = subwindow->elements;
+
+    if (subwindow->background)
+        sfRenderWindow_drawSprite(window, subwindow->background, NULL);
+    for ( ; list->next; list = list->next) {
+        slots = (slot_button_t*) list->data;
+        sfRenderWindow_drawSprite(window, slots->sprite, NULL);
+    }
+    element = (element_t*) list->data;
+    element->draw(element, window);
+    list = subwindow->elements;
+    for ( ; list->next; list = list->next) {
+        slots = (slot_button_t*) list->data;
+        sfRenderWindow_drawSprite(window, slots->icon, NULL);
+    }
+}
+
 inventory_t *inventory_create(infos_t *infos)
 {
     inventory_t *inventory = (inventory_t*) subwindow_create(
@@ -25,6 +46,7 @@ inventory_t *inventory_create(infos_t *infos)
     add_item_to_inventory(inventory, 2);
     inventory->slot_ptr = NULL;
     inventory->update = &inventory_update;
+    inventory->draw = &inventory_draw;
     inventory->show = 0;
     inventory->anim = 0;
     return (inventory);
