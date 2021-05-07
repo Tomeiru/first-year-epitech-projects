@@ -12,11 +12,18 @@
 int item_rpgsh_condition(char ***line,
 char **args, infos_t *infos, element_t *element)
 {
+    inventory_t *inv = ((world_scene_t*) infos->scene)->inventory;
+    unsigned char item;
+
     UNUSED(line);
-    UNUSED(args);
-    UNUSED(infos);
     UNUSED(element);
-    return (1);
+    if (args[1] == NULL)
+        return (0);
+    item = (unsigned char) str_to_int(args[1]);
+    for (int i = 0; i < INVENTORY_SIZE; i++)
+        if (inv->slots[i]->item == item)
+            return (1);
+    return (0);
 }
 
 int player_in_range_condition(char ***line,

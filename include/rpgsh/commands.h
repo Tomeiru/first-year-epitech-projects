@@ -13,7 +13,7 @@ typedef struct element_s element_t;
 typedef void (*rpgsh_command_fct_t)(char ***line,
 char **args, infos_t *infos, element_t *element);
 
-#define NB_COMMANDS 10
+#define NB_COMMANDS 12
 
 void cam_target_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
@@ -38,6 +38,11 @@ char **args, infos_t *infos, element_t *element);
 void play_music_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
 
+void add_item_rpgsh_command(char ***line,
+char **args, infos_t *infos, element_t *element);
+void remove_item_rpgsh_command(char ***line,
+char **args, infos_t *infos, element_t *element);
+
 const char *COMMAND_STR[] = {
     "MOVE",
     "CAM_TARGET",
@@ -49,6 +54,8 @@ const char *COMMAND_STR[] = {
     "ADD_ENEMY",
     "SET_WORLD_TYPE",
     "PLAY_MUSIC",
+    "ADD_ITEM",
+    "REMOVE_ITEM",
 };
 
 const int COMMAND_LENGTH[] = {
@@ -62,6 +69,8 @@ const int COMMAND_LENGTH[] = {
     9,
     14,
     10,
+    8,
+    11,
 };
 
 const rpgsh_command_fct_t COMMAND_FCT[] = {
@@ -75,6 +84,8 @@ const rpgsh_command_fct_t COMMAND_FCT[] = {
     &add_enemy_rpgsh_command,
     &world_type_rpgsh_command,
     &play_music_rpgsh_command,
+    &add_item_rpgsh_command,
+    &remove_item_rpgsh_command,
 };
 
 #endif /* !COMMANDS_H_ */
