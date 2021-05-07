@@ -64,7 +64,7 @@ void player_stamina(player_t *player, infos_t *infos)
 
     if (player->stamina <= 0) {
         player->stamina -= 0.5;
-        if (player->stamina <= -20)
+        if (player->stamina <= -50)
             player->stamina = -player->stamina;
     } else {
         player->stamina += 0.5;
@@ -72,10 +72,10 @@ void player_stamina(player_t *player, infos_t *infos)
             player->stamina = 100;
     }
     if (player->stamina < 0) {
-        bar_set_value(world_scene->hud->stamina_bar, -player->stamina);
         bar_set_color(world_scene->hud->stamina_bar, RED_BAR);
+        bar_set_value(world_scene->hud->stamina_bar, -player->stamina);
     } else {
-        bar_set_value(world_scene->hud->stamina_bar, player->stamina);
         bar_set_color(world_scene->hud->stamina_bar, GREEN_BAR);
+        bar_set_value(world_scene->hud->stamina_bar, player->stamina);
     }
 }
