@@ -90,7 +90,8 @@ UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/math.c											\
 					src/utils/physics.c											\
 					src/utils/animation.c										\
-					src/utils/text_loader.c
+					src/utils/text_loader.c										\
+					src/utils/read.c
 
 LIB_DIR		=	./mylib
 INC_DIR		=	./include

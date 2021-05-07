@@ -98,4 +98,8 @@ char **load_text(char *filepath);
 
 void audio_set_volume(infos_t *infos);
 
+int read_int(int fd);
+float read_float(int fd);
+unsigned char read_uchar(int fd);
+
 #endif /* !MY_DEFENDER_H_ */

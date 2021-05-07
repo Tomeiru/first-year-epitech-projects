@@ -30,47 +30,31 @@ void save_game(world_scene_t *world_scene)
         return;
     write(fd, &(world_scene->map->map_id), sizeof(int));
     write(fd, &(world_scene->map->spawn_id), sizeof(int));
-    write(fd, &(world_scene->player->health), sizeof(float));
     write(fd, &(world_scene->player->max_health), sizeof(float));
+    write(fd, &(world_scene->player->health), sizeof(float));
+    write(fd, &(world_scene->inventory->exp_bar->max), sizeof(float));
+    write(fd, &(world_scene->inventory->exp_bar->value), sizeof(float));
+    for (int i = 0; i < INVENTORY_SIZE; i++)
+        write(fd, &(world_scene->inventory->slots[i]->item), sizeof(char));
     close(fd);
 }
 
 int load_save(world_scene_t *world_scene, infos_t *infos)
 {
     int fd = open("./savefile", O_RDONLY, 0644);
-    int map_id;
-    int spawn_id;
 
     if (fd == -1)
         return (1);
-    map_id = read_int(fd);
-    spawn_id = read_int(fd);
-    if (world_load(world_scene, map_id, spawn_id, infos))
+    if (world_load(world_scene, read_int(fd), read_int(fd), infos))
         return (1);
-    world_scene->player->health = read_float(fd);
     world_scene->player->max_health = read_float(fd);
+    world_scene->player->health = read_float(fd);
     health_bar_update_values(world_scene->hud->health_bar,
     world_scene->player);
+    world_scene->inventory->exp_bar->max = read_float(fd);
+    bar_set_value(world_scene->inventory->exp_bar, read_float(fd));
+    for (int i = 0; i < INVENTORY_SIZE; i++)
+        set_item_to_inventory(world_scene->inventory, read_uchar(fd), i);
     close(fd);
     return (0);
-}
-
-int read_int(int fd)
-{
-    char int_buffer[sizeof(int)];
-    int value = 0;
-
-    read(fd, int_buffer, sizeof(int));
-    value = *((int*) int_buffer);
-    return (value);
-}
-
-float read_float(int fd)
-{
-    char float_buffer[sizeof(float)];
-    float value = 0;
-
-    read(fd, float_buffer, sizeof(float));
-    value = *((float*) float_buffer);
-    return (value);
 }

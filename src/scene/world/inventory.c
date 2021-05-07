@@ -18,8 +18,6 @@ inventory_t *inventory_create(infos_t *infos)
 
     if (!inventory || !exp_bar || inventory_create_slots(inventory, infos))
         return (NULL);
-    add_item_to_inventory(inventory, 1);
-    add_item_to_inventory(inventory, 2);
     bar_set_color(exp_bar, 1);
     bar_set_value(exp_bar, 0);
     inventory->update = &inventory_update;
