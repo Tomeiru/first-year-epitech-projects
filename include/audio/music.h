@@ -11,6 +11,7 @@
 typedef enum music_e {
     NONE = -1,
     VILLAGE_MUSIC,
+    FOREST_MUSIC,
     MONTAINS_MUSIC,
     GAMEOVER_MUSIC,
 } music_t;

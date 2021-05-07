@@ -10,15 +10,17 @@
 
 #include "audio/music.h"
 
-#define MUSICS_NB 2
+#define MUSICS_NB 3
 
 const char *MUSICS_NAME[] = {
     "VILLAGE",
+    "FOREST",
     "MONTAINS",
 };
 
 const music_t MUSICS_ID[] = {
     VILLAGE_MUSIC,
+    FOREST_MUSIC,
     MONTAINS_MUSIC,
 };
 
