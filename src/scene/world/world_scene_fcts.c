@@ -87,9 +87,6 @@ sfKeyCode code, infos_t *infos)
         case sfKeyE:
             interactable_execute_closest(infos, world_scene->player);
             return;
-        case sfKeyA:
-            player_damage(world_scene->player, 1, infos);
-            return;
         default:
             return;
     }
