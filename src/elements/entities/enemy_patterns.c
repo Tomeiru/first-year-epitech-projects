@@ -24,7 +24,7 @@ sfVector2f *move, infos_t *infos, float speed)
         enemy->move_status = 1;
     if (enemy->move_status == 1)
         *move = (sfVector2f) {0, enemy->dist > 0 ? speed : -speed};
-    if (enemy->move_status == 2)
+    else if (enemy->move_status == 2)
         *move = (sfVector2f) {0, enemy->dist > 0 ? -speed : speed};
 }
 
@@ -42,6 +42,6 @@ sfVector2f *move, infos_t *infos, float speed)
         enemy->move_status = 1;
     if (enemy->move_status == 1)
         *move = (sfVector2f) {enemy->dist > 0 ? speed : -speed, 0};
-    if (enemy->move_status == 2)
+    else if (enemy->move_status == 2)
         *move = (sfVector2f) {enemy->dist > 0 ? -speed : speed, 0};
 }

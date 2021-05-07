@@ -42,6 +42,11 @@ typedef void (*attack_enemy_fct_t)(enemy_t *enemy, infos_t *infos);
 typedef void (*pattern_enemy_fct_t)(enemy_t *enemy,
 sfVector2f *move, infos_t *infos, float speed);
 
+enemy_t *octorok_create(sfVector2f pos,
+char vertical, int dist, infos_t *infos);
+enemy_t *leever_create(sfVector2f pos,
+char vertical, int dist, infos_t *infos);
+
 enemy_t *enemy_create(size_t size,
 infos_t *infos, sfVector2f pos, texture_t texture);
 void enemy_default_update(entity_t *entity, infos_t *infos, float elapsed);

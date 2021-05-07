@@ -50,7 +50,7 @@ void enemy_default_update(entity_t *entity, infos_t *infos, float elapsed)
     enemy_t *enemy = (enemy_t *) entity;
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
     sfVector2f move = (sfVector2f) {0, 0};
-    float speed = enemy->speed * 2;
+    float speed = enemy->speed * elapsed;
 
     if (enemy->attack_cooldown >= 0)
         enemy->attack_cooldown -= elapsed;
@@ -59,7 +59,7 @@ void enemy_default_update(entity_t *entity, infos_t *infos, float elapsed)
         if (enemy->damage_time <= 0)
             sfSprite_setColor(enemy->sprite, (sfColor) {255, 255, 255, 255});
     } else
-        enemy->pattern(enemy, &move, infos, elapsed);
+        enemy->pattern(enemy, &move, infos, speed);
     prior_map_collision(&move, enemy->hitbox, world_scene->map);
     prior_element_collision((element_t*) enemy, &move, enemy->hitbox, infos);
     walk_animation_set_anim_and_dir(&(enemy->anim), &enemy->dir, move, speed);
