@@ -12,7 +12,18 @@ ADD_NPC VILLAIN 1000 900 1 Parler
         FI
     END
 
-ADD_NPC DANDY 1175 1100 3 Parler
+ADD_NPC DANDY 1175 1100 0 Parler
+    ACTION
+        IF HAS_ITEM 1
+            DIALOGUE 3
+        ELSE
+            DIALOGUE 1
+            ADD_ITEM 1
+            DIALOGUE 2
+        FI
+    END
+
+ADD_NPC DANDY 0 0 3 Parler
     ACTION
         DIALOGUE 2
     END

@@ -46,7 +46,7 @@ void inventory_draw(subwindow_t *subwindow, sfRenderWindow *window);
 void inventory_update(subwindow_t *subwindow, infos_t *infos, float elapsed);
 void inventory_anim_move(inventory_t *inventory,
 const sfView *view, int target, float elapsed);
-void inventory_show(inventory_t *inventory);
+void inventory_show(inventory_t *inventory, infos_t *infos);
 
 int inventory_create_slots(inventory_t *inv, infos_t *infos);
 int add_item_to_inventory(inventory_t *inv, unsigned char item_id);

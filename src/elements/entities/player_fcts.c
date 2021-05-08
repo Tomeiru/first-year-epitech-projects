@@ -11,6 +11,7 @@
 #include "elements/entities/enemy.h"
 #include "elements/entities/player.h"
 #include "elements/entities/particles/hit_particle.h"
+#include "audio/sound.h"
 
 void player_attack(player_t *player, infos_t *infos)
 {
@@ -20,6 +21,7 @@ void player_attack(player_t *player, infos_t *infos)
 
     if (player->attack_cooldown > 0)
         return;
+    play_sound(infos, SWORD_SLASH);
     player->can_move = 1;
     player->anim = 120;
     player->attack_cooldown = 10;
@@ -35,6 +37,7 @@ void player_damage(player_t *player, float damage, infos_t *infos)
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
     hit_particle_t *hit_particle = hit_particle_create((element_t*) player);
 
+    play_sound(infos, HIT);
     player->damage_time = 15;
     player->health -= damage;
     health_bar_set_value(world_scene->hud->health_bar, player->health);
@@ -87,6 +90,7 @@ void player_level_up(player_t *player, infos_t *infos)
     health_bar_t *health_bar = world_scene->hud->health_bar;
     float value = exp_bar->value - exp_bar->max;
 
+    play_sound(infos, LEVEL_UP);
     exp_bar->max *= 1.5;
     bar_set_value(exp_bar, value);
     if (player->max_health < MAX_HEALTH) {

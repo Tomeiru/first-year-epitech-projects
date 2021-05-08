@@ -12,6 +12,12 @@
 
 typedef enum sound_e {
     CLICK_SOUND,
+    OPEN_INV,
+    LEVEL_UP,
+    HIT,
+    HIT_ENEMY,
+    STEPS,
+    SWORD_SLASH,
 } sound_t;
 
 typedef struct sound_couple_s {

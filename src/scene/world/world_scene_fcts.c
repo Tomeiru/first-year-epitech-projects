@@ -80,7 +80,7 @@ sfKeyCode code, infos_t *infos)
     switch (code) {
         case sfKeyTab:
             world_scene->player->can_move = 0;
-            inventory_show(world_scene->inventory);
+            inventory_show(world_scene->inventory, infos);
             return;
         case sfKeyEscape:
             pause_set_pause(world_scene->pause, infos);

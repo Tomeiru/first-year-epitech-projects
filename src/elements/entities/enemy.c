@@ -12,6 +12,7 @@
 #include "elements/entities/enemy.h"
 #include "elements/entities/projectile.h"
 #include "elements/entities/particles/hit_particle.h"
+#include "audio/sound.h"
 
 static void enemy_init(enemy_t *enemy)
 {
@@ -75,6 +76,7 @@ void enemy_take_damage(enemy_t *enemy, int damage, infos_t *infos)
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
     bar_t *exp_bar = world_scene->inventory->exp_bar;
 
+    play_sound(infos, HIT_ENEMY);
     enemy->damage_time = 15;
     enemy->health -= damage;
     sfSprite_setColor(enemy->sprite, (sfColor) {255, 127, 127, 255});

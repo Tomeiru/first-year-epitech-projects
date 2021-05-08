@@ -9,6 +9,7 @@
 #include "my_rpg.h"
 #include "inventory.h"
 #include "scene/world_scene.h"
+#include "audio/sound.h"
 
 inventory_t *inventory_create(infos_t *infos)
 {
@@ -84,11 +85,12 @@ const sfView *view, int target, float elapsed)
     }
 }
 
-void inventory_show(inventory_t *inventory)
+void inventory_show(inventory_t *inventory, infos_t *infos)
 {
     if (inventory->anim)
         return;
     inventory->show = !inventory->show;
     inventory->anim = 1;
     inventory->slot_ptr = NULL;
+    play_sound(infos, OPEN_INV);
 }
