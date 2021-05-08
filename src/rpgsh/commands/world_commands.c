@@ -41,3 +41,17 @@ char **args, infos_t *infos, element_t *element)
         }
     }
 }
+
+void player_move_rpgsh_command(char ***line,
+char **args, infos_t *infos, element_t *element)
+{
+    world_scene_t *world_scene = (world_scene_t*) infos->scene;
+    player_t *player = world_scene->player;
+
+    UNUSED(line);
+    UNUSED(element);
+    if (!args[1] || !args[2])
+        return;
+    player->mov_target.x = str_to_int(args[1]);
+    player->mov_target.y = str_to_int(args[2]);
+}

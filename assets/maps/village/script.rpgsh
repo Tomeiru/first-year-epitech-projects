@@ -5,4 +5,5 @@ ADD_NPC VILLAIN 1000 900 Parler
     ACTION
         DIALOGUE 0
         OPEN_URL https://www.amazon.fr/Legend-Zelda-Skyward-r%C3%A9plique-plastique/dp/B00SJPBRQE
+        PLAYER_MOVE 1000 1100
     END

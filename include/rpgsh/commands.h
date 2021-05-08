@@ -14,9 +14,9 @@ typedef void (*rpgsh_command_fct_t)(char ***line,
 char **args, infos_t *infos, element_t *element);
 
 #ifndef BONUS
-#define NB_COMMANDS 12
-#else
 #define NB_COMMANDS 13
+#else
+#define NB_COMMANDS 14
 #endif
 
 void cam_target_rpgsh_command(char ***line,
@@ -41,6 +41,8 @@ void world_type_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
 void play_music_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
+void player_move_rpgsh_command(char ***line,
+char **args, infos_t *infos, element_t *element);
 
 void add_item_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
@@ -63,6 +65,7 @@ const char *COMMAND_STR[] = {
     "ADD_ENEMY",
     "SET_WORLD_TYPE",
     "PLAY_MUSIC",
+    "PLAYER_MOVE",
     "ADD_ITEM",
     "REMOVE_ITEM",
     "OPEN_URL",
@@ -79,6 +82,7 @@ const int COMMAND_LENGTH[] = {
     9,
     14,
     10,
+    11,
     8,
     11,
     8,
@@ -95,6 +99,7 @@ const rpgsh_command_fct_t COMMAND_FCT[] = {
     &add_enemy_rpgsh_command,
     &world_type_rpgsh_command,
     &play_music_rpgsh_command,
+    &player_move_rpgsh_command,
     &add_item_rpgsh_command,
     &remove_item_rpgsh_command,
 #ifdef BONUS
