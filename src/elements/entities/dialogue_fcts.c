@@ -50,6 +50,8 @@ void dialogue_update(entity_t *entity, infos_t *infos, float elapsed)
     sfText_setString(dialogue->text, dialogue->str);
     dialogue->str[dialogue->cursor] = temp;
     dialogue->cursor += (int) 2 * elapsed;
-    if (dialogue->cursor > dialogue->len)
+    if (dialogue->cursor > dialogue->len) {
         dialogue->cursor = dialogue->len;
+        sfText_setString(dialogue->text, dialogue->str);
+    }
 }
