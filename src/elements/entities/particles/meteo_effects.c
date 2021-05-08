@@ -45,7 +45,7 @@ void snow_effect(buffer_t *buffer, float time)
 
     for (int i = 0; i < SNOW_DROPLET; i++) {
         speed = SNOW_SPEED_BASE + SNOW_SPEED_BONUS * sin(i) * sin(i);
-        y_offset = sin(i) * sin(i) * 648;
+        y_offset = sin(i) * sin(i) * 270;
         x_pos = buffer->size.x * cos(i * i) + cos((time + i) * 0.087) * 5 - 2;
         y_pos = ((int) (time * speed + y_offset)) % buffer->size.y;
         draw_snow(buffer, x_pos, y_pos);
