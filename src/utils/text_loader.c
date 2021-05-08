@@ -17,7 +17,7 @@ void add_line_to_array(char ***array, char **line, int *size)
     if (!new)
         return;
     for (int i = 0; i < *size; i++)
-        new[i] = *array[i];
+        new[i] = (*array)[i];
     new[*size] = *line;
     new[*size + 1] = NULL;
     if (*array)
