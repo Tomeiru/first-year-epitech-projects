@@ -96,6 +96,8 @@ UTILS_SRC		=	src/utils/utils.c											\
 					src/utils/text_loader.c										\
 					src/utils/read.c
 
+BONUS_SRC		=	bonus/src/rpgsh/bonus_commands.c
+
 LIB_DIR		=	./mylib
 INC_DIR		=	./include
 
@@ -104,6 +106,7 @@ SFML_LIB	=	-lcsfml-system -lcsfml-window -lcsfml-graphics -lcsfml-audio
 CFLAGS		+=	-W -Wall -Werror -I$(INC_DIR)
 
 OBJ			=	$(MAIN_SRC:.c=.o) $(ELEMENTS_SRC:.c=.o) $(SCENE_SRC:.c=.o) $(RPGSH_SCR:.c=.o) $(UTILS_SRC:.c=.o)
+BONUS_OBJ	=	$(BONUS_SRC:.c=.o)
 
 NAME		=	my_rpg
 
@@ -118,9 +121,15 @@ debug: 	fclean $(OBJ)
 	make -C $(LIB_DIR) debug
 	gcc $(CFLAGS) -o $(NAME) $(OBJ) -L$(LIB_DIR) $(SFML_LIB) -lm -lmy
 
+bonus:	CFLAGS += -D BONUS
+bonus: fclean $(OBJ) $(BONUS_OBJ)
+	make -C $(LIB_DIR)
+	gcc $(CFLAGS) -o $(NAME) $(OBJ) $(BONUS_OBJ) -L$(LIB_DIR) $(SFML_LIB) -lm -lmy
+
 clean:
 	make -C $(LIB_DIR) clean
 	rm -rf $(OBJ)
+	rm -rf $(BONUS_OBJ)
 
 fclean: clean
 	make -C $(LIB_DIR) fclean

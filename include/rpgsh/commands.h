@@ -13,7 +13,11 @@ typedef struct element_s element_t;
 typedef void (*rpgsh_command_fct_t)(char ***line,
 char **args, infos_t *infos, element_t *element);
 
+#ifndef BONUS
 #define NB_COMMANDS 12
+#else
+#define NB_COMMANDS 13
+#endif
 
 void cam_target_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
@@ -43,6 +47,11 @@ char **args, infos_t *infos, element_t *element);
 void remove_item_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
 
+#ifdef BONUS
+void open_url_rpgsh_command(char ***line,
+char **args, infos_t *infos, element_t *element);
+#endif
+
 const char *COMMAND_STR[] = {
     "MOVE",
     "CAM_TARGET",
@@ -56,6 +65,7 @@ const char *COMMAND_STR[] = {
     "PLAY_MUSIC",
     "ADD_ITEM",
     "REMOVE_ITEM",
+    "OPEN_URL",
 };
 
 const int COMMAND_LENGTH[] = {
@@ -71,6 +81,7 @@ const int COMMAND_LENGTH[] = {
     10,
     8,
     11,
+    8,
 };
 
 const rpgsh_command_fct_t COMMAND_FCT[] = {
@@ -86,6 +97,9 @@ const rpgsh_command_fct_t COMMAND_FCT[] = {
     &play_music_rpgsh_command,
     &add_item_rpgsh_command,
     &remove_item_rpgsh_command,
+#ifdef BONUS
+    &open_url_rpgsh_command,
+#endif
 };
 
 #endif /* !COMMANDS_H_ */
