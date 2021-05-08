@@ -71,6 +71,7 @@ SCENE_SRC		=	src/scene/scene.c											\
 					src/scene/world/hud.c										\
 					src/scene/world/inventory.c									\
 					src/scene/world/inventory_slots.c							\
+					src/scene/world/items_actions.c								\
 					src/scene/world/camera.c									\
 					src/scene/world/map.c										\
 					src/scene/world/save.c
