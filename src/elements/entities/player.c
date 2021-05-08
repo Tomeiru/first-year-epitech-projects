@@ -82,7 +82,8 @@ map_t *map, infos_t *infos, float elapsed)
     else
         player_get_move_from_keyboard(player, &move, &speed, elapsed);
     prior_map_collision(&move, player->hitbox, map);
-    player_prior_element_collision((element_t*) player,
+    if (player->mov_target.x == -1 || player->mov_target.y == -1)
+        player_prior_element_collision((element_t*) player,
     &move, player->hitbox, infos);
     if (move.x == 0 && move.y == 0)
         return;

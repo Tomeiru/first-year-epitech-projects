@@ -1,2 +1,16 @@
 SET_WORLD_TYPE VILLAGE
 PLAY_MUSIC VILLAGE
+
+ADD_NPC GUARD 1350 800
+    UPDATE
+        IF HAS_ITEM 1
+        ELSE
+            IF PLAYER_IS_MOVING
+            ELSE
+                IF PLAYER_IN_RANGE 100
+                    DIALOGUE 0
+                    PLAYER_MOVE 1430 930
+                FI
+            FI
+        FI
+    END

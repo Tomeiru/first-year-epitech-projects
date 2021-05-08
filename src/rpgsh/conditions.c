@@ -41,3 +41,14 @@ char **args, infos_t *infos, element_t *element)
     elem_dist = get_distance(player->pos, element->pos);
     return (elem_dist <= dist);
 }
+
+int player_is_moving_condition(char ***line,
+char **args, infos_t *infos, element_t *element)
+{
+    player_t *player = ((world_scene_t*) infos->scene)->player;
+
+    UNUSED(line);
+    UNUSED(args);
+    UNUSED(element);
+    return ((player->mov_target.x != -1 && player->mov_target.y != -1));
+}

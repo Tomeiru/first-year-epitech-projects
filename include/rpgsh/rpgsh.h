@@ -24,6 +24,7 @@ infos_t *infos, element_t *element);
 void execute_command(char ***line, char **args,
 infos_t *infos, element_t *element);
 void skip_condition(char ***line);
+void skip_else(char ***line);
 
 char **open_rpgsh_file(char *filename);
 void add_line(char ***lines, char *line, int size);

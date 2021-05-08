@@ -15,12 +15,13 @@
 void execute_instruction(char ***line, char **args,
 infos_t *infos, element_t *element)
 {
-    char *cmd = *args;
-
-    if (!my_strcmp(cmd, "IF")) {
+    if (!my_strcmp(args[0], "IF")) {
         execute_condition(line, args, infos, element);
-    } else
+    } else {
+        if (!my_strcmp(args[0], "ELSE"))
+            skip_else(line);
         execute_command(line, args, infos, element);
+    }
 }
 
 void execute_condition(char ***line, char **args,
@@ -64,6 +65,25 @@ void skip_condition(char ***line)
             if_nb--;
         if ((!my_strcmp(args[0], "ELSE") && if_nb == 1) ||
         if_nb == 0) {
+            free_args(args);
+            break;
+        }
+        free_args(args);
+    }
+}
+
+void skip_else(char ***line)
+{
+    int if_nb = 1;
+    char **args;
+
+    for (; **line; *line += 1) {
+        args = split_into_args(**line);
+        if (!my_strcmp(args[0], "IF"))
+            if_nb++;
+        else if (!my_strcmp(args[0], "FI"))
+            if_nb--;
+        if (if_nb == 0) {
             free_args(args);
             break;
         }

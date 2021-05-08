@@ -16,14 +16,13 @@ npc_t *npc_create(sfVector2f pos, sfTexture *texture, char *action)
     if (!npc)
         return (NULL);
     my_strcpy(npc->action_name, action);
+    npc->hitbox = (sfIntRect) {pos.x, pos.y, 0, 0};
     npc->update = &npc_update;
     npc->speed = 2;
     npc->mov_target = (sfVector2f) {-1, -1};
     npc->anim = 0;
     npc->dir = NORTH;
     sprite_set_origin_center(npc->sprite);
-    element_set_hitbox((element_t*) npc,
-    sfSprite_getGlobalBounds(npc->sprite));
     return (npc);
 }
 

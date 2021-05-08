@@ -49,8 +49,6 @@ int load_save(world_scene_t *world_scene, infos_t *infos)
         return (1);
     map_id = read_int(fd);
     spawn_id = read_int(fd);
-    if (world_load(world_scene, map_id, spawn_id, infos))
-        return (1);
     world_scene->player->max_health = read_float(fd);
     world_scene->player->health = read_float(fd);
     health_bar_update_values(world_scene->hud->health_bar,
@@ -60,5 +58,5 @@ int load_save(world_scene_t *world_scene, infos_t *infos)
     for (int i = 0; i < INVENTORY_SIZE; i++)
         set_item_to_inventory(world_scene->inventory, read_uchar(fd), i);
     close(fd);
-    return (0);
+    return (world_load(world_scene, map_id, spawn_id, infos));
 }
