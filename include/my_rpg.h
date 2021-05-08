@@ -102,4 +102,6 @@ int read_int(int fd);
 float read_float(int fd);
 unsigned char read_uchar(int fd);
 
+void item_action(unsigned char item, infos_t *infos);
+
 #endif /* !MY_DEFENDER_H_ */

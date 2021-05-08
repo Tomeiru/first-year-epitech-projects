@@ -67,8 +67,9 @@ int world_scene_event(scene_t *scene, infos_t *infos, sfEvent *event)
                     world_scene->hud->dialogue->str = NULL;
                     world_scene->world_pause = 0;
             } else
-                player_attack(world_scene->player, infos);
-        }
+                item_action(world_scene->inventory->slots[0]->item, infos);
+        } else if (event->mouseButton.button == sfMouseRight)
+            item_action(world_scene->inventory->slots[1]->item, infos);
     }
     return (0);
 }
