@@ -9,7 +9,8 @@
 #include "my_rpg.h"
 #include "elements/entities/npc.h"
 
-npc_t *npc_create(sfVector2f pos, sfTexture *texture, char *action)
+npc_t *npc_create(sfVector2f pos,
+sfTexture *texture, char *action, direction_t dir)
 {
     npc_t *npc = (npc_t*) interactable_create(sizeof(npc_t), pos, texture);
 
@@ -20,7 +21,8 @@ npc_t *npc_create(sfVector2f pos, sfTexture *texture, char *action)
     npc->speed = 2;
     npc->mov_target = (sfVector2f) {-1, -1};
     npc->anim = 0;
-    npc->dir = NORTH;
+    npc->dir = dir;
+    living_walk_sprite_anim(npc->sprite, dir, 0);
     return (npc);
 }
 

@@ -36,8 +36,8 @@ typedef struct npc_s {
     float anim;
 } npc_t;
 
-npc_t *npc_create(sfVector2f pos, sfTexture *texture,
-char *action);
+npc_t *npc_create(sfVector2f pos,
+sfTexture *texture, char *action, direction_t dir);
 void npc_update(entity_t *entity, infos_t *infos, float elapsed);
 void npc_movement(npc_t *npc, infos_t *infos, float elapsed);
 
