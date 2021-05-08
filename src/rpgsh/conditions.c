@@ -35,9 +35,9 @@ char **args, infos_t *infos, element_t *element)
     float elem_dist;
 
     UNUSED(line);
-    if (!element || infos->state != WORLD || !args[2])
+    if (!element || infos->state != WORLD || !args[1])
         return (0);
-    dist = str_to_int(args[2]);
+    dist = str_to_int(args[1]);
     player = ((world_scene_t*) infos->scene)->player;
     elem_dist = get_distance(player->pos, element->pos);
     return (elem_dist <= dist);
