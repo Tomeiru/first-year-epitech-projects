@@ -1,2 +1,4 @@
 *HEP !
-Tu n'as pas d'epee ! C'est dangeureux par ici !
+C'est dangeureux par ici ! Il te faut une epee.
+*Tu veux une epee ?
+C'est seulement 25.90$ !
