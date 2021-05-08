@@ -1,16 +1,48 @@
 SET_WORLD_TYPE VILLAGE
 PLAY_MUSIC VILLAGE
 
-ADD_NPC GUARD 1350 800
+ADD_NPC GUARD 1350 800 3
     UPDATE
         IF HAS_ITEM 1
         ELSE
             IF PLAYER_IS_MOVING
             ELSE
-                IF PLAYER_IN_RANGE 100
+                IF PLAYER_IN_RANGE 180
                     DIALOGUE 0
-                    PLAYER_MOVE 1430 930
+                    PLAYER_MOVE 1440 960
                 FI
             FI
         FI
+    END
+
+
+ADD_NPC FAT 1190 1460 1 Parler
+
+ADD_NPC FAT 1680 2000 1 Parler
+
+ADD_NPC DANDY 810 2040 1 Parler
+
+ADD_NPC FAT 1970 1540 3
+ADD_NPC FAT 2070 1540 2
+
+ADD_NPC VILLAIN 1700 1470 1 Parler
+    ACTION
+        DIALOGUE 1
+        OPEN_URL https://www.amazon.fr/Legend-Zelda-Skyward-r%C3%A9plique-plastique/dp/B00SJPBRQE
+    END
+
+ADD_NPC CHILD 580 1130 1
+    UPDATE
+        MOVE 580 2215 5
+        MOVE 2300 2215 5
+        MOVE 2300 1130 5
+        MOVE 580 1130 5
+    END
+
+ADD_NPC CHILD 580 1230 1
+    UPDATE
+        MOVE 580 2215 5
+        MOVE 2300 2215 5
+        MOVE 2300 1130 5
+        MOVE 580 1130 5
     END
