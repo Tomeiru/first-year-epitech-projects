@@ -6,12 +6,13 @@
 */
 
 #include "my_rpg.h"
+#include "inventory.h"
 #include "scene/world_scene.h"
 
 void item_action(unsigned char item, infos_t *infos)
 {
     switch (item) {
-        case 1:
+        case SWORD:
             player_attack(((world_scene_t*) infos->scene)->player, infos);
             return;
         default:

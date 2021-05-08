@@ -17,11 +17,11 @@ int inventory_create_slots(inventory_t *inv, infos_t *infos)
     sfVector2f pos;
 
     for (int i = 0; i < INVENTORY_SIZE; i++) {
-        if (i < 3)
-            pos = (sfVector2f) {80 + i * SHIFT_VALUE * 3, 0};
+        if (i < 2)
+            pos = (sfVector2f) {160 + i * SHIFT_VALUE * 4, 0};
         else
-            pos = (sfVector2f) {SHIFT_VALUE * ((i - 3) % 9),
-            SHIFT_VALUE * ((i - 3) / 9 + 1.5)};
+            pos = (sfVector2f) {SHIFT_VALUE * ((i - 2) % 9),
+            SHIFT_VALUE * ((i - 2) / 9 + 1.5)};
         button = slot_button_create(infos, pos);
         if (!button)
             return (1);
