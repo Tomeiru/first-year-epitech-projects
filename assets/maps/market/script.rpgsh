@@ -1,6 +1,35 @@
 SET_WORLD_TYPE VILLAGE
 PLAY_MUSIC VILLAGE
 
+ADD_NPC DANDY 170 1600 1
+
+IF HAS_ITEM 2
+ELSE
+    ADD_TRIGGER 95 1673
+        UPDATE
+            IF PLAYER_IN_RANGE 100
+                SET_PLAYER_MOVE 0
+                CAM_TARGET
+                MOVE 1130 1670 6
+                MOVE 1436 950 6
+                MOVE 1437 950 0.05
+                MOVE 2190 1680 6
+                MOVE 2191 1680 0.05
+                MOVE 1320 2100 6
+                MOVE 1321 2100 0.05
+                MOVE 95 1673 6
+                DIALOGUE 0
+                DIALOGUE 1
+                DIALOGUE 2
+                ADD_ITEM 2
+                CAM_TARGET PLAYER
+                SET_PLAYER_MOVE 1
+                DESTROY
+                END
+            FI
+        END
+FI
+
 ADD_NPC GUARD 1350 800 3
     UPDATE
         IF HAS_ITEM 1
@@ -8,7 +37,7 @@ ADD_NPC GUARD 1350 800 3
             IF PLAYER_IS_MOVING
             ELSE
                 IF PLAYER_IN_RANGE 180
-                    DIALOGUE 0
+                    DIALOGUE 3
                     PLAYER_MOVE 1440 960
                 FI
             FI
@@ -27,7 +56,7 @@ ADD_NPC FAT 2070 1540 2
 
 ADD_NPC VILLAIN 1700 1470 1 Parler
     ACTION
-        DIALOGUE 1
+        DIALOGUE 4
         OPEN_URL https://www.amazon.fr/Legend-Zelda-Skyward-r%C3%A9plique-plastique/dp/B00SJPBRQE
     END
 
