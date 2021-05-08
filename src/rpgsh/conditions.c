@@ -17,12 +17,13 @@ char **args, infos_t *infos, element_t *element)
 
     UNUSED(line);
     UNUSED(element);
-    if (args[1] == NULL)
+    if (!args[1])
         return (0);
-    item = (unsigned char) str_to_int(args[1]);
-    for (int i = 0; i < INVENTORY_SIZE; i++)
+    item = (unsigned char) (str_to_int(args[1]));
+    for (int i = 0; i < INVENTORY_SIZE; i++) {
         if (inv->slots[i]->item == item)
             return (1);
+    }
     return (0);
 }
 

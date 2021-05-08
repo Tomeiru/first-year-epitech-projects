@@ -32,7 +32,7 @@ infos_t *infos, element_t *element)
 
     for (int i = 0; i < NB_CONDITIONS; i++) {
         if (CONDITION_LENGTH[i] == len && !my_strcmp(CONDITION_STR[i], cond)) {
-            if (!CONDITION_FCT[i](line, args, infos, element))
+            if (!CONDITION_FCT[i](line, args + 1, infos, element))
                 skip_condition(line);
         }
     }
