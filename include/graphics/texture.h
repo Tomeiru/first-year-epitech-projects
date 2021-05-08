@@ -37,6 +37,7 @@ typedef enum texture_e {
     GUARD_TEXT,
     NURSE_TEXT,
     VILLAIN_TEXT,
+    CHILD_TEXT,
     OCTOROK_TEXT,
     LEEVER_TEXT,
 } texture_t;
