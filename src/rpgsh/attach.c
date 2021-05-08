@@ -31,16 +31,15 @@ void rpgsh_attach_script(interactable_t *interactable, char ***script)
 void rpgsh_reach_end(char ***script)
 {
     char **args = NULL;
-    int conditions = 1;
 
     for (; **script; *script += 1) {
         args = split_into_args(**script);
-        if (!my_strcmp(args[0], "IF"))
-            conditions++;
-        else if (!my_strcmp(args[0], "END"))
-            conditions--;
-        free_args(args);
-        if (!conditions)
+        if (!args)
+            continue;
+        if (!my_strcmp(args[0], "END")) {
+            free_args(args);
             return;
+        }
+        free_args(args);
     }
 }
