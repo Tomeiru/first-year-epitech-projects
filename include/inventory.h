@@ -19,13 +19,21 @@
 
 typedef enum item_e {
     EMPTY = 0,
-    SWORD,
-    EGGS,
-    EMPTY_BASKET,
-    BERRY_BASKET,
-    APPLE,
-    SOCK,
-    HEALTH_POTION,
+    SWORD = 1,
+    EGGS = 2,
+    EMPTY_BASKET = 3,
+    BERRY_BASKET = 4,
+    APPLE = 5,
+    SOCK = 6,
+    HEALTH_POTION = 7,
+    MUSHROOM = 8,
+    POKEBALL = 9,
+    PIE = 10,
+    FLOUR = 11,
+    SCYTHE = 12,
+    CART = 13,
+    TRIFORCE = 14,
+    SUGAR = 15,
 } item_t;
 
 typedef struct inventory_s {

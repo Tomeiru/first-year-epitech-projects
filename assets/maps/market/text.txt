@@ -6,3 +6,19 @@ C'est ennuyeux ...
 C'est dangeureux par ici ! Il te faut une epee.
 *Tu veux une epee ?
 C'est seulement 25.90$ !
+*(Comment j'ai pu oublier ma chausette chez moi ?)
+*Ma chausette ! Merci.
+Prends cette pomme en échange.
+*Ohh j'ai la dalle
+*UNE POMME ! Prends ca en échange.
+*Pff j'ai cassé mon outil de travail
+*Une faux ! Je te l'achète contre ce truc qui brille.
+Je sais pas a quoi ca sert, je l'utilise pour éclairer la nuit.
+*Que des pecnauds qui n'ont rien de valeur ici.
+*Ooh, ce truc qui brille dans ta main.
+Je te l'achete contre cet objet de haute technologie qui vient de loin.
+*Jm'ennuite
+*C'est pour moi ?? C'est pour moi ??
+Prends ca, je voulais le manger mais ca a des yeux c'est dégueu.
+*J'aimerais bien me faire une tourte aux champinions ...
+*Il est beau ce champignon, je te passe ma farine en echnage.

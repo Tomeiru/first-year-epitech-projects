@@ -46,10 +46,70 @@ ADD_NPC GUARD 1350 800 3
 
 
 ADD_NPC FAT 1190 1460 1 Parler
+    ACTION
+        IF HAS_ITEM 6
+            DIALOGUE 6
+            REMOVE_ITEM 6
+            ADD_ITEM 5
+        ELSE
+            DIALOGUE 5
+        FI
+    END
 
 ADD_NPC FAT 1680 2000 1 Parler
+    ACTION
+        IF HAS_ITEM 5
+            DIALOGUE 8
+            REMOVE_ITEM 5
+            ADD_ITEM 12
+        ELSE
+            DIALOGUE 7
+        FI
+    END
+
+ADD_NPC FAT 2030 1400 1 Parler
+    ACTION
+        IF HAS_ITEM 12
+            DIALOGUE 10
+            REMOVE_ITEM 12
+            ADD_ITEM 14
+        ELSE
+            DIALOGUE 9
+        FI
+    END
 
 ADD_NPC DANDY 810 2040 1 Parler
+    ACTION
+        IF HAS_ITEM 14
+            DIALOGUE 12
+            REMOVE_ITEM 14
+            ADD_ITEM 9
+        ELSE
+            DIALOGUE 11
+        FI
+    END
+
+ADD_NPC CHILD 350 1500 3 Parler
+    ACTION
+        IF HAS_ITEM 9
+            DIALOGUE 14
+            REMOVE_ITEM 9
+            ADD_ITEM 8
+        ELSE
+            DIALOGUE 13
+        FI
+    END
+
+ADD_NPC FAT 790 1400 1 Parler
+    ACTION
+        IF HAS_ITEM 8
+            DIALOGUE 16
+            REMOVE_ITEM 8
+            ADD_ITEM 11
+        ELSE
+            DIALOGUE 15
+        FI
+    END
 
 ADD_NPC FAT 1970 1540 3
 ADD_NPC FAT 2070 1540 2
@@ -60,7 +120,7 @@ ADD_NPC VILLAIN 1700 1470 1 Parler
         OPEN_URL https://www.amazon.fr/Legend-Zelda-Skyward-r%C3%A9plique-plastique/dp/B00SJPBRQE
     END
 
-ADD_NPC CHILD 580 1130 1
+ADD_NPC CHILD 580 1130 1 Parler
     UPDATE
         MOVE 580 2215 5
         MOVE 2300 2215 5
