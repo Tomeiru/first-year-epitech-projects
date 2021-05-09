@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
+#include "audio/music.h"
 #include "scene/howtoplay_scene.h"
 #include "elements/image.h"
 #include "elements/entities/button.h"
@@ -46,6 +47,7 @@ scene_t *howtoplay_scene_create(infos_t *infos)
     sfSprite_setTexture(background,
     get_texture(infos, HOWTOPLAY_BACKGROUND_TEXT), 0);
     htp_scene->background = background;
+    play_music(infos, MENU_MUSIC);
     return (scene);
 }
 

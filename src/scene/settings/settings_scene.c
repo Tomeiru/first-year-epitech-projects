@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
+#include "audio/music.h"
 #include "graphics/texture.h"
 #include "graphics/subwindow.h"
 #include "scene/settings_scene.h"
@@ -41,6 +42,7 @@ scene_t *settings_scene_create(infos_t *infos)
     sfSprite_setTexture(background,
     get_texture(infos, SETTINGS_BACKGROUND_TEXT), 0);
     scene->background = background;
+    play_music(infos, MENU_MUSIC);
     return (scene);
 }
 

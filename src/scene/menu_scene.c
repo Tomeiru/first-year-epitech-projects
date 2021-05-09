@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
+#include "audio/music.h"
 #include "scene/menu_scene.h"
 #include "elements/entities/button.h"
 #include "graphics/texture.h"
@@ -15,9 +16,9 @@ static int init_menu_scene_play_buttons(menu_scene_t *menu_scene,
 infos_t *infos)
 {
     button_t *new = text_button_create(infos, "Nouvelle partie",
-    (sfVector2f) {864, 430}, GREEN_BUTTON);
+    (sfVector2f) {734, 530}, GREEN_BUTTON);
     button_t *save = text_button_create(infos, "Continuer",
-    (sfVector2f) {864, 530}, GREEN_BUTTON);
+    (sfVector2f) {994, 530}, GREEN_BUTTON);
 
     if (!new || !save)
         return (1);
@@ -31,11 +32,11 @@ infos_t *infos)
 static int init_menu_scene_buttons(menu_scene_t *menu_scene, infos_t *infos)
 {
     button_t *settings =
-    text_button_create(infos, "Parametres", (sfVector2f) {864, 650}, 0);
+    text_button_create(infos, "Parametres", (sfVector2f) {864, 700}, 0);
     button_t *howtoplay =
-    text_button_create(infos, "Explications", (sfVector2f) {864, 750}, 3);
+    text_button_create(infos, "Explications", (sfVector2f) {864, 800}, 3);
     button_t *leave =
-    text_button_create(infos, "Quitter", (sfVector2f) {864, 850}, RED_BUTTON);
+    text_button_create(infos, "Quitter", (sfVector2f) {864, 900}, RED_BUTTON);
 
     if (init_menu_scene_play_buttons(menu_scene, infos)
     || !settings || !howtoplay || !leave)
@@ -61,6 +62,7 @@ scene_t *menu_scene_create(infos_t *infos)
     sfSprite_setTexture(background,
     get_texture(infos, MENU_BACKGROUND_TEXT), 0);
     menu_scene->background = background;
+    play_music(infos, MENU_MUSIC);
     return (scene);
 }
 
