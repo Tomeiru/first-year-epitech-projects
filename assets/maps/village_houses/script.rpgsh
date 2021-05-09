@@ -64,7 +64,7 @@ ADD_TRIGGER 830 3430 Search
         FI
     END
 
-ADD_NPC DOG 730 3660 2 Talk
+ADD_NPC DOG 730 3660 3 Talk
     ACTION
         DIALOGUE 13
     END
