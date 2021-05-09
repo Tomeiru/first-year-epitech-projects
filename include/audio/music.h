@@ -17,6 +17,7 @@ typedef enum music_e {
     GAMEOVER_MUSIC,
     INTRO_MUSIC,
     MENU_MUSIC,
+    MANSION_MUSIC,
 } music_t;
 
 typedef struct music_s {
