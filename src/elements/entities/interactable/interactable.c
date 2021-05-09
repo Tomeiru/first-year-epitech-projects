@@ -20,8 +20,7 @@ sfVector2f pos, sfTexture *texture)
     if (!interactable || (texture != NULL && !sprite))
         return (NULL);
     interactable_create_sprite(interactable, sprite, texture, pos);
-    interactable->hitbox = (sfIntRect) {pos.x - 32, pos.y - 32, 64, 64};
-    interactable->move = &interactable_move;
+    interactable->hitbox = (sfIntRect) {pos.x - 24, pos.y - 28, 48, 48};
     interactable->update = &interactable_update;
     interactable->get_infos = &interactable_get_infos;
     interactable->action = &interactable_default_action;
@@ -44,13 +43,6 @@ sfSprite *sprite, sfTexture *texture, sfVector2f pos)
     sfSprite_setPosition(sprite, pos);
     sprite_set_origin_center(sprite);
     interactable->sprite = sprite;
-}
-
-void interactable_move(element_t *element, sfVector2f pos)
-{
-    default_element_move(element, pos);
-    element->hitbox.top -= 32;
-    element->hitbox.left -= 32;
 }
 
 void interactable_update(entity_t *entity, infos_t *infos, float elapsed)

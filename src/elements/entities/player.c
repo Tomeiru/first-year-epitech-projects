@@ -13,6 +13,7 @@
 
 static void player_init(player_t *player)
 {
+    player->hitbox = (sfIntRect) {0, 0, 48, 48};
     player->update = &player_update;
     player->health = 6;
     player->max_health = 6;
@@ -39,7 +40,6 @@ player_t *player_create(infos_t *infos)
     sfSprite_setTextureRect(sprite, (sfIntRect) {0, 0, 64, 64});
     player->sprite = sprite;
     sprite_set_origin_center(sprite);
-    element_set_hitbox(element, sfSprite_getGlobalBounds(sprite));
     player_init(player);
     return (player);
 }
