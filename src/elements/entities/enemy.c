@@ -36,7 +36,7 @@ infos_t *infos, sfVector2f pos, texture_t texture)
     sfSprite *sprite = sfSprite_create();
 
     if (!enemy || !sprite)
-        return(NULL);
+        return (NULL);
     sfSprite_setTexture(sprite, get_texture(infos, texture), 0);
     sfSprite_setTextureRect(sprite, (sfIntRect) {0, 0, 64, 64});
     enemy->sprite = sprite;
