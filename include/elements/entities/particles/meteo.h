@@ -11,7 +11,7 @@
 #define BUFFER_SCALE 4
 
 #define RAIN_DROPLET 40
-#define RAIN_COLOR (sfColor){39,115,175,100}
+#define RAIN_COLOR (sfColor){39, 115, 175, 100}
 #define RAIN_SIZE_BASE 15
 #define RAIN_SIZE_BONUS 10
 #define RAIN_SPEED_BASE 7

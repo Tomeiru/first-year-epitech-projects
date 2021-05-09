@@ -42,7 +42,7 @@ void npc_update(entity_t *entity, infos_t *infos, float elapsed)
 void npc_movement(npc_t *npc, infos_t *infos, float elapsed)
 {
     sfVector2f diff = (sfVector2f) {npc->mov_target.x - npc->pos.x,
-     npc->mov_target.y - npc->pos.y};
+    npc->mov_target.y - npc->pos.y};
     sfVector2f move = vector_normalize(diff);
     sfVector2f new_pos;
     float speed = npc->speed * elapsed;
