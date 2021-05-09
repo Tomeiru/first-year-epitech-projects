@@ -34,8 +34,10 @@ void save_game(world_scene_t *world_scene)
     write(fd, &(world_scene->player->health), sizeof(float));
     write(fd, &(world_scene->inventory->exp_bar->max), sizeof(float));
     write(fd, &(world_scene->inventory->exp_bar->value), sizeof(float));
-    for (int i = 0; i < INVENTORY_SIZE; i++)
+    for (int i = 0; i < INVENTORY_SIZE; i++) {
         write(fd, &(world_scene->inventory->slots[i]->item), sizeof(char));
+        write(fd, &(world_scene->inventory->slots[i]->quantity), sizeof(int));
+    }
     close(fd);
 }
 
@@ -55,8 +57,19 @@ int load_save(world_scene_t *world_scene, infos_t *infos)
     world_scene->player);
     world_scene->inventory->exp_bar->max = read_float(fd);
     bar_set_value(world_scene->inventory->exp_bar, read_float(fd));
-    for (int i = 0; i < INVENTORY_SIZE; i++)
-        set_item_to_inventory(world_scene->inventory, read_uchar(fd), i);
+    load_inventory(world_scene, fd);
     close(fd);
     return (world_load(world_scene, map_id, spawn_id, infos));
+}
+
+void load_inventory(world_scene_t *world_scene, int fd)
+{
+    unsigned char item;
+    int quantity;
+
+    for (int i = 0; i < INVENTORY_SIZE; i++) {
+        item = read_uchar(fd);
+        quantity = read_int(fd);
+        set_item_to_inventory(world_scene->inventory, item, quantity, i);
+    }
 }

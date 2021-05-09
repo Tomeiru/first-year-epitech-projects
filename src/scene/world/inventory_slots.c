@@ -70,10 +70,11 @@ unsigned char item_id, int quantity)
     }
 }
 
-void set_item_to_inventory(inventory_t *inv, unsigned int item_id, int slot)
+void set_item_to_inventory(inventory_t *inv,
+unsigned int item_id, int quantity, int slot)
 {
     slot_button_set_item(inv->slots[slot], item_id);
-    slot_button_set_quantity(inv->slots[slot], 1);
+    slot_button_set_quantity(inv->slots[slot], quantity);
 }
 
 int button_inv_slot_click(element_t *element,
