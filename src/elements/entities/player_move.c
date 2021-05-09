@@ -17,7 +17,8 @@ map_t *map, infos_t *infos, float elapsed)
     sfVector2f move = {0, 0};
     float speed = player->speed * elapsed;
 
-    if (!player->can_move)
+    if (!player->can_move &&
+    (player->mov_target.x == -1 || player->mov_target.y == -1))
         return;
     if (player->damage_time > 0)
         get_knockback_move(&move, player->dir, speed);
