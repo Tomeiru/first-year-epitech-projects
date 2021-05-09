@@ -16,7 +16,7 @@ const char *MUSICS_PATH[] = {
     "./assets/sounds/river.ogg",
     "./assets/sounds/montains.ogg",
     "./assets/sounds/gameover.ogg",
-    "./assets/sounds/gameover.ogg",
+    "./assets/sounds/victory.ogg",
     "./assets/sounds/intro.ogg",
     "./assets/sounds/menu.ogg",
     "./assets/sounds/mansion.ogg",
