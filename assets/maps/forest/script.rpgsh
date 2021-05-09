@@ -1,2 +1,24 @@
 SET_WORLD_TYPE FOREST
 PLAY_MUSIC FOREST
+
+ADD_TRIGGER 2300 400 Cueillir
+    ACTION
+        IF HAS_ITEM 3
+            REMOVE_ITEM 3
+            ADD_ITEM 4
+            DIALOGUE 1
+        ELSE
+            DIALOGUE 0
+        FI
+    END
+
+ADD_TRIGGER 2420 960 Cueillir
+    ACTION
+        IF HAS_ITEM 3
+            REMOVE_ITEM 3
+            ADD_ITEM 4
+            DIALOGUE 1
+        ELSE
+            DIALOGUE 0
+        FI
+    END
