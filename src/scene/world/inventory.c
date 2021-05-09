@@ -15,7 +15,7 @@ inventory_t *inventory_create(infos_t *infos)
 {
     inventory_t *inventory = (inventory_t*) subwindow_create(
     sizeof(inventory_t), infos, (sfVector2f) {1921, 200}, INVENTORY_TEXT);
-    bar_t *exp_bar = bar_create(infos, (sfIntRect) {80, 280, 560, 80}, 100);
+    bar_t *exp_bar = bar_create(infos, (sfIntRect) {95, 290, 560, 50}, 100);
 
     if (!inventory || !exp_bar || inventory_create_slots(inventory, infos))
         return (NULL);
@@ -60,7 +60,7 @@ void inventory_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
     if (world_scene->inventory->slot_ptr)
         sfSprite_setPosition(world_scene->inventory->slot_ptr->icon, pos);
     if (inventory->show && inventory->anim)
-        inventory_anim_move(inventory, view, 500, elapsed);
+        inventory_anim_move(inventory, view, 586, elapsed);
     else if (!inventory->show && inventory->anim) {
         inventory_anim_move(inventory, view, 1921, elapsed);
         if (!inventory->anim)
