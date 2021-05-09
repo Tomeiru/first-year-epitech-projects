@@ -39,5 +39,4 @@ hit_particle_t *hit_particle_create(element_t *attach);
 void hit_particle_update(entity_t *entity, infos_t *infos, float elapsed);
 int draw_hit_particle(hit_particle_t *hit_particle, sfVector2f particle);
 
-
 #endif /* !HIT_PARTICLE_H_ */

@@ -25,11 +25,15 @@ sfRenderWindow *create_window(int width, int height)
 
 static void print_help(void)
 {
-    my_putstr("MY_DEFENDER\n" \
+    my_putstr("MY_RPG\n" \
     "DESCRIPTION\n" \
-    "     Protect your base from enemies by build defenses\n" \
+    "     Help Helga to back her pie\n" \
     "\nCONTROLS\n" \
-    "     Escape: pause (during game)\n");
+    "     ZQSD: Move\n" \
+    "     E: Interact\n" \
+    "     LShift: Sprint\n" \
+    "     Tab: Inventory\n" \
+    "     Esc: skip intro / pause\n");
 }
 
 int main(int ac, char *av[])
