@@ -50,7 +50,7 @@ void inventory_show(inventory_t *inventory, infos_t *infos);
 
 int inventory_create_slots(inventory_t *inv, infos_t *infos);
 int add_item_to_inventory(inventory_t *inv, unsigned char item_id);
-void remove_item_from_inventory(inventory_t *inv, int slot);
+void remove_item_from_inventory(inventory_t *inv, unsigned char item_id);
 void set_item_to_inventory(inventory_t *inv, unsigned int item_id, int slot);
 int button_inv_slot_click(element_t *element,
 infos_t *infos, sfMouseButton button_type);

@@ -43,9 +43,14 @@ int add_item_to_inventory(inventory_t *inv, unsigned char item_id)
     return (0);
 }
 
-void remove_item_from_inventory(inventory_t *inv, int slot)
+void remove_item_from_inventory(inventory_t *inv, unsigned char item_id)
 {
-    slot_button_set_item(inv->slots[slot], 0);
+    int i = 0;
+
+    for (; i < INVENTORY_SIZE && inv->slots[i]->item != item_id; i++);
+    if (i == INVENTORY_SIZE)
+        return;
+    slot_button_set_item(inv->slots[i], 0);
 }
 
 void set_item_to_inventory(inventory_t *inv, unsigned int item_id, int slot)
