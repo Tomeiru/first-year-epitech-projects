@@ -12,7 +12,7 @@ ADD_NPC VILLAIN 1000 900 1 Parler
         FI
     END
 
-ADD_NPC DANDY 1175 1100 0 Parler
+ADD_NPC DANDY 1175 1100 3 Parler
     ACTION
         IF HAS_ITEM 1
             DIALOGUE 3
@@ -28,7 +28,28 @@ ADD_NPC DANDY 0 0 3 Parler
         DIALOGUE 2
     END
 
-ADD_NPC FAT 777 1274 1 Parler
+ADD_NPC CHILD 465 564 1 Parler
+    ACTION
+        DIALOGUE 4
+    END
+    UPDATE
+        MOVE 465 564 3
+        MOVE 415 564 3
+        MOVE 465 1064 3
+    END
+
+ADD_NPC DANDY 1432 480 3 Parler
+    ACTION
+        DIALOGUE 5
+    END
+    UPDATE
+        MOVE 1432 480 1
+        MOVE 1432 580 1
+        MOVE 1532 580 1
+        MOVE 1432 580 1
+    END
+
+ADD_NPC FAT 777 1274 0 Parler
     ACTION
         DIALOGUE 3
     END
