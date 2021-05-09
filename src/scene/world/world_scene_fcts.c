@@ -39,7 +39,7 @@ int world_scene_post_init_new(scene_t *scene, infos_t *infos)
     world_scene_t *world_scene = (world_scene_t*) scene;
 
     if (world_scene_post_init_common(world_scene, infos)
-    || world_load(world_scene, 0, 0, infos))
+    || world_load(world_scene, START_MAP_ID, START_SPAWN_ID, infos))
         return (1);
     return (0);
 }

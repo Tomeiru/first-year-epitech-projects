@@ -51,6 +51,6 @@ int world_load_save(world_scene_t *world_scene, infos_t *infos)
     if (does_savefile_exists())
         return (load_save(world_scene, infos));
     else
-        return (world_load(world_scene, 0, 0, infos));
+        return (world_load(world_scene, START_MAP_ID, START_SPAWN_ID, infos));
     return (0);
 }

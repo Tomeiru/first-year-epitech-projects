@@ -16,6 +16,9 @@
 #include "graphics/pause.h"
 #include "elements/entities/player.h"
 
+#define START_MAP_ID 7
+#define START_SPAWN_ID 3
+
 typedef enum world_type_e {
     VILLAGE,
     FOREST,

@@ -1,2 +1,89 @@
 SET_WORLD_TYPE VILLAGE
 PLAY_MUSIC VILLAGE
+
+ADD_NPC PRIEST 1070 400 0 Talk
+    ACTION
+        DIALOGUE 10
+    END
+
+ADD_NPC NUN 950 560 1 Talk
+    ACTION
+        IF HAS_ITEM 7
+            DIALOGUE 9
+        ELSE
+            DIALOGUE 8
+            ADD_ITEM 7 3
+        FI
+    END
+
+ADD_TRIGGER 700 2260 Search
+    ACTION
+        IF HAS_ITEM 5
+            DIALOGUE 12
+        ELSE
+            IF HAS_ITEM 6
+                DIALOGUE 12
+            ELSE
+                IF HAS_ITEM 8
+                    DIALOGUE 12
+                ELSE
+                    IF HAS_ITEM 9
+                        DIALOGUE 12
+                    ELSE
+                        IF HAS_ITEM 11
+                            DIALOGUE 12
+                        ELSE
+                            IF HAS_ITEM 12
+                                DIALOGUE 12
+                            ELSE
+                                IF HAS_ITEM 13
+                                    DIALOGUE 12
+                                ELSE
+                                    IF HAS_ITEM 14
+                                        DIALOGUE 12
+                                    ELSE
+                                        DIALOGUE 11
+                                        ADD_ITEM 6
+                                    FI
+                                FI
+                            FI
+                        FI
+                    FI
+                FI
+            FI
+        FI
+    END
+
+ADD_TRIGGER 830 3430 Search
+    ACTION
+        IF HAS_ITEM 1
+            DIALOGUE 12
+        ELSE
+            DIALOGUE 7
+            ADD_ITEM 1
+        FI
+    END
+
+ADD_NPC DOG 730 3660 2 Talk
+    ACTION
+        DIALOGUE 13
+    END
+
+IF HAS_ITEM 16
+ELSE
+    ADD_TRIGGER 880 3616
+        UPDATE
+            SET_PLAYER_MOVE 0
+            DIALOGUE 0
+            DIALOGUE 1
+            DIALOGUE 2
+            PLAYER_MOVE 900 3640
+            DIALOGUE 3
+            DIALOGUE 4
+            DIALOGUE 5
+            DIALOGUE 6
+            ADD_ITEM 16
+            SET_PLAYER_MOVE 1
+            DESTROY
+        END
+FI

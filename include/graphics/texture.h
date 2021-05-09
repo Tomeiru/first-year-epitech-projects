@@ -39,6 +39,9 @@ typedef enum texture_e {
     VILLAIN_TEXT,
     CHILD_TEXT,
     WITCH_TEXT,
+    NUN_TEXT,
+    PRIEST_TEXT,
+    DOG_TEXT,
     OCTOROK_TEXT,
     LEEVER_TEXT,
 } texture_t;

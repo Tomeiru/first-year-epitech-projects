@@ -34,6 +34,7 @@ typedef enum item_e {
     CART = 13,
     TRIFORCE = 14,
     SUGAR = 15,
+    SHOES = 16,
 } item_t;
 
 typedef struct inventory_s {

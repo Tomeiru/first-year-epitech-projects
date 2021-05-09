@@ -8,7 +8,7 @@
 #ifndef TEXTURES_LIST_H_
 #define TEXTURES_LIST_H_
 
-#define TEXTURES_NB 26
+#define TEXTURES_NB 29
 
 const char *TEXTURES_PATH[] = {
     "assets/textures/buttons.png",
@@ -35,6 +35,9 @@ const char *TEXTURES_PATH[] = {
     "assets/textures/villain.png",
     "assets/textures/child.png",
     "assets/textures/witch.png",
+    "assets/textures/nun.png",
+    "assets/textures/priest.png",
+    "assets/textures/dog.png",
     "assets/textures/octorok.png",
     "assets/textures/leever.png",
 };
