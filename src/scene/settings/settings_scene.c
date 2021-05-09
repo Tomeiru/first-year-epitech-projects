@@ -18,7 +18,7 @@ int settings_scene_init(scene_t *scene, infos_t *infos)
     subwindow_t *sound_subwindow = sound_subwindow_create(infos);
     subwindow_t *fps_subwindow = fps_subwindow_create(infos);
     subwindow_t *res_subwindow = res_subwindow_create(infos);
-    button_t *validate = text_button_create(infos, "Valider",
+    button_t *validate = text_button_create(infos, "Validate",
     (sfVector2f) {856, 950}, GREEN_BUTTON);
 
     if (!sound_subwindow || !fps_subwindow || !res_subwindow || !validate)

@@ -27,7 +27,7 @@ typedef enum texture_e {
     INVENTORY_TEXT,
     PLAYER_TEXT,
     ROCK_TEXT,
-    HUD_TEXT,
+    BARS_TEXT,
     ITEMS_TEXT,
     HEART_TEXT,
     INV_SLOT_TEXT,
@@ -38,6 +38,7 @@ typedef enum texture_e {
     NURSE_TEXT,
     VILLAIN_TEXT,
     CHILD_TEXT,
+    WITCH_TEXT,
     OCTOROK_TEXT,
     LEEVER_TEXT,
 } texture_t;

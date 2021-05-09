@@ -15,7 +15,7 @@ sfVector2f pos, sfVector2f size)
 {
     sfRectangleShape *bkgd_rect = sfRectangleShape_create();
     sfRectangleShape *bar_rect = sfRectangleShape_create();
-    sfTexture *texture = get_texture(infos, HUD_TEXT);
+    sfTexture *texture = get_texture(infos, BARS_TEXT);
 
     if (!bkgd_rect || !bar_rect)
         return (1);

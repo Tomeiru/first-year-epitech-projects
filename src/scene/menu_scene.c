@@ -15,9 +15,9 @@
 static int init_menu_scene_play_buttons(menu_scene_t *menu_scene,
 infos_t *infos)
 {
-    button_t *new = text_button_create(infos, "Nouvelle partie",
+    button_t *new = text_button_create(infos, "New game",
     (sfVector2f) {734, 530}, GREEN_BUTTON);
-    button_t *save = text_button_create(infos, "Continuer",
+    button_t *save = text_button_create(infos, "Continue",
     (sfVector2f) {994, 530}, GREEN_BUTTON);
 
     if (!new || !save)
@@ -34,9 +34,9 @@ static int init_menu_scene_buttons(menu_scene_t *menu_scene, infos_t *infos)
     button_t *settings =
     text_button_create(infos, "Parametres", (sfVector2f) {864, 700}, 0);
     button_t *howtoplay =
-    text_button_create(infos, "Explications", (sfVector2f) {864, 800}, 3);
+    text_button_create(infos, "Explanations", (sfVector2f) {864, 800}, 3);
     button_t *leave =
-    text_button_create(infos, "Quitter", (sfVector2f) {864, 900}, RED_BUTTON);
+    text_button_create(infos, "Quit", (sfVector2f) {864, 900}, RED_BUTTON);
 
     if (init_menu_scene_play_buttons(menu_scene, infos)
     || !settings || !howtoplay || !leave)

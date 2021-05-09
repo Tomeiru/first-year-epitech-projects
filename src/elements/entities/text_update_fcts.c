@@ -23,10 +23,10 @@ void text_fps_update(entity_t *entity, infos_t *infos, float elapsed)
 void text_sound_update(entity_t *entity, infos_t *infos, float elapsed)
 {
     text_t *text = (text_t*) entity;
-    char str[9] = {0};
+    char str[11] = {0};
 
     UNUSED(elapsed);
-    my_strcpy(str, "Son: ");
-    int_to_str(infos->settings.sound_level, str + 5, 3);
+    my_strcpy(str, "Volume: ");
+    int_to_str(infos->settings.sound_level, str + 8, 3);
     sfText_setString(text->text, str);
 }

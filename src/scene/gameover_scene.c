@@ -15,12 +15,12 @@
 static int init_gameover_scene_buttons(gameover_scene_t *gameover_scene,
 infos_t *infos)
 {
-    button_t *save = text_button_create(infos, "Continuer",
+    button_t *save = text_button_create(infos, "Continue",
     (sfVector2f) {864, 550}, GREEN_BUTTON);
     button_t *menu = text_button_create(infos,
     "Menu", (sfVector2f) {864, 750}, YELLOW_BUTTON);
     button_t *leave = text_button_create(infos,
-    "Quitter", (sfVector2f) {864, 850}, RED_BUTTON);
+    "Quit", (sfVector2f) {864, 850}, RED_BUTTON);
 
     if (!save || !menu || !leave)
         return (1);

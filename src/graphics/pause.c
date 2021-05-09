@@ -14,13 +14,13 @@
 static int pause_create_buttons(pause_t *pause, infos_t *infos)
 {
     button_t *resume = text_button_create(infos,
-    "Reprendre", (sfVector2f) {865, 400}, GREEN_BUTTON);
+    "Resume", (sfVector2f) {865, 400}, GREEN_BUTTON);
     button_t *save =  text_button_create(infos,
-    "Sauvegarde", (sfVector2f) {865, 550}, YELLOW_BUTTON);
+    "Save", (sfVector2f) {865, 550}, YELLOW_BUTTON);
     button_t *menu =
     text_button_create(infos, "Menu", (sfVector2f) {865, 700}, BLUE_BUTTON);
     button_t *leave =
-    text_button_create(infos, "Quitter", (sfVector2f) {865, 850}, RED_BUTTON);
+    text_button_create(infos, "Quit", (sfVector2f) {865, 850}, RED_BUTTON);
 
     if (!resume || !save || !menu || !leave)
         return (1);

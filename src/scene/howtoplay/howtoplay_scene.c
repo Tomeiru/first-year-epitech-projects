@@ -15,11 +15,11 @@
 static int init_scene_buttons(howtoplay_scene_t *htp_scene, infos_t *infos)
 {
     button_t *prev =
-    text_button_create(infos, "Precedent", (sfVector2f) {200, 540}, 0);
+    text_button_create(infos, "Previous", (sfVector2f) {200, 540}, 0);
     image_t *img = image_create(infos, HOWTOPLAY_IMG_TEXT,
     (sfVector2f) {640, 108}, (sfVector2i) {640, 864});
     button_t *next =
-    text_button_create(infos, "Suivant", (sfVector2f) {1470, 540}, 0);
+    text_button_create(infos, "Next", (sfVector2f) {1470, 540}, 0);
     button_t *menu =
     text_button_create(infos, "Menu", (sfVector2f) {1530, 990}, 2);
 

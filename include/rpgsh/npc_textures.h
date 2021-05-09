@@ -10,7 +10,7 @@
 
 #include "graphics/texture.h"
 
-#define NPC_NB 6
+#define NPC_NB 7
 
 const char *NPC_NAME[] = {
     "DANDY",
@@ -19,6 +19,7 @@ const char *NPC_NAME[] = {
     "NURSE",
     "VILLAIN",
     "CHILD",
+    "WITCH",
 };
 
 const texture_t NPC_TEXTURE[] = {
@@ -28,6 +29,7 @@ const texture_t NPC_TEXTURE[] = {
     NURSE_TEXT,
     VILLAIN_TEXT,
     CHILD_TEXT,
+    WITCH_TEXT,
 };
 
 #endif /* !NPC_TEXTURES_H_ */
