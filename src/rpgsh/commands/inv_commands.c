@@ -19,7 +19,8 @@ char **args, infos_t *infos, element_t *element)
     UNUSED(element);
     if (args[1] == NULL)
         return;
-    add_item_to_inventory(inv, str_to_int(args[1]));
+    add_item_to_inventory(inv, str_to_int(args[1]),
+    args[2] ? str_to_int(args[2]) : 1);
 }
 
 void remove_item_rpgsh_command(char ***line,
@@ -31,5 +32,6 @@ char **args, infos_t *infos, element_t *element)
     UNUSED(element);
     if (args[1] == NULL)
         return;
-    remove_item_from_inventory(inv, str_to_int(args[1]));
+    remove_item_from_inventory(inv,
+    str_to_int(args[1]), args[2] ? str_to_int(args[2]) : -1);
 }

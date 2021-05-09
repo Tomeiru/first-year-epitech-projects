@@ -30,6 +30,6 @@ void potion_drink(infos_t *infos)
 
     if (player->health < player->max_health) {
         player_regen(world_scene->player, infos);
-        remove_item_from_inventory(world_scene->inventory, HEALTH_POTION);
+        remove_item_from_inventory(world_scene->inventory, HEALTH_POTION, 1);
     }
 }

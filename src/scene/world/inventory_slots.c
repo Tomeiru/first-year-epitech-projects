@@ -32,14 +32,15 @@ int inventory_create_slots(inventory_t *inv, infos_t *infos)
     return (0);
 }
 
-int add_item_to_inventory(inventory_t *inv, unsigned char item_id)
+int add_item_to_inventory(inventory_t *inv,
+unsigned char item_id, int quantity)
 {
     int i;
 
     for (i = 0; i < INVENTORY_SIZE; i++) {
         if (inv->slots[i]->item == item_id) {
             slot_button_set_quantity(inv->slots[i],
-            inv->slots[i]->quantity + 1);
+            inv->slots[i]->quantity + quantity);
             return (0);
         }
     }
@@ -47,24 +48,26 @@ int add_item_to_inventory(inventory_t *inv, unsigned char item_id)
     if (i == INVENTORY_SIZE)
         return (1);
     slot_button_set_item(inv->slots[i], item_id);
+    slot_button_set_quantity(inv->slots[i], quantity);
     return (0);
 }
 
-void remove_item_from_inventory(inventory_t *inv, unsigned char item_id)
+void remove_item_from_inventory(inventory_t *inv,
+unsigned char item_id, int quantity)
 {
     int i;
 
     for (i = 0; i < INVENTORY_SIZE; i++) {
         if (inv->slots[i]->item == item_id) {
-            slot_button_set_quantity(inv->slots[i],
-            inv->slots[i]->quantity - 1);
+            if (quantity == -1 ||
+            (unsigned int) quantity >= inv->slots[i]->quantity)
+                slot_button_set_item(inv->slots[i], 0);
+            else
+                slot_button_set_quantity(inv->slots[i],
+                inv->slots[i]->quantity - quantity);
             return;
         }
     }
-    for (i = 0; i < INVENTORY_SIZE && inv->slots[i]->item != item_id; i++);
-    if (i == INVENTORY_SIZE)
-        return;
-    slot_button_set_item(inv->slots[i], 0);
 }
 
 void set_item_to_inventory(inventory_t *inv, unsigned int item_id, int slot)

@@ -21,7 +21,7 @@ ELSE
                 DIALOGUE 0
                 DIALOGUE 1
                 DIALOGUE 2
-                ADD_ITEM 2
+                ADD_ITEM 2 3
                 CAM_TARGET PLAYER
                 SET_PLAYER_MOVE 1
                 DESTROY
