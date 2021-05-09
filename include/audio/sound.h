@@ -18,6 +18,7 @@ typedef enum sound_e {
     HIT_ENEMY,
     STEPS,
     SWORD_SLASH,
+    DRINKNG,
 } sound_t;
 
 typedef struct sound_couple_s {

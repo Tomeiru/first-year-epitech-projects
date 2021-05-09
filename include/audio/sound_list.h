@@ -8,7 +8,7 @@
 #ifndef SOUND_LIST_H_
 #define SOUND_LIST_H_
 
-#define SOUNDS_NB 7
+#define SOUNDS_NB 8
 
 const char *SOUNDS_PATH[] = {
     "./assets/sounds/click.ogg",
@@ -18,6 +18,7 @@ const char *SOUNDS_PATH[] = {
     "./assets/sounds/hit_enemy.ogg",
     "./assets/sounds/steps.ogg",
     "./assets/sounds/sword_slash.ogg",
+    "./assets/sounds/drinking.ogg",
 };
 
 #endif /* !SOUND_LIST_H_ */

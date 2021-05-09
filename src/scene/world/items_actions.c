@@ -7,6 +7,7 @@
 
 #include "my_rpg.h"
 #include "inventory.h"
+#include "audio/sound.h"
 #include "scene/world_scene.h"
 
 void item_action(unsigned char item, infos_t *infos)
@@ -31,5 +32,6 @@ void potion_drink(infos_t *infos)
     if (player->health < player->max_health) {
         player_regen(world_scene->player, infos);
         remove_item_from_inventory(world_scene->inventory, HEALTH_POTION, 1);
+        play_sound(infos, DRINKNG);
     }
 }
