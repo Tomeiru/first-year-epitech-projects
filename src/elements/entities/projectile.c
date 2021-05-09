@@ -39,19 +39,19 @@ float rot, float speed, sfTexture *texture)
 void projectile_update(entity_t *entity, infos_t *infos, float elapsed)
 {
     projectile_t *projectile = (projectile_t*) entity;
-    world_scene_t *world_scene = (world_scene_t*) infos->scene;
+    world_scene_t *w_scene = (world_scene_t*) infos->scene;
     map_t *map = ((world_scene_t*) infos->scene)->map;
     float rad = projectile->rot * 3.14 / 180;
     float speed = projectile->speed * elapsed;
     sfVector2f new_pos = projectile->pos;
-    element_t *collision = element_collision((element_t*)projectile,
-    projectile->hitbox, world_scene->entities);
+    element_t *collision = element_collision((element_t*) projectile,
+    projectile->hitbox, w_scene->entities);
 
     new_pos.x += cos(rad) * speed;
     new_pos.y += sin(rad) * speed;
     if (collision != NULL && collision->type == PLAYER) {
-        player_damage(world_scene->player, 1, infos);
-        scene_remove_element((scene_t*)world_scene, (element_t*)projectile, 1);
+        player_damage(w_scene->player, 1, infos);
+        scene_remove_element((scene_t*) w_scene, (element_t*) projectile, 1);
         return;
     }
     projectile->move((element_t*) projectile, new_pos);
