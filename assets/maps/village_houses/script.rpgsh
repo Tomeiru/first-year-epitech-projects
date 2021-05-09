@@ -54,7 +54,7 @@ ADD_TRIGGER 700 2260 Search
         FI
     END
 
-ADD_TRIGGER 830 3430 Search
+ADD_TRIGGER 880 3430 Search
     ACTION
         IF HAS_ITEM 1
             DIALOGUE 12
@@ -87,3 +87,20 @@ ELSE
             DESTROY
         END
 FI
+
+ADD_TRIGGER 770 3550 Bake
+    ACTION
+        IF HAS_ITEM 4
+            IF HAS_ITEM 11
+                IF HAS_ITEM 15
+                    VICTORY
+                ELSE
+                    DIALOGUE 16
+                FI
+            ELSE
+                DIALOGUE 15
+            FI
+        ELSE
+            DIALOGUE 14
+        FI
+    END
