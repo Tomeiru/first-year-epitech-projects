@@ -71,4 +71,7 @@ int does_savefile_exists(void);
 void save_game(world_scene_t *world_scene);
 int load_save(world_scene_t *world_scene, infos_t *infos);
 
+void item_action(unsigned char item, infos_t *infos);
+void potion_drink(infos_t *infos);
+
 #endif /* !WORLD_SCENE_H_ */

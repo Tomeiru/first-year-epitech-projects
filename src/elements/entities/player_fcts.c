@@ -46,21 +46,6 @@ void player_damage(player_t *player, float damage, infos_t *infos)
         scene_add_element(infos->scene, (element_t*) hit_particle, 1);
 }
 
-void player_get_move_from_keyboard(player_t *player,
-sfVector2f *move, float *speed, float elapsed)
-{
-    if (sfKeyboard_isKeyPressed(sfKeyLShift) && player->stamina > 0) {
-        *speed *= 1.5;
-        player->stamina -= elapsed;
-    }
-    if (sfKeyboard_isKeyPressed(sfKeyZ) ^ sfKeyboard_isKeyPressed(sfKeyS))
-        move->y = sfKeyboard_isKeyPressed(sfKeyZ) ? -*speed : *speed;
-    if (sfKeyboard_isKeyPressed(sfKeyQ) ^ sfKeyboard_isKeyPressed(sfKeyD))
-        move->x = sfKeyboard_isKeyPressed(sfKeyQ) ? -*speed : *speed;
-    walk_animation_set_anim_and_dir(&(player->anim),
-    &(player->dir), *move, *speed);
-}
-
 void player_stamina(player_t *player, infos_t *infos)
 {
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
@@ -87,7 +72,6 @@ void player_level_up(player_t *player, infos_t *infos)
 {
     world_scene_t *world_scene = (world_scene_t*) infos->scene;
     bar_t *exp_bar = world_scene->inventory->exp_bar;
-    health_bar_t *health_bar = world_scene->hud->health_bar;
     float value = exp_bar->value - exp_bar->max;
 
     play_sound(infos, LEVEL_UP);
@@ -95,7 +79,15 @@ void player_level_up(player_t *player, infos_t *infos)
     bar_set_value(exp_bar, value);
     if (player->max_health < MAX_HEALTH) {
         player->max_health += 2;
-        player->health = player->max_health;
-        health_bar_update_values(health_bar, player);
     }
+    player_regen(player, infos);
+}
+
+void player_regen(player_t *player, infos_t *infos)
+{
+    world_scene_t *world_scene = (world_scene_t*) infos->scene;
+    health_bar_t *health_bar = world_scene->hud->health_bar;
+
+    player->health = player->max_health;
+    health_bar_update_values(health_bar, player);
 }

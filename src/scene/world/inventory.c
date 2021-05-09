@@ -39,8 +39,10 @@ void inventory_draw(subwindow_t *subwindow, sfRenderWindow *window)
     inv->exp_bar->draw((element_t*) inv->exp_bar, window);
     for (int i = 0; i < INVENTORY_SIZE; i++)
         sfRenderWindow_drawSprite(window, inv->slots[i]->sprite, NULL);
-    for (int i = 0; i < INVENTORY_SIZE; i++)
+    for (int i = 0; i < INVENTORY_SIZE; i++) {
         sfRenderWindow_drawSprite(window, inv->slots[i]->icon, NULL);
+        sfRenderWindow_drawText(window, inv->slots[i]->text, NULL);
+    }
 }
 
 void inventory_update(subwindow_t *subwindow, infos_t *infos, float elapsed)

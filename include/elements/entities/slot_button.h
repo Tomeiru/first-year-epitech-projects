@@ -31,12 +31,14 @@ typedef struct slot_button_s {
     int texture_height_offset;
     sfSprite *icon;
     unsigned char item;
+    unsigned int quantity;
 } slot_button_t;
 
 slot_button_t *slot_button_create(infos_t *infos, sfVector2f pos);
 int slot_button_setup_icon(slot_button_t *button,
 infos_t *infos, sfVector2f pos);
 void slot_button_set_item(slot_button_t *button, unsigned char item);
+void slot_button_set_quantity(slot_button_t *button, unsigned int quantity);
 
 void slot_button_move(element_t *element, sfVector2f pos);
 void slot_button_draw(element_t *element, sfRenderWindow *window);

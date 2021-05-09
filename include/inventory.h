@@ -25,6 +25,7 @@ typedef enum item_e {
     BERRY_BASKET,
     APPLE,
     SOCK,
+    HEALTH_POTION,
 } item_t;
 
 typedef struct inventory_s {

@@ -31,8 +31,9 @@ ELEMENTS_SRC	=	src/elements/element.c										\
 					src/elements/entities/enemy_attacks.c						\
 					src/elements/entities/enemy_types.c							\
 					src/elements/entities/player.c								\
-					src/elements/entities/projectile.c							\
 					src/elements/entities/player_fcts.c							\
+					src/elements/entities/player_move.c							\
+					src/elements/entities/projectile.c							\
 					src/elements/entities/text.c								\
 					src/elements/entities/text_update_fcts.c					\
 					src/elements/entities/dialogue.c							\
