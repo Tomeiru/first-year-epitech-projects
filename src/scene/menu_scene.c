@@ -32,7 +32,7 @@ infos_t *infos)
 static int init_menu_scene_buttons(menu_scene_t *menu_scene, infos_t *infos)
 {
     button_t *settings =
-    text_button_create(infos, "Parametres", (sfVector2f) {864, 700}, 0);
+    text_button_create(infos, "Settings", (sfVector2f) {864, 700}, 0);
     button_t *howtoplay =
     text_button_create(infos, "Explanations", (sfVector2f) {864, 800}, 3);
     button_t *leave =
