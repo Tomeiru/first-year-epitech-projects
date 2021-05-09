@@ -22,7 +22,8 @@ sfVector2u size, sfColor color)
     particle->update = &falling_particle_update;
     for (int i = 0; i < 16; i++) {
         particle->p_pos[i] = (sfVector2f) {start_pos +
-        step_size * i + rand() % ((int) step_size), -(rand() % START_HEIGHT)};
+        step_size * i + rand() % ((int) step_size),
+        -(rand() % START_HEIGHT)};
         particle->p_acc_y[i] = 0;
     }
     particle->color = color;
@@ -47,7 +48,8 @@ void falling_particle_update(entity_t *entity, infos_t *infos, float elapsed)
     }
 }
 
-void falling_particle_draw_particle(falling_particle_t *particle, sfVector2f pos)
+void falling_particle_draw_particle(falling_particle_t *particle,
+sfVector2f pos)
 {
     if (pos.y - 1 < 0 || pos.y + 1 >= particle->size.y)
         return;

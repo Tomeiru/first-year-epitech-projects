@@ -38,6 +38,7 @@ typedef struct falling_particle_s {
 falling_particle_t *falling_particle_create(sfVector2f pos,
 sfVector2u size, sfColor color);
 void falling_particle_update(entity_t *entity, infos_t *infos, float elapsed);
-void falling_particle_draw_particle(falling_particle_t *particle, sfVector2f pos);
+void falling_particle_draw_particle(falling_particle_t *particle,
+sfVector2f pos);
 
 #endif /* !FALLING_PARTICLE_H_ */

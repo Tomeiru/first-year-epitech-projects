@@ -39,7 +39,8 @@ void hit_particle_update(entity_t *entity, infos_t *infos, float elapsed)
     hit_particle->time += elapsed;
     buffer_clear((buffer_t*) hit_particle);
     for (int i = 0; i < 6; i++) {
-        hit_particle->acc[i].x = hit_particle->acc[i].x * (0.9 + (rand() % 10) * 0.1);
+        hit_particle->acc[i].x = hit_particle->acc[i].x *
+        (0.9 + (rand() % 10) * 0.1);
         hit_particle->acc[i].y += hit_particle->acc[i].y;
         hit_particle->particles[i].x += hit_particle->acc[i].x;
         hit_particle->particles[i].y += hit_particle->acc[i].y;

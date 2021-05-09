@@ -47,7 +47,8 @@ int dialogue_init(dialogue_t *dialogue, infos_t *infos, sfVector2f pos)
     sfSprite_setPosition(sprite, pos);
     sfSprite_setTexture(dialogue->sprite, get_texture(infos, TEXTBOX_TEXT), 0);
     dialogue_move((element_t*) dialogue, pos);
-    element_set_hitbox((element_t*) dialogue, sfText_getGlobalBounds(text_sfml));
+    element_set_hitbox((element_t*) dialogue,
+    sfText_getGlobalBounds(text_sfml));
     return (0);
 }
 

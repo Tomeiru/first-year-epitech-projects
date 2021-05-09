@@ -21,7 +21,8 @@ typedef struct subwindow_s {
     list_t *elements;
     list_t *entities;
     void (*move)(struct subwindow_s *subwindow, sfVector2f new_pos);
-    void (*update)(struct subwindow_s *subwindow, infos_t *infos, float elapsed);
+    void (*update)(struct subwindow_s *subwindow,
+    infos_t *infos, float elapsed);
     void (*draw)(struct subwindow_s *subwindow, sfRenderWindow *window);
     void (*destroy)(struct subwindow_s *subwindow);
 } subwindow_t;

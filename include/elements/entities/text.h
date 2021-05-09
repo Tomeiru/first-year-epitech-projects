@@ -36,7 +36,8 @@ void text_destroy(element_t *element);
 void text_money_update(entity_t *entity, infos_t *infos, float elapsed);
 void text_health_update(entity_t *entity, infos_t *infos, float elapsed);
 
-void text_gameover_name_update(entity_t *entity, infos_t *infos, float elapsed);
+void text_gameover_name_update(entity_t *entity,
+infos_t *infos, float elapsed);
 void text_notif_update(entity_t *entity, infos_t *infos, float elapsed);
 void text_fps_update(entity_t *entity, infos_t *infos, float elapsed);
 void text_sound_update(entity_t *entity, infos_t *infos, float elapsed);

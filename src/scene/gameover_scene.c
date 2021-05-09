@@ -12,7 +12,8 @@
 #include "scene/gameover_scene.h"
 #include "elements/entities/button.h"
 
-static int init_gameover_scene_buttons(gameover_scene_t *gameover_scene, infos_t *infos)
+static int init_gameover_scene_buttons(gameover_scene_t *gameover_scene,
+infos_t *infos)
 {
     button_t *save = text_button_create(infos, "Continuer",
     (sfVector2f) {864, 550}, GREEN_BUTTON);

@@ -27,7 +27,8 @@ void subwindow_default_move(subwindow_t *subwindow, sfVector2f new_pos)
     }
 }
 
-void subwindow_default_update(subwindow_t *subwindow, infos_t *infos, float elapsed)
+void subwindow_default_update(subwindow_t *subwindow,
+infos_t *infos, float elapsed)
 {
     entity_t *entity;
 
