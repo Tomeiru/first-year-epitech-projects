@@ -45,6 +45,7 @@ typedef struct world_scene_s {
     player_t *player;
     element_t *cam_target;
     float time;
+    char victory;
 } world_scene_t;
 
 scene_t *world_scene_create_new(infos_t *infos);

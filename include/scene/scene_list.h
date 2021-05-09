@@ -14,10 +14,11 @@
 #include "scene/howtoplay_scene.h"
 #include "scene/world_scene.h"
 #include "scene/gameover_scene.h"
+#include "scene/victory_scene.h"
 
 typedef scene_t *(*scene_create_fct_t)(infos_t* infos);
 
-#define NB_SCENES 6
+#define NB_SCENES 7
 
 const int LOAD_ACTION[] = {
     LOAD_MENU_SCENE_ACTION,
@@ -26,6 +27,7 @@ const int LOAD_ACTION[] = {
     LOAD_WORLD_SCENE_NEW_ACTION,
     LOAD_WORLD_SCENE_SAVE_ACTION,
     LOAD_GAMEOVER_SCENE_ACTION,
+    LOAD_VICTORY_SCENE_ACTION,
 };
 
 const game_state_t SCENE_STATE[] = {
@@ -35,6 +37,7 @@ const game_state_t SCENE_STATE[] = {
     WORLD,
     WORLD,
     GAMEOVER,
+    VICTORY,
 };
 
 const scene_create_fct_t LOAD_SCENE_FCT[] = {
@@ -44,6 +47,7 @@ const scene_create_fct_t LOAD_SCENE_FCT[] = {
     &world_scene_create_new,
     &world_scene_create_save,
     &gameover_scene_create,
+    &victory_scene_create,
 };
 
 #endif /* !SCENE_LIST_H_ */

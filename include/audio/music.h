@@ -15,6 +15,7 @@ typedef enum music_e {
     RIVER_MUSIC,
     MONTAINS_MUSIC,
     GAMEOVER_MUSIC,
+    VICTORY_MUSIC,
     INTRO_MUSIC,
     MENU_MUSIC,
     MANSION_MUSIC,

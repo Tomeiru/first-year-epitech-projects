@@ -30,6 +30,7 @@ scene_t *world_scene_create_new(infos_t *infos)
     world_scene->world_type = VILLAGE;
     world_scene->map = NULL;
     world_scene->time = 0;
+    world_scene->victory = 0;
     return (scene);
 }
 
@@ -46,8 +47,10 @@ scene_t *world_scene_create_save(infos_t *infos)
     world_scene->background = background;
     world_scene->post_init = &world_scene_post_init_save;
     world_scene->event = &world_scene_event;
+    world_scene->world_type = VILLAGE;
     world_scene->map = NULL;
     world_scene->time = 0;
+    world_scene->victory = 0;
     return (scene);
 }
 
@@ -55,6 +58,8 @@ int world_scene_update(scene_t *scene, infos_t *infos, float elapsed)
 {
     world_scene_t *world_scene = (world_scene_t*) scene;
 
+    if (world_scene->victory)
+        return (LOAD_VICTORY_SCENE_ACTION);
     update_hover(infos);
     if (check_world_load(world_scene, infos))
         return (QUIT_GAME_ACTION);

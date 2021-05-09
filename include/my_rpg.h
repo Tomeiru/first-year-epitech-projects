@@ -35,6 +35,7 @@ typedef enum game_state_e {
     SETTINGS,
     WORLD,
     GAMEOVER,
+    VICTORY,
 } game_state_t;
 
 typedef enum direction_s {

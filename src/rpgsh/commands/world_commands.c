@@ -55,3 +55,14 @@ char **args, infos_t *infos, element_t *element)
     player->mov_target.x = str_to_int(args[1]);
     player->mov_target.y = str_to_int(args[2]);
 }
+
+void victory_rpgsh_command(char ***line,
+char **args, infos_t *infos, element_t *element)
+{
+    world_scene_t *world_scene = (world_scene_t*) infos->scene;
+
+    UNUSED(line);
+    UNUSED(args);
+    UNUSED(element);
+    world_scene->victory = 1;
+}

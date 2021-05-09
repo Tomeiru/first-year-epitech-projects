@@ -14,9 +14,9 @@ typedef void (*rpgsh_command_fct_t)(char ***line,
 char **args, infos_t *infos, element_t *element);
 
 #ifndef BONUS
-#define NB_COMMANDS 13
-#else
 #define NB_COMMANDS 14
+#else
+#define NB_COMMANDS 15
 #endif
 
 void cam_target_rpgsh_command(char ***line,
@@ -43,6 +43,8 @@ void play_music_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
 void player_move_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
+void victory_rpgsh_command(char ***line,
+char **args, infos_t *infos, element_t *element);
 
 void add_item_rpgsh_command(char ***line,
 char **args, infos_t *infos, element_t *element);
@@ -68,6 +70,7 @@ const char *COMMAND_STR[] = {
     "PLAYER_MOVE",
     "ADD_ITEM",
     "REMOVE_ITEM",
+    "VICTORY",
     "OPEN_URL",
 };
 
@@ -85,6 +88,7 @@ const int COMMAND_LENGTH[] = {
     11,
     8,
     11,
+    7,
     8,
 };
 
@@ -102,6 +106,7 @@ const rpgsh_command_fct_t COMMAND_FCT[] = {
     &player_move_rpgsh_command,
     &add_item_rpgsh_command,
     &remove_item_rpgsh_command,
+    &victory_rpgsh_command,
 #ifdef BONUS
     &open_url_rpgsh_command,
 #endif
