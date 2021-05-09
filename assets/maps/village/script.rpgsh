@@ -1,36 +1,20 @@
 SET_WORLD_TYPE VILLAGE
 PLAY_MUSIC VILLAGE
 
-ADD_NPC VILLAIN 1000 900 1 Parler
-    ACTION
-        IF HAS_ITEM 1
-            DIALOGUE 1
-        ELSE
-            DIALOGUE 0
-            OPEN_URL https://www.amazon.fr/Legend-Zelda-Skyward-r%C3%A9plique-plastique/dp/B00SJPBRQE
-            PLAYER_MOVE 1000 1100
-        FI
-    END
-
 ADD_NPC DANDY 1175 1100 3 Parler
     ACTION
-        IF HAS_ITEM 1
-            DIALOGUE 3
+        IF HAS_ITEM 3
+            DIALOGUE 0
         ELSE
+            DIALOGUE 0
+            ADD_ITEM 3
             DIALOGUE 1
-            ADD_ITEM 1
-            DIALOGUE 2
         FI
-    END
-
-ADD_NPC DANDY 0 0 3 Parler
-    ACTION
-        DIALOGUE 2
     END
 
 ADD_NPC CHILD 465 564 1 Parler
     ACTION
-        DIALOGUE 4
+        DIALOGUE 3
     END
     UPDATE
         MOVE 465 564 3
@@ -40,7 +24,7 @@ ADD_NPC CHILD 465 564 1 Parler
 
 ADD_NPC DANDY 1432 480 3 Parler
     ACTION
-        DIALOGUE 5
+        DIALOGUE 4
     END
     UPDATE
         MOVE 1432 480 1
@@ -51,5 +35,5 @@ ADD_NPC DANDY 1432 480 3 Parler
 
 ADD_NPC FAT 777 1274 0 Parler
     ACTION
-        DIALOGUE 3
+        DIALOGUE 2
     END
