@@ -1,2 +1,2 @@
-*Vous n'avez pas de panier vide.
-*Vous avez cueillit des baies.
+*You don't have anything to carry these berries.
+*You picked up some berries.
