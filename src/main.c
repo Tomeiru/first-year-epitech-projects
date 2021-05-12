@@ -60,7 +60,7 @@ void move(float *data)
 void turn(float left, float right)
 {
     float rot[] = {0.7, 0.5, 0.4, 0.3, 0.2, 0.1, 0};
-    float dist[] = {100, 150, 200, 250, 350, 1000, 3010};
+    float dist[] = {110, 150, 200, 250, 350, 1000, 3010};
 
     for (int i = 0; i < 8; i++) {
         if (left <= dist[i] || right <= dist[i]) {
