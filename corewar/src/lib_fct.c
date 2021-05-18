@@ -7,6 +7,27 @@
 
 #include "corewar.h"
 
+int my_str_isnum(char *str)
+{
+    int i = 0;
+
+    for ( ; str[i] != '\0'; i++)
+        if (str[i] < '0' || str[i] > '9')
+            return (0);
+    return (1);
+}
+
+int my_str_ishexa(char *str)
+{
+    int i = 0;
+
+    for ( ; str[i] != '\0'; i++)
+        if ((str[i] < '0' || str[i] > '9') &&
+        (str[i] < 'A' || str[i] > 'F'))
+            return (0);
+    return (1);
+}
+
 int my_strcmp(char *s1, char *s2)
 {
     for (int i = 0; s1[i] != '\0'; i++)

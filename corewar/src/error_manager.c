@@ -39,7 +39,7 @@ int check_args(int ac, char **av)
 {
     int nbr[2] = args_counter(ac, av);
 
-    if (nbr[0] != 1 || nbr[1] < 2 || file_errors(ac, av, nbr[1]) == 84)
+    if (nbr[0] != 1 || nbr[1] < 2 || flag_errors(ac, av) == 84)
         return (84);
 }
 

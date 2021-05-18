@@ -28,8 +28,8 @@ int check_args(int ac, char **av);
 int *args_counter(int ac, char **av);
 int check_cor(char *cor, char *str);
 
-//file_errors.c
-int file_errors(int ac, char **av, int cor);
+//flag_errors.c
+int flag_errors(int ac, char **av);
 
 //corewar.c
 int corewar(int ac, char **av);
