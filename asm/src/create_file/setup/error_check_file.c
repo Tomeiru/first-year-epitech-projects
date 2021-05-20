@@ -2,13 +2,12 @@
 ** EPITECH PROJECT, 2021
 ** Visual Studio Live Share (Workspace)
 ** File description:
-** asm_corewar
+** error_check_file
 */
 
 #include "asm.h"
 
-int asm_corewar(int ac, char **av)
+int error_check_file(char **files)
 {
-    write(1, av[0], sizeof(av[0]));
-    return (ac);
+    return (0);
 }
