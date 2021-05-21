@@ -14,5 +14,5 @@ int error_name(char **file_array)
 
     if (check_syntax < 0)
         return (check_error_code_name(check_syntax));
-    return (0);
+    return (name_presence);
 }

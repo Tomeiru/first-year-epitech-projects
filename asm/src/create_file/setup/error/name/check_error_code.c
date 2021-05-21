@@ -10,10 +10,10 @@
 int check_error_code_name(int error_code)
 {
     if (error_code == -1)
-        write(2, ".name error: Your program must have a name\n", 43);
+        write(2, ".name error: Your program must have at least a name\n", 52);
     if (error_code == -2)
-        write(2, ".name error: The name of your program must\
-be the first command\n", 63);
+        write(2, ".name error: The name of your program must \
+be the first command\n", 64);
     if (error_code == -3)
         write(2, ".name error: Please verify your name syntax\n", 44);
     if (error_code == -4)
