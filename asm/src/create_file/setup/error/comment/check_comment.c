@@ -20,7 +20,7 @@ int error_comment(char **file_array, int line_name)
         return (check_error_code_comment(check_syntax));
     if (check_syntax == -1) {
         write(2, ".comment warning: No comment specified.\n", 40);
-        return (check_syntax);
+        return (line_name);
     }
     return (comment_presence);
 }
