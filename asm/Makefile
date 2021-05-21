@@ -17,6 +17,38 @@ SRC =	src/setup/asm_corewar.c	\
 		src/create_file/header/write_name.c	\
 		src/create_file/header/write_prog_size.c	\
 		src/create_file/header/write_comment.c	\
+		src/create_file/body/write_body.c	\
+		src/create_file/body/write_command.c	\
+		src/create_file/body/get_command_value.c	\
+		src/create_file/body/utils/get_arg_str.c	\
+		src/create_file/body/utils/get_args_arr.c	\
+		src/create_file/body/utils/get_info_label.c	\
+		src/create_file/body/utils/get_command_str.c	\
+		src/create_file/body/utils/get_coding_byte.c	\
+		src/create_file/body/write_func/get_value.c	\
+		src/create_file/body/write_func/write_live.c	\
+		src/create_file/body/write_func/write_ld.c	\
+		src/create_file/body/write_func/write_st.c	\
+		src/create_file/body/write_func/write_add.c	\
+		src/create_file/body/write_func/write_sub.c	\
+		src/create_file/body/write_func/write_and_first.c	\
+		src/create_file/body/write_func/write_and_second.c	\
+		src/create_file/body/write_func/write_and_third.c	\
+		src/create_file/body/write_func/write_or_first.c	\
+		src/create_file/body/write_func/write_or_second.c	\
+		src/create_file/body/write_func/write_or_third.c	\
+		src/create_file/body/write_func/write_xor_first.c	\
+		src/create_file/body/write_func/write_xor_second.c	\
+		src/create_file/body/write_func/write_xor_third.c	\
+		src/create_file/body/write_func/write_zjmp.c	\
+		src/create_file/body/write_func/write_ldi.c	\
+		src/create_file/body/write_func/write_sti.c	\
+		src/create_file/body/write_func/write_fork.c	\
+		src/create_file/body/write_func/write_lld.c	\
+		src/create_file/body/write_func/write_lldi.c	\
+		src/create_file/body/write_func/write_lfork.c	\
+		src/create_file/body/write_func/write_aff.c	\
+		src/utils/my_getnbr.c	\
 		src/utils/my_strcmp.c	\
 		src/utils/my_strdup.c	\
 		src/utils/my_strlen.c	\

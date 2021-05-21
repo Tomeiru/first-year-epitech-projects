@@ -52,5 +52,6 @@ char *filename_to_filename_cor(char *filename)
     filename_cor[idx++] = 'c';
     filename_cor[idx++] = 'o';
     filename_cor[idx++] = 'r';
+    filename_cor[idx] = '\0';
     return (filename_cor);
 }

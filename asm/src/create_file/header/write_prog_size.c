@@ -34,6 +34,8 @@ int write_prog_size(char **file_array, int cor_file, int name_line)
     unsigned long long prog_size = get_prog_size();
     unsigned char prog_size_char[8];
 
+    for (int i = 0; i < 8; i++)
+        prog_size_char[i] = 0;
     for (int i = 7; i != -1; i--) {
         if (prog_size == 0) {
             prog_size_char[i] = 0;

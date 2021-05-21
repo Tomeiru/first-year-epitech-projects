@@ -13,5 +13,5 @@ void create_cor_file(char **file_array, char *filename)
     int cor_file = open(filename_cor, O_WRONLY | O_CREAT, 0644);
     int comment_line = write_header(file_array, cor_file);
 
-    //write_body(file_array, cor_file, comment_line + 1);
+    write_body(file_array, cor_file, comment_line + 1);
 }

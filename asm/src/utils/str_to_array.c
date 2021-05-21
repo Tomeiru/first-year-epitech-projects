@@ -9,7 +9,7 @@
 
 static int how_many_lines(char *files)
 {
-    int ret = 0;
+    int ret = 1;
 
     for (int i = 0; files[i]; i++)
         if (files[i] == '\n')
@@ -35,12 +35,13 @@ char **str_to_array(char *files)
 
     array[0] = malloc(sizeof(char) * (get_size_str(files, 0) + 1));
     for (int i = 0; files[i]; i++) {
-        if (files[i] == '\n') {
+        if (files[i] == '\n' || files[i] == '\0') {
             array[j][idx] = '\0';
             idx = 0;
             array[++j] = malloc(sizeof(char) * (get_size_str(files, i+1) + 1));
             continue;
         }array[j][idx++] = files[i];
-    }array[size] = NULL;
+    }array[j][idx] = '\0';
+    array[size] = NULL;
     return (array);
 }
