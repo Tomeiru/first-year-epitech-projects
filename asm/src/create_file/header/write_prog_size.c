@@ -23,15 +23,10 @@ static int get_comment_line(char **file_array, int name_line)
     }return (-1);
 }
 
-static unsigned long long get_prog_size(void)
-{
-    return (0x0000000ffffffabc);
-}
-
 int write_prog_size(char **file_array, int cor_file, int name_line)
 {
     int comment_line = get_comment_line(file_array, name_line);
-    unsigned long long prog_size = get_prog_size();
+    unsigned long long prog_size = get_prog_size(file_array, comment_line + 1);
     unsigned char prog_size_char[8];
 
     for (int i = 0; i < 8; i++)

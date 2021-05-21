@@ -12,11 +12,19 @@ SRC =	src/setup/asm_corewar.c	\
 		src/create_file/setup/create_cor_file.c	\
 		src/create_file/setup/error_check_file.c	\
 		src/create_file/setup/filename_to_filename_cor.c	\
+		src/create_file/header/get_prog_size.c	\
 		src/create_file/header/write_header.c	\
 		src/create_file/header/write_magic_number.c	\
 		src/create_file/header/write_name.c	\
 		src/create_file/header/write_prog_size.c	\
 		src/create_file/header/write_comment.c	\
+		src/create_file/header/size_func/size_five.c	\
+		src/create_file/header/size_func/size_ld_lld.c	\
+		src/create_file/header/size_func/size_st.c	\
+		src/create_file/header/size_func/size_and_or_xor.c	\
+		src/create_file/header/size_func/size_three.c	\
+		src/create_file/header/size_func/size_seven.c	\
+		src/create_file/header/size_func/size_sti.c	\
 		src/create_file/body/write_body.c	\
 		src/create_file/body/write_command.c	\
 		src/create_file/body/get_command_value.c	\

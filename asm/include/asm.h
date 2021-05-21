@@ -16,6 +16,8 @@
 #include <stdlib.h>
 #include "op.h"
 
+#define UNUSED(var) (void)(var)
+
 /*typedef struct file_s {
     char **label;
     int *label_pos;
@@ -77,10 +79,19 @@ void write_lldi(char *line, int cor_file);
 void write_lfork(char *line, int cor_file);
 void write_aff(char *line, int cor_file);
 
+unsigned int size_five(char *line);
+unsigned int size_ld_lld(char *line);
+unsigned int size_st(char *line);
+unsigned int size_and_or_xor(char *line);
+unsigned int size_three(char *line);
+unsigned int size_seven(char *line);
+unsigned int size_sti(char *line);
+
 int write_header(char **file_array, int cor_file);
 void write_magic_number(int cor_file);
 int write_name(char **file_array, int cor_file);
 int write_prog_size(char **file_array, int cor_file, int name_line);
+unsigned long long get_prog_size(char **file_array, int body_line);
 void write_comment(char **file_array, int cor_file, int comment_line);
 
 void asm_file(info_t *info, int i);

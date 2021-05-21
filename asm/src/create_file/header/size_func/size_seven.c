@@ -2,13 +2,13 @@
 ** EPITECH PROJECT, 2021
 ** Visual Studio Live Share (Workspace)
 ** File description:
-** error_check_file
+** size_live
 */
 
 #include "asm.h"
 
-int error_check_file(char **files)
+unsigned int size_seven(char *line)
 {
-    UNUSED(files);
-    return (0);
+    UNUSED(line);
+    return (7);
 }

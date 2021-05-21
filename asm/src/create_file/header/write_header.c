@@ -16,5 +16,7 @@ int write_header(char **file_array, int cor_file)
     name_line = write_name(file_array, cor_file);
     comment_line = write_prog_size(file_array, cor_file, name_line);
     write_comment(file_array, cor_file, comment_line);
-    return (comment_line);
+    if (comment_line != -1)
+        return (comment_line);
+    return (name_line);
 }
