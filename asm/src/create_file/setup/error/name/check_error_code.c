@@ -10,7 +10,7 @@
 int check_error_code_name(int error_code)
 {
     if (error_code == -1)
-        write(2, ".name error: Your program must have at least a name\n", 52);
+        write(2, ".name error: Your program must have a name\n", 43);
     if (error_code == -2)
         write(2, ".name error: The name of your program must \
 be the first command\n", 64);

@@ -16,6 +16,10 @@ SRC =	src/setup/asm_corewar.c	\
 		src/create_file/setup/error/name/check_name_presence.c	\
 		src/create_file/setup/error/name/check_name.c	\
 		src/create_file/setup/error/name/check_syntax_name.c	\
+		src/create_file/setup/error/comment/check_error_code.c	\
+		src/create_file/setup/error/comment/check_comment_presence.c	\
+		src/create_file/setup/error/comment/check_comment.c	\
+		src/create_file/setup/error/comment/check_syntax_comment.c	\
 		src/create_file/setup/error/check_after_quotes.c	\
 		src/create_file/header/get_prog_size.c	\
 		src/create_file/header/write_header.c	\
