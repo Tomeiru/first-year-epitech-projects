@@ -28,7 +28,7 @@ debug:	CFLAGS += -g
 debug:	fclean all
 		@gcc -o $(NAME) $(OBJ) $(OBJMAIN) $(CFLAGS)
 
-clean:	
+clean:
 		rm -f $(OBJ) $(OBJMAIN)
 
 fclean:	clean
