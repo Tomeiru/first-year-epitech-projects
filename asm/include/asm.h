@@ -94,9 +94,16 @@ int write_prog_size(char **file_array, int cor_file, int name_line);
 unsigned long long get_prog_size(char **file_array, int body_line);
 void write_comment(char **file_array, int cor_file, int comment_line);
 
+int check_error_code_name(int error_code);
+int check_name_presence(char **file_array);
+int check_syntax_name(char **file_array, int name_presence);
+int error_name(char **file_array);
+
+int check_after_quotes(char *line_name);
+int error_check_file(char **files);
+
 void asm_file(info_t *info, int i);
 void create_cor_file(char **file_array, char *filename);
-int error_check_file(char **files);
 char *filename_to_filename_cor(char *filename);
 
 int asm_corewar(int ac, char **av);

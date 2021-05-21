@@ -7,8 +7,8 @@
 
 #include "asm.h"
 
-int error_check_file(char **files)
+int error_check_file(char **file_array)
 {
-    UNUSED(files);
-    return (0);
+    int check_name = error_name(file_array);
+    exit (check_name);
 }

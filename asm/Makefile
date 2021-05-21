@@ -10,8 +10,13 @@ SRC =	src/setup/asm_corewar.c	\
 		src/setup/op.c	\
 		src/create_file/setup/asm_file.c	\
 		src/create_file/setup/create_cor_file.c	\
-		src/create_file/setup/error_check_file.c	\
 		src/create_file/setup/filename_to_filename_cor.c	\
+		src/create_file/setup/error/error_check_file.c	\
+		src/create_file/setup/error/name/check_error_code.c	\
+		src/create_file/setup/error/name/check_name_presence.c	\
+		src/create_file/setup/error/name/check_name.c	\
+		src/create_file/setup/error/name/check_syntax_name.c	\
+		src/create_file/setup/error/check_after_quotes.c	\
 		src/create_file/header/get_prog_size.c	\
 		src/create_file/header/write_header.c	\
 		src/create_file/header/write_magic_number.c	\

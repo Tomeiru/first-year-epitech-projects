@@ -13,7 +13,7 @@ void write_body(char **file_array, int cor_file, int body_line)
 
     for (int i = body_line; file_array[i]; i++) {
         command = get_command_value(file_array[i]);
-        if (command != -1)
+        if (command < 0 || command != 100 || command != 200)
             write_command(file_array[i], cor_file, command);
     }
 }
