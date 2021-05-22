@@ -14,15 +14,33 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "op.h"
 
 #define UNUSED(var) (void)(var)
+#define MAX_ARGS_NUMBER 4
+#define T_REG 1
+#define T_DIR 2
+#define T_IND 4
+#define T_LAB 8
+
+typedef char args_type_t;
 
 /*typedef struct file_s {
     char **label;
     int *label_pos;
     int actual_pos;
 } file_t;*/
+
+typedef struct op_s
+{
+    char *mnemonique;
+    char nbr_args;
+    args_type_t type[MAX_ARGS_NUMBER];
+    char code;
+    int nbr_cycles;
+    char *comment;
+} op_t;
+
+extern op_t op_tab[];
 
 typedef struct info_s {
     char ***files;

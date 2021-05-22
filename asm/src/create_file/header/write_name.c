@@ -14,7 +14,7 @@ static int get_name_line(char **file_array)
 
     for ( ; file_array[i]; i++) {
         for ( ; file_array[i][j] == ' ' || file_array[i][j] == 9; j++);
-        if (file_array[i][j] == COMMENT_CHAR)
+        if (file_array[i][j] == '#')
             continue;
         if (file_array[i][j] == '.')
             return (i);

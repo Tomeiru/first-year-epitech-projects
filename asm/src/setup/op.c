@@ -5,7 +5,7 @@
 ** op.c
 */
 
-#include "op.h"
+#include "asm.h"
 
 op_t op_tab[] =
 {
