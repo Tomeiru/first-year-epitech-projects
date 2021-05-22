@@ -94,10 +94,38 @@ int write_prog_size(char **file_array, int cor_file, int name_line);
 unsigned long long get_prog_size(char **file_array, int body_line);
 void write_comment(char **file_array, int cor_file, int comment_line);
 
+int check_comment_presence(char **file_array, int after_name_line);
+int error_comment(char **file_array, int line_name);
+int check_error_code_comment(int error_code);
+int check_syntax_comment(char **file_array, int comment_presence);
+
 int check_error_code_name(int error_code);
 int check_name_presence(char **file_array);
 int check_syntax_name(char **file_array, int name_presence);
 int error_name(char **file_array);
+
+int check_direct_arg(char *arg);
+int check_indirect_arg(char *arg);
+int check_label_arg(char *arg);
+int check_register_arg(char *arg);
+int count_arg(char **arg);
+
+int check_args_aff(char *line);
+int check_args_add_sub(char *line);
+int check_args_and_or_xor(char *line);
+int check_args_ld_lld(char *line);
+int check_args_ldi_lldi(char *line);
+int check_args_live_zjmp_fork_lfork(char *line);
+int check_args_st(char *line);
+int check_args_sti(char *line);
+
+int check_args_line(char *line, int command);
+int check_args_prog(char **file_array, int after_comment_line,
+int status_command);
+int check_error_code_args(int status);
+
+int check_command_prog(char **file_array, int after_comment_line);
+int error_prog(char **file_array, int comment_line);
 
 int check_after_quotes(char *line_name);
 int error_check_file(char **files);
@@ -110,6 +138,8 @@ int asm_corewar(int ac, char **av);
 info_t *fill_info_struct(int ac, char **av);
 
 int my_getnbr(char const *str);
+void my_put_nbr(int nb);
+void my_putchar(char c);
 int my_strcmp(char const *s1, char const *s2);
 char *my_strdup(char const *src);
 int my_strlen(char const *str);

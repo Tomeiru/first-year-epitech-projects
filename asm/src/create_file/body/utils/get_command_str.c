@@ -30,8 +30,13 @@ char *get_command_str(char *line, int label)
 
     if (label == 1) {
         for ( ; line[idx] == ' ' || line[idx] == 9; idx++);
+        if (line[idx] == '#') {
+            return ("");
+        }
         for ( ; line[idx] != ' ' && line[idx] != 9 && line[idx] != '\0'; idx++);
     }for ( ; line[idx] == ' ' || line[idx] == 9; idx++);
+    if (line[idx] == '#')
+        return ("");
     for ( ; line[idx] != ' ' && line[idx] != 9 && line[idx] != '\0'; idx++)
         command[i++] = line[idx];
     command[i] = '\0';

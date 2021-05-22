@@ -12,6 +12,7 @@ SRC =	src/setup/asm_corewar.c	\
 		src/create_file/setup/create_cor_file.c	\
 		src/create_file/setup/filename_to_filename_cor.c	\
 		src/create_file/setup/error/error_check_file.c	\
+		src/create_file/setup/error/check_after_quotes.c	\
 		src/create_file/setup/error/name/check_error_code.c	\
 		src/create_file/setup/error/name/check_name_presence.c	\
 		src/create_file/setup/error/name/check_name.c	\
@@ -20,7 +21,24 @@ SRC =	src/setup/asm_corewar.c	\
 		src/create_file/setup/error/comment/check_comment_presence.c	\
 		src/create_file/setup/error/comment/check_comment.c	\
 		src/create_file/setup/error/comment/check_syntax_comment.c	\
-		src/create_file/setup/error/check_after_quotes.c	\
+		src/create_file/setup/error/prog_content/check_command_prog.c	\
+		src/create_file/setup/error/prog_content/check_prog.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_line.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_prog.c	\
+		src/create_file/setup/error/prog_content/check_args/check_error_code.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_func/check_args_add_sub.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_func/check_args_aff.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_func/check_args_and_or_xor.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_func/check_args_ld_lld.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_func/check_args_ldi_lldi.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_func/check_args_live_zjmp_fork_lfork.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_func/check_args_st.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_func/check_args_sti.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_func/utils/check_direct_arg.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_func/utils/check_indirect_arg.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_func/utils/check_label_arg.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_func/utils/check_register_arg.c	\
+		src/create_file/setup/error/prog_content/check_args/check_args_func/utils/count_arg.c	\
 		src/create_file/header/get_prog_size.c	\
 		src/create_file/header/write_header.c	\
 		src/create_file/header/write_magic_number.c	\
@@ -66,6 +84,8 @@ SRC =	src/setup/asm_corewar.c	\
 		src/create_file/body/write_func/write_lfork.c	\
 		src/create_file/body/write_func/write_aff.c	\
 		src/utils/my_getnbr.c	\
+		src/utils/my_put_nbr.c	\
+		src/utils/my_putchar.c	\
 		src/utils/my_strcmp.c	\
 		src/utils/my_strdup.c	\
 		src/utils/my_strlen.c	\

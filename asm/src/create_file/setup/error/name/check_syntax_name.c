@@ -9,8 +9,13 @@
 
 static int check_label_before_name(char **file_array, int name_presence)
 {
+    int idx = 0;
+
     for (int i = 0; i <= name_presence; i++) {
-        if (get_info_label(file_array[i]) == 1)
+        for ( ; file_array[i][idx] == ' ' || file_array[i][idx] == 9; idx++);
+        if (file_array[i][idx] == '#') {
+            return (0);
+        }if (get_info_label(file_array[i]) == 1)
             return (-2);
     }
     return (0);

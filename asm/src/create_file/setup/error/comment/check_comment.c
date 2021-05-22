@@ -12,7 +12,7 @@ int error_comment(char **file_array, int line_name)
     int comment_presence = 0;
     int check_syntax = 0;
 
-    if (line_name == 84)
+    if (line_name == -84)
         return (line_name);
     comment_presence = check_comment_presence(file_array, line_name + 1);
     check_syntax = check_syntax_comment(file_array, comment_presence);

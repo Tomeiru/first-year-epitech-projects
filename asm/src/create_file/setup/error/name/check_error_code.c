@@ -19,5 +19,5 @@ be the first command\n", 64);
     if (error_code == -4)
         write(2, ".name error: The name specified is too long (128 \
 characters is the maximum)\n", 76);
-    return (84);
+    return (-84);
 }

@@ -26,7 +26,7 @@ unsigned long long get_prog_size(char **file_array, int body_line)
 
     for (int i = body_line; file_array[i]; i++) {
         command = get_command_value(file_array[i]);
-        if (command != -1)
+        if (command > 0) 
             prog_size += command_size(file_array[i], command);
     }return (prog_size);
 }

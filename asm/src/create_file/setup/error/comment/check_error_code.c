@@ -17,5 +17,5 @@ be right after the name\n", 73);
     if (error_code == -4)
         write(2, ".comment error: The comment specified is too long (2048 \
 characters is the maximum)\n", 83);
-    return (84);
+    return (-84);
 }
