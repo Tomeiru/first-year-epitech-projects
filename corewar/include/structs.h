@@ -43,9 +43,9 @@ typedef struct info_s
     int nbr_alive;
     int nbr_live;
     int nbr_champions;
+    instruction_t **instru_tab;
     arena_t *arena;
     champion_t *champions;
-    instruction_t *instru_tab; //struct tab with all possible instructions
 } info_t;
 
 typedef struct instruction_s

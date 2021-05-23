@@ -7,7 +7,6 @@
 
 #include "corewar.h"
 
-
 int init_all(info_t *info, char **av)
 {
     init_info(info);
@@ -18,7 +17,15 @@ int init_all(info_t *info, char **av)
 
 int update(info_t *info, champion_t *champion)
 {
-    //read mem, update vars
+    unsigned char op;
+
+    if (champion->current_op == NULL) {
+        op = info->arena->memory[champion->PC];
+        for (int i = 0; info->instru_tab[i] != NULL; i++) {
+            if (info->instru_tab[i]->op.code == op)
+                champion->current_op = &info->instru_tab[i];
+        }
+    }
     champion->current_op->exec(info, champion);
     return (0);
 }
