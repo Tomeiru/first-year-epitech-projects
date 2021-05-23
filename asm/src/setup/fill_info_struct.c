@@ -14,12 +14,12 @@ static char *file_reader(char *filepath)
     char *file;
 
     if (fd == -1 || stat(filepath, &stats) != 0 || stats.st_size == 0)
-        return("!");
+        return ("!");
     file = malloc(sizeof(char) * (stats.st_size + 1));
     if (file == NULL)
-        return("!");
+        return ("!");
     if (read(fd, file, stats.st_size) == -1)
-        return("!");
+        return ("!");
     file[stats.st_size] = '\0';
     close(fd);
     return (file);

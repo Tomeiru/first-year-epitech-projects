@@ -49,10 +49,10 @@ int check_args(int ac, char **av)
         write(2, "You need at least two .cor file loaded for \
 the program to execute\n", 66);
         return (-1);
-    }/*if (flag_errors(ac, av) == 84) {
-        
-    }*/
-    free(nbr);
+    }if (flag_errors(ac, av) == 84) {
+        write(2, "Your flags are incorrect\n", 25);
+        return (-1);
+    }free(nbr);
     return (nbr_champ);
 }
 

@@ -39,7 +39,7 @@ static int check_syntax_arg(char *line_name)
     }if (args[0][i] == '\0')
         return (-3);
     return (check_after_quotes(line_name));
-} 
+}
 
 int check_syntax_name(char **file_array, int name_presence)
 {

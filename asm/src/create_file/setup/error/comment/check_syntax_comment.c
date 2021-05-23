@@ -32,7 +32,7 @@ static int check_syntax_arg(char *line_comment)
     }if (args[0][i] == '\0')
         return (-3);
     return (check_after_quotes(line_comment));
-} 
+}
 
 int check_syntax_comment(char **file_array, int comment_presence)
 {

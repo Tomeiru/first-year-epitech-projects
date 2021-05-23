@@ -78,17 +78,17 @@ int get_flags(info_t *info, params_t *params, char **av)
 {
     if (my_strcmp(av[0], "-dump") == 1) {
         info->dump = my_getnbr(av[1]);
-        av+=2;
+        av += 2;
         return (0);
     }
     if (my_strcmp(av[0], "-n") == 1) {
         params->prog_number = my_getnbr(av[1]);
-        av+=2;
+        av += 2;
         return (0);
     }
     if (my_strcmp(av[0], "-a") == 1) {
         params->load_address = my_getnbr(av[1]);
-        av+=2;
+        av += 2;
         return (0);
     }
     return (84);
