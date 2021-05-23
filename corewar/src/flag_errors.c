@@ -7,17 +7,24 @@
 
 #include "corewar.h"
 
-int check_flag(char *str, char *nbr, int len)
+int check_flag(char **av, int i, int len)
 {
-    if ((len != 2 && len != 5) || (my_strcmp(str, "-dump") == 0 &&
-    my_strcmp(str, "-n") == 0 && my_strcmp(str, "-a") == 0))
+    if (av[i + 1] == NULL)
         return (84);
-    else if (my_strcmp(str, "-dump") == 1 && my_str_ishexa(nbr) == 0)
+    if ((len != 2 && len != 5) || (my_strcmp(av[i], "-dump") != 0 &&
+    my_strcmp(av[i], "-n") != 0 && my_strcmp(av[i], "-a") != 0))
         return (84);
-    else
-        if (my_strcmp(str, "-n") == 1 || my_strcmp(str, "-a") == 1
-        && my_str_isnum(nbr) == 0)
-            return (84);
+    if (my_strcmp(av[i], "-dump") == 0 && my_str_ishexa(av[i + 1]) == 0)
+        return (84);
+    if (my_strcmp(av[i], "-n") == 0 && (my_strcmp(av[i + 1], "1") == 0 ||
+    my_strcmp(av[i + 1], "2") == 0 || my_strcmp(av[i + 1], "3") == 0 ||
+    my_strcmp(av[i + 1], "4") == 0) && (av[i + 2] == NULL ||
+    (my_strcmp(av[i + 2], "-a") != 0 && check_cor(".cor", av[i + 2]) == 1)))
+        return (84);
+    if ((my_strcmp(av[i], "-a") == 0 && my_str_isnum(av[i + 1]) == 0) &&
+    (av[i + 2] == NULL || (my_strcmp(av[i + 2], "-n") != 0 &&
+    check_cor(".cor", av[i + 2]) == 1)))
+        return (84);
     return (0);
 }
 
@@ -27,7 +34,7 @@ int flag_errors(int ac, char **av)
 
     for (int i = 1; i != ac; i++) {
         if (av[i][0] == '-')
-            result = check_flag(av[i], av[i + 1], my_strlen(av[i]));
+            result = check_flag(av, i, my_strlen(av[i]));
         if (result == 84)
             return (84);
     }

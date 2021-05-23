@@ -47,8 +47,6 @@
 
 typedef char args_type_t;
 
-extern op_t op_tab[];
-
 typedef struct op_s
 {
     char *mnemonique;
@@ -58,6 +56,8 @@ typedef struct op_s
     int nbr_cycles;
     char *comment;
 } op_t;
+
+extern op_t op_tab[];
 
 typedef struct header_s
 {

@@ -9,20 +9,20 @@
 
 void live(info_t *info,  champion_t *champion)
 {
-    return (0);
+    return;
 } // execute live + update last_live & nbr_live
 
 void load(info_t *info,  champion_t *champion)
 {
-    return (0);
+    return;
 } // execute ld
 
 void store(info_t *info,  champion_t *champion)
 {
-    return (0);
+    return;
 } // execute st
 
 void addition(info_t *info,  champion_t *champion)
 {
-    return (0);
+    return;
 } // execute add

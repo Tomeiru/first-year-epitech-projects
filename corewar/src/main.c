@@ -9,6 +9,6 @@
 
 int main(int ac, char **av)
 {
-    error_manager(ac, av);
-    return (corewar(ac, av));
+    int champ_number = error_manager(ac, av);
+    return (corewar(av, champ_number));
 }
