@@ -19,11 +19,11 @@
 int main(int ac, char **av);
 
 //lib_fct.c
-int my_strcmp(char *s1, char *s2);
+int my_strcmp(char const *s1, char const *s2);
 int my_strlen(char *str);
 
 //error_manager.c
-void error_manager(int ac, char **av);
+int error_manager(int ac, char **av);
 int check_args(int ac, char **av);
 int *args_counter(int ac, char **av);
 int check_cor(char *cor, char *str);

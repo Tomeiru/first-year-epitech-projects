@@ -5,7 +5,9 @@
 ## Makefile
 ##
 
-SRC =	src/corewar.c
+SRC =	src/corewar.c	\
+		src/error_manager.c	\
+		src/lib_fct.c
 
 MAIN =	src/main.c
 
