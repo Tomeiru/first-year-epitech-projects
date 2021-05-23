@@ -51,7 +51,7 @@ char **args)
     write(cor_file, lldi_buffer, 7);
 }
 
-void write_lldi(char *line, int cor_file)
+static void write_lldi_seven(char *line, int cor_file)
 {
     unsigned char lldi_buffer[7] = "0000000";
     char **args = get_args_arr(line, get_info_label(line));
@@ -66,3 +66,31 @@ void write_lldi(char *line, int cor_file)
     return;
 }
 
+static void write_lldi_five(char *line, int cor_file)
+{
+    int label = get_info_label(line);
+    char **args = get_args_arr(line, label);
+    unsigned char coding_byte = get_coding_byte(args);
+    unsigned char lldi_buffer[5];
+
+    lldi_buffer[0] = 0x0e;
+    lldi_buffer[1] = coding_byte;
+    lldi_buffer[2] = (unsigned char)my_getnbr(++args[0]);
+    lldi_buffer[3] = (unsigned char)my_getnbr(++args[1]);
+    lldi_buffer[4] = (unsigned char)my_getnbr(++args[2]);
+    write(cor_file, lldi_buffer, 5);
+}
+
+void write_lldi(char *line, int cor_file)
+{
+    char **args = get_args_arr(line, get_info_label(line));
+    unsigned char coding_byte = get_coding_byte(args);
+
+    if (coding_byte == 0xa4 || coding_byte == 0xe4) {
+        write_lldi_seven(line, cor_file);
+        return;
+    }if (coding_byte == 0x54) {
+        write_lldi_five(line, cor_file);
+        return;
+    }write_lldi_six(line, cor_file);
+}

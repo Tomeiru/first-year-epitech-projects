@@ -47,6 +47,7 @@ SRC =	src/setup/asm_corewar.c	\
 		src/create_file/header/write_comment.c	\
 		src/create_file/header/size_func/size_five.c	\
 		src/create_file/header/size_func/size_ld_lld.c	\
+		src/create_file/header/size_func/size_ldi_lldi.c	\
 		src/create_file/header/size_func/size_st.c	\
 		src/create_file/header/size_func/size_and_or_xor.c	\
 		src/create_file/header/size_func/size_three.c	\
@@ -77,10 +78,12 @@ SRC =	src/setup/asm_corewar.c	\
 		src/create_file/body/write_func/write_xor_third.c	\
 		src/create_file/body/write_func/write_zjmp.c	\
 		src/create_file/body/write_func/write_ldi.c	\
+		src/create_file/body/write_func/write_ldi_six.c	\
 		src/create_file/body/write_func/write_sti.c	\
 		src/create_file/body/write_func/write_fork.c	\
 		src/create_file/body/write_func/write_lld.c	\
 		src/create_file/body/write_func/write_lldi.c	\
+		src/create_file/body/write_func/write_lldi_six.c	\
 		src/create_file/body/write_func/write_lfork.c	\
 		src/create_file/body/write_func/write_aff.c	\
 		src/utils/my_getnbr.c	\

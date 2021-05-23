@@ -84,15 +84,18 @@ void write_xor_eleven(int cor_file, unsigned char coding_byte,
 char **args);
 void write_zjmp(char *line, int cor_file);
 void write_ldi(char *line, int cor_file);
+void write_ldi_six(char *line, int cor_file);
 void write_sti(char *line, int cor_file);
 void write_fork(char *line, int cor_file);
 void write_lld(char *line, int cor_file);
 void write_lldi(char *line, int cor_file);
+void write_lldi_six(char *line, int cor_file);
 void write_lfork(char *line, int cor_file);
 void write_aff(char *line, int cor_file);
 
 unsigned int size_five(char *line);
 unsigned int size_ld_lld(char *line);
+unsigned int size_ldi_lldi(char *line);
 unsigned int size_st(char *line);
 unsigned int size_and_or_xor(char *line);
 unsigned int size_three(char *line);

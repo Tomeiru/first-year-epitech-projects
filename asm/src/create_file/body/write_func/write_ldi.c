@@ -51,7 +51,7 @@ char **args)
     write(cor_file, ldi_buffer, 7);
 }
 
-void write_ldi(char *line, int cor_file)
+static void write_ldi_seven(char *line, int cor_file)
 {
     unsigned char ldi_buffer[7] = "0000000";
     char **args = get_args_arr(line, get_info_label(line));
@@ -64,4 +64,33 @@ void write_ldi(char *line, int cor_file)
         return;
     }write_indirect_ldi(cor_file, ldi_buffer, args);
     return;
+}
+
+static void write_ldi_five(char *line, int cor_file)
+{
+    int label = get_info_label(line);
+    char **args = get_args_arr(line, label);
+    unsigned char coding_byte = get_coding_byte(args);
+    unsigned char ldi_buffer[5];
+
+    ldi_buffer[0] = 0x0a;
+    ldi_buffer[1] = coding_byte;
+    ldi_buffer[2] = (unsigned char)my_getnbr(++args[0]);
+    ldi_buffer[3] = (unsigned char)my_getnbr(++args[1]);
+    ldi_buffer[4] = (unsigned char)my_getnbr(++args[2]);
+    write(cor_file, ldi_buffer, 5);
+}
+
+void write_ldi(char *line, int cor_file)
+{
+    char **args = get_args_arr(line, get_info_label(line));
+    unsigned char coding_byte = get_coding_byte(args);
+
+    if (coding_byte == 0xa4 || coding_byte == 0xe4) {
+        write_ldi_seven(line, cor_file);
+        return;
+    }if (coding_byte == 0x54) {
+        write_ldi_five(line, cor_file);
+        return;
+    }write_ldi_six(line, cor_file);
 }
