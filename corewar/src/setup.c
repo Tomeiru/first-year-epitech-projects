@@ -17,19 +17,22 @@ int init_arena(info_t *info)
     return (0);
 }
 
-unsigned char *openfile(char *filepath)
+unsigned char *openfile(char *filepath, int *len)
 {
     int fd = open(filepath, O_RDONLY);
-    int wr = open("dump", O_RDWR);
     struct stat file;
     unsigned char *buff;
 
     if (fd <= 0)
         return (NULL);
-    stat(filepath, &file);
-    buff = malloc(sizeof(short int) * (file.st_size + 1));
-    read(fd, buff, file.st_size);
-    write(wr, buff, file.st_size);
+    if (stat(filepath, &file) != 0 || file.st_size == 0)
+        return (84);
+    buff = malloc(sizeof(unsigned char) * (file.st_size + 1));
+    if (!buff)
+        return (84);
+    if (read(fd, buff, file.st_size) == -1)
+        return (84);
+    *len = file.st_size;
     close(fd);
     buff[file.st_size] = '\0';
     return (buff);
@@ -37,7 +40,8 @@ unsigned char *openfile(char *filepath)
 
 int load_instructions(info_t *info, champion_t *champion, char *filepath)
 {
-    unsigned char *buff = openfile(filepath);
+    int len = 0;
+    unsigned char *buff = openfile(filepath, &len);
     int cpt = 4;
     int i = 0;
 
@@ -50,11 +54,9 @@ int load_instructions(info_t *info, champion_t *champion, char *filepath)
     for (; buff[cpt] != 0; cpt++)
         champion->name[i++] = buff[cpt];
     champion->name[i] = '\0';
-    cpt = PROG_NAME_LENGTH + COMMENT_LENGTH - 1;
-    for (i = champion->PC; buff[cpt] != '\0'; cpt++) {
-        printf("%x\n", buff[cpt]);
+    cpt = PROG_NAME_LENGTH + 16 + COMMENT_LENGTH;
+    for (i = champion->PC; cpt <= len; cpt++)
         info->arena->memory[i++] = buff[cpt];
-    }
     return (0);
 }
 
