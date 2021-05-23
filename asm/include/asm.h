@@ -24,12 +24,6 @@
 
 typedef char args_type_t;
 
-/*typedef struct file_s {
-    char **label;
-    int *label_pos;
-    int actual_pos;
-} file_t;*/
-
 typedef struct op_s
 {
     char *mnemonique;
