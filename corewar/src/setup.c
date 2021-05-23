@@ -24,7 +24,4 @@ void init_info(info_t *info)
     info->nbr_alive = 0;
     info->nbr_live = 0;
     info->instru_tab = malloc(sizeof(instruction_t *) * 2);
-    info->instru_tab[0]->exec = live;
-    info->instru_tab[0]->op = op_tab[0];
-    info->instru_tab[1] = NULL;
 }

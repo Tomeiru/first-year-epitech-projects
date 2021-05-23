@@ -17,16 +17,15 @@ int init_all(info_t *info, char **av)
 
 int update(info_t *info, champion_t *champion)
 {
-    unsigned char op;
-
-    if (champion->current_op == NULL) {
-        op = info->arena->memory[champion->PC];
-        for (int i = 0; info->instru_tab[i] != NULL; i++) {
-            if (info->instru_tab[i]->op.code == op)
-                champion->current_op = info->instru_tab[i];
-        }
+    if (champion->current_op != NULL)
+        live(info, champion);
+    if (info->cycle - champion->last_live > info->cycle_to_die) {
+        info->nbr_alive -= 1;
+        for (champion_t *backup = info->champions; 
+        backup->next->id != champion->id; backup = backup->next)
+            backup->next = champion->next;
+        free(champion);
     }
-    champion->current_op->exec(info, champion);
     return (0);
 }
 
@@ -34,8 +33,6 @@ void loop(info_t *info)
 {
     for (champion_t *temp = info->champions; temp != NULL; temp = temp->next)
         update(info, temp);
-    if (info->cycle == info->dump)
-        write(1, info->arena->memory, MEM_SIZE);
     info->cycle++;
 }
 
@@ -46,9 +43,9 @@ int corewar(char **av, int champ_number)
     info->nbr_champions = champ_number;
     init_all(info, av);
     while (info->nbr_alive > 1) {
-        while (info->nbr_live < NBR_LIVE)
+        while (info->nbr_live < NBR_LIVE) {
             loop(info);
-        info->cycle_to_die -= CYCLE_DELTA;
+        }info->cycle_to_die -= CYCLE_DELTA;
     }
     return (0);
 }

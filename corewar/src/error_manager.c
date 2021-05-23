@@ -46,8 +46,8 @@ int check_args(int ac, char **av)
         write(2, "Multiple definition of dump\n", 28);
         return (-1);
     }if (nbr[1] < 2) {
-        write(2, "You need at least two .cor file loaded for \
-the program to execute\n", 66);
+        write(2, "You need at least two .cor file loaded for ", 43);
+        write(2, "the program to execute\n", 23);
         return (-1);
     }if (flag_errors(ac, av) == 84) {
         write(2, "Your flags are incorrect\n", 25);
@@ -61,8 +61,8 @@ int error_manager(int ac, char **av)
     int nbr_champ = check_args(ac, av);
 
     if (ac < 3) {
-        write(2, "Usage: ./corewar [-dump cycle_nb] \
-[[-a load_addr] [-n prog_nb] prog.cor] ...\n", 77);
+        write(2, "Usage: ./corewar [-dump cycle_nb]", 33);
+        write(2, "[[-a load_addr] [-n prog_nb] prog.cor] ...\n", 43);
         exit(84);
     }if (nbr_champ == -1)
         exit(84);

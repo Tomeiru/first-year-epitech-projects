@@ -9,9 +9,9 @@
 
 static int help(void)
 {
-    write(1, "USAGE\n./asm file_name[.s]\nDESCRIPTION\nfile_name file in assem\
-bly language to be converted into file_name.cor, an executable in the Virt\
-ual Machine.\n", 148);
+    write(1, "USAGE\n./asm file_name[.s]\nDESCRIPTION\nfile_name file in ", 56);
+    write(1, "assembly language to be converted into file_name.cor,", 53);
+    write(1, "an executable in the Virtual Machine.\n", 38);
     return (84);
 }
 

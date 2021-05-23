@@ -22,7 +22,7 @@ void live(info_t *info,  champion_t *champion)
         my_putnbr(champ->id);
         write(1, "(", 1);
         my_putstr(champ->name);
-        write(1, ") is alive.", 12);
+        write(1, ") is alive.\n", 12);
         champion->op_cycle = 1;
         champion->last_live = info->cycle;
         info->nbr_live += 1;
