@@ -94,5 +94,8 @@ void write_sti(char *line, int cor_file)
     }if (coding_byte == 0x58 || coding_byte == 0x64) {
         write_sti_six(cor_file, coding_byte, args);
         return;
+    }if (coding_byte == 0x74 || coding_byte == 0x78) {
+        write_sti_indirect(cor_file, coding_byte, args);
+        return;
     }write_sti_five(cor_file, coding_byte, args);
 }

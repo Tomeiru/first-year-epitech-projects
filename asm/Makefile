@@ -80,6 +80,7 @@ SRC =	src/setup/asm_corewar.c	\
 		src/create_file/body/write_func/write_ldi.c	\
 		src/create_file/body/write_func/write_ldi_six.c	\
 		src/create_file/body/write_func/write_sti.c	\
+		src/create_file/body/write_func/write_sti_indirect.c	\
 		src/create_file/body/write_func/write_fork.c	\
 		src/create_file/body/write_func/write_lld.c	\
 		src/create_file/body/write_func/write_lldi.c	\

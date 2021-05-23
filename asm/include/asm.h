@@ -86,6 +86,8 @@ void write_zjmp(char *line, int cor_file);
 void write_ldi(char *line, int cor_file);
 void write_ldi_six(char *line, int cor_file);
 void write_sti(char *line, int cor_file);
+void write_sti_indirect(int cor_file, unsigned char coding_byte,
+char **args);
 void write_fork(char *line, int cor_file);
 void write_lld(char *line, int cor_file);
 void write_lldi(char *line, int cor_file);
