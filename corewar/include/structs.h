@@ -12,7 +12,7 @@
 
 typedef struct arena_s
 {
-    char *memory; //int * ???? type ?
+    int memory[MEM_SIZE + 1];
 } arena_t;
 
 typedef struct instruction_s
@@ -21,21 +21,21 @@ typedef struct instruction_s
     void (*exec)(info_t *info, champion_t *champion);
 } instruction_t;
 
-
 typedef struct champion_s
 {
+    int carry;
     int PC;
-    header_t header; //useful ?? replace by char *name ?
     int last_live;
     int id;
     void *params;
+    char *name;
     instruction_t current_op;
-    int carry;
     struct champion_s *next;
 } champion_t;
 
 typedef struct info_s
 {
+    int dump;
     int cycle;
     int cycle_to_die;
     int nbr_alive;
