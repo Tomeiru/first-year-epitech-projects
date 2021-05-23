@@ -25,7 +25,7 @@ void live(info_t *info,  champion_t *champion)
         write(1, ") is alive.", 12);
         champion->op_cycle = 1;
         champion->last_live = info->cycle;
-        info->nbr_alive += 1;
+        info->nbr_live += 1;
     } else
         champion->op_cycle += 1;
 } // execute live + update last_live & nbr_live
