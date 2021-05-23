@@ -43,3 +43,16 @@ int my_strlen(char *str)
     for ( ; str[i] != '\0'; i++);
     return (i);
 }
+
+void my_putnbr(int nb)
+{
+    int div = 1;
+
+    if (nb < 0) {
+        my_putchar('-');
+        nb = nb * -1;
+    }
+    for ( ; (nb/div) >= 10; div *= 10);
+    for ( ; div > 0; div /= 10)
+        my_putchar((nb/div) % 10 + 48);
+}

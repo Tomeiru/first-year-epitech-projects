@@ -31,6 +31,7 @@ typedef struct champion_s
     char *name;
     instruction_t current_op;
     struct champion_s *next;
+    int op_cycle;
 } champion_t;
 
 typedef struct info_s
