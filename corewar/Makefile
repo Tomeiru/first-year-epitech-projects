@@ -8,10 +8,11 @@
 SRC =	src/corewar.c	\
 		src/error_manager.c	\
 		src/flag_errors.c	\
-		src/instru_one. c	\
+		src/instru_one.c	\
 		src/lib_fct.c	\
 		src/op.c		\
 		src/setup.c		\
+		src/setup_champions.c	\
 
 MAIN =	src/main.c
 

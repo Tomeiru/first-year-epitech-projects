@@ -25,10 +25,12 @@ int check_cor(char *cor, char *str)
 
 int *args_counter(int ac, char **av)
 {
-    int counter[2] = {0, 0};
+    int *counter = malloc(sizeof(int) * 2);
 
+    counter[0] = 0;
+    counter[1] = 0;
     for (int i = 1; i != ac; i++)
-        if (my_strcmp("-dump", av[i]) == 1)
+        if (my_strcmp("-dump", av[i]) == 0)
             counter[0]++;
         else if (check_cor(".cor", av[i]) == 1)
             counter[1]++;
@@ -37,14 +39,33 @@ int *args_counter(int ac, char **av)
 
 int check_args(int ac, char **av)
 {
-    int nbr[2] = args_counter(ac, av);
+    int *nbr = args_counter(ac, av);
+    int nbr_champ = nbr[1];
 
-    if (nbr[0] != 1 || nbr[1] < 2 || flag_errors(ac, av) == 84)
-        return (84);
+    if (nbr[0] > 1) {
+        write(2, "Multiple definition of dump\n", 28);
+        return (-1);
+    }if (nbr[1] < 2) {
+        write(2, "You need at least two .cor file loaded for \
+the program to execute\n", 66);
+        return (-1);
+    }/*if (flag_errors(ac, av) == 84) {
+        
+    }*/
+    free(nbr);
+    return (nbr_champ);
 }
 
-void error_manager(int ac, char **av)
+int error_manager(int ac, char **av)
 {
-    if (ac < 5 || check_args(ac, av) == 84)
+    int nbr_champ = check_args(ac, av);
+
+    if (ac < 3) {
+        write(2, "Usage: ./corewar [-dump cycle_nb] \
+[[-a load_addr] [-n prog_nb] prog.cor] ...\n", 77);
         exit(84);
+    }if (nbr_champ == -1)
+        exit(84);
+    return (nbr_champ);
+    printf("%i\n", nbr_champ);
 }
