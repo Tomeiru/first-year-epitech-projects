@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** Visual Studio Live Share (Workspace)
+** corewar
 ** File description:
 ** corewar
 */
@@ -14,6 +14,9 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+
+#include "structs.h"
+//#include "op.h"
 
 int corewar(int ac, char **av);
 
