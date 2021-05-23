@@ -32,6 +32,6 @@ int check_cor(char *cor, char *str);
 int flag_errors(int ac, char **av);
 
 //corewar.c
-int corewar(int ac, char **av);
+int corewar(int ac, char **av, int champ_number);
 
 #endif /* !COREWAR_H_ */

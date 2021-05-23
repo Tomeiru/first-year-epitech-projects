@@ -10,5 +10,5 @@
 int main(int ac, char **av)
 {
     int champ_number = error_manager(ac, av);
-    return (corewar(ac, av));
+    return (corewar(ac, av, champ_number));
 }
