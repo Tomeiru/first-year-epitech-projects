@@ -55,7 +55,7 @@ int init_champion(info_t *info, params_t *params)
     champion_t *champion = malloc(sizeof(champion_t));
 
     info->nbr_alive++;
-    //champion->op_cycle = 1;
+    champion->op_cycle = 1;
     champion->carry = 0;
     champion->PC = 1;
     if (params->load_address >= 0)
