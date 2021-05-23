@@ -2,10 +2,10 @@
 ** EPITECH PROJECT, 2021
 ** Corewar
 ** File description:
-** lib_fct
+** nbr_lib_fct
 */
 
-#include "../include/corewar.h"
+#include "corewar.h"
 
 int my_str_isnum(char *str)
 {
@@ -28,30 +28,6 @@ int my_str_ishexa(char *str)
     return (1);
 }
 
-int my_strcmp(char const *s1, char const *s2)
-{
-    int i = 0;
-    int ans = 0;
-
-    while (s1[i] != '\0' || s2[i] != '\0') {
-        if (s1[i] == s2[i])
-            i++;
-        else {
-            ans = s1[i] - s2[i];
-            return (ans);
-        }
-    }
-    return (0);
-}
-
-int my_strlen(char *str)
-{
-    int i = 0;
-
-    for ( ; str[i] != '\0'; i++);
-    return (i);
-}
-
 int my_getnbr(char const *str)
 {
     int i = 0;
@@ -69,4 +45,17 @@ int my_getnbr(char const *str)
     }
     number = number * sign;
     return (number);
+}
+
+void my_putnbr(int nb)
+{
+    int div = 1;
+
+    if (nb < 0) {
+        my_putchar('-');
+        nb = nb * -1;
+    }
+    for ( ; (nb/div) >= 10; div *= 10);
+    for ( ; div > 0; div /= 10)
+        my_putchar((nb/div) % 10 + 48);
 }

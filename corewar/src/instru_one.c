@@ -28,19 +28,4 @@ void live(info_t *info,  champion_t *champion)
         info->nbr_live += 1;
     } else
         champion->op_cycle += 1;
-} // execute live + update last_live & nbr_live
-
-void load(info_t *info,  champion_t *champion)
-{
-    return;
-} // execute ld
-
-void store(info_t *info,  champion_t *champion)
-{
-    return;
-} // execute st
-
-void addition(info_t *info,  champion_t *champion)
-{
-    return;
-} // execute add
+}

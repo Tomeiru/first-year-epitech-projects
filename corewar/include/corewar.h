@@ -21,12 +21,17 @@
 //main.c
 int main(int ac, char **av);
 
-//lib_fct.c
+//str_lib_fct.c
+void my_putchar(char c);
+void my_putstr(char const *str);
 int my_strcmp(char const *s1, char const *s2);
 int my_strlen(char *str);
-int my_getnbr(char const *str);
-int my_str_ishexa(char *str);
+
+//nbr_lib_fct.c
 int my_str_isnum(char *str);
+int my_str_ishexa(char *str);
+int my_getnbr(char const *str);
+void my_putnbr(int nb);
 
 //error_manager.c
 int error_manager(int ac, char **av);
@@ -47,5 +52,9 @@ int corewar(char **av, int champ_number);
 
 //instru_one.c
 void live(info_t *info,  champion_t *champion);
+
+//get_params.c
+champion_t *find_champ(champion_t *champ_list, int id);
+unsigned int get_id(arena_t *arena, int PC);
 
 #endif /* !COREWAR_H_ */
