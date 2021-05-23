@@ -7,21 +7,6 @@
 
 #include "corewar.h"
 
-unsigned int get_id(arena_t *arena, int PC)
-{
-    unsigned int result = 0;
-    unsigned char first = arena->memory[PC + 1];
-    unsigned char second = arena->memory[PC + 2];
-    unsigned char third = arena->memory[PC + 3];
-    unsigned char fourth = arena->memory[PC + 4];
-
-    result += first * 0x1000000;
-    result += second * 0x10000;
-    result += third * 0x100;
-    result += fourth * 0x1;
-    return (result);
-}
-
 void live(info_t *info,  champion_t *champion)
 {
     unsigned int id = 0;
@@ -30,6 +15,7 @@ void live(info_t *info,  champion_t *champion)
     if (champion->op_cycle == 10) {
         id = get_id(info->arena, champion->PC);
         champ = find_champ(info->champions, id);
+        champion->PC += 5;
         if (champ == NULL)
             return;
         write(1, "The player ", 12);
