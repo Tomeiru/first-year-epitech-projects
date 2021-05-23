@@ -19,7 +19,7 @@ int init_all(info_t *info, char **av)
 int update(info_t *info, champion_t *champion)
 {
     //read mem, update vars
-    champion->current_op.exec(info, champion);
+    champion->current_op->exec(info, champion);
     return (0);
 }
 

@@ -47,17 +47,17 @@
 
 typedef char args_type_t;
 
-extern op_t op_tab[];
-
 typedef struct op_s
 {
-   char *mnemonique;
-   char nbr_args;
-   args_type_t type[MAX_ARGS_NUMBER];
-   char code;
-   int nbr_cycles;
-   char *comment;
+    char *mnemonique;
+    char nbr_args;
+    args_type_t type[MAX_ARGS_NUMBER];
+    char code;
+    int nbr_cycles;
+    char *comment;
 } op_t;
+
+extern op_t op_tab[];
 
 typedef struct header_s
 {

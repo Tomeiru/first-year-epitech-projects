@@ -5,75 +5,116 @@
 ** setup
 */
 
-#include "corewar.h"
+#include "../include/corewar.h"
 
 int init_arena(info_t *info)
 {
     arena_t *arena = malloc(sizeof(arena_t));
 
-    arena->memory[MEM_SIZE] = '\0';
+    for (int i = 0; i < MEM_SIZE; i++)
+        arena->memory[i] = 0x0;
+    info->arena = arena;
     return (0);
+}
+
+unsigned char *openfile(char *filepath)
+{
+    int fd = open(filepath, O_RDONLY);
+    int wr = open("dump", O_RDWR);
+    struct stat file;
+    unsigned char *buff;
+
+    if (fd <= 0)
+        return (NULL);
+    stat(filepath, &file);
+    buff = malloc(sizeof(short int) * (file.st_size + 1));
+    read(fd, buff, file.st_size);
+    write(wr, buff, file.st_size);
+    close(fd);
+    buff[file.st_size] = '\0';
+    return (buff);
 }
 
 int load_instructions(info_t *info, champion_t *champion, char *filepath)
 {
-    int fd = open(filepath, O_RDONLY);
-    unsigned short int *buff;
-    struct stat file;
+    unsigned char *buff = openfile(filepath);
+    int cpt = 4;
+    int i = 0;
 
-    if (fd <= 0)
+    if (!buff) {
         return (84);
-    stat(filepath, &file);
-    buff = malloc(sizeof(short int) * (file.st_size + 1));
-    read(fd, buff, file.st_size);
-    close(fd);
-    //check magic number
-    //get champions name
-    //load instructions into memory
+    }
+    if (buff[1] != 0xea || buff[2] != 0x83 || buff[3] != 0xf3) {
+        return (84);
+    }
+    for (; buff[cpt] != 0; cpt++)
+        champion->name[i++] = buff[cpt];
+    champion->name[i] = '\0';
+    cpt = PROG_NAME_LENGTH + COMMENT_LENGTH - 1;
+    for (i = champion->PC; buff[cpt] != '\0'; cpt++) {
+        printf("%x\n", buff[cpt]);
+        info->arena->memory[i++] = buff[cpt];
+    }
+    return (0);
 }
 
-int init_champion(info_t *info, int prog_number, int load_address, char *filepath)
+int init_champion(info_t *info, params_t *params)
 {
     champion_t *champion = malloc(sizeof(champion_t));
 
     info->nbr_alive++;
+    //champion->op_cycle = 1;
     champion->carry = 0;
+    champion->PC = 1;
+    if (params->load_address >= 0)
+        champion->PC = params->load_address;
+    else if (info->nbr_alive > 1)
+        champion->PC = MEM_SIZE/info->nbr_champions;
     champion->last_live = 0;
-    if (prog_number >= 0)
-        champion->id = prog_number;
+    if (params->prog_number >= 0)
+        champion->id = params->prog_number;
     else
         champion->id = info->nbr_alive;
-    if (load_address >= 0)
-        champion->PC = load_address;
-    load_instructions(info, champion, filepath);
+    champion->params = NULL;
+    champion->current_op = NULL;
     champion->next = info->champions;
     info->champions = champion;
-    return (0);
+    return (load_instructions(info, champion, params->filepath));
+}
+
+int get_flags(info_t *info, params_t *params, char **av)
+{
+    if (my_strcmp(av[0], "-dump") == 1) {
+        info->dump = my_getnbr(av[1]);
+        av+=2;
+        return (0);
+    }
+    if (my_strcmp(av[0], "-n") == 1) {
+        params->prog_number = my_getnbr(av[1]);
+        av+=2;
+        return (0);
+    }
+    if (my_strcmp(av[0], "-a") == 1) {
+        params->load_address = my_getnbr(av[1]);
+        av+=2;
+        return (0);
+    }
+    return (84);
 }
 
 int get_params(char **av, info_t *info)
 {
-    int prog_number = -1;
-    int load_address = -1;
+    params_t *params = malloc(sizeof(params));
 
     av++;
     while (av[0] != NULL) {
-        if (my_strcmp(av[0], "-dump") == 1) {
-            info->dump = my_getnbr(av[1]);
-            av+=2;
-        }
-        if (my_strcmp(av[0], "-n") == 1) {
-            prog_number = my_getnbr(av[1]);
-            av+=2;
-        }
-        if (my_strcmp(av[0], "-a") == 1) {
-            load_address = my_getnbr(av[1]);
-            av+=2;
-        }
-        if (av[0][0] != '-') {
-            init_champion(info, prog_number, load_address, av++[0]);
-            prog_number = -1;
-            load_address = -1;
+        if (av[0][0] == '-' && get_flags(info, params, av) == 84) {
+            return (84);
+        } else if (av[0][0] != '-'){
+            params->filepath = av[0];
+            init_champion(info, params);
+            av++;
+            params = &(params_t){-1, -1, NULL};
         }
     }
 }
