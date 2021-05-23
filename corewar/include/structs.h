@@ -27,6 +27,7 @@ typedef struct champion_s
     char name[PROG_NAME_LENGTH + 1];
     instruction_t *current_op;
     struct champion_s *next;
+    int op_cycle;
 } champion_t;
 
 typedef struct params_s {
