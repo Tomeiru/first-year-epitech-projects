@@ -12,7 +12,7 @@
 
 typedef struct arena_s
 {
-    char *memory; //int * ???? type ?
+    unsigned char *memory; //int * ???? type ?
 } arena_t;
 
 typedef struct instruction_s
@@ -21,11 +21,10 @@ typedef struct instruction_s
     void (*exec)(info_t *info, champion_t *champion);
 } instruction_t;
 
-
 typedef struct champion_s
 {
     int PC;
-    header_t header; //useful ?? replace by char *name ?
+    char *name; //useful ?? replace by char *name ?
     int last_live;
     int id;
     void *params;

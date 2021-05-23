@@ -7,12 +7,6 @@
 
 #include "corewar.h"
 
-
-int init_all(info_t *info)
-{
-    //init all structs and load instructions in memory
-    return (0);
-}
 int update(info_t *info, champion_t *champion)
 {
     //read mem, update vars
@@ -29,9 +23,8 @@ int loop(info_t *info)
 
 int corewar(int ac, char **av)
 {
-    info_t *info = malloc(sizeof(info_t));
+    info_t *info = init_all(ac, av);
 
-    init_all(info);
     while (info->nbr_alive > 1) {
         while (info->nbr_live < NBR_LIVE)
             loop(info);
