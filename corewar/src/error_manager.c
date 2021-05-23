@@ -67,5 +67,4 @@ int error_manager(int ac, char **av)
     }if (nbr_champ == -1)
         exit(84);
     return (nbr_champ);
-    printf("%i\n", nbr_champ);
 }
