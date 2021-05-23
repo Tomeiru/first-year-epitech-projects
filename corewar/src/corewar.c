@@ -34,6 +34,8 @@ void loop(info_t *info)
 {
     for (champion_t *temp = info->champions; temp != NULL; temp = temp->next)
         update(info, temp);
+    if (info->cycle = info->dump)
+        write(1, info->arena->memory, MEM_SIZE);
     info->cycle++;
 }
 
